@@ -155,7 +155,22 @@ objects:
             limits:
               memory: "256Mi"
               cpu: "500m"
-          # TODO: readiness and liveness probe
+          readinessProbe:
+            httpGet:
+              path: '/readiness'
+              port: 34000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: '/liveness'
+              port: 34000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 30
         restartPolicy: Always
     test: false
     triggers:
@@ -190,7 +205,22 @@ objects:
             limits:
               memory: "256Mi"
               cpu: "500m"
-          # TODO: readiness and liveness probe
+          readinessProbe:
+            httpGet:
+              path: '/readiness'
+              port: 35000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: '/liveness'
+              port: 35000
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 30
         restartPolicy: Always
     test: false
     triggers:
