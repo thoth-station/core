@@ -143,7 +143,7 @@ objects:
               secretKeyRef:
                 name: secret
                 key: openshift-api-token
-          image: fridex/thoth-api-pkgdeps
+          image: fridex/thoth-user-api
           name: thoth-user-api
           ports:
             - containerPort: 34000
@@ -198,7 +198,7 @@ objects:
 
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
-  displayName: Thoth API pkgdeps hostname
+  displayName: Thoth user API hostname
   required: false
   name: THOTH_USER_API_HOSTNAME
 
