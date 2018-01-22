@@ -1,0 +1,222 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: thoth-core
+metadata:
+  name: thoth-core
+  annotations:
+    description: thoth-core
+
+objects:
+#
+# Secrets
+#
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: secret
+  stringData:
+    app-secret-key: some-secret-key
+    # NOTE: this needs to be changed after deployment with the actual openshift key generated
+    openshift-api-token: 'EUlZWOBCcStVHgtTHGXg9w2xhupFFwxgOZHe7yan1AM'
+#
+# Network restriction for analyzer containers.
+#
+# TODO: as this does not work on `oc cluter up`, this needs to be configured on actual deployment:
+#   https://blog.openshift.com/whats-new-in-openshift-3-5-network-policy-tech-preview/
+#   https://bugzilla.redhat.com/show_bug.cgi?id=1444144
+- apiVersion: extensions/v1beta1
+  kind: NetworkPolicy
+  metadata:
+    name: restricted-network-for-analyzer
+  spec:
+   podSelector:
+     matchLabels:
+       role: analyzer-container
+   # TODO: whitelist supported registries to pull images from
+   ingress: 
+   - {}
+   egress:
+   - {}
+#
+# Image analyzers
+#
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: thoth-dependency-extract
+    labels:
+       role: analyzer-container
+  spec:
+    runPolicy: Parallel
+    triggers: 
+      - type: Generic
+        generic:
+          secret: secret
+          allowEnv: true
+    strategy: 
+      customStrategy:
+        from:
+          # TODO: move this to our OpenShift registry instead
+          kind: DockerImage
+          name: fridex/thoth-pkgdeps
+#
+# Services
+#
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      service: thoth-user-api
+    name: thoth-user-api
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 34000
+    selector:
+      service: thoth-user-api
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      service: thoth-result-api
+    name: thoth-result-api
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 35000
+    selector:
+      service: thoth-result-api
+    containers:
+        - env:
+          - name: THOTH_RESULT_API_HOSTNAME
+            value: ${THOTH_RESULT_API_HOSTNAME}
+#
+# Routes
+#
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: thoth-user-api-hostname
+  spec:
+    host: ${THOTH_USER_API_HOSTNAME}
+    to:
+      kind: Service
+      name: thoth-user-api
+
+#
+# Deployment configurations
+#
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      service: thoth-user-api
+    name: thoth-user-api
+  spec:
+    replicas: 1
+    selector:
+      service: thoth-user-api
+    template:
+      metadata:
+        labels:
+          service: thoth-user-api
+      spec:
+        containers:
+        - env:
+          - name: APP_SERVICE_PORT
+            value: "34000"
+          - name: OPENSHIFT_API_URL
+            value: ${OPENSHIFT_API_URL}
+          - name: OPENSHIFT_PROJECT_NAME
+            value: ${OPENSHIFT_PROJECT_NAME}
+          - name: APP_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: app-secret-key
+          - name: OPENSHIFT_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: openshift-api-token
+          image: fridex/thoth-api-pkgdeps
+          name: thoth-user-api
+          ports:
+            - containerPort: 34000
+              protocol: TCP
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "125m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          # TODO: readiness and liveness probe
+        restartPolicy: Always
+    test: false
+    triggers:
+    - type: ConfigChange
+
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      service: thoth-result-api
+    name: thoth-result-api
+  spec:
+    replicas: 1
+    selector:
+      service: thoth-result-api
+    template:
+      metadata:
+        labels:
+          service: thoth-result-api
+      spec:
+        containers:
+        - env:
+          image: fridex/thoth-result-api
+          name: thoth-result-api
+          ports:
+            - containerPort: 35000
+              protocol: TCP
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "125m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          # TODO: readiness and liveness probe
+        restartPolicy: Always
+    test: false
+    triggers:
+    - type: ConfigChange
+
+parameters:
+- description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
+  displayName: Thoth API pkgdeps hostname
+  required: false
+  name: THOTH_USER_API_HOSTNAME
+
+- description: A hostname where the analyzers should post results to.
+  displayName: Thoth result API hostname
+  required: true
+  name: THOTH_RESULT_API_HOSTNAME
+  value: thoth-result-api
+
+- description: OpenShift API URL in base format (without API path).
+  displayName: OpenShift base API URL
+  required: true
+  name: OPENSHIFT_API_URL
+  # This value should be OK inside the cluster as this is exposed to all contianers running inside the OpenShift cluster.
+  value: 'https://openshift.default.svc.cluster.local'
+
+- description: A name of the OpenShift project under which the user-facing API server runs.
+  displayName: OpenShift project name
+  required: true
+  name: OPENSHIFT_PROJECT_NAME
+  value: 'myproject'
