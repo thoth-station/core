@@ -9,12 +9,157 @@ metadata:
 
 objects:
 #
+# Namespaces
+#
+- apiVersion: project.openshift.io/v1
+  kind: Project
+  metadata:
+    creationTimestamp: null
+    name: ${THOTH_FRONTEND_NAMESPACE}
+    annotations:
+      openshift.io/description: ${THOTH_FRONTEND_DESCRIPTION}
+      openshift.io/display-name: ${THOTH_FRONTEND_DISPLAYNAME}
+  spec: {}
+  status: {}
+
+- apiVersion: project.openshift.io/v1
+  kind: Project
+  metadata:
+    creationTimestamp: null
+    name: ${THOTH_MIDDLEEND_NAMESPACE}
+    annotations:
+      openshift.io/description: ${THOTH_MIDDLEEND_DESCRIPTION}
+      openshift.io/display-name: ${THOTH_MIDDLEEND_DISPLAYNAME}
+  spec: {}
+  status: {}
+
+#
+# Role bindings
+#
+# Frontend
+- apiVersion: authorization.openshift.io/v1
+  groupNames:
+  - system:serviceaccounts:${THOTH_FRONTEND_NAMESPACE}
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:image-pullers
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  roleRef:
+    name: system:image-puller
+  subjects:
+  - kind: SystemGroup
+    name: system:serviceaccounts:${THOTH_FRONTEND_NAMESPACE}
+  userNames: null
+- apiVersion: authorization.openshift.io/v1
+  groupNames: null
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:image-builders
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  roleRef:
+    name: system:image-builder
+  subjects:
+  - kind: ServiceAccount
+    name: builder
+  userNames:
+  - system:serviceaccount:${THOTH_FRONTEND_NAMESPACE}:builder
+- apiVersion: authorization.openshift.io/v1
+  groupNames: null
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:deployers
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  roleRef:
+    name: system:deployer
+  subjects:
+  - kind: ServiceAccount
+    name: deployer
+  userNames:
+  - system:serviceaccount:${THOTH_FRONTEND_NAMESPACE}:deployer
+- apiVersion: authorization.openshift.io/v1
+  groupNames: null
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: admin
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  roleRef:
+    name: admin
+  subjects:
+  - kind: User
+    name: ${THOTH_ADMIN_USER}
+  userNames:
+  - ${THOTH_ADMIN_USER}
+
+# Middleend
+- apiVersion: authorization.openshift.io/v1
+  groupNames:
+  - system:serviceaccounts:${THOTH_MIDDLEEND_NAMESPACE}
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:image-pullers
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  roleRef:
+    name: system:image-puller
+  subjects:
+  - kind: SystemGroup
+    name: system:serviceaccounts:${THOTH_MIDDLEEND_NAMESPACE}
+  userNames: null
+- apiVersion: authorization.openshift.io/v1
+  groupNames: null
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:image-builders
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  roleRef:
+    name: system:image-builder
+  subjects:
+  - kind: ServiceAccount
+    name: builder
+  userNames:
+  - system:serviceaccount:${THOTH_MIDDLEEND_NAMESPACE}:builder
+- apiVersion: authorization.openshift.io/v1
+  groupNames: null
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: system:deployers
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  roleRef:
+    name: system:deployer
+  subjects:
+  - kind: ServiceAccount
+    name: deployer
+  userNames:
+  - system:serviceaccount:${THOTH_MIDDLEEND_NAMESPACE}:deployer
+- apiVersion: authorization.openshift.io/v1
+  groupNames: null
+  kind: RoleBinding
+  metadata:
+    creationTimestamp: null
+    name: admin
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  roleRef:
+    name: admin
+  subjects:
+  - kind: User
+    name: ${THOTH_ADMIN_USER}
+  userNames:
+  - ${THOTH_ADMIN_USER}
+
+#
 # Secrets
 #
 - apiVersion: v1
   kind: Secret
   metadata:
     name: secret
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   stringData:
     app-secret-key: some-secret-key
     # NOTE: this needs to be changed after deployment with the actual openshift key generated
@@ -47,6 +192,7 @@ objects:
     name: thoth-dependency-extract
     labels:
        role: analyzer-container
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     runPolicy: Parallel
     triggers: 
@@ -69,6 +215,7 @@ objects:
     labels:
       service: thoth-user-api
     name: thoth-user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     ports:
     - port: 80
@@ -83,6 +230,7 @@ objects:
     labels:
       service: thoth-result-api
     name: thoth-result-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     ports:
     - port: 80
@@ -101,6 +249,7 @@ objects:
   kind: Route
   metadata:
     name: thoth-user-api-hostname
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     host: ${THOTH_USER_API_HOSTNAME}
     to:
@@ -116,6 +265,7 @@ objects:
     labels:
       service: thoth-user-api
     name: thoth-user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     replicas: 1
     selector:
@@ -182,6 +332,7 @@ objects:
     labels:
       service: thoth-result-api
     name: thoth-result-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     replicas: 1
     selector:
@@ -248,5 +399,48 @@ parameters:
 - description: A name of the OpenShift project under which the user-facing API server runs.
   displayName: OpenShift project name
   required: true
+  # TODO: replace with middleend namespace
   name: OPENSHIFT_PROJECT_NAME
   value: 'myproject'
+
+- description: A name for Thoth frontend namespace.
+  displayName: Thoth frontend namespace
+  required: true
+  name: THOTH_FRONTEND_NAMESPACE
+  value: 'thoth-frontend'
+
+- description: A name for Thoth middleend namespace.
+  displayName: Thoth middleend namespace
+  required: true
+  name: THOTH_MIDDLEEND_NAMESPACE
+  value: 'thoth-middleend'
+
+- description: Admin user for the Thoth project.
+  displayName: Thoth admin
+  required: true
+  name: THOTH_ADMIN_USER
+  value: 'developer'
+
+- description: Description for frontend part of Thoth core
+  displayName: Description of Thoth core frontend
+  required: true
+  name: THOTH_FRONTEND_DESCRIPTION
+  value: 'Frontend part of Thoth core'
+
+- description: Name of Thoth core frontend
+  displayName: Thoth core frontend name
+  required: true
+  name: THOTH_FRONTEND_DISPLAYNAME
+  value: 'Thoth core frontend'
+
+- description: Description for middleend part of Thoth core
+  displayName: Description of Thoth core middleend
+  required: true
+  name: THOTH_MIDDLEEND_DESCRIPTION
+  value: 'Middleend part of Thoth core'
+
+- description: Name of Thoth core middleend
+  displayName: Thoth core middleend name
+  required: true
+  name: THOTH_MIDDLEEND_DISPLAYNAME
+  value: 'Thoth core middleend'
