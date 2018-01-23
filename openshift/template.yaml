@@ -97,9 +97,22 @@ objects:
 # Service accounts
 #
 - apiVersion: v1
+  kind: RoleBinding
+  metadata:
+    name: role-jobs-binding
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  roleRef:
+    kind: ClusterRole
+    name: edit
+  subjects:
+  -  kind: ServiceAccount
+     name: master-access
+
+- apiVersion: v1
   kind: ServiceAccount
   metadata:
     name: master-access
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   automountServiceAccountToken: true
 
 #
