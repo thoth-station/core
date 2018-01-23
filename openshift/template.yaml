@@ -27,44 +27,19 @@ objects:
 # TODO: as this does not work on `oc cluter up`, this needs to be configured on actual deployment:
 #   https://blog.openshift.com/whats-new-in-openshift-3-5-network-policy-tech-preview/
 #   https://bugzilla.redhat.com/show_bug.cgi?id=1444144
-- apiVersion: extensions/v1beta1
-  kind: NetworkPolicy
-  metadata:
-    name: restricted-network-for-analyzer
-  spec:
-   podSelector:
-     matchLabels:
-       role: analyzer-container
-   # TODO: whitelist supported registries to pull images from
-   ingress:
-   - {}
-   egress:
-   - {}
-
-#
-# Image analyzers
-#
-#- apiVersion: v1
-#  kind: BuildConfig
+#- apiVersion: extensions/v1beta1
+#  kind: NetworkPolicy
 #  metadata:
-#    name: thoth-dependency-extract
-#    labels:
-#       role: analyzer-container
-#    # TODO: move to middleend
-#    namespace: ${THOTH_FRONTEND_NAMESPACE}
+#    name: restricted-network-for-analyzer
 #  spec:
-#    runPolicy: Parallel
-#    triggers:
-#      - type: Generic
-#        generic:
-#          secret: secret
-#          allowEnv: true
-#    strategy:
-#      customStrategy:
-#        from:
-#          # TODO: move this to our OpenShift registry instead
-#          kind: DockerImage
-#          name: fridex/thoth-pkgdeps
+#   podSelector:
+#     matchLabels:
+#       role: analyzer-container
+#   # TODO: whitelist supported registries to pull images from
+#   ingress:
+#   - {}
+#   egress:
+#   - {}
 
 #
 # Services
@@ -373,6 +348,32 @@ objects:
     - type: ConfigChange
     - imageChange: {}
       type: ImageChange
+
+#
+# Image analyzers
+#
+#- apiVersion: v1
+#  kind: BuildConfig
+#  metadata:
+#    name: thoth-dependency-extract
+#    labels:
+#       role: analyzer-container
+#    # TODO: move to middleend
+#    namespace: ${THOTH_FRONTEND_NAMESPACE}
+#  spec:
+#    runPolicy: Parallel
+#    triggers:
+#      - type: Generic
+#        generic:
+#          secret: secret
+#          allowEnv: true
+#    strategy:
+#      customStrategy:
+#        from:
+#          # TODO: move this to our OpenShift registry instead
+#          kind: DockerImage
+#          name: fridex/thoth-pkgdeps
+
 
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
