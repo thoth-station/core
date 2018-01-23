@@ -80,7 +80,7 @@ objects:
     ports:
     - port: 80
       protocol: TCP
-      targetPort: 34000
+      targetPort: 8080
     selector:
       service: thoth-user-api
 
@@ -149,7 +149,7 @@ objects:
         containers:
         - env:
           - name: APP_SERVICE_PORT
-            value: "34000"
+            value: "8080"
           - name: OPENSHIFT_API_URL
             value: ${OPENSHIFT_API_URL}
           - name: OPENSHIFT_PROJECT_NAME
@@ -166,7 +166,7 @@ objects:
                 key: openshift-api-token
           name: thoth-user-api
           ports:
-            - containerPort: 34000
+            - containerPort: 8080
               protocol: TCP
           resources:
             requests:
@@ -178,7 +178,7 @@ objects:
           readinessProbe:
             httpGet:
               path: '/readiness'
-              port: 34000
+              port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
@@ -186,7 +186,7 @@ objects:
           livenessProbe:
             httpGet:
               path: '/liveness'
-              port: 34000
+              port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
@@ -356,7 +356,7 @@ objects:
         name: thoth-user-api:latest
     source:
       git:
-        uri: https://github.com/fridex/thoth-api-pkgdeps
+        uri: https://github.com/fridex/thoth-user-api
       secrets: []
       type: Git
     strategy:
