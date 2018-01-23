@@ -18,8 +18,9 @@ objects:
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   stringData:
     app-secret-key: some-secret-key
-    # NOTE: this needs to be changed after deployment with the actual openshift key generated
+    # NOTE: this needs to be changed after deployment with the actual OpenShift key generated
     openshift-api-token: 'EUlZWOBCcStVHgtTHGXg9w2xhupFFwxgOZHe7yan1AM'
+
 #
 # Network restriction for analyzer containers.
 #
@@ -35,10 +36,11 @@ objects:
      matchLabels:
        role: analyzer-container
    # TODO: whitelist supported registries to pull images from
-   ingress: 
+   ingress:
    - {}
    egress:
    - {}
+
 #
 # Image analyzers
 #
@@ -63,6 +65,7 @@ objects:
 #          # TODO: move this to our OpenShift registry instead
 #          kind: DockerImage
 #          name: fridex/thoth-pkgdeps
+
 #
 # Services
 #
@@ -100,6 +103,7 @@ objects:
         - env:
           - name: THOTH_RESULT_API_HOSTNAME
             value: ${THOTH_RESULT_API_HOSTNAME}
+
 #
 # Routes
 #
@@ -115,7 +119,16 @@ objects:
       name: thoth-user-api
 
 #
-# Deployment configurations
+# Service accounts
+#
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: master-access
+  automountServiceAccountToken: true
+
+#
+# Deployment configs
 #
 - apiVersion: v1
   kind: DeploymentConfig
@@ -151,7 +164,6 @@ objects:
               secretKeyRef:
                 name: secret
                 key: openshift-api-token
-          image: fridex/thoth-user-api
           name: thoth-user-api
           ports:
             - containerPort: 34000
@@ -181,8 +193,17 @@ objects:
             timeoutSeconds: 30
         restartPolicy: Always
     test: false
+    serviceAccount: master-access
     triggers:
     - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - thoth-user-api
+        from:
+          kind: ImageStreamTag
+          name: 'thoth-user-api:latest'
 
 - apiVersion: v1
   kind: DeploymentConfig
@@ -243,7 +264,7 @@ objects:
           name: 'thoth-result-api:latest'
 
 #
-# Build config
+# Image streams
 #
 - apiVersion: v1
   kind: ImageStream
@@ -267,15 +288,29 @@ objects:
         from:
           kind: DockerImage
           name: docker.io/centos/python-36-centos7:latest
+
 - apiVersion: v1
   kind: ImageStream
   metadata:
     labels:
     name: thoth-result-api
+    # TODO: move to middleend
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     name: latest
 
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    labels:
+    name: thoth-user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    name: latest
+
+#
+# Build configs
+#
 - apiVersion: v1
   kind: BuildConfig
   metadata:
@@ -287,10 +322,9 @@ objects:
       to:
         kind: ImageStreamTag
         name: thoth-result-api:latest
-    postCommit: {}
-    resources: {}
     source:
       git:
+        # TODO: create a parameter
         uri: https://github.com/fridex/thoth-result-api
       secrets: []
       type: Git
@@ -302,13 +336,43 @@ objects:
       type: Source
     triggers:
     - github:
+        # TODO: create a secret
         secret: TcaowunWDfKGNFWPRQP6
       type: GitHub
     - type: ConfigChange
     - imageChange: {}
       type: ImageChange
-  status:
-  lastVersion: 0
+
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    creationTimestamp: null
+    name: thoth-user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: thoth-user-api:latest
+    source:
+      git:
+        uri: https://github.com/fridex/thoth-api-pkgdeps
+      secrets: []
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: python:3.6
+      type: Source
+    triggers:
+    - github:
+        # TODO: create a secret
+        secret: TcaowunWDfKGNFWPRQP6
+      type: GitHub
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
 
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
