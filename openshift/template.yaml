@@ -186,27 +186,27 @@ objects:
 #
 # Image analyzers
 #
-- apiVersion: v1
-  kind: BuildConfig
-  metadata:
-    name: thoth-dependency-extract
-    labels:
-       role: analyzer-container
-    # TODO: move to middleend
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-  spec:
-    runPolicy: Parallel
-    triggers: 
-      - type: Generic
-        generic:
-          secret: secret
-          allowEnv: true
-    strategy: 
-      customStrategy:
-        from:
-          # TODO: move this to our OpenShift registry instead
-          kind: DockerImage
-          name: fridex/thoth-pkgdeps
+#- apiVersion: v1
+#  kind: BuildConfig
+#  metadata:
+#    name: thoth-dependency-extract
+#    labels:
+#       role: analyzer-container
+#    # TODO: move to middleend
+#    namespace: ${THOTH_FRONTEND_NAMESPACE}
+#  spec:
+#    runPolicy: Parallel
+#    triggers:
+#      - type: Generic
+#        generic:
+#          secret: secret
+#          allowEnv: true
+#    strategy:
+#      customStrategy:
+#        from:
+#          # TODO: move this to our OpenShift registry instead
+#          kind: DockerImage
+#          name: fridex/thoth-pkgdeps
 #
 # Services
 #
@@ -237,7 +237,7 @@ objects:
     ports:
     - port: 80
       protocol: TCP
-      targetPort: 35000
+      targetPort: 8080
     selector:
       service: thoth-result-api
     containers:
@@ -346,10 +346,9 @@ objects:
       spec:
         containers:
         - env:
-          image: fridex/thoth-result-api
           name: thoth-result-api
           ports:
-            - containerPort: 35000
+            - containerPort: 8080
               protocol: TCP
           resources:
             requests:
@@ -361,7 +360,7 @@ objects:
           readinessProbe:
             httpGet:
               path: '/readiness'
-              port: 35000
+              port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
@@ -369,7 +368,7 @@ objects:
           livenessProbe:
             httpGet:
               path: '/liveness'
-              port: 35000
+              port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
@@ -378,6 +377,82 @@ objects:
     test: false
     triggers:
     - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - thoth-result-api
+        from:
+          kind: ImageStreamTag
+          name: 'thoth-result-api:latest'
+
+#
+# Build config
+#
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: python
+    annotations:
+      openshift.io/display-name: Python
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    tags:
+      - name: "3.6"
+        annotations:
+          openshift.io/display-name: Python 3.6
+          openshift.io/provider-display-name: Red Hat, Inc.
+          description: "Build and run Python 3.6 applications on CentOS 7. For more information about using this builder image, including OpenShift considerations, see https://github.com/sclorg/s2i-python-container/blob/master/3.6/README.md."
+          iconClass: icon-python
+          tags: builder,python
+          supports: python:3.6,python
+          version: "3.6"
+          sampleRepo: "https://github.com/openshift/django-ex.git"
+        from:
+          kind: DockerImage
+          name: docker.io/centos/python-36-centos7:latest
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    labels:
+    name: thoth-result-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    name: latest
+
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    creationTimestamp: null
+    name: thoth-result-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: thoth-result-api:latest
+    postCommit: {}
+    resources: {}
+    source:
+      git:
+        uri: https://github.com/fridex/thoth-result-api
+      secrets: []
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: python:3.6
+      type: Source
+    triggers:
+    - github:
+        secret: TcaowunWDfKGNFWPRQP6
+      type: GitHub
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+  status:
+  lastVersion: 0
 
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
