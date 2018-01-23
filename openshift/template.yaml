@@ -134,6 +134,7 @@ objects:
         labels:
           service: thoth-user-api
       spec:
+        serviceAccountName: master-access
         containers:
         - env:
           - name: APP_SERVICE_PORT
@@ -181,7 +182,6 @@ objects:
             timeoutSeconds: 30
         restartPolicy: Always
     test: false
-    serviceAccount: master-access
     triggers:
     - type: ConfigChange
     - type: ImageChange
