@@ -192,6 +192,7 @@ objects:
     name: thoth-dependency-extract
     labels:
        role: analyzer-container
+    # TODO: move to middleend
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     runPolicy: Parallel
@@ -230,6 +231,7 @@ objects:
     labels:
       service: thoth-result-api
     name: thoth-result-api
+    # TODO: move to middleend
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     ports:
