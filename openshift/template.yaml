@@ -137,8 +137,8 @@ objects:
         - env:
           - name: APP_SERVICE_PORT
             value: "8080"
-          - name: OPENSHIFT_API_URL
-            value: ${OPENSHIFT_API_URL}
+          - name: KUBERNETES_API_URL
+            value: ${KUBERNETES_API_URL}
           - name: THOTH_ANALYZER_NAMESPACE
             value: ${THOTH_ANALYZER_NAMESPACE}
           - name: APP_SECRET_KEY
@@ -391,12 +391,12 @@ parameters:
   name: THOTH_RESULT_API_HOSTNAME
   value: thoth-result-api
 
-- description: OpenShift API URL in base format (without API path).
-  displayName: OpenShift base API URL
+- description: Kubernetes API URL in base format (without API path).
+  displayName: Kubernetes base API URL
   required: true
-  name: OPENSHIFT_API_URL
+  name: KUBERNETES_API_URL
   # This value should be OK inside the cluster as this is exposed to all contianers running inside the OpenShift cluster.
-  value: 'https://openshift.default.svc.cluster.local'
+  value: 'https://kubernetes.default.svc.cluster.local'
 
   # ENDPOINT='openshift.default.svc.cluster.local'
   # TOKEN=`cat /var/run/secrets/kubernetes.io/serviceaccount/token`
