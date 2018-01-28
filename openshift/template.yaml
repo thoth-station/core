@@ -246,6 +246,30 @@ objects:
           name: 'thoth-result-api:latest'
 
 #
+# Cron jobs
+#
+- apiVersion: batch/v2alpha1
+  kind: CronJob
+  metadata:
+    name: thoth-cleanup-job
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    #schedule: "@weekly"
+    schedule: "*/1 * * * *"
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            serviceAccountName: master-access
+            containers:
+            - image: fridex/thoth-cleanup-job
+              name: thoth-cleanup-job
+              env:
+               - name: THOTH_ANALYZER_NAMESPACE
+                 value: ${THOTH_ANALYZER_NAMESPACE}
+            restartPolicy: OnFailure
+
+#
 # Image streams
 #
 - apiVersion: v1
