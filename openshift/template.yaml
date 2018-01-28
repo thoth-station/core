@@ -141,6 +141,8 @@ objects:
             value: ${KUBERNETES_API_URL}
           - name: THOTH_ANALYZER_NAMESPACE
             value: ${THOTH_ANALYZER_NAMESPACE}
+          - name: THOTH_RESULT_API_HOSTNAME
+            value: ${THOTH_RESULT_API_HOSTNAME}
           - name: APP_SECRET_KEY
             valueFrom:
               secretKeyRef:
