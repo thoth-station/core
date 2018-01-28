@@ -63,8 +63,7 @@ objects:
     labels:
       service: thoth-result-api
     name: thoth-result-api
-    # TODO: move to middleend
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     ports:
     - port: 80
@@ -98,13 +97,14 @@ objects:
   kind: RoleBinding
   metadata:
     name: role-jobs-binding
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   roleRef:
     kind: ClusterRole
     name: edit
   subjects:
-  -  kind: ServiceAccount
-     name: master-access
+    - kind: ServiceAccount
+      name: master-access
+      namespace: ${THOTH_FRONTEND_NAMESPACE}
 
 - apiVersion: v1
   kind: ServiceAccount
@@ -194,8 +194,7 @@ objects:
     labels:
       service: thoth-result-api
     name: thoth-result-api
-    # TODO: move to middleend
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     replicas: 1
     selector:
@@ -280,8 +279,25 @@ objects:
     name: python
     annotations:
       openshift.io/display-name: Python
-    # TODO: expose to middleend as well
     namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    tags:
+      - name: "3.6"
+        annotations:
+          iconClass: icon-python
+          supports: python:3.6,python
+          version: "3.6"
+        from:
+          kind: DockerImage
+          name: docker.io/centos/python-36-centos7:latest
+
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: python
+    annotations:
+      openshift.io/display-name: Python
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     tags:
       - name: "3.6"
@@ -298,8 +314,7 @@ objects:
   metadata:
     labels:
     name: thoth-result-api
-    # TODO: move to middleend
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     name: latest
 
@@ -351,8 +366,7 @@ objects:
   metadata:
     creationTimestamp: null
     name: thoth-result-api
-    # TODO: move to middleend
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     output:
       to:
@@ -405,9 +419,8 @@ parameters:
 - description: A name of Thoth analyzer namespace in which analyzers are spawned.
   displayName: Thoth analyzer namespace
   required: true
-  # TODO: replace with middleend namespace
   name: THOTH_ANALYZER_NAMESPACE
-  value: thoth-frontend
+  value: 'thoth-middleend'
 
 - description: A name for Thoth frontend namespace.
   displayName: Thoth frontend namespace
