@@ -377,32 +377,6 @@ objects:
     - imageChange: {}
       type: ImageChange
 
-#
-# Image analyzers
-#
-#- apiVersion: v1
-#  kind: BuildConfig
-#  metadata:
-#    name: thoth-dependency-extract
-#    labels:
-#       role: analyzer-container
-#    # TODO: move to middleend
-#    namespace: ${THOTH_FRONTEND_NAMESPACE}
-#  spec:
-#    runPolicy: Parallel
-#    triggers:
-#      - type: Generic
-#        generic:
-#          secret: secret
-#          allowEnv: true
-#    strategy:
-#      customStrategy:
-#        from:
-#          # TODO: move this to our OpenShift registry instead
-#          kind: DockerImage
-#          name: fridex/thoth-pkgdeps
-
-
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
   displayName: Thoth user API hostname
