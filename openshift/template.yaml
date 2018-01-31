@@ -158,7 +158,11 @@ objects:
             value: ${THOTH_ANALYZER_NAMESPACE}
           - name: THOTH_RESULT_API_HOSTNAME
             value: ${THOTH_RESULT_API_HOSTNAME}
-          - name: APP_SECRET_KEY
+          - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
+            value: ${THOTH_MIDDLEEND_POD_CPU_LIMIT}
+          - name: THOTH_MIDDLEEND_POD_MEMORY_LIMIT
+            value: ${THOTH_MIDDLEEND_POD_MEMORY_LIMIT}
+          - name: THOTH_USER_API_APP_SECRET_KEY
             valueFrom:
               secretKeyRef:
                 name: secret
@@ -532,3 +536,15 @@ parameters:
   required: true
   name: ${THOTH_RESULT_API_GITHUB_SECRET}
   value: 'secret'
+
+- description: Memory limit set for pods spawned by user-facing API in middleend
+  displayName: Middleend pod memory limit
+  required: true
+  name: THOTH_MIDDLEEND_POD_MEMORY_LIMIT
+  value: '0.5Gi'
+
+- description: CPU limit set for pods spawned by user-facing API in middleend
+  displayName: Middleend pod CPU limit
+  required: true
+  name: THOTH_MIDDLEEND_POD_CPU_LIMIT
+  value: '0.5'
