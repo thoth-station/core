@@ -287,6 +287,12 @@ objects:
               env:
                - name: THOTH_ANALYZER_NAMESPACE
                  value: ${THOTH_ANALYZER_NAMESPACE}
+               - name: THOTH_ANALYZER_CLEANUP_TIME
+                 value: ${THOTH_ANALYZER_CLEANUP_TIME}
+               - name: KUBERNETES_API_URL
+                 value: ${KUBERNETES_API_URL}
+               - name: THOTH_CLEANUP_DEBUG
+                 value: ${THOTH_CLEANUP_DEBUG}
               resources:
                 requests:
                   memory: "32Mi"
@@ -548,3 +554,15 @@ parameters:
   required: true
   name: THOTH_MIDDLEEND_POD_CPU_LIMIT
   value: '0.5'
+
+- description: Time before analyzer pod gets removed from etcd.
+  displayName: Thoth analyzer cleanup time
+  required: true
+  name: THOTH_ANALYZER_CLEANUP_TIME
+  value: '7d'
+
+- description: Be verbose in cluster cleanup job.
+  displayName: Debug cleanup job
+  required: true
+  name: THOTH_CLEANUP_DEBUG
+  value: '1'
