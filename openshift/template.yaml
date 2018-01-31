@@ -377,8 +377,7 @@ objects:
       type: Source
     triggers:
     - github:
-        # TODO: create a secret
-        secret: TcaowunWDfKGNFWPRQP6
+        secret: ${THOTH_USER_API_GITHUB_SECRET}
       type: GitHub
     - type: ConfigChange
     - imageChange: {}
@@ -408,8 +407,7 @@ objects:
       type: Source
     triggers:
     - github:
-        # TODO: create a secret
-        secret: TcaowunWDfKGNFWPRQP6
+        secret: ${THOTH_RESULT_API_GITHUB_SECRET}
       type: GitHub
     - type: ConfigChange
     - imageChange: {}
@@ -521,3 +519,16 @@ parameters:
   required: true
   name: THOTH_USER_API_GIT_URL
   value: 'https://github.com/fridex/thoth-user-api'
+
+- description: A secret for build user-facing API triggered by GitHub
+  displayName: GitHub Webhook secret for user-facing API
+  required: true
+  # see: https://docs.openshift.com/container-platform/3.6/dev_guide/builds/triggering_builds.html#github-webhooks
+  name: ${THOTH_USER_API_GITHUB_SECRET}
+  value: 'secret'
+
+- description: A secret for build result API triggered by GitHub
+  displayName: GitHub Webhook secret for result API
+  required: true
+  name: ${THOTH_RESULT_API_GITHUB_SECRET}
+  value: 'secret'
