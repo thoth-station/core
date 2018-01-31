@@ -358,7 +358,8 @@ objects:
         name: thoth-user-api:latest
     source:
       git:
-        uri: https://github.com/fridex/thoth-user-api
+        # TODO:
+        uri: ${THOTH_USER_API_GIT_URL}
       secrets: []
       type: Git
     strategy:
@@ -389,8 +390,7 @@ objects:
         name: thoth-result-api:latest
     source:
       git:
-        # TODO: create a parameter
-        uri: https://github.com/fridex/thoth-result-api
+        uri: ${THOTH_RESULT_API_GIT_URL}
       secrets: []
       type: Git
     strategy:
@@ -502,3 +502,15 @@ parameters:
   required: true
   name: THOTH_MIDDLEEND_MEMORY_LIMIT
   value: '8Gi'
+
+- description: Git repository for Thoth's result API
+  displayName: Thoth result-api Git
+  required: true
+  name: THOTH_RESULT_API_GIT_URL
+  value: 'https://github.com/fridex/thoth-result-api'
+
+- description: Git repository for Thoth's user-facing API
+  displayName: Thoth user-api Git
+  required: true
+  name: THOTH_USER_API_GIT_URL
+  value: 'https://github.com/fridex/thoth-user-api'
