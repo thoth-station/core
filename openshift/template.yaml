@@ -39,7 +39,20 @@ objects:
 #   egress:
 #   - {}
 
-# TODO: add resource limits to middleend namespace
+#
+# Namespace quotas
+#
+- apiVersion: v1
+  kind: ResourceQuota
+  metadata:
+    name: mem-cpu-resource-quota
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  spec:
+    hard:
+      requests.cpu: ${THOTH_MIDDLEEND_CPU_REQUEST}
+      requests.memory: ${THOTH_MIDDLEEND_MEMORY_REQUEST}
+      limits.cpu: ${THOTH_MIDDLEEND_CPU_LIMIT}
+      limits.memory: ${THOTH_MIDDLEEND_MEMORY_LIMIT}
 
 #
 # Services
@@ -465,3 +478,27 @@ parameters:
   required: true
   name: THOTH_MIDDLEEND_DISPLAYNAME
   value: 'Thoth core middleend'
+
+- description: Namespace CPU request for running pods in Thoth middleend
+  displayName: Thoth middleend CPU request
+  required: true
+  name: THOTH_MIDDLEEND_CPU_REQUEST
+  value: '0.5'
+
+- description: Namespace Memory request for running pods in Thoth middleend
+  displayName: Thoth middleend memory request
+  required: true
+  name: THOTH_MIDDLEEND_MEMORY_REQUEST
+  value: '0.5Gi'
+
+- description: Namespace CPU limit for all pods running in Thoth middleend
+  displayName: Thoth middleend CPU limit
+  required: true
+  name: THOTH_MIDDLEEND_CPU_LIMIT
+  value: '4'
+
+- description: Namespace memory limit for all pods running in Thoth middleend
+  displayName: Thoth middleend memory limit
+  required: true
+  name: THOTH_MIDDLEEND_MEMORY_LIMIT
+  value: '8Gi'
