@@ -283,6 +283,13 @@ objects:
               env:
                - name: THOTH_ANALYZER_NAMESPACE
                  value: ${THOTH_ANALYZER_NAMESPACE}
+              resources:
+                requests:
+                  memory: "32Mi"
+                  cpu: "100m"
+                limits:
+                  memory: "128Mi"
+                  cpu: "250m"
             restartPolicy: OnFailure
 
 #
