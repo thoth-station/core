@@ -39,6 +39,8 @@ objects:
 #   egress:
 #   - {}
 
+# TODO: add resource limits to middleend namespace
+
 #
 # Services
 #
