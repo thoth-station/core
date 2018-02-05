@@ -60,7 +60,9 @@ Cluster requirements
 
 In order to create NetworkPolicy objects, there needs to be enabled the ``ovs-networkpolicy`` plugin - see `docs for more details <https://docs.openshift.com/container-platform/3.6/admin_guide/managing_networking.html#admin-guide-networking-networkpolicy>`_ and OpenShift 3.5 or newer as NetworkPolicy objects were introduced in starting `OpenShift version 3.5 as a tech preview <https://blog.openshift.com/whats-new-in-openshift-3-5-network-policy-tech-preview/>`_.
 
-As of now, NetworkPolicy is not applied so there are no network restrictions to created pods.
+As of now, NetworkPolicy is not applied so there are no network restrictions to created pods. This enables pods to reach outside world without any fine-granted control. That is not that critical as containers running inside pods have restricted execution time, restricted resource requirements and run in a separate namespace.
+
+The implementation of NetworkPolicy restriction is not ready - ideally there should be made an API call to Kubernetes master to create a new NetworkPolicy that would be applied to the pod created in the proceeding API call (using unique label selectors per pod creation).
 
 
 Application parameters
