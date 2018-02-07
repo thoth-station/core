@@ -162,6 +162,8 @@ objects:
             value: ${THOTH_MIDDLEEND_POD_CPU_LIMIT}
           - name: THOTH_MIDDLEEND_POD_MEMORY_LIMIT
             value: ${THOTH_MIDDLEEND_POD_MEMORY_LIMIT}
+          - name: THOTH_BUILDLOGS_PERSISTENT_VOLUME_PATH
+            value: /buildlogs
           - name: THOTH_USER_API_APP_SECRET_KEY
             valueFrom:
               secretKeyRef:
