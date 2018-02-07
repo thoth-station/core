@@ -194,7 +194,14 @@ objects:
             initialDelaySeconds: 5
             periodSeconds: 60
             timeoutSeconds: 30
+          volumeMounts:
+            - mountPath: /buildlogs
+              name: pv-buildlogs
         restartPolicy: Always
+        volumes:
+          - name: pv-buildlogs
+            persistentVolumeClaim:
+              claimName: claim2
     test: false
     triggers:
     - type: ConfigChange
@@ -225,6 +232,8 @@ objects:
       spec:
         containers:
         - env:
+            - name: THOTH_PERSISTENT_VOLUME_PATH
+              value: /results
           name: thoth-result-api
           ports:
             - containerPort: 8080
@@ -252,7 +261,14 @@ objects:
             initialDelaySeconds: 5
             periodSeconds: 60
             timeoutSeconds: 30
+          volumeMounts:
+            - mountPath: /results
+              name: pv-analyzes
         restartPolicy: Always
+        volumes:
+          - name: pv-analyzes
+            persistentVolumeClaim:
+              claimName: claim1
     test: false
     triggers:
     - type: ConfigChange
@@ -264,6 +280,33 @@ objects:
         from:
           kind: ImageStreamTag
           name: 'thoth-result-api:latest'
+
+#
+# Persistent volume claims
+#
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: claim1
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  spec:
+    accessModes:
+      - ReadWriteMany
+    resources:
+      requests:
+        storage: 16Gi
+
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: claim2
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    accessModes:
+      - ReadWriteMany
+    resources:
+      requests:
+        storage: 16Gi
 
 #
 # Cron jobs
