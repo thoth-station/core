@@ -487,10 +487,6 @@ parameters:
   # This value should be OK inside the cluster as this is exposed to all contianers running inside the OpenShift cluster.
   value: 'https://kubernetes.default.svc.cluster.local'
 
-  # ENDPOINT='openshift.default.svc.cluster.local'
-  # TOKEN=`cat /var/run/secrets/kubernetes.io/serviceaccount/token`
-  # curl -k -H "Authorization: Bearer $TOKEN" -H 'Accept: application/json' https://$ENDPOINT/apis/batch/v1/namespaces/thoth-frontend/jobs
-
 - description: A name of Thoth analyzer namespace in which analyzers are spawned.
   displayName: Thoth analyzer namespace
   required: true
