@@ -20,7 +20,7 @@ Installation
 
  $ git clone https://github.com/fridex/thoth-core
  $ cd thoth-core/openshift
- $ oc cluster up && ./deploy.sh
+ $ oc cluster up && THOTH_LOCAL=1 ./deploy.sh
 
 You can simply ignore the following error (the default user "developer" does not have sufficient rights to create resource quotas for a namespace, this should be set up by cluster administrator in production):
 
