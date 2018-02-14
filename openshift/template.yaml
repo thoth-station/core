@@ -321,8 +321,8 @@ objects:
     name: thoth-cleanup-job
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
-    #schedule: "@weekly"
-    schedule: "*/1 * * * *"
+    schedule: "@weekly"
+    #schedule: "*/1 * * * *"
     jobTemplate:
       spec:
         template:
