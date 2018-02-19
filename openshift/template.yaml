@@ -186,8 +186,8 @@ objects:
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
-            periodSeconds: 60
-            timeoutSeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 10
           livenessProbe:
             httpGet:
               path: '/liveness'
@@ -195,7 +195,7 @@ objects:
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
-            timeoutSeconds: 30
+            timeoutSeconds: 10
           volumeMounts:
             - mountPath: /buildlogs
               name: pv-buildlogs
@@ -257,8 +257,8 @@ objects:
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 5
-            periodSeconds: 60
-            timeoutSeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 10
           livenessProbe:
             httpGet:
               path: '/liveness'
@@ -266,7 +266,7 @@ objects:
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 60
-            timeoutSeconds: 30
+            timeoutSeconds: 10
           volumeMounts:
             - mountPath: /results
               name: pv-analyzes
