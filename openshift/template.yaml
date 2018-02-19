@@ -238,6 +238,8 @@ objects:
               value: /results
             - name: GREMLIN_SERVER_HOST
               value: thoth-gremlin
+            - name: GREMLIN_SERVER_PORT
+              value: '8182'
           name: thoth-result-api
           ports:
             - containerPort: 8080
