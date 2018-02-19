@@ -45,3 +45,14 @@ objects:
       targetPort: 8182
     selector:
       service: thoth-gremlin
+
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: thoth-gremlin-hostname
+    namespace: thoth-middleend
+  spec:
+    host:
+    to:
+      kind: Service
+      name: thoth-gremlin
