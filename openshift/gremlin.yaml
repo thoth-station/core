@@ -27,6 +27,12 @@ objects:
           ports:
             - containerPort: 8182
               protocol: TCP
+          readinessProbe:
+            tcpSocket:
+              port: 8182
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 10
         restartPolicy: Always
     triggers:
     - type: ConfigChange
