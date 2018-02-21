@@ -105,6 +105,17 @@ objects:
       kind: Service
       name: thoth-user-api
 
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: thoth-result-api-hostname
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  spec:
+    host: ${THOTH_USER_API_HOSTNAME}
+    to:
+      kind: Service
+      name: thoth-result-api
+
 #
 # Service accounts
 #
@@ -477,6 +488,11 @@ parameters:
   displayName: Thoth user API hostname
   required: false
   name: THOTH_USER_API_HOSTNAME
+
+- description: A hostname where the result API should be exposed (will be auto-generated if empty).
+  displayName: Thoth result API hostname
+  required: false
+  name: THOTH_RESULT_API_HOSTNAME
 
 - description: A hostname where the analyzers should post results to.
   displayName: Thoth result API hostname
