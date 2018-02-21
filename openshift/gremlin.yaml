@@ -6,21 +6,21 @@ objects:
   kind: DeploymentConfig
   metadata:
     labels:
-      service: thoth-gremlin
-    name: thoth-gremlin
+      service: thoth-janusgraph
+    name: thoth-janusgraph
     namespace: thoth-middleend
   spec:
     replicas: 1
     selector:
-      service: thoth-gremlin
+      service: thoth-janusgraph
     template:
       metadata:
         labels:
-          service: thoth-gremlin
+          service: thoth-janusgraph
       spec:
         containers:
-        - name: thoth-gremlin
-          image: fridex/thoth-gremlin
+        - name: thoth-janusgraph
+          image: fridex/thoth-janusgraph
           env:
           - name: _JAVA_OPTIONS
             value: "-Djava.net.preferIPv4Stack=true"
@@ -41,8 +41,8 @@ objects:
   kind: Service
   metadata:
     labels:
-      service: thoth-gremlin
-    name: thoth-gremlin
+      service: thoth-janusgraph
+    name: thoth-janusgraph
     namespace: thoth-middleend
   spec:
     ports:
@@ -50,15 +50,15 @@ objects:
       protocol: TCP
       targetPort: 8182
     selector:
-      service: thoth-gremlin
+      service: thoth-janusgraph
 
 - apiVersion: v1
   kind: Route
   metadata:
-    name: thoth-gremlin-hostname
+    name: thoth-janusgraph-hostname
     namespace: thoth-middleend
   spec:
     host:
     to:
       kind: Service
-      name: thoth-gremlin
+      name: thoth-janusgraph
