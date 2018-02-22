@@ -191,8 +191,8 @@ objects:
             value: ${KUBERNETES_API_URL}
           - name: THOTH_BACKEND_NAMESPACE
             value: ${THOTH_BACKEND_NAMESPACE}
-          - name: THOTH_ANALYZER_NAMESPACE
-            value: ${THOTH_ANALYZER_NAMESPACE}
+          - name: THOTH_MIDDLEEND_NAMESPACE
+            value: ${THOTH_MIDDLEEND_NAMESPACE}
           - name: THOTH_RESULT_API_HOSTNAME
             value: ${THOTH_RESULT_API_HOSTNAME}
           - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
@@ -371,8 +371,8 @@ objects:
             - image: fridex/thoth-cleanup-job
               name: thoth-cleanup-job
               env:
-               - name: THOTH_ANALYZER_NAMESPACE
-                 value: ${THOTH_ANALYZER_NAMESPACE}
+               - name: THOTH_MIDDLEEND_NAMESPACE
+                 value: ${THOTH_MIDDLEEND_NAMESPACE}
                - name: THOTH_ANALYZER_CLEANUP_TIME
                  value: ${THOTH_ANALYZER_CLEANUP_TIME}
                - name: KUBERNETES_API_URL
@@ -413,7 +413,7 @@ objects:
                 limits:
                   memory: "256Mi"
                   cpu: "500m"
-            restartPolicy: OnFailure
+            restartPolicy: Never
 
 #
 # Image streams
@@ -559,12 +559,6 @@ parameters:
   name: KUBERNETES_API_URL
   # This value should be OK inside the cluster as this is exposed to all contianers running inside the OpenShift cluster.
   value: 'https://kubernetes.default.svc.cluster.local'
-
-- description: A name of Thoth analyzer namespace in which analyzers are spawned.
-  displayName: Thoth analyzer namespace
-  required: true
-  name: THOTH_ANALYZER_NAMESPACE
-  value: 'thoth-middleend'
 
 - description: A name for Thoth frontend namespace.
   displayName: Thoth frontend namespace
