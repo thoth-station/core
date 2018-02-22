@@ -189,6 +189,8 @@ objects:
             value: "8080"
           - name: KUBERNETES_API_URL
             value: ${KUBERNETES_API_URL}
+          - name: THOTH_BACKEND_NAMESPACE
+            value: ${THOTH_BACKEND_NAMESPACE}
           - name: THOTH_ANALYZER_NAMESPACE
             value: ${THOTH_ANALYZER_NAMESPACE}
           - name: THOTH_RESULT_API_HOSTNAME
@@ -358,8 +360,8 @@ objects:
     name: thoth-cleanup-job
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
-    schedule: "@weekly"
-    #schedule: "*/1 * * * *"
+    #schedule: "@weekly"
+    schedule: "*/1 * * * *"
     jobTemplate:
       spec:
         template:
@@ -384,6 +386,33 @@ objects:
                 limits:
                   memory: "128Mi"
                   cpu: "250m"
+            restartPolicy: OnFailure
+
+- apiVersion: batch/v2alpha1
+  kind: CronJob
+  metadata:
+    name: thoth-graph-sync-job
+    namespace: ${THOTH_BACKEND_NAMESPACE}
+  spec:
+    schedule: "@weekly"
+    #schedule: "*/1 * * * *"
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            containers:
+            - image: fridex/thoth-graph-sync-job
+              name: thoth-graph-sync-job
+              env:
+                - name: GREMLIN_SERVER_HOST
+                  value: thoth-gremlin:8182
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "125m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "500m"
             restartPolicy: OnFailure
 
 #
