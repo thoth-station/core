@@ -400,8 +400,12 @@ objects:
             - image: fridex/thoth-graph-sync-job
               name: thoth-graph-sync-job
               env:
-                - name: GREMLIN_SERVER_HOST
-                  value: thoth-gremlin:8182
+               - name: THOTH_JANUSGRAPH_HOST
+                 value: thoth-janusgraph-hostname-thoth-middleend.${DOCKER_IP}.nip.io
+               - name: THOTH_JANUSGRAPH_PORT
+                 value: '80'
+               - name: THOTH_SOLVER_RESULTS_STORE_HOST
+                 value: http://thoth-result-api-hostname-thoth-middleend.${DOCKER_IP}.nip.io
               resources:
                 requests:
                   memory: "128Mi"
@@ -712,3 +716,9 @@ parameters:
   required: true
   name: THOTH_CLEANUP_DEBUG
   value: '1'
+
+- description: IP of running docker to make services accessible.
+  displayName: Docker IP
+  required: true
+  name: DOCKER_IP
+
