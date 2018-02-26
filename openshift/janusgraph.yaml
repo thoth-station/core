@@ -46,7 +46,7 @@ objects:
     namespace: thoth-middleend
   spec:
     ports:
-    - port: 8182
+    - port: 80
       protocol: TCP
       targetPort: 8182
     selector:
