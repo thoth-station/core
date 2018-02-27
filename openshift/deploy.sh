@@ -9,7 +9,5 @@ oc new-project thoth-frontend
 oc new-project thoth-middleend
 oc new-project thoth-backend
 oc process -f template.yaml -p DOCKER_IP=${DOCKER_IP} | oc apply -f -
-
-# Deploy Gremlin for a local setup
 oc project thoth-middleend
-[ "${THOTH_LOCAL}" = 1 ] && oc process -f janusgraph.yaml | oc apply -f -
+oc process -f janusgraph.yaml | oc apply -f -

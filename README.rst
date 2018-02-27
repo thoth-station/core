@@ -20,13 +20,15 @@ Installation
 
  $ git clone https://github.com/fridex/thoth-core
  $ cd thoth-core/openshift
- $ oc cluster up && THOTH_LOCAL=1 ./deploy.sh
+ $ ./deploy.sh
 
 You can simply ignore the following error (the default user "developer" does not have sufficient rights to create resource quotas for a namespace, this should be set up by cluster administrator in production):
 
 .. code-block:: console
 
  Error from server (Forbidden): User "developer" cannot create resourcequotas in project "thoth-middleend"
+
+If you would like to deploy Thoth onto a running OpenShift cluster, feel free to use directly OpenShift template.yaml. You need to specify at least specify running JanusGraph host (currently supported only JanusGraph websocket).
 
 
 The overall architecture
