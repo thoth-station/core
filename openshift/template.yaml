@@ -189,6 +189,8 @@ objects:
             value: "8080"
           - name: KUBERNETES_API_URL
             value: ${KUBERNETES_API_URL}
+          - name: KUBERNETES_VERIFY_TLS
+            value: ${KUBERNETES_VERIFY_TLS}
           - name: THOTH_BACKEND_NAMESPACE
             value: ${THOTH_BACKEND_NAMESPACE}
           - name: THOTH_MIDDLEEND_NAMESPACE
@@ -367,6 +369,8 @@ objects:
             - image: fridex/thoth-cleanup-job
               name: thoth-cleanup-job
               env:
+               - name: KUBERNETES_VERIFY_TLS
+                 value: ${KUBERNETES_VERIFY_TLS}
                - name: THOTH_MIDDLEEND_NAMESPACE
                  value: ${THOTH_MIDDLEEND_NAMESPACE}
                - name: THOTH_ANALYZER_CLEANUP_TIME
@@ -721,4 +725,10 @@ parameters:
   displayName: Docker IP
   required: true
   name: DOCKER_IP
+
+- description: Verify TLS certificates of Kubernetes master on requests.
+  displayName: Verify Kubernetes TLS
+  required: true
+  name: KUBERNETES_VERIFY_TLS
+  value: '0'
 
