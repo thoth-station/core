@@ -20,7 +20,7 @@ objects:
       spec:
         containers:
         - name: thoth-janusgraph
-          image: fridex/thoth-janusgraph
+          image: quay.io/goern/janusgraph
           env:
           - name: _JAVA_OPTIONS
             value: "-Djava.net.preferIPv4Stack=true"
