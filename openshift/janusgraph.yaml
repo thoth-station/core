@@ -33,9 +33,29 @@ objects:
             initialDelaySeconds: 20
             periodSeconds: 10
             timeoutSeconds: 10
+          volumeMounts:
+            - mountPath: /opt/janusgraph-0.2.0-hadoop2/db
+              name: pv-graph
+        restartPolicy: Always
+        volumes:
+          - name: pv-graph
+            persistentVolumeClaim:
+              claimName: claim-graph
         restartPolicy: Always
     triggers:
     - type: ConfigChange
+
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: claim-graph
+    namespace: thoth-middleend
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 16Gi
 
 - apiVersion: v1
   kind: Service
