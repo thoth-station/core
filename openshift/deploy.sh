@@ -2,12 +2,20 @@
 
 set -x
 
-DOCKER_IP=`ip a | grep inet |grep docker | head -1 | sed 's#.* \([^/]*\)/.*#\1#'`
+if [ \( "${THOTH_LOCAL}" \) -a -z "${THOTH_ROUTING_SUFFIX}" ]; then
+	THOTH_ROUTING_SUFFIX=`ip a | grep inet |grep docker | head -1 | sed 's#.* \([^/]*\)/.*#\1#'`
+	THOTH_ROUTING_SUFFIX="${THOTH_ROUTING_SUFFIX}.nip.io"
+fi
 
-oc cluster up --routing-suffix="${DOCKER_IP}.nip.io"
+if [ ! "${THOTH_ROUTING_SUFFIX}" ]; then
+	echo "No routing suffix configured for deployment" >&2
+	exit 1
+fi
+
+[ \( "${THOTH_LOCAL}" \) ] && oc cluster up --routing-suffix="${THOTH_ROUTING_SUFFIX}"
 oc new-project thoth-frontend
 oc new-project thoth-middleend
 oc new-project thoth-backend
-oc process -f template.yaml -p DOCKER_IP=${DOCKER_IP} | oc apply -f -
+oc process -f template.yaml -p THOTH_ROUTING_SUFFIX="${THOTH_ROUTING_SUFFIX}" | oc apply -f -
 oc project thoth-middleend
 oc process -f janusgraph.yaml | oc apply -f -

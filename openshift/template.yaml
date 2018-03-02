@@ -197,6 +197,8 @@ objects:
             value: ${THOTH_MIDDLEEND_NAMESPACE}
           - name: THOTH_RESULT_API_HOSTNAME
             value: ${THOTH_RESULT_API_HOSTNAME}
+          - name: THOTH_RESULT_API_URL
+            value: http://thoth-result-api-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
           - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
             value: ${THOTH_MIDDLEEND_POD_CPU_LIMIT}
           - name: THOTH_MIDDLEEND_POD_MEMORY_LIMIT
@@ -405,11 +407,11 @@ objects:
               name: thoth-graph-sync-job
               env:
                - name: THOTH_JANUSGRAPH_HOST
-                 value: thoth-janusgraph-hostname-thoth-middleend.${DOCKER_IP}.nip.io
+                 value: thoth-janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${ROUTING_SUFFIX}
                - name: THOTH_JANUSGRAPH_PORT
                  value: '80'
                - name: THOTH_SOLVER_RESULTS_STORE_HOST
-                 value: http://thoth-result-api-hostname-thoth-middleend.${DOCKER_IP}.nip.io
+                 value: http://thoth-result-api-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${ROUTING_SUFFIX}
               resources:
                 requests:
                   memory: "128Mi"
@@ -721,10 +723,10 @@ parameters:
   name: THOTH_CLEANUP_DEBUG
   value: '1'
 
-- description: IP of running docker to make services accessible.
-  displayName: Docker IP
+- description: Routing suffix of deployment
+  displayName: Routing suffix
   required: true
-  name: DOCKER_IP
+  name: THOTH_ROUTING_SUFFIX
 
 - description: Verify TLS certificates of Kubernetes master on requests.
   displayName: Verify Kubernetes TLS
