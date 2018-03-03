@@ -18,4 +18,5 @@ oc new-project thoth-middleend
 oc new-project thoth-backend
 oc process -f template.yaml -p THOTH_ROUTING_SUFFIX="${THOTH_ROUTING_SUFFIX}" | oc apply -f -
 oc project thoth-middleend
+curl https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml -o janusgraph.yaml
 oc process -f janusgraph.yaml | oc apply -f -
