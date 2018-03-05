@@ -691,13 +691,13 @@ parameters:
   required: true
   # see: https://docs.openshift.com/container-platform/3.6/dev_guide/builds/triggering_builds.html#github-webhooks
   name: THOTH_USER_API_GITHUB_SECRET
-  value: 'secret'
+  value: 'secret101'
 
 - description: A secret for build result API triggered by GitHub
   displayName: GitHub Webhook secret for result API
   required: true
   name: THOTH_RESULT_API_GITHUB_SECRET
-  value: 'secret'
+  value: 'secret101'
 
 - description: Memory limit set for pods spawned by user-facing API in middleend
   displayName: Middleend pod memory limit
