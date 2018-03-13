@@ -412,6 +412,8 @@ objects:
                  value: '80'
                - name: THOTH_SOLVER_RESULTS_STORE_HOST
                  value: http://thoth-result-api-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
+               - name: THOTH_SYNC_OBSERVATIONS
+                 value: ${THOTH_SYNC_OBSERVATIONS}
               resources:
                 requests:
                   memory: "128Mi"
@@ -722,6 +724,12 @@ parameters:
   required: true
   name: THOTH_CLEANUP_DEBUG
   value: '1'
+
+- description: Turn on or off automatic observation syncing to the graph database.
+  displayName: Sync observations
+  required: true
+  name: THOTH_SYNC_OBSERVATIONS
+  value: '0'
 
 - description: Routing suffix of deployment
   displayName: Routing suffix
