@@ -22,7 +22,9 @@ Installation
 
  $ git clone https://github.com/fridex/thoth-core
  $ cd thoth-core/openshift
- $ THOTH_LOCAL=1 ./deploy.sh
+ $ # Supply configuration options for the cluster instance.
+ $ vim conf.sh
+ $ ./deploy.sh
 
 You can simply ignore the following error (the default user "developer" does not have sufficient rights to create resource quotas for a namespace, this should be set up by cluster administrator in production):
 
@@ -32,12 +34,11 @@ You can simply ignore the following error (the default user "developer" does not
 
 If you would like to deploy Thoth onto a running OpenShift cluster, feel free to use directly OpenShift template.yaml. You need to specify at least specify running JanusGraph host (currently supported only JanusGraph websocket):
 
-.. code-block:: console
+The reason why routing suffix in the `conf.sh` needs to be explicitly set is due to communication between services outside namesapces.
 
-  $ THOTH_ROUTING_SUFFIX='mycluster.redhat.com' ./deploy.sh
+.. danger::
 
-The reason why routing suffix needs to be explicitly set is due to communication between services outside namesapces.
-
+  Do not submit credentials that are stored in `conf.sh` to Git repos.
 
 The overall architecture
 ------------------------

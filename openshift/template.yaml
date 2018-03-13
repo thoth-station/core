@@ -101,6 +101,8 @@ objects:
         - env:
           - name: THOTH_RESULT_API_HOSTNAME
             value: ${THOTH_RESULT_API_HOSTNAME}
+          - name: THOTH_DEPLOYMENT_NAME
+            value: ${THOTH_DEPLOYMENT_NAME}
 
 #
 # Routes
@@ -205,6 +207,8 @@ objects:
             value: ${THOTH_MIDDLEEND_POD_MEMORY_LIMIT}
           - name: THOTH_BUILDLOGS_PERSISTENT_VOLUME_PATH
             value: /buildlogs
+          - name: THOTH_DEPLOYMENT_NAME
+            value: ${THOTH_DEPLOYMENT_NAME}
           - name: THOTH_USER_API_APP_SECRET_KEY
             valueFrom:
               secretKeyRef:
@@ -277,6 +281,8 @@ objects:
         - env:
             - name: THOTH_PERSISTENT_VOLUME_PATH
               value: /results
+            - name: THOTH_DEPLOYMENT_NAME
+              value: ${THOTH_DEPLOYMENT_NAME}
           name: thoth-result-api
           ports:
             - containerPort: 8080
@@ -414,6 +420,8 @@ objects:
                  value: http://thoth-result-api-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
                - name: THOTH_SYNC_OBSERVATIONS
                  value: ${THOTH_SYNC_OBSERVATIONS}
+               - name: THOTH_DEPLOYMENT_NAME
+                 value: ${THOTH_DEPLOYMENT_NAME}
               resources:
                 requests:
                   memory: "128Mi"
@@ -543,6 +551,34 @@ objects:
     - type: ConfigChange
     - imageChange: {}
       type: ImageChange
+
+#
+# Secrets
+#
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: secret
+  namespace: ${THOTH_FRONTEND_NAMESPACE}
+  stringData: &ceph_secrets
+    ceph_key_id: ${THOTH_CEPH_KEY_ID}
+    ceph_secret_key: ${THOTH_CEPH_SECRET_KEY}
+
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: secret
+  namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  stringData:
+    <<: *ceph_secrets
+
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: secret
+  namespace: ${THOTH_BACKEND_NAMESPACE}
+  stringData:
+    <<: *ceph_secrets
 
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
@@ -731,10 +767,11 @@ parameters:
   name: THOTH_SYNC_OBSERVATIONS
   value: '0'
 
-- description: Routing suffix of deployment
-  displayName: Routing suffix
+- description: Name of bucket where results are stored to.
+  displayName: Ceph bucket name
   required: true
-  name: THOTH_ROUTING_SUFFIX
+  name: THOTH_CEPH_BUCKET
+  value: 'dh-dev-playpen'
 
 - description: Verify TLS certificates of Kubernetes master on requests.
   displayName: Verify Kubernetes TLS
@@ -742,3 +779,29 @@ parameters:
   name: KUBERNETES_VERIFY_TLS
   value: '0'
 
+# These are required parameters to be supplied on deployment.
+
+- description: Routing suffix of deployment.
+  displayName: Routing suffix
+  required: true
+  name: THOTH_ROUTING_SUFFIX
+
+- description: Thoth deployment name.
+  displayName: Deployment name
+  required: true
+  name: THOTH_DEPLOYMENT_NAME
+
+- description: A host (with port) where Ceph endpoint can be used to store/retrieve data.
+  displayName: Ceph host
+  required: true
+  name: THOTH_CEPH_HOST
+
+- description: Access key id for Ceph connection.
+  displayName: Ceph access key id
+  required: true
+  name: THOTH_CEPH_KEY_ID
+
+- description: Secret key for Ceph connection.
+  displayName: Ceph secret key
+  required: true
+  name: THOTH_CEPH_SECRET_KEY
