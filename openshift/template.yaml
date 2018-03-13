@@ -19,6 +19,31 @@ objects:
   stringData:
     app-secret-key: some-secret-key
 
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: ceph-secrets
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  stringData: &ceph_secrets
+    ceph_key_id: ${THOTH_CEPH_KEY_ID}
+    ceph_secret_key: ${THOTH_CEPH_SECRET_KEY}
+
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: ceph-secrets
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  stringData:
+    <<: *ceph_secrets
+
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: ceph-secrets
+    namespace: ${THOTH_BACKEND_NAMESPACE}
+  stringData:
+    <<: *ceph_secrets
+
 #
 # Network restriction for analyzer containers.
 #
@@ -551,34 +576,6 @@ objects:
     - type: ConfigChange
     - imageChange: {}
       type: ImageChange
-
-#
-# Secrets
-#
-- apiVersion: v1
-  kind: Secret
-  metadata:
-    name: secret
-  namespace: ${THOTH_FRONTEND_NAMESPACE}
-  stringData: &ceph_secrets
-    ceph_key_id: ${THOTH_CEPH_KEY_ID}
-    ceph_secret_key: ${THOTH_CEPH_SECRET_KEY}
-
-- apiVersion: v1
-  kind: Secret
-  metadata:
-    name: secret
-  namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-  stringData:
-    <<: *ceph_secrets
-
-- apiVersion: v1
-  kind: Secret
-  metadata:
-    name: secret
-  namespace: ${THOTH_BACKEND_NAMESPACE}
-  stringData:
-    <<: *ceph_secrets
 
 parameters:
 - description: A hostname where the Thoth API should be exposed (will be auto-generated if empty).
