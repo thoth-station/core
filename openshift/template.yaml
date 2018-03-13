@@ -25,8 +25,8 @@ objects:
     name: ceph-secrets
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   stringData: &ceph_secrets
-    ceph_key_id: ${THOTH_CEPH_KEY_ID}
-    ceph_secret_key: ${THOTH_CEPH_SECRET_KEY}
+    ceph-key-id: ${THOTH_CEPH_KEY_ID}
+    ceph-secret-key: ${THOTH_CEPH_SECRET_KEY}
 
 - apiVersion: v1
   kind: Secret
@@ -128,6 +128,18 @@ objects:
             value: ${THOTH_RESULT_API_HOSTNAME}
           - name: THOTH_DEPLOYMENT_NAME
             value: ${THOTH_DEPLOYMENT_NAME}
+          - name: THOTH_CEPH_HOST
+            value: ${THOTH_CEPH_HOST}
+          - name: THOTH_CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph-secrets
+                key: ceph-key-id
+          - name: THOTH_CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph-secrets
+                key: ceph-secret-key
 
 #
 # Routes
@@ -234,11 +246,23 @@ objects:
             value: /buildlogs
           - name: THOTH_DEPLOYMENT_NAME
             value: ${THOTH_DEPLOYMENT_NAME}
+          - name: THOTH_CEPH_HOST
+            value: ${THOTH_CEPH_HOST}
           - name: THOTH_USER_API_APP_SECRET_KEY
             valueFrom:
               secretKeyRef:
                 name: secret
                 key: app-secret-key
+          - name: THOTH_CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph-secrets
+                key: ceph-key-id
+          - name: THOTH_CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph-secrets
+                key: ceph-secret-key
           name: thoth-user-api
           ports:
             - containerPort: 8080
@@ -304,10 +328,22 @@ objects:
       spec:
         containers:
         - env:
-            - name: THOTH_PERSISTENT_VOLUME_PATH
-              value: /results
-            - name: THOTH_DEPLOYMENT_NAME
-              value: ${THOTH_DEPLOYMENT_NAME}
+          - name: THOTH_PERSISTENT_VOLUME_PATH
+            value: /results
+          - name: THOTH_DEPLOYMENT_NAME
+            value: ${THOTH_DEPLOYMENT_NAME}
+          - name: THOTH_CEPH_HOST
+            value: ${THOTH_CEPH_HOST}
+          - name: THOTH_CEPH_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: ceph-secrets
+                key: ceph-key-id
+          - name: THOTH_CEPH_SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: ceph-secrets
+                key: ceph-secret-key
           name: thoth-result-api
           ports:
             - containerPort: 8080
@@ -437,16 +473,28 @@ objects:
             - image: fridex/thoth-graph-sync-job
               name: thoth-graph-sync-job
               env:
-               - name: THOTH_JANUSGRAPH_HOST
-                 value: thoth-janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
-               - name: THOTH_JANUSGRAPH_PORT
-                 value: '80'
-               - name: THOTH_SOLVER_RESULTS_STORE_HOST
-                 value: http://thoth-result-api-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
-               - name: THOTH_SYNC_OBSERVATIONS
-                 value: ${THOTH_SYNC_OBSERVATIONS}
-               - name: THOTH_DEPLOYMENT_NAME
-                 value: ${THOTH_DEPLOYMENT_NAME}
+              - name: THOTH_JANUSGRAPH_HOST
+                value: thoth-janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
+              - name: THOTH_JANUSGRAPH_PORT
+                value: '80'
+              - name: THOTH_SOLVER_RESULTS_STORE_HOST
+                value: http://thoth-result-api-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
+              - name: THOTH_SYNC_OBSERVATIONS
+                value: ${THOTH_SYNC_OBSERVATIONS}
+              - name: THOTH_DEPLOYMENT_NAME
+                value: ${THOTH_DEPLOYMENT_NAME}
+              - name: THOTH_CEPH_HOST
+                value: ${THOTH_CEPH_HOST}
+              - name: THOTH_CEPH_KEY_ID
+                valueFrom:
+                  secretKeyRef:
+                    name: ceph-secrets
+                    key: ceph-key-id
+              - name: THOTH_CEPH_SECRET_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: ceph-secrets
+                    key: ceph-secret-key
               resources:
                 requests:
                   memory: "128Mi"
