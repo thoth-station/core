@@ -143,6 +143,22 @@ objects:
                 name: ceph-secrets
                 key: ceph-secret-key
 
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: graphexp
+      service: graphexp
+    name: graphexp
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      service: graphexp
+
 #
 # Routes
 #
@@ -167,6 +183,19 @@ objects:
     to:
       kind: Service
       name: thoth-result-api
+
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: graphexp-hostname
+    labels:
+      app: graphexp
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    host:
+    to:
+      kind: Service
+      name: graphexp
 
 #
 # Service accounts
@@ -397,6 +426,51 @@ objects:
           kind: ImageStreamTag
           name: 'thoth-result-api:latest'
 
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      service: graphexp
+      app: graphexp
+    name: graphexp
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    replicas: 1
+    selector:
+      service: graphexp
+    template:
+      metadata:
+        labels:
+          service: graphexp
+      spec:
+        containers:
+        - name: thoth-graphexp
+          image: thoth-graphexp
+          env:
+            - name: THOTH_JANUSGRAPH_HOST
+              value: janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /index.html
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 10
+        restartPolicy: Always
+    triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - thoth-graphexp
+        from:
+          kind: ImageStreamTag
+          name: 'thoth-graphexp:latest'
+
 #
 # Persistent volume claims
 #
@@ -569,6 +643,15 @@ objects:
   spec:
     name: latest
 
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    labels:
+    name: thoth-graphexp
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    name: latest
+
 #
 # Build configs
 #
@@ -628,6 +711,39 @@ objects:
     triggers:
     - github:
         secret: ${THOTH_RESULT_API_GITHUB_SECRET}
+      type: GitHub
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    creationTimestamp: null
+    name: thoth-graphexp
+    labels:
+      app: graphexp
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: thoth-graphexp:latest
+    source:
+      git:
+        # TODO:
+        uri: https://github.com/fridex/thoth-graphexp
+      secrets: []
+      type: Git
+    strategy:
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: python:3.6
+      type: Source
+    triggers:
+    - github:
+        secret: secret101
       type: GitHub
     - type: ConfigChange
     - imageChange: {}
