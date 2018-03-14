@@ -176,17 +176,6 @@ objects:
 - apiVersion: v1
   kind: Route
   metadata:
-    name: thoth-result-api-hostname
-    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-  spec:
-    host: ${THOTH_USER_API_HOSTNAME}
-    to:
-      kind: Service
-      name: thoth-result-api
-
-- apiVersion: v1
-  kind: Route
-  metadata:
     name: graphexp-hostname
     labels:
       app: graphexp
