@@ -480,7 +480,7 @@ objects:
               name: thoth-graph-sync-job
               env:
               - name: THOTH_JANUSGRAPH_HOST
-                value: thoth-janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
+                value: janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
               - name: THOTH_JANUSGRAPH_PORT
                 value: '80'
               - name: THOTH_SOLVER_RESULTS_STORE_HOST
