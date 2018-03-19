@@ -2,6 +2,9 @@
 
 set -x
 
+# Secret for deployment interaction:
+export THOTH_SECRET="secret"
+
 export THOTH_LOCAL=1
 # In case you want to deploy to a cluster, comment out the line above and provice routing suffix of the cluster:
 #export THOTH_ROUTING_SUFFIX=mycluster.redhat.com

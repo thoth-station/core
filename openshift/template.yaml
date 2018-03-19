@@ -22,6 +22,14 @@ objects:
 - apiVersion: v1
   kind: Secret
   metadata:
+    name: secret
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+  stringData:
+    thoth-secret: ${THOTH_SECRET}
+
+- apiVersion: v1
+  kind: Secret
+  metadata:
     name: ceph-secrets
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   stringData: &ceph_secrets
@@ -270,6 +278,15 @@ objects:
             value: ${THOTH_CEPH_HOST}
           - name: THOTH_CEPH_BUCKET
             value: ${THOTH_CEPH_BUCKET}
+          - name: THOTH_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: secret
+                key: thoth-secret
+          - name: THOTH_JANUSGRAPH_HOST
+            value: janusgraph-hostname-${THOTH_MIDDLEEND_NAMESPACE}.${THOTH_ROUTING_SUFFIX}
+          - name: THOTH_JANUSGRAPH_PORT
+            value: '80'
           - name: THOTH_USER_API_APP_SECRET_KEY
             valueFrom:
               secretKeyRef:
@@ -936,6 +953,11 @@ parameters:
   value: '0'
 
 # These are required parameters to be supplied on deployment.
+
+- description: Secret to interact with Thoth endpoints that require higher privileges.
+  displayName: Thoth secret
+  required: true
+  name: THOTH_SECRET
 
 - description: Routing suffix of deployment.
   displayName: Routing suffix

@@ -24,6 +24,7 @@ oc process -f template.yaml \
         -p THOTH_CEPH_KEY_ID=${THOTH_CEPH_KEY_ID} \
         -p THOTH_CEPH_SECRET_KEY=${THOTH_CEPH_SECRET_KEY} \
         -p THOTH_CEPH_HOST=${THOTH_CEPH_HOST} \
+        -p THOTH_SECRET=${THOTH_SECRET} \
 	| oc apply -f -
 oc project thoth-middleend
 curl https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml -o janusgraph.yaml
