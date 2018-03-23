@@ -24,6 +24,8 @@ objects:
   kind: Secret
   metadata:
     name: thoth
+    labels:
+      app: thoth-core
   stringData:
     app-secret-key: some-secret-key
     thoth-secret: ${THOTH_SECRET}
@@ -35,6 +37,8 @@ objects:
   apiVersion: v1
   metadata:
     name: thoth
+    labels:
+      app: thoth-core
   data:
     middletier_namespace: ${THOTH_MIDDLEEND_NAMESPACE}
     backend_namespace: ${THOTH_BACKEND_NAMESPACE}
@@ -52,6 +56,7 @@ objects:
   apiVersion: v1
   metadata:
     name: analyzer
+    app: thoth-core
   automountServiceAccountToken: true
 
 - apiVersion: v1
@@ -59,6 +64,8 @@ objects:
   metadata:
     name: role-jobs-binding
     namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+    labels:
+      app: thoth-core
   roleRef:
     kind: ClusterRole
     name: edit
@@ -73,6 +80,7 @@ objects:
   metadata:
     labels:
       service: user-api
+      app: thoth-core
     name: user-api
   spec:
     ports:
@@ -87,6 +95,7 @@ objects:
   metadata:
     labels:
       service: result-api
+      app: thoth-core
     name: result-api
   spec:
     ports:
@@ -126,6 +135,8 @@ objects:
   apiVersion: v1
   metadata:
     name: user-api
+    labels:
+      app: thoth-core
   spec:
     host: ${THOTH_USER_API_HOSTNAME}
     to:
@@ -139,6 +150,7 @@ objects:
   metadata:
     labels:
       service: user-api
+      app: thoth-core
     name: user-api
   spec:
     replicas: 1
@@ -262,6 +274,7 @@ objects:
   metadata:
     labels:
       service: result-api
+      app: thoth-core
     name: result-api
   spec:
     replicas: 1
@@ -349,6 +362,8 @@ objects:
   kind: CronJob
   metadata:
     name: cleanup-job
+    labels:
+      app: thoth-core
   spec:
     #schedule: "@weekly"
     schedule: "*/1 * * * *"
@@ -389,6 +404,8 @@ objects:
   kind: CronJob
   metadata:
     name: graph-sync-job
+    labels:
+      app: thoth-core
   spec:
     schedule: "@weekly"
     suspend: true
@@ -461,6 +478,7 @@ objects:
   kind: ImageStream
   metadata:
     labels:
+      app: thoth-core
     name: result-api
   spec:
     name: stable
@@ -469,6 +487,7 @@ objects:
   kind: ImageStream
   metadata:
     labels:
+      app: thoth-core
     name: user-api
   spec:
     name: stable
@@ -479,6 +498,8 @@ objects:
   kind: BuildConfig
   metadata:
     name: user-api
+    labels:
+      app: thoth-core
   spec:
     output:
       to:
@@ -507,6 +528,8 @@ objects:
   kind: BuildConfig
   metadata:
     name: result-api
+    labels:
+      app: thoth-core
   spec:
     output:
       to:
