@@ -36,6 +36,7 @@ objects:
   data:
     middletier_namespace: ${THOTH_MIDDLEEND_NAMESPACE}
     backend_namespace: ${THOTH_BACKEND_NAMESPACE}
+    storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
     ceph-bucket-name: ${THOTH_CEPH_BUCKET}
     ceph-host: ${THOTH_CEPH_HOST}
     user-api-service-port: '8080'
@@ -118,18 +119,8 @@ objects:
       kind: Service
       name: user-api
 
-- kind: Route
-  apiVersion: v1
-  metadata:
-    name: result-api
-  spec:
-    host: ${THOTH_RESULT_API_HOSTNAME}
-    to:
-      kind: Service
-      name: result-api
 #
 # Deployment configs
-#
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -174,7 +165,12 @@ objects:
             valueFrom:
               configMapKeyRef:
                 key: backend_namespace
-                name: thoth                
+                name: thoth
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: storage-bucket-name
+                name: thoth
           - name: THOTH_BUILDLOGS_PERSISTENT_VOLUME_PATH
             valueFrom:
               configMapKeyRef:
@@ -278,6 +274,11 @@ objects:
       spec:
         containers:
         - env:
+          - name: THOTH_DEPLOYMENT_NAME
+            valueFrom:
+              configMapKeyRef:
+                key: storage-bucket-name
+                name: thoth
           - name: THOTH_PERSISTENT_VOLUME_PATH
             valueFrom:
               configMapKeyRef:
@@ -479,11 +480,11 @@ objects:
       openshift.io/display-name: Python
   spec:
     tags:
-      - name: "3.6"
+      - name: "latest"
         annotations:
           iconClass: icon-python
           supports: python:3.6,python
-          version: "3.6"
+          version: "latest"
         from:
           kind: DockerImage
           name: docker.io/centos/python-36-centos7:latest
@@ -525,7 +526,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: python-36-centos7:latest
+          name: python:latest
     triggers:
     - github:
         secret: ${THOTH_USER_API_GITHUB_SECRET}
@@ -552,7 +553,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: python-36-centos7:latest
+          name: python:latest
       type: Source
     triggers:
     - github:
@@ -576,12 +577,12 @@ parameters:
 
 - description: Name of the Thoth Middle Tier Namespace
   displayName: Thoth Middle Tier Namespace
-  required: false
+  required: true
   name: THOTH_MIDDLEEND_NAMESPACE
 
 - description: Name of the Thoth Backend Namespace
   displayName: Thoth Backend Namespace
-  required: false
+  required: true
   name: THOTH_BACKEND_NAMESPACE
 
 - description: Git repository for Thoth's Result API
@@ -664,3 +665,9 @@ parameters:
   required: true
   value: glusterfs-apps
   name: STORAGE_CLASS
+
+- description: Storage bucket name to use for persisted files
+  displayName: Thoth Storage bucket name
+  required: true
+  value: thoth-sbu
+  name: THOTH_DEPLOYMENT_NAME
