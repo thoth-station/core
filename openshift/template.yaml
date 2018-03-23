@@ -2,11 +2,13 @@ apiVersion: v1
 kind: Template
 labels:
   template: thoth-core
+  thoth: 0.1.0
 metadata:
   name: thoth-core
   annotations:
     description: This is Thoth Core - Analyzer and Results API and supporting components 
     openshift.io/display-name: Thoth Core
+    version: 0.1.0
     tags: poc,thoth,ai-stacks
     template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
     template.openshift.io/long-description: This template defines resources needed
@@ -51,7 +53,19 @@ objects:
   metadata:
     name: analyzer
   automountServiceAccountToken: true
-  
+
+- apiVersion: v1
+  kind: RoleBinding
+  metadata:
+    name: role-jobs-binding
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+  roleRef:
+    kind: ClusterRole
+    name: edit
+  subjects:
+    - kind: ServiceAccount
+      name: analyzer
+      namespace: ${THOTH_FRONTEND_NAMESPACE}
 #
 # Services
 - apiVersion: v1
