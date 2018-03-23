@@ -944,7 +944,7 @@ parameters:
   displayName: Ceph bucket name
   required: true
   name: THOTH_CEPH_BUCKET
-  value: 'dh-dev-playpen'
+  value: 'DH-PLAYPEN'
 
 - description: Verify TLS certificates of Kubernetes master on requests.
   displayName: Verify Kubernetes TLS
