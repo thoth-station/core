@@ -16,7 +16,7 @@ fi
 
 [ \( "${THOTH_LOCAL}" \) ] && oc cluster up --routing-suffix="${THOTH_ROUTING_SUFFIX}"
 oc new-project thoth-frontend
-oc new-project thoth-middleend
+oc new-project ${THOTH_MIDDLEEND_NAMESPACE}
 oc new-project thoth-backend
 oc process -f template.yaml \
 	-p THOTH_ROUTING_SUFFIX="${THOTH_ROUTING_SUFFIX}" \
@@ -25,7 +25,11 @@ oc process -f template.yaml \
         -p THOTH_CEPH_SECRET_KEY=${THOTH_CEPH_SECRET_KEY} \
         -p THOTH_CEPH_HOST=${THOTH_CEPH_HOST} \
         -p THOTH_SECRET=${THOTH_SECRET} \
+		-p THOTH_MIDDLEEND_NAMESPACE=${THOTH_MIDDLEEND_NAMESPACE} \
+		-p THOTH_BACKEND_NAMESPACE=${THOTH_BACKEND_NAMESPACE} \
 	| oc apply -f -
-oc project thoth-middleend
-curl https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml -o janusgraph.yaml
-oc process -f janusgraph.yaml | oc apply -f -
+
+
+# deploy janusgraph server
+oc project ${THOTH_MIDDLEEND_NAMESPACE}
+oc process -f https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml | oc apply -f -

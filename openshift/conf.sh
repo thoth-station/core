@@ -11,6 +11,8 @@ export THOTH_LOCAL=1
 
 # Adjust if you deploy to actual cluster - this is a namespace to separate different deployments:
 export THOTH_DEPLOYMENT_NAME="local-$USER"
+export THOTH_MIDDLEEND_NAMESPACE="thoth-test-dev"
+export THOTH_BACKEND_NAMESPACE="thoth-test-dev"
 
 # Credentials provided by DataHub team go here:
 export THOTH_CEPH_SECRET_KEY=

@@ -40,7 +40,6 @@ objects:
     ceph-bucket-name: ${THOTH_CEPH_BUCKET}
     ceph-host: ${THOTH_CEPH_HOST}
     user-api-service-port: '8080'
-    buildlogs-path: /buildlogs
     ceph-results-path: /results
     analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
     sync-observations: ${THOTH_SYNC_OBSERVATIONS}
@@ -171,11 +170,6 @@ objects:
               configMapKeyRef:
                 key: storage-bucket-name
                 name: thoth
-          - name: THOTH_BUILDLOGS_PERSISTENT_VOLUME_PATH
-            valueFrom:
-              configMapKeyRef:
-                key: buildlogs-path
-                name: thoth
           - name: THOTH_CEPH_HOST
             valueFrom:
               configMapKeyRef:
@@ -237,14 +231,6 @@ objects:
             initialDelaySeconds: 5
             periodSeconds: 60
             timeoutSeconds: 10
-          volumeMounts:
-            - mountPath: /buildlogs
-              name: buildlogs
-        restartPolicy: Always
-        volumes:
-          - name: buildlogs
-            persistentVolumeClaim:
-              claimName: buildlogs
     test: false
     triggers:
     - type: ConfigChange
@@ -331,14 +317,6 @@ objects:
             initialDelaySeconds: 5
             periodSeconds: 60
             timeoutSeconds: 10
-          volumeMounts:
-            - mountPath: /results
-              name: analyzes
-        restartPolicy: Always
-        volumes:
-          - name: analyzes
-            persistentVolumeClaim:
-              claimName: analyzes
     test: false
     triggers:
     - type: ConfigChange
@@ -352,32 +330,6 @@ objects:
           name: 'result-api:stable'
 
 #
-# Persistent volume claims
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: analyzes
-  spec:
-    accessModes:
-      - ReadWriteMany
-    resources:
-      requests:
-        storage: 10Gi
-    storageClassName: ${STORAGE_CLASS}
-
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: buildlogs
-  spec:
-    accessModes:
-      - ReadWriteMany
-    resources:
-      requests:
-        storage: 10Gi
-    storageClassName: ${STORAGE_CLASS}
-
-#
 # Cron jobs
 - apiVersion: batch/v2alpha1
   kind: CronJob
@@ -386,6 +338,7 @@ objects:
   spec:
     #schedule: "@weekly"
     schedule: "*/1 * * * *"
+    suspend: true
     jobTemplate:
       spec:
         template:
@@ -424,6 +377,7 @@ objects:
     name: graph-sync-job
   spec:
     schedule: "@weekly"
+    suspend: true
     jobTemplate:
       spec:
         template:
@@ -659,12 +613,6 @@ parameters:
   displayName: Ceph secret key
   required: true
   name: THOTH_CEPH_SECRET_KEY
-
-- description: Storage Class to use when claiming PersistentVolumes
-  displayName: PVC StorageClass
-  required: true
-  value: glusterfs-apps
-  name: STORAGE_CLASS
 
 - description: Storage bucket name to use for persisted files
   displayName: Thoth Storage bucket name
