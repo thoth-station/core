@@ -1,0 +1,24 @@
+---
+- name: Playbook to provision Thoth Core
+    - openshift
+    - thoth
+
+  hosts: localhost
+  vars:
+    openshift_master_url: "{{ lookup('env','OCP_URL') }}"
+    token: "{{ lookup('env','OCP_TOKEN') }}"
+    project_name: goern-thoth-test-2
+    THOTH_BACKEND_NAMESPACE: "{{ project_name }}"
+    THOTH_MIDDLEEND_NAMESPACE: "{{ project_name }}"
+    THOTH_FRONTEND_NAMESPACE: "{{ project_name }}"
+    THOTH_CEPH_SECRET_KEY: "a_secret_key"
+    THOTH_CEPH_KEY_ID: "a_string"
+    THOTH_CEPH_HOST: "a_url"
+    THOTH_SECRET: "a_string"
+    THOTH_DEPLOYMENT_NAME: "devel"
+    
+  gather_facts: false
+  connection: local
+  roles:
+  - role: provision-thoth-core
+    playbook_debug: true

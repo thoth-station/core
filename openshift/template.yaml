@@ -27,7 +27,7 @@ objects:
     labels:
       app: thoth-core
   stringData:
-    app-secret-key: some-secret-key
+    app-secret-key: "887a2b06a52fc26cd444344df0276dde756133a2fdf8178c95488fbdc73c69c4"
     thoth-secret: ${THOTH_SECRET}
     ceph-key-id: ${THOTH_CEPH_KEY_ID}
     ceph-secret-key: ${THOTH_CEPH_SECRET_KEY}
@@ -40,6 +40,7 @@ objects:
     labels:
       app: thoth-core
   data:
+    frontend_namespace: ${THOTH_FRONTEND_NAMESPACE}
     middletier_namespace: ${THOTH_MIDDLEEND_NAMESPACE}
     backend_namespace: ${THOTH_BACKEND_NAMESPACE}
     storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
@@ -565,6 +566,11 @@ parameters:
   displayName: Thoth result API hostname
   required: false
   name: THOTH_RESULT_API_HOSTNAME
+
+- description: Name of the Thoth Frontend Namespace
+  displayName: Thoth Frontend Namespace
+  required: true
+  name: THOTH_FRONTEND_NAMESPACE
 
 - description: Name of the Thoth Middle Tier Namespace
   displayName: Thoth Middle Tier Namespace

@@ -1,0 +1,51 @@
+---
+  - name: login to OpenShift using provided token
+    command: "oc login --insecure-skip-tls-verify=true --token {{ token }} {{ openshift_master_url }}"
+
+  - name: "make sure to use project {{ project_name }}"
+    command: "oc project {{ project_name }}"
+    register: project_exists
+    ignore_errors: true
+
+  - name: "create Thoth Tiers"
+    command: "oc new-project {{ item }}"
+    ignore_errors: true
+    with_items:
+      - "{{ THOTH_BACKEND_NAMESPACE  }}"
+      - "{{ THOTH_MIDDLEEND_NAMESPACE }}"
+      - "{{ THOTH_FRONTEND_NAMESPACE }}"
+
+  - name: create Thoth Core template
+    command: oc create -f ../openshift/template.yaml
+    register: template_rc
+    ignore_errors: true
+
+  - name: replace existing Thoth Core template
+    command: oc replace -f ../openshift/template.yaml
+    when: template_rc is failed
+
+  - name: deploy Thoth Core
+    command: oc new-app --template=thoth-core \
+        -p THOTH_DEPLOYMENT_NAME="{{ THOTH_DEPLOYMENT_NAME }}" \
+        -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
+        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+        -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
+        -p THOTH_CEPH_KEY_ID="{{ THOTH_CEPH_KEY_ID }}" \
+        -p THOTH_CEPH_SECRET_KEY="{{ THOTH_CEPH_SECRET_KEY }}" \
+        -p THOTH_CEPH_HOST="{{ THOTH_CEPH_HOST }}" \
+        -p THOTH_SECRET="{{ THOTH_SECRET }}" 
+
+  - name: create JanusGraph Database Template
+    command: oc create --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+        --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
+    register: janusgraph_template_rc
+    ignore_errors: true
+
+  - name: deploy JanusGraph Database
+    command: oc new-app --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+        --template=janusgraph
+
+  - name: replace existing JanusGraph template
+    command: oc replace --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+        --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
+    when: template_rc is failed
