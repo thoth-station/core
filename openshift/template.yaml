@@ -532,7 +532,7 @@ objects:
                  value: ${THOTH_ANALYZER_CLEANUP_TIME}
                - name: KUBERNETES_API_URL
                  value: ${KUBERNETES_API_URL}
-               - name: THOTH_CLEANUP_DEBUG
+               - name: THOTH_LOG_CLEANUP_JOB
                  value: ${THOTH_CLEANUP_DEBUG}
               resources:
                 requests:
@@ -931,8 +931,8 @@ parameters:
 - description: Be verbose in cluster cleanup job.
   displayName: Debug cleanup job
   required: true
-  name: THOTH_CLEANUP_DEBUG
-  value: '1'
+  name: THOTH_LOG_CLEANUP_JOB
+  value: 'INFO'
 
 - description: Turn on or off automatic observation syncing to the graph database.
   displayName: Sync observations
