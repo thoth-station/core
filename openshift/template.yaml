@@ -40,9 +40,11 @@ objects:
     labels:
       app: thoth-core
   data:
-    frontend_namespace: ${THOTH_FRONTEND_NAMESPACE}
-    middletier_namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-    backend_namespace: ${THOTH_BACKEND_NAMESPACE}
+    frontend-namespace: ${THOTH_FRONTEND_NAMESPACE}
+    middletier-namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+    middletier-pod-cpu-limit: '0.5'
+    middletier-pod-memory-limit: '0.5Gi'
+    backend-namespace: ${THOTH_BACKEND_NAMESPACE}
     storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
     ceph-bucket-name: ${THOTH_CEPH_BUCKET}
     ceph-host: ${THOTH_CEPH_HOST}
@@ -179,18 +181,24 @@ objects:
           - name: THOTH_RESULT_API_URL
             value: http://thoth-result-api
           - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
-            value: '0.5'
+            valueFrom:
+              configMapKeyRef:
+                key: middletier-pod-cpu-limit
+                name: thoth
           - name: THOTH_MIDDLEEND_POD_MEMORY_LIMIT
-            value: '0.5Gi'
+            valueFrom:
+              configMapKeyRef:
+                key: middletier-pod-memory-limit
+                name: thoth
           - name: THOTH_MIDDLEEND_NAMESPACE
             valueFrom:
               configMapKeyRef:
-                key: middletier_namespace
+                key: middletier-namespace
                 name: thoth
           - name: THOTH_BACKEND_NAMESPACE
             valueFrom:
               configMapKeyRef:
-                key: backend_namespace
+                key: backend-namespace
                 name: thoth
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
