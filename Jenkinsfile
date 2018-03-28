@@ -142,18 +142,22 @@ pipeline {
                 if (env.ghprbActualCommit != null && env.ghprbActualCommit != "master") {
                     prMsg = "(PR #${env.ghprbPullId} ${env.ghprbPullAuthorLogin})"
                 }
+
                 def message = "${JOB_NAME} ${prMsg} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
-
                 pipelineUtils.sendIRCNotification("${IRC_NICK}", IRC_CHANNEL, message)
-                mattermostSend channel: "#thoth-station", icon: 'https://avatars1.githubusercontent.com/u/33906690', message: "${message}"
-
             }
         }
         success {
             echo "All Systems GO!"
         }
         failure {
-            error "BREAK BREAK BREAK - build failed!"
+            script {
+                mattermostSend channel: "#thoth-station", 
+                    icon: 'https://avatars1.githubusercontent.com/u/33906690', 
+                    message: "${JOB_NAME} build #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}"
+
+                error "BREAK BREAK BREAK - build failed!"
+            }
         }
     }
 }
