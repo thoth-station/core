@@ -140,6 +140,8 @@ objects:
             value: ${THOTH_CEPH_HOST}
           - name: THOTH_CEPH_BUCKET
             value: ${THOTH_CEPH_BUCKET}
+          - name: THOTH_CEPH_BUCKET_PREFIX
+            value: ${THOTH_CEPH_BUCKET_PREFIX}
           - name: THOTH_CEPH_KEY_ID
             valueFrom:
               secretKeyRef:
@@ -278,6 +280,8 @@ objects:
             value: ${THOTH_CEPH_HOST}
           - name: THOTH_CEPH_BUCKET
             value: ${THOTH_CEPH_BUCKET}
+          - name: THOTH_CEPH_BUCKET_PREFIX
+            value: ${THOTH_CEPH_BUCKET_PREFIX}
           - name: THOTH_SECRET
             valueFrom:
               secretKeyRef:
@@ -375,6 +379,8 @@ objects:
             value: ${THOTH_CEPH_HOST}
           - name: THOTH_CEPH_BUCKET
             value: ${THOTH_CEPH_BUCKET}
+          - name: THOTH_CEPH_BUCKET_PREFIX
+            value: ${THOTH_CEPH_BUCKET_PREFIX}
           - name: THOTH_CEPH_KEY_ID
             valueFrom:
               secretKeyRef:
@@ -571,6 +577,8 @@ objects:
                 value: ${THOTH_CEPH_HOST}
               - name: THOTH_CEPH_BUCKET
                 value: ${THOTH_CEPH_BUCKET}
+              - name: THOTH_CEPH_BUCKET_PREFIX
+                value: ${THOTH_CEPH_BUCKET_PREFIX}
               - name: THOTH_CEPH_KEY_ID
                 valueFrom:
                   secretKeyRef:
@@ -944,7 +952,13 @@ parameters:
   displayName: Ceph bucket name
   required: true
   name: THOTH_CEPH_BUCKET
-  value: 'DH-PLAYPEN'
+  value: 'DH-DEV-DATA'
+
+- description: Thoth Ceph bucket prefix.
+  displayName: Thoth Ceph bucket prefix
+  required: true
+  name: THOTH_CEPH_BUCKET_PREFIX
+  value: 'data/thoth'
 
 - description: Verify TLS certificates of Kubernetes master on requests.
   displayName: Verify Kubernetes TLS
