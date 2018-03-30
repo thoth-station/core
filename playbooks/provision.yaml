@@ -7,7 +7,7 @@
   vars:
     openshift_master_url: "{{ lookup('env','OCP_URL') }}"
     token: "{{ lookup('env','OCP_TOKEN') }}"
-    project_name: goern-thoth-test-2
+    project_name: goern-thoth-test-4
     THOTH_BACKEND_NAMESPACE: "{{ project_name }}"
     THOTH_MIDDLEEND_NAMESPACE: "{{ project_name }}"
     THOTH_FRONTEND_NAMESPACE: "{{ project_name }}"
