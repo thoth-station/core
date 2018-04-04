@@ -1,0 +1,48 @@
+---
+  - name: login to OpenShift using provided token
+    command: "oc login --insecure-skip-tls-verify=true --token {{ token }} {{ openshift_master_url }}"
+
+  - name: "checking for Thoth Tiers"
+    command: "oc get project {{ item }}"
+    with_items:
+      - "{{ THOTH_BACKEND_NAMESPACE  }}"
+      - "{{ THOTH_MIDDLEEND_NAMESPACE }}"
+      - "{{ THOTH_FRONTEND_NAMESPACE }}"
+
+  - name: "checking for Thoth Secrets"
+    command: "oc get secret thoth --namespace {{ item }}"
+    with_items:
+      - "{{ THOTH_BACKEND_NAMESPACE  }}"
+      - "{{ THOTH_MIDDLEEND_NAMESPACE }}"
+      - "{{ THOTH_FRONTEND_NAMESPACE }}"
+
+  - name: "checking for Thoth Config"
+    command: "oc get configmap thoth --namespace {{ THOTH_BACKEND_NAMESPACE }}"
+
+  - name: "checking for Thoth User API resources"
+    command: "oc get {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
+    with_items:
+      - "imagestreams/python"
+      - "imagestreams/user-api"
+      - "buildconfigs/user-api"
+      - "svc/user-api"
+      - "deploymentconfigs/user-api"
+
+  - name: "checking for Thoth frontend CronJobs"
+    command: "oc get cronjob cleanup-job --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
+
+  - name: "checking for Thoth Result API resources"
+    command: "oc get {{ item }} --namespace {{ THOTH_MIDDLEEND_NAMESPACE }}"
+    with_items:
+      - "imagestreams/result-api"
+      - "buildconfigs/result-api"
+      - "svc/result-api"
+      - "svc/janusgraph"
+      - "deploymentconfigs/result-api"
+      - "deploymentconfigs/janusgraph"
+
+  - name: "checking for Thoth Backend PersistentVolumeClaims"
+    command: "oc get pvc janusgraph-db --namespace {{ THOTH_MIDDLEEND_NAMESPACE }}"
+
+  - name: "checking for Thoth Backend CronJobs"
+    command: "oc get cronjob graph-sync-job --namespace {{ THOTH_BACKEND_NAMESPACE }}"

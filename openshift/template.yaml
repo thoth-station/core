@@ -16,36 +16,12 @@ metadata:
 
 objects:
 
-#
-# Application Configuration
-## Config
-- kind: ConfigMap
-  apiVersion: v1
-  metadata:
-    name: thoth
-    labels:
-      app: thoth-core
-  data:
-    frontend-namespace: ${THOTH_FRONTEND_NAMESPACE}
-    middletier-namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-    middletier-pod-cpu-limit: '0.5'
-    middletier-pod-memory-limit: '0.5Gi'
-    backend-namespace: ${THOTH_BACKEND_NAMESPACE}
-    storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
-    ceph-bucket-name: ${THOTH_CEPH_BUCKET}
-    ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
-    ceph-host: ${THOTH_CEPH_HOST}
-    user-api-service-port: '8080'
-    ceph-results-path: /results
-    analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
-    sync-observations: ${THOTH_SYNC_OBSERVATIONS}
-    debug-cleanup: ${THOTH_CLEANUP_DEBUG}
-
 ## Service Accounts
 - kind: ServiceAccount
   apiVersion: v1
   metadata:
     name: analyzer
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
     app: thoth-core
   automountServiceAccountToken: true
 
@@ -72,6 +48,7 @@ objects:
       service: user-api
       app: thoth-core
     name: user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     ports:
     - port: 80
@@ -87,6 +64,7 @@ objects:
       service: result-api
       app: thoth-core
     name: result-api
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     ports:
     - port: 80
@@ -94,35 +72,6 @@ objects:
       targetPort: 8080
     selector:
       service: result-api
-    containers:
-        - env:
-          - name: THOTH_RESULT_API_HOSTNAME
-            value: result-api
-          - name: THOTH_CEPH_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-host
-                name: thoth
-          - name: THOTH_CEPH_BUCKET
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-bucket-name
-                name: thoth
-          - name: THOTH_CEPH_BUCKET_PREFIX
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-bucket-prefix
-                name: thoth
-          - name: THOTH_CEPH_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: ceph-key-id
-          - name: THOTH_CEPH_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: ceph-secret-key
 
 #
 # Routes
@@ -130,6 +79,7 @@ objects:
   apiVersion: v1
   metadata:
     name: user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
@@ -147,6 +97,7 @@ objects:
       service: user-api
       app: thoth-core
     name: user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     replicas: 1
     selector:
@@ -273,7 +224,7 @@ objects:
           - user-api
         from:
           kind: ImageStreamTag
-          name: 'user-api:stable'
+          name: 'user-api:latest'
 
 - apiVersion: v1
   kind: DeploymentConfig
@@ -282,6 +233,7 @@ objects:
       service: result-api
       app: thoth-core
     name: result-api
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
     replicas: 1
     selector:
@@ -292,7 +244,8 @@ objects:
           service: result-api
       spec:
         containers:
-        - env:
+        - name: result-api
+          env:
           - name: THOTH_DEPLOYMENT_NAME
             valueFrom:
               configMapKeyRef:
@@ -328,7 +281,6 @@ objects:
               secretKeyRef:
                 name: thoth
                 key: ceph-secret-key
-          name: result-api
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -365,7 +317,7 @@ objects:
           - result-api
         from:
           kind: ImageStreamTag
-          name: 'result-api:stable'
+          name: 'result-api:latest'
 
 #
 # Cron jobs
@@ -373,6 +325,7 @@ objects:
   kind: CronJob
   metadata:
     name: cleanup-job
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
@@ -415,6 +368,7 @@ objects:
   kind: CronJob
   metadata:
     name: graph-sync-job
+    namespace: ${THOTH_BACKEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
@@ -477,6 +431,7 @@ objects:
   kind: ImageStream
   metadata:
     name: python
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
     annotations:
       openshift.io/display-name: Python
   spec:
@@ -496,8 +451,9 @@ objects:
     labels:
       app: thoth-core
     name: result-api
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
   spec:
-    name: stable
+    name: latest
 
 - apiVersion: v1
   kind: ImageStream
@@ -505,8 +461,9 @@ objects:
     labels:
       app: thoth-core
     name: user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
-    name: stable
+    name: latest
 
 #
 # Build configs
@@ -514,13 +471,14 @@ objects:
   kind: BuildConfig
   metadata:
     name: user-api
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: user-api:test
+        name: user-api:latest
     source:
       type: Git
       git:
@@ -544,23 +502,25 @@ objects:
   kind: BuildConfig
   metadata:
     name: result-api
+    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: result-api:test
+        name: result-api:latest
     source:
+      type: Git
       git:
         uri: ${THOTH_RESULT_API_GIT_URL}
       secrets: []
-      type: Git
     strategy:
       sourceStrategy:
         from:
           kind: ImageStreamTag
           name: python:latest
+          namespace: ${THOTH_FRONTEND_NAMESPACE}
       type: Source
     triggers:
     - github:
@@ -640,31 +600,14 @@ parameters:
   name: THOTH_SYNC_OBSERVATIONS
   value: '0'
 
-- description: Name of bucket where results are stored to.
-  displayName: Ceph bucket name
-  required: true
-  name: THOTH_CEPH_BUCKET
-  value: 'DH-DEV-DATA'
-
-- description: Thoth Ceph bucket prefix.
-  displayName: Thoth Ceph bucket prefix
-  required: true
-  name: THOTH_CEPH_BUCKET_PREFIX
-  value: 'data/thoth'
-
 - description: Verify TLS certificates of Kubernetes master on requests.
   displayName: Verify Kubernetes TLS
   required: true
   name: KUBERNETES_VERIFY_TLS
   value: '0'
 
-- description: A host:port where Ceph endpoint can be used to store/retrieve data.
-  displayName: Ceph host
-  required: true
-  name: THOTH_CEPH_HOST
-
 - description: Storage bucket name to use for persisted files
   displayName: Thoth Storage bucket name
   required: true
-  value: thoth-sbu
+  value: thoth-test
   name: THOTH_DEPLOYMENT_NAME

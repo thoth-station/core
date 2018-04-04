@@ -1,0 +1,99 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: thoth-core-configmap
+  thoth: 0.1.0
+metadata:
+  name: thoth-core-configmap
+  annotations:
+    description: This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API 
+    openshift.io/display-name: Thoth Core Configmap
+    version: 0.1.0
+    tags: poc,thoth,ai-stacks
+    template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
+    template.openshift.io/long-description: This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+objects:
+
+#
+# Application Configuration
+## Config
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: thoth
+    labels:
+      app: thoth-core
+  data:
+    frontend-namespace: ${THOTH_FRONTEND_NAMESPACE}
+    middletier-namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+    middletier-pod-cpu-limit: '0.5'
+    middletier-pod-memory-limit: '0.5Gi'
+    backend-namespace: ${THOTH_BACKEND_NAMESPACE}
+    storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
+    ceph-bucket-name: ${THOTH_CEPH_BUCKET}
+    ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
+    ceph-host: ${THOTH_CEPH_HOST}
+    user-api-service-port: '8080'
+    ceph-results-path: /results
+    analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
+    sync-observations: ${THOTH_SYNC_OBSERVATIONS}
+    debug-cleanup: ${THOTH_CLEANUP_DEBUG}
+
+parameters:
+- description: Name of the Thoth Frontend Namespace
+  displayName: Thoth Frontend Namespace
+  required: true
+  name: THOTH_FRONTEND_NAMESPACE
+
+- description: Name of the Thoth Middle Tier Namespace
+  displayName: Thoth Middle Tier Namespace
+  required: true
+  name: THOTH_MIDDLEEND_NAMESPACE
+
+- description: Name of the Thoth Backend Namespace
+  displayName: Thoth Backend Namespace
+  required: true
+  name: THOTH_BACKEND_NAMESPACE
+
+- description: Time before analyzer pod gets removed from etcd.
+  displayName: Thoth analyzer cleanup time
+  required: true
+  name: THOTH_ANALYZER_CLEANUP_TIME
+  value: '7d'
+
+- description: Be verbose in cluster cleanup job.
+  displayName: Debug cleanup job
+  required: true
+  name: THOTH_CLEANUP_DEBUG
+  value: '1'
+
+- description: Turn on or off automatic observation syncing to the graph database.
+  displayName: Sync observations
+  required: true
+  name: THOTH_SYNC_OBSERVATIONS
+  value: '0'
+
+- description: Name of bucket where results are stored to.
+  displayName: Ceph bucket name
+  required: true
+  name: THOTH_CEPH_BUCKET
+  value: 'DH-DEV-DATA'
+
+- description: Thoth Ceph bucket prefix.
+  displayName: Thoth Ceph bucket prefix
+  required: true
+  name: THOTH_CEPH_BUCKET_PREFIX
+  value: 'data/thoth'
+
+- description: A host:port where Ceph endpoint can be used to store/retrieve data.
+  displayName: Ceph host
+  required: true
+  name: THOTH_CEPH_HOST
+
+- description: Storage bucket name to use for persisted files
+  displayName: Thoth Storage bucket name
+  required: true
+  value: thoth-test
+  name: THOTH_DEPLOYMENT_NAME
