@@ -103,3 +103,4 @@ ENV/
 .pytest_cache/
 
 openshift/conf.sh
+*.retry
