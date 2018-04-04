@@ -1,0 +1,18 @@
+---
+- name: Playbook to validate Thoth Core deployment
+    - openshift
+    - thoth
+
+  hosts: localhost
+  vars:
+    openshift_master_url: "{{ lookup('env','OCP_URL') }}"
+    token: "{{ lookup('env','OCP_TOKEN') }}"
+    THOTH_BACKEND_NAMESPACE: "thoth-test-back"
+    THOTH_MIDDLEEND_NAMESPACE: "thoth-test-middle"
+    THOTH_FRONTEND_NAMESPACE: "thoth-test-front"
+    
+  gather_facts: false
+  connection: local
+  roles:
+  - role: validate-thoth-core
+    playbook_debug: true
