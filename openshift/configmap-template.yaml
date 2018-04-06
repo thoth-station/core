@@ -39,7 +39,7 @@ objects:
     user-api-service-port: '8080'
     analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
     sync-observations: ${THOTH_SYNC_OBSERVATIONS}
-    debug-cleanup: ${THOTH_CLEANUP_DEBUG}
+    log-cleanup-job: ${THOTH_LOG_CLEANUP_JOB}
     package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
 
 parameters:
@@ -64,11 +64,10 @@ parameters:
   name: THOTH_ANALYZER_CLEANUP_TIME
   value: '7d'
 
-- description: Be verbose in cluster cleanup job.
-  displayName: Debug cleanup job
-  required: true
-  name: THOTH_CLEANUP_DEBUG
-  value: '1'
+- description: Set verbosity for the cleanup job.
+  displayName: Cleanup job verbosity level
+  name: THOTH_LOG_CLEANUP_JOB
+  value: 'DEBUG'
 
 - description: Turn on or off automatic observation syncing to the graph database.
   displayName: Sync observations
