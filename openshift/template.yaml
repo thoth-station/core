@@ -470,37 +470,6 @@ objects:
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    name: user-api
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-    labels:
-      app: thoth-core
-  spec:
-    output:
-      to:
-        kind: ImageStreamTag
-        name: user-api:latest
-    source:
-      type: Git
-      git:
-        uri: ${THOTH_USER_API_GIT_URL}
-      secrets: []
-    strategy:
-      type: Source
-      sourceStrategy:
-        from:
-          kind: ImageStreamTag
-          name: python:latest
-    triggers:
-    - github:
-        secret: ${THOTH_USER_API_GITHUB_SECRET}
-      type: GitHub
-    - type: ConfigChange
-    - imageChange: {}
-      type: ImageChange
-
-- apiVersion: v1
-  kind: BuildConfig
-  metadata:
     name: result-api
     namespace: ${THOTH_MIDDLEEND_NAMESPACE}
     labels:
