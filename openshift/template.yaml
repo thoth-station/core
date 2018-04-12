@@ -324,13 +324,12 @@ objects:
 - apiVersion: batch/v2alpha1
   kind: CronJob
   metadata:
-    name: cleanup-job
+    name: cleanup
     namespace: ${THOTH_FRONTEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
-    #schedule: "@weekly"
-    schedule: "*/1 * * * *"
+    schedule: "@weekly"
     suspend: true
     jobTemplate:
       spec:
@@ -338,8 +337,8 @@ objects:
           spec:
             serviceAccountName: analyzer
             containers:
-            - image: fridex/thoth-cleanup-job
-              name: cleanup-job
+            - image: cleanup-cronjob
+              name: cleanup
               env:
                - name: KUBERNETES_VERIFY_TLS
                  value: ${KUBERNETES_VERIFY_TLS}
@@ -355,6 +354,11 @@ objects:
                   configMapKeyRef:
                     key: debug-cleanup
                     name: thoth
+               - name: THOTH_MIDDLEEND_NAMESPACE
+                 valueFrom:
+                   configMapKeyRef:
+                     key: middletier-namespace
+                     name: thoth
               resources:
                 requests:
                   memory: "32Mi"
@@ -367,20 +371,20 @@ objects:
 - apiVersion: batch/v2alpha1
   kind: CronJob
   metadata:
-    name: graph-sync-job
+    name: graph-sync
     namespace: ${THOTH_BACKEND_NAMESPACE}
     labels:
       app: thoth-core
   spec:
-    schedule: "@weekly"
+    schedule: "@hourly"
     suspend: true
     jobTemplate:
       spec:
         template:
           spec:
             containers:
-            - image: fridex/thoth-graph-sync-job
-              name: graph-sync-job
+            - image: graph-sync-cronjob
+              name: graph-sync
               env:
               - name: THOTH_JANUSGRAPH_HOST
                 value: janusgraph
