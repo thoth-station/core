@@ -118,7 +118,7 @@ objects:
           - name: KUBERNETES_API_URL
             value: 'https://kubernetes.default.svc.cluster.local'
           - name: KUBERNETES_VERIFY_TLS
-            value: ${KUBERNETES_VERIFY_TLS}
+            value: "0"
           - name: THOTH_RESULT_API_HOSTNAME
             value: thoth-result-api
           - name: THOTH_RESULT_API_URL
@@ -329,8 +329,7 @@ objects:
     labels:
       app: thoth-core
   spec:
-    #schedule: "@weekly"
-    schedule: "*/1 * * * *"
+    schedule: "@weekly"
     suspend: true
     jobTemplate:
       spec:
@@ -338,11 +337,11 @@ objects:
           spec:
             serviceAccountName: analyzer
             containers:
-            - image: fridex/thoth-cleanup-job
+            - image: thoth-cleanup-job
               name: cleanup-job
               env:
                - name: KUBERNETES_VERIFY_TLS
-                 value: ${KUBERNETES_VERIFY_TLS}
+                 value: "0"
                - name: THOTH_ANALYZER_CLEANUP_TIME
                  valueFrom:
                   configMapKeyRef:
@@ -372,14 +371,14 @@ objects:
     labels:
       app: thoth-core
   spec:
-    schedule: "@weekly"
+    schedule: "@daily"
     suspend: true
     jobTemplate:
       spec:
         template:
           spec:
             containers:
-            - image: fridex/thoth-graph-sync-job
+            - image: thoth-graph-sync-job
               name: graph-sync-job
               env:
               - name: THOTH_JANUSGRAPH_HOST
@@ -567,12 +566,6 @@ parameters:
   displayName: Sync observations
   required: true
   name: THOTH_SYNC_OBSERVATIONS
-  value: '0'
-
-- description: Verify TLS certificates of Kubernetes master on requests.
-  displayName: Verify Kubernetes TLS
-  required: true
-  name: KUBERNETES_VERIFY_TLS
   value: '0'
 
 - description: Storage bucket name to use for persisted files
