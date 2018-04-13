@@ -331,6 +331,8 @@ objects:
   spec:
     schedule: "@weekly"
     suspend: true
+    successfulJobsHistoryLimit: 4
+    failedJobsHistoryLimit: 1
     jobTemplate:
       spec:
         template:
@@ -338,7 +340,7 @@ objects:
             serviceAccountName: analyzer
             containers:
             - image: thoth-cleanup-job
-              name: cleanup-job
+              name: cleanup-cronjob
               env:
                - name: KUBERNETES_VERIFY_TLS
                  value: "0"
@@ -373,13 +375,16 @@ objects:
   spec:
     schedule: "@daily"
     suspend: true
+    successfulJobsHistoryLimit: 5
+    failedJobsHistoryLimit: 1
+    concurrencyPolicy: Forbid
     jobTemplate:
       spec:
         template:
           spec:
             containers:
             - image: thoth-graph-sync-job
-              name: graph-sync-job
+              name: graph-sync-cronjob
               env:
               - name: THOTH_JANUSGRAPH_HOST
                 value: janusgraph
