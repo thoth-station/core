@@ -386,6 +386,11 @@ objects:
             - image: thoth-graph-sync-job
               name: graph-sync-cronjob
               env:
+              - name: THOTH_DEPLOYMENT_NAME
+                valueFrom:
+                  configMapKeyRef:
+                    key: storage-bucket-name
+                    name: thoth
               - name: THOTH_JANUSGRAPH_HOST
                 value: janusgraph
               - name: THOTH_JANUSGRAPH_PORT
