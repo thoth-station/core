@@ -439,7 +439,7 @@ objects:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: python
+    name: python-36-centos7
     namespace: ${THOTH_FRONTEND_NAMESPACE}
     annotations:
       openshift.io/display-name: Python
