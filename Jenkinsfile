@@ -5,7 +5,7 @@ CI_NAMESPACE= env.CI_NAMESPACE ?: 'ai-coe'
 CI_TEST_NAMESPACE = env.CI_THOTH_TEST_NAMESPACE ?: 'ai-coe'
 
 // Defaults for SCM operations
-env.ghprbGhRepository = env.ghprbGhRepository ?: 'goern/thoth-core'
+env.ghprbGhRepository = env.ghprbGhRepository ?: 'thoth-station/core'
 env.ghprbActualCommit = env.ghprbActualCommit ?: 'master'
 
 // If this PR does not include an image change, then use this tag
