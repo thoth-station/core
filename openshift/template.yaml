@@ -497,7 +497,7 @@ objects:
       sourceStrategy:
         from:
           kind: ImageStreamTag
-          name: python:latest
+          name: python-36-centos7:latest
           namespace: ${THOTH_FRONTEND_NAMESPACE}
       type: Source
     triggers:
