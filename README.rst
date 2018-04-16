@@ -21,7 +21,7 @@ Installation
 .. code-block:: console
 
  $ git clone https://github.com/thoth-station/core
- $ cd thoth-core
+ $ cd core
  $ # review parameters
  $ vim playbooks/provision.yaml
  $ ansible-playbook playbooks/provision.yaml
