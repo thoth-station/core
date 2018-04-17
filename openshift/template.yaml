@@ -122,7 +122,7 @@ objects:
           - name: THOTH_RESULT_API_HOSTNAME
             value: thoth-result-api
           - name: THOTH_RESULT_API_URL
-            value: http://thoth-result-api
+            value: http://result-api
           - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
             valueFrom:
               configMapKeyRef:
