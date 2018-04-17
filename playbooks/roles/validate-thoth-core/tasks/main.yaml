@@ -22,7 +22,6 @@
   - name: "checking for Thoth User API resources"
     command: "oc get {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
     with_items:
-      - "imagestreams/python"
       - "imagestreams/user-api"
       - "buildconfigs/user-api"
       - "svc/user-api"
@@ -30,6 +29,11 @@
 
   - name: "checking for Thoth frontend CronJobs"
     command: "oc get cronjob cleanup-job --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
+
+  - name: "checking for required ImageStreams"
+    command: "oc get {{ item }} --namespace {{ THOTH_BACKEND_NAMESPACE }}"
+    with_items:
+      - "imagestreams/python-36-centos7"  
 
   - name: "checking for Thoth Result API resources"
     command: "oc get {{ item }} --namespace {{ THOTH_MIDDLEEND_NAMESPACE }}"
