@@ -57,22 +57,6 @@ objects:
     selector:
       service: user-api
 
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      service: result-api
-      app: thoth-core
-    name: result-api
-    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-  spec:
-    ports:
-    - port: 80
-      protocol: TCP
-      targetPort: 8080
-    selector:
-      service: result-api
-
 #
 # Routes
 - kind: Route
@@ -224,99 +208,6 @@ objects:
           kind: ImageStreamTag
           name: 'user-api:latest'
 
-- apiVersion: v1
-  kind: DeploymentConfig
-  metadata:
-    labels:
-      service: result-api
-      app: thoth-core
-    name: result-api
-    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-  spec:
-    replicas: 1
-    selector:
-      service: result-api
-    template:
-      metadata:
-        labels:
-          service: result-api
-      spec:
-        containers:
-        - name: result-api
-          env:
-          - name: THOTH_DEPLOYMENT_NAME
-            valueFrom:
-              configMapKeyRef:
-                key: storage-bucket-name
-                name: thoth
-          - name: THOTH_PERSISTENT_VOLUME_PATH
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-results-path
-                name: thoth
-          - name: THOTH_CEPH_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-host
-                name: thoth
-          - name: THOTH_CEPH_BUCKET
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-bucket-name
-                name: thoth
-          - name: THOTH_CEPH_BUCKET_PREFIX
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-bucket-prefix
-                name: thoth
-          - name: THOTH_CEPH_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: ceph-key-id
-          - name: THOTH_CEPH_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: ceph-secret-key
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "125m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-          readinessProbe:
-            httpGet:
-              path: '/readiness'
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            timeoutSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: '/liveness'
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 5
-            periodSeconds: 60
-            timeoutSeconds: 10
-    test: false
-    triggers:
-    - type: ConfigChange
-    - type: ImageChange
-      imageChangeParams:
-        automatic: true
-        containerNames:
-          - result-api
-        from:
-          kind: ImageStreamTag
-          name: 'result-api:latest'
-
 #
 # Cron jobs
 - apiVersion: batch/v2alpha1
@@ -438,7 +329,7 @@ objects:
   kind: ImageStream
   metadata:
     name: python-36-centos7
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    namespace: ${THOTH_BACKEND_NAMESPACE}
     annotations:
       openshift.io/display-name: Python
   spec:
@@ -457,55 +348,10 @@ objects:
   metadata:
     labels:
       app: thoth-core
-    name: result-api
-    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-  spec:
-    name: latest
-
-- apiVersion: v1
-  kind: ImageStream
-  metadata:
-    labels:
-      app: thoth-core
     name: user-api
     namespace: ${THOTH_FRONTEND_NAMESPACE}
   spec:
     name: latest
-
-#
-# Build configs
-- apiVersion: v1
-  kind: BuildConfig
-  metadata:
-    name: result-api
-    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
-    labels:
-      app: thoth-core
-  spec:
-    output:
-      to:
-        kind: ImageStreamTag
-        name: result-api:latest
-    source:
-      type: Git
-      git:
-        uri: ${THOTH_RESULT_API_GIT_URL}
-      secrets: []
-    strategy:
-      sourceStrategy:
-        from:
-          kind: ImageStreamTag
-          name: python-36-centos7:latest
-          namespace: ${THOTH_FRONTEND_NAMESPACE}
-      type: Source
-    triggers:
-    - github:
-        secret: ${THOTH_RESULT_API_GITHUB_SECRET}
-      type: GitHub
-    - type: ConfigChange
-    - imageChange: {}
-      type: ImageChange
-
 
 parameters:
 - description: A hostname where Thoth's Analyzer API should be exposed (will be auto-generated if empty).
@@ -527,31 +373,6 @@ parameters:
   displayName: Thoth Backend Namespace
   required: true
   name: THOTH_BACKEND_NAMESPACE
-
-- description: Git repository for Thoth's Result API
-  displayName: Thoth result-api Git
-  required: true
-  name: THOTH_RESULT_API_GIT_URL
-  value: 'https://github.com/fridex/thoth-result-api'
-
-- description: Git repository for Thoth's Analyzer API
-  displayName: Thoth analyzer-api Git
-  required: true
-  name: THOTH_USER_API_GIT_URL
-  value: 'https://github.com/fridex/thoth-user-api'
-
-- description: A secret for build user-facing API triggered by GitHub
-  displayName: GitHub Webhook secret for user-facing API
-  required: true
-  # see: https://docs.openshift.com/container-platform/3.6/dev_guide/builds/triggering_builds.html#github-webhooks
-  name: THOTH_USER_API_GITHUB_SECRET
-  value: 'secret101'
-
-- description: A secret for build result API triggered by GitHub
-  displayName: GitHub Webhook secret for result API
-  required: true
-  name: THOTH_RESULT_API_GITHUB_SECRET
-  value: 'secret101'
 
 - description: Time before analyzer pod gets removed from etcd.
   displayName: Thoth analyzer cleanup time

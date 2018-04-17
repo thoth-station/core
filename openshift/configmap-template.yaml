@@ -35,8 +35,8 @@ objects:
     ceph-bucket-name: ${THOTH_CEPH_BUCKET}
     ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
     ceph-host: ${THOTH_CEPH_HOST}
-    user-api-service-port: '8080'
     ceph-results-path: /results
+    user-api-service-port: '8080'
     analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
     sync-observations: ${THOTH_SYNC_OBSERVATIONS}
     debug-cleanup: ${THOTH_CLEANUP_DEBUG}
