@@ -149,7 +149,7 @@ pipeline {
 
                 pipelineUtils.sendIRCNotification("${IRC_NICK}", 
                     IRC_CHANNEL, 
-                    "${JOB_NAME} ${prMsg} #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}")
+                    "${JOB_NAME} #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}")
             }
         }
         success {
