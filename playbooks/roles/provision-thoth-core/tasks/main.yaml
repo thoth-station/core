@@ -24,6 +24,14 @@
     command: oc replace --namespace "{{ THOTH_BACKEND_NAMESPACE  }}" --filename ../openshift/template.yaml
     when: template_rc is failed
 
+  - name: create Thoth User API templates
+    command: "oc create --namespace {{ THOTH_BACKEND_NAMESPACE }} --filename {{ item }}"
+    register: template_rc
+    ignore_errors: true
+    with_items:
+      - "https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/deployment-template.yaml"
+      - "https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/buildConfig-template.yaml"
+
   - name: create Thoth Result API templates
     command: "oc create --namespace {{ THOTH_BACKEND_NAMESPACE }} --filename {{ item }}"
     register: template_rc

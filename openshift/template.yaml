@@ -6,11 +6,11 @@ labels:
 metadata:
   name: thoth-core
   annotations:
-    description: This is Thoth Core - Analyzer and Results API and supporting components 
-    openshift.io/display-name: Thoth Core
-    version: 0.1.0
+    description: This is Thoth Core - common components 
+    openshift.io/display-name: "Thoth Core: common components"
+    version: 0.2.0
     tags: poc,thoth,ai-stacks
-    template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
 
@@ -39,174 +39,6 @@ objects:
     - kind: ServiceAccount
       name: analyzer
       namespace: ${THOTH_FRONTEND_NAMESPACE}
-#
-# Services
-- apiVersion: v1
-  kind: Service
-  metadata:
-    labels:
-      service: user-api
-      app: thoth-core
-    name: user-api
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-  spec:
-    ports:
-    - port: 80
-      protocol: TCP
-      targetPort: 8080
-    selector:
-      service: user-api
-
-#
-# Routes
-- kind: Route
-  apiVersion: v1
-  metadata:
-    name: user-api
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-    labels:
-      app: thoth-core
-  spec:
-    host: ${THOTH_USER_API_HOSTNAME}
-    to:
-      kind: Service
-      name: user-api
-
-#
-# Deployment configs
-- apiVersion: v1
-  kind: DeploymentConfig
-  metadata:
-    labels:
-      service: user-api
-      app: thoth-core
-    name: user-api
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-  spec:
-    replicas: 1
-    selector:
-      service: user-api
-    template:
-      metadata:
-        labels:
-          service: user-api
-      spec:
-        serviceAccountName: analyzer
-        containers:
-        - env:
-          - name: APP_SERVICE_PORT
-            valueFrom:
-              configMapKeyRef:
-                key: user-api-service-port
-                name: thoth
-          - name: KUBERNETES_API_URL
-            value: 'https://kubernetes.default.svc.cluster.local'
-          - name: KUBERNETES_VERIFY_TLS
-            value: "0"
-          - name: THOTH_RESULT_API_URL
-            value: http://result-api
-          - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
-            valueFrom:
-              configMapKeyRef:
-                key: middletier-pod-cpu-limit
-                name: thoth
-          - name: THOTH_MIDDLEEND_POD_MEMORY_LIMIT
-            valueFrom:
-              configMapKeyRef:
-                key: middletier-pod-memory-limit
-                name: thoth
-          - name: THOTH_MIDDLEEND_NAMESPACE
-            valueFrom:
-              configMapKeyRef:
-                key: middletier-namespace
-                name: thoth
-          - name: THOTH_BACKEND_NAMESPACE
-            valueFrom:
-              configMapKeyRef:
-                key: backend-namespace
-                name: thoth
-          - name: THOTH_DEPLOYMENT_NAME
-            valueFrom:
-              configMapKeyRef:
-                key: storage-bucket-name
-                name: thoth
-          - name: THOTH_CEPH_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-host
-                name: thoth
-          - name: THOTH_CEPH_BUCKET
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-bucket-name
-                name: thoth
-          - name: THOTH_CEPH_BUCKET_PREFIX
-            valueFrom:
-              configMapKeyRef:
-                key: ceph-bucket-prefix
-                name: thoth
-          - name: THOTH_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: thoth-secret
-          - name: THOTH_JANUSGRAPH_HOST
-            value: janusgraph
-          - name: THOTH_JANUSGRAPH_PORT
-            value: '80'
-          - name: THOTH_USER_API_APP_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: app-secret-key
-          - name: THOTH_CEPH_KEY_ID
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: ceph-key-id
-          - name: THOTH_CEPH_SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: thoth
-                key: ceph-secret-key
-          name: user-api
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "125m"
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-          readinessProbe:
-            httpGet:
-              path: '/readiness'
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            timeoutSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: '/liveness'
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 5
-            periodSeconds: 60
-            timeoutSeconds: 10
-    test: false
-    triggers:
-    - type: ConfigChange
-    - type: ImageChange
-      imageChangeParams:
-        automatic: true
-        containerNames:
-          - user-api
-        from:
-          kind: ImageStreamTag
-          name: 'user-api:latest'
 
 #
 # Cron jobs
@@ -343,22 +175,7 @@ objects:
           kind: DockerImage
           name: docker.io/centos/python-36-centos7:latest
 
-- apiVersion: v1
-  kind: ImageStream
-  metadata:
-    labels:
-      app: thoth-core
-    name: user-api
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-  spec:
-    name: latest
-
 parameters:
-- description: A hostname where Thoth's Analyzer API should be exposed (will be auto-generated if empty).
-  displayName: Thoth user API hostname
-  required: false
-  name: THOTH_USER_API_HOSTNAME
-
 - description: Name of the Thoth Frontend Namespace
   displayName: Thoth Frontend Namespace
   required: true
