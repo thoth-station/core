@@ -23,14 +23,6 @@ properties(
 )
 
 
-library(identifier: "ci-pipeline@master",
-        retriever: modernSCM([$class: 'GitSCMSource',
-                              remote: "https://github.com/CentOS-PaaS-SIG/ci-pipeline",
-                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
-                                       [$class: 'RefSpecsSCMSourceTrait',
-                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*']]]]])
-                            )
-
 pipeline {
     agent {
         kubernetes {
@@ -54,29 +46,8 @@ pipeline {
                 }
             }
         }
-        stage("Get Changelog") {
-            steps {
-                node('master') {
-                    script {
-                        env.changeLogStr = pipelineUtils.getChangeLogFromCurrentBuild()
-                        echo env.changeLogStr
-                    }
-                    writeFile file: 'changelog.txt', text: env.changeLogStr
-                    archiveArtifacts allowEmptyArchive: true, artifacts: 'changelog.txt'
-                }
-            }
-        }
     }
     post {
-        always {
-            script {
-                // junit 'reports/*.xml'
-
-                pipelineUtils.sendIRCNotification("${IRC_NICK}", 
-                    IRC_CHANNEL, 
-                    "${JOB_NAME} #${BUILD_NUMBER}: ${currentBuild.currentResult}: ${BUILD_URL}")
-            }
-        }
         success {
             echo "All Systems GO!"
         }
