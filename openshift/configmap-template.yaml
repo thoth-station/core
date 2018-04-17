@@ -103,4 +103,4 @@ parameters:
   description: Only insert packages that have been seen within the Graph database.
   name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
   required: true
-  value: 1
+  value: '1'
