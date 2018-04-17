@@ -119,8 +119,6 @@ objects:
             value: 'https://kubernetes.default.svc.cluster.local'
           - name: KUBERNETES_VERIFY_TLS
             value: "0"
-          - name: THOTH_RESULT_API_HOSTNAME
-            value: thoth-result-api
           - name: THOTH_RESULT_API_URL
             value: http://thoth-result-api
           - name: THOTH_MIDDLEEND_POD_CPU_LIMIT
@@ -514,11 +512,6 @@ parameters:
   displayName: Thoth user API hostname
   required: false
   name: THOTH_USER_API_HOSTNAME
-
-- description: A hostname where Thoth's Result API should be exposed (will be auto-generated if empty).
-  displayName: Thoth result API hostname
-  required: false
-  name: THOTH_RESULT_API_HOSTNAME
 
 - description: Name of the Thoth Frontend Namespace
   displayName: Thoth Frontend Namespace
