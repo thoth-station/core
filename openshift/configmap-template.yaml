@@ -8,7 +8,7 @@ metadata:
   annotations:
     description: This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API 
     openshift.io/display-name: Thoth Core Configmap
-    version: 0.1.0
+    version: 0.2.0
     tags: poc,thoth,ai-stacks
     template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
     template.openshift.io/long-description: This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
@@ -40,6 +40,7 @@ objects:
     analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
     sync-observations: ${THOTH_SYNC_OBSERVATIONS}
     debug-cleanup: ${THOTH_CLEANUP_DEBUG}
+    package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
 
 parameters:
 - description: Name of the Thoth Frontend Namespace
@@ -97,3 +98,9 @@ parameters:
   required: true
   value: thoth-test
   name: THOTH_DEPLOYMENT_NAME
+
+- displayName: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
+  description: Only insert packages that have been seen within the Graph database.
+  name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
+  required: true
+  value: 1
