@@ -104,3 +104,4 @@ ENV/
 
 openshift/conf.sh
 *.retry
+.vscode/
