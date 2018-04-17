@@ -2,7 +2,7 @@
 OPENSHIFT_SERVICE_ACCOUNT = 'jenkins'
 DOCKER_REPO_URL = 'docker-registry.default.svc.cluster.local:5000'
 CI_NAMESPACE= env.CI_PIPELINE_NAMESPACE ?: 'ai-coe'
-CI_TEST_NAMESPACE = env.CI_THOTH_TEST_NAMESPACE ?: env.CI_PIPELINE_NAMESPACE
+CI_TEST_NAMESPACE = env.CI_THOTH_TEST_NAMESPACE ?: CI_NAMESPACE
 
 // If this PR does not include an image change, then use this tag
 STABLE_LABEL = "stable"
