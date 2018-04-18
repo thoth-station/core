@@ -85,7 +85,7 @@
     ignore_errors: true
     with_items:
       - "{{ THOTH_BACKEND_NAMESPACE  }}"
-      - "{{ THOTH_MIDDLEEND_NAMESPACE }}"
+      - "{{ THOTH_MIDDLETIER_NAMESPACE }}"
       - "{{ THOTH_FRONTEND_NAMESPACE }}"
 
   - name: create required configmaps
@@ -93,7 +93,7 @@
         --namespace "{{ item }}" \
         -p THOTH_DEPLOYMENT_NAME="{{ THOTH_DEPLOYMENT_NAME }}" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
-        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
         -p THOTH_CEPH_HOST="{{ THOTH_CEPH_HOST }}" \
         -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}"
@@ -107,35 +107,38 @@
     command: oc new-app --template="{{ THOTH_BACKEND_NAMESPACE  }}/thoth-core" \
         -p THOTH_DEPLOYMENT_NAME="{{ THOTH_DEPLOYMENT_NAME }}" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
-        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}"
 
   - name: deploy Thoth User API
-    command: oc new-app --template="{{ THOTH_BACKEND_NAMESPACE  }}/thoth-user-api-deployment" \
+    command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-user-api-deployment" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}"
 
   - name: deploy Thoth Results API
     command: oc new-app --template="{{ THOTH_BACKEND_NAMESPACE  }}/thoth-result-api-deployment" \
-        -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLEEND_NAMESPACE }}"
+        -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}"
 
   - name: create Thoth Package Releases CronJob
     command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-package-releases-cronjob"
 
+  - name: deploy Thoth User BuildConfig
+    command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-user-api-buildconfig"
+
   - name: create Thoth Package Releases BuildConfig
-    command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-package-releases-cronjob"
+    command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-package-releases-buildconfig"
 
   - name: create JanusGraph Database Template
-    command: oc create --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+    command: oc create --namespace "{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
     register: janusgraph_template_rc
     ignore_errors: true
 
   - name: replace existing JanusGraph template
-    command: oc replace --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+    command: oc replace --namespace "{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
     when: template_rc is failed
     
   - name: deploy JanusGraph Database
-    command: oc new-app --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \
+    command: oc new-app --namespace "{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         --template=janusgraph
 

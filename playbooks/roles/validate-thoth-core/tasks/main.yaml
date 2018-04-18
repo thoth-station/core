@@ -22,11 +22,12 @@
   - name: "checking for Thoth User API resources"
     command: "oc get {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
     with_items:
+      - "template/thoth-user-api-deployment"
       - "template/thoth-user-api-buildconfig"
-      - "imagestreams/user-api"
-      - "buildconfigs/user-api"
+      - "imagestream/user-api"
+      - "buildconfig/user-api"
       - "svc/user-api"
-      - "deploymentconfigs/user-api"
+      - "deploymentconfig/user-api"
 
   - name: "checking for Thoth frontend CronJobs"
     command: "oc get cronjob {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
