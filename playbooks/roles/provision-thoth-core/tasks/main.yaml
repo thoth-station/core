@@ -58,6 +58,24 @@
     command: oc replace --namespace "{{ THOTH_BACKEND_NAMESPACE  }}" --filename ../openshift/configmap-template.yaml
     when: template_rc is failed
 
+  - name: create Thoth Package Releases CronJob template
+    command: oc create --namespace "{{ THOTH_FRONTEND_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
+    register: template_rc
+    ignore_errors: true
+
+  - name: replace existing Thoth Package Releases CronJob template
+    command: oc replace --namespace "{{ THOTH_FRONTEND_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
+    when: template_rc is failed
+
+  - name: create Thoth Package Releases BuildConfig template
+    command: oc create --namespace "{{ THOTH_FRONTEND_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
+    register: template_rc
+    ignore_errors: true
+
+  - name: replace existing Thoth Package Releases BuildConfig template
+    command: oc replace --namespace "{{ THOTH_FRONTEND_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
+    when: template_rc is failed
+
   - name: create required secrets
     command: oc new-app --namespace {{ item }} --template="{{ THOTH_BACKEND_NAMESPACE  }}/thoth-core-secret" \
         --namespace "{{ item }}" \
@@ -92,9 +110,19 @@
         -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLEEND_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}"
 
+  - name: deploy Thoth User API
+    command: oc new-app --template="{{ THOTH_BACKEND_NAMESPACE  }}/thoth-user-api-deployment" \
+        -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}"
+
   - name: deploy Thoth Results API
     command: oc new-app --template="{{ THOTH_BACKEND_NAMESPACE  }}/thoth-result-api-deployment" \
         -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLEEND_NAMESPACE }}"
+
+  - name: create Thoth Package Releases CronJob
+    command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-package-releases-cronjob"
+
+  - name: create Thoth Package Releases BuildConfig
+    command: oc new-app --template="{{ THOTH_FRONTEND_NAMESPACE  }}/thoth-package-releases-cronjob"
 
   - name: create JanusGraph Database Template
     command: oc create --namespace "{{ THOTH_MIDDLEEND_NAMESPACE }}" \

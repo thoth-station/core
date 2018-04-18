@@ -29,7 +29,10 @@
       - "deploymentconfigs/user-api"
 
   - name: "checking for Thoth frontend CronJobs"
-    command: "oc get cronjob cleanup-job --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
+    command: "oc get cronjob {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
+    with_items:
+      - "cleanup-job"
+      - "package-releases"
 
   - name: "checking for required ImageStreams"
     command: "oc get {{ item }} --namespace {{ THOTH_BACKEND_NAMESPACE }}"
