@@ -9,6 +9,7 @@
     token: "{{ lookup('env','OCP_TOKEN') }}"
     THOTH_BACKEND_NAMESPACE: "goern-dev-thoth"
     THOTH_MIDDLEEND_NAMESPACE: "goern-dev-thoth"
+    THOTH_MIDDLETIER_NAMESPACE: "{{ THOTH_MIDDLEEND_NAMESPACE }}"
     THOTH_FRONTEND_NAMESPACE: "goern-dev-thoth"
     THOTH_DEPLOYMENT_NAME: "goern-dev-thoth"
     THOTH_CEPH_SECRET_KEY: "{{ lookup('env','THOTH_CEPH_SECRET_KEY') }}"

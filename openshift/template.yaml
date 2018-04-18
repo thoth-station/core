@@ -175,6 +175,24 @@ objects:
           kind: DockerImage
           name: docker.io/centos/python-36-centos7:latest
 
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: python-36-centos7
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    annotations:
+      openshift.io/display-name: Python
+  spec:
+    tags:
+      - name: "latest"
+        annotations:
+          iconClass: icon-python
+          supports: python:3.6,python
+          version: "latest"
+        from:
+          kind: DockerImage
+          name: docker.io/centos/python-36-centos7:latest
+
 parameters:
 - description: Name of the Thoth Frontend Namespace
   displayName: Thoth Frontend Namespace
