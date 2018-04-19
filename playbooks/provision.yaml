@@ -24,3 +24,5 @@
   roles:
   - role: provision-thoth-core
   - role: provision-thoth-frontend
+  - role: provision-thoth-middletier
+  - role: provision-thoth-backend

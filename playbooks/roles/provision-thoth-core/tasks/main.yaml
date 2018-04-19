@@ -46,36 +46,6 @@
   - name: create Thoth Package Releases BuildConfig template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
 
-  - name: create required secrets
-    command: oc new-app --namespace {{ item }} --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-secret" \
-        --namespace "{{ item }}" \
-        -p THOTH_SECRET="{{ THOTH_SECRET }}" \
-        -p THOTH_CEPH_KEY_ID="{{ THOTH_CEPH_KEY_ID }}" \
-        -p THOTH_CEPH_SECRET_KEY="{{ THOTH_CEPH_SECRET_KEY }}"
-    ignore_errors: true
-    with_items:
-      - "{{ THOTH_BACKEND_NAMESPACE  }}"
-      - "{{ THOTH_MIDDLETIER_NAMESPACE }}"
-
-  - name: create required configmaps
-    command: oc new-app --namespace {{ item }} --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-configmap" \
-        --namespace "{{ item }}" \
-        -p THOTH_DEPLOYMENT_NAME="{{ THOTH_DEPLOYMENT_NAME }}" \
-        -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
-        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
-        -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
-        -p THOTH_CEPH_HOST="{{ THOTH_CEPH_HOST }}" \
-        -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}"
-    ignore_errors: true
-    with_items:
-      - "{{ THOTH_BACKEND_NAMESPACE  }}"
-      - "{{ THOTH_MIDDLETIER_NAMESPACE }}"
-
   - name: create JanusGraph Database Template
-    command: oc create --namespace "{{ THOTH_MIDDLETIER_NAMESPACE }}" \
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
-    
-  - name: deploy JanusGraph Database
-    command: oc new-app --namespace "{{ THOTH_MIDDLETIER_NAMESPACE }}" \
-        --template=janusgraph
-    ignore_errors: true
