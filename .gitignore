@@ -105,3 +105,4 @@ ENV/
 openshift/conf.sh
 *.retry
 .vscode/
+scratch.txt

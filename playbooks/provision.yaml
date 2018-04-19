@@ -7,11 +7,12 @@
   vars:
     openshift_master_url: "{{ lookup('env','OCP_URL') }}"
     token: "{{ lookup('env','OCP_TOKEN') }}"
-    THOTH_BACKEND_NAMESPACE: "goern-dev-thoth"
-    THOTH_MIDDLEEND_NAMESPACE: "goern-dev-thoth"
+    THOTH_BACKEND_NAMESPACE: "goern-dev-thoth-6"
+    THOTH_MIDDLEEND_NAMESPACE: "goern-dev-thoth-6"
     THOTH_MIDDLETIER_NAMESPACE: "{{ THOTH_MIDDLEEND_NAMESPACE }}"
-    THOTH_FRONTEND_NAMESPACE: "goern-dev-thoth"
-    THOTH_DEPLOYMENT_NAME: "goern-dev-thoth"
+    THOTH_FRONTEND_NAMESPACE: "goern-dev-thoth-6"
+    THOTH_INFRA_NAMESPACE: "goern-dev-thoth-6"
+    THOTH_DEPLOYMENT_NAME: "goern-dev-thoth-6"
     THOTH_CEPH_SECRET_KEY: "{{ lookup('env','THOTH_CEPH_SECRET_KEY') }}"
     THOTH_CEPH_KEY_ID: "{{ lookup('env','THOTH_CEPH_KEY_ID') }}"
     THOTH_CEPH_HOST: "{{ lookup('env','THOTH_CEPH_HOST') }}"
@@ -22,4 +23,4 @@
   connection: local
   roles:
   - role: provision-thoth-core
-    playbook_debug: true
+  - role: provision-thoth-frontend

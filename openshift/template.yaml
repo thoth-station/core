@@ -60,7 +60,7 @@ objects:
           spec:
             serviceAccountName: analyzer
             containers:
-            - image: thoth-cleanup-job
+            - image: cleanup-cronjob
               name: cleanup-cronjob
               env:
                - name: KUBERNETES_VERIFY_TLS
@@ -104,7 +104,7 @@ objects:
         template:
           spec:
             containers:
-            - image: thoth-graph-sync-job
+            - image: graph-sync-cronjob
               name: graph-sync-cronjob
               env:
               - name: THOTH_DEPLOYMENT_NAME
