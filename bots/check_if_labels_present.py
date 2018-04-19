@@ -11,7 +11,7 @@ from thoth.common import init_logging
 
 
 __module__ = 'thoth.bots.check_if_labels_present'
-__version__ = '0.1.0-dev'
+__version__ = '0.2.0'
 
 DEBUG = bool(os.getenv('DEBUG', False))
 TEST = bool(os.getenv('TEST', False))
