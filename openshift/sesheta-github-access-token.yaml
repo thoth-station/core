@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: sesheta-github-access-token
+  thoth: 0.1.0
+metadata:
+  name: sesheta-github-access-token
+  annotations:
+    description: This is Sesheta Secret, this template is meant to be used by Jenkins, but could also be used by humans...
+    openshift.io/display-name: 'Sesheta: Bot Cohort Secret'
+    version: 0.1.0
+    tags: poc,thoth,sesheta,ai-stacks
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: This is Sesheta Secret, this template is meant to be used by Jenkins, but could also be used by humans...
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+objects:
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: github-access-tokens
+    labels:
+      app: sesheta
+  stringData:
+    sesheta-github-access-token: ${SESHETA_GITHUB_ACCESS_TOKEN}
+
+parameters:
+  - displayName: GitHub Access Token
+    description: GitHub Access Token with write access to all relevant organizations/repositories.
+    required: true
+    name: SESHETA_GITHUB_ACCESS_TOKEN
