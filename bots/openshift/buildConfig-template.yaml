@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: sesheta-buildconfig
+  thoth: 0.1.0
+metadata:
+  name: sesheta-buildconfig
+  annotations:
+    description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    openshift.io/display-name: 'Sesheta: Bot Cohort BuildConfig'
+    version: 0.1.0
+    tags: poc,thoth,sesheta,ai-stacks
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+objects:
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: sesheta
+    labels:
+      app: sesheta
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "sesheta:${IMAGE_STREAM_TAG}"
+    source:
+      type: Git
+      git:
+        uri: ${GITHUB_URL}
+        ref: ${GITHUB_REF}
+      contextDir: ${GITHUB_CONTEXT_DIR}
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: python-36-centos7:latest
+        env:
+          - name: ENABLE_PIPENV
+            value: '1'
+    triggers:
+    - type: ImageChange
+      imageChange: {}
+
+parameters:
+- description: Name of the github repository for Sesheta
+  displayName: Git Repository
+  required: true
+  name: GITHUB_URL
+  value: 'https://github.com/thoth-station/core'
+
+- description: Git reference to be used for Sesheta
+  displayName: Git Reference
+  required: true
+  name: GITHUB_REF
+  value: 'master'
+
+- description: Context directory
+  displayName: Context directory
+  required: true
+  name: GITHUB_CONTEXT_DIR
+  value: 'bots'
+
+- description: Tag of the output ImageStream the resulting container image should go to
+  displayName: ImageStream Tag
+  required: true
+  name: IMAGE_STREAM_TAG
+  value: 'latest'
