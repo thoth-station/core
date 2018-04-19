@@ -6,18 +6,23 @@
     command: "oc get project {{ item }}"
     with_items:
       - "{{ THOTH_BACKEND_NAMESPACE  }}"
-      - "{{ THOTH_MIDDLEEND_NAMESPACE }}"
+      - "{{ THOTH_MIDDLETIER_NAMESPACE }}"
       - "{{ THOTH_FRONTEND_NAMESPACE }}"
+      - "{{ THOTH_INFRA_NAMESPACE }}"
 
   - name: "checking for Thoth Secrets"
     command: "oc get secret thoth --namespace {{ item }}"
     with_items:
       - "{{ THOTH_BACKEND_NAMESPACE  }}"
-      - "{{ THOTH_MIDDLEEND_NAMESPACE }}"
+      - "{{ THOTH_MIDDLETIER_NAMESPACE }}"
       - "{{ THOTH_FRONTEND_NAMESPACE }}"
 
   - name: "checking for Thoth Config"
-    command: "oc get configmap thoth --namespace {{ THOTH_BACKEND_NAMESPACE }}"
+    command: "oc get configmap thoth --namespace {{ item }}"
+    with_items:
+      - "{{ THOTH_BACKEND_NAMESPACE  }}"
+      - "{{ THOTH_MIDDLETIER_NAMESPACE }}"
+      - "{{ THOTH_FRONTEND_NAMESPACE }}"
 
   - name: "checking for Thoth User API resources"
     command: "oc get {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
@@ -41,7 +46,7 @@
       - "imagestreams/python-36-centos7"  
 
   - name: "checking for Thoth Result API resources"
-    command: "oc get {{ item }} --namespace {{ THOTH_MIDDLEEND_NAMESPACE }}"
+    command: "oc get {{ item }} --namespace {{ THOTH_MIDDLETIER_NAMESPACE }}"
     with_items:
       - "template/thoth-result-api-buildconfig"
       - "imagestreams/result-api"
@@ -52,7 +57,7 @@
       - "deploymentconfigs/janusgraph"
 
   - name: "checking for Thoth Backend PersistentVolumeClaims"
-    command: "oc get pvc janusgraph-db --namespace {{ THOTH_MIDDLEEND_NAMESPACE }}"
+    command: "oc get pvc janusgraph-db --namespace {{ THOTH_MIDDLETIER_NAMESPACE }}"
 
   - name: "checking for Thoth Backend CronJobs"
     command: "oc get cronjob graph-sync-job --namespace {{ THOTH_BACKEND_NAMESPACE }}"
