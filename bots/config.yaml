@@ -1,0 +1,26 @@
+organization: thoth-station
+repositories:
+  - core
+  - common
+  - storages
+  - package-releases-job
+  - graph-refresh-job
+  - user-api
+  - result-api
+  - solver
+  - graph-sync-job
+  - cleanup-job
+  - package-extract
+  - adviser
+  - analyzer
+  - build-analysers
+  - dependency-monkey
+defaultLabels:
+  - name: 'approved'
+    color: '00cc00'
+  - name: 'do-not-merge'
+    color: 'cc0000'
+  - name: 'work-in-progress'
+    color: 'cc0000'
+  - name: 'needs-rebase'
+    color: 'cc0000'
