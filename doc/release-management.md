@@ -15,3 +15,7 @@ A Pull Request may carry the 'work-in-progress' or 'do-not-merge' label, this fo
 If the most current CI status of context 'continuous-integration/jenkins/pr-merge' is not 'success' the 'approved' label will be removed from the RP.
 
 A Pull Request carrying the 'approved' label will be merged.
+
+## Changelog
+
+We do it like https://keepachangelog.com/en/1.0.0/

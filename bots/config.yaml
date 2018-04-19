@@ -1,11 +1,11 @@
 organization: thoth-station
 repositories:
   - core
+  - user-api
   - common
   - storages
   - package-releases-job
   - graph-refresh-job
-  - user-api
   - result-api
   - solver
   - graph-sync-job

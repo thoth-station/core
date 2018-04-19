@@ -15,6 +15,7 @@ pyyaml = "*"
 [dev-packages]
 
 pylint = "*"
+rope = "*"
 
 
 [requires]
