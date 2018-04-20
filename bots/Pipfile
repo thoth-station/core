@@ -1,0 +1,25 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+pygithub = "*"
+thoth-common = "*"
+pyyaml = "*"
+daiquiri = "*"
+openshift = "*"
+
+
+[dev-packages]
+
+pylint = "*"
+rope = "*"
+
+
+[requires]
+
+python_version = "3.6"
