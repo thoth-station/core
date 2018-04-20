@@ -2,105 +2,57 @@
 
 import os
 import logging
-import yaml
+
+import daiquiri
+import sesheta
 
 from github import Github
 from github import UnknownObjectException
 
-from thoth.common import init_logging
+from sesheta.common import CICD_CONTEXT_ID, get_labels_from_pr, commit_was_successful_tested, init_github_interface
 
-
-__module__ = 'thoth.bots.approve'
-__version__ = '0.2.0-dev'
 
 DEBUG = bool(os.getenv('DEBUG', False))
-TEST = bool(os.getenv('TEST', False))
 SESHETA_GITHUB_ACCESS_TOKEN = os.getenv('SESHETA_GITHUB_ACCESS_TOKEN', None)
-CICD_CONTEXT_ID = 'continuous-integration/jenkins/pr-merge'
+
+daiquiri.setup(level=logging.INFO)
+logger = daiquiri.getLogger('approver')
 
 if DEBUG:
-    logging.basicConfig(level=logging.DEBUG)
+    logger.setLevel(level=logging.DEBUG)
 else:
-    logging.basicConfig(level=logging.INFO)
+    logger.setLevel(level=logging.INFO)
 
-init_logging()
-_LOGGER = logging.getLogger(__module__)  # pylint: disable=invalid-name
-
-_LOGGER.info(f"Version v{__version__}")
-
-if SESHETA_GITHUB_ACCESS_TOKEN is None:
-    _LOGGER.error(
-        'Github Token not provided via environment variable SESHETA_GITHUB_ACCESS_TOKEN')
-    exit(-1)
-
-github = Github(SESHETA_GITHUB_ACCESS_TOKEN)
-
-if TEST:
-    GITHUB_REPOSITORIES = ['bots-playground']
-
-    org = github.get_user('goern')
-else:
-    with open("config.yaml", 'r') as config:
-        RUNTIME_CONFIG = yaml.load(config)
-
-    GITHUB_ORGANIZATION = RUNTIME_CONFIG['organization']
-    GITHUB_REPOSITORIES = RUNTIME_CONFIG['repositories']
-
-    org = github.get_organization(GITHUB_ORGANIZATION)
-
-if org is None:
-    _LOGGER.error('Can not get a Github Organization or User...')
-    exit(-2)
-
-
-_LOGGER.info(
-    f"Hi, I'm {github.get_user().name}, and I'm fully operational now!")
-
-
-def commit_was_successful_tested(statuses):
-    latest_status_id = 0
-    rc = False
-
-    for status in statuses:
-        if status.context == CICD_CONTEXT_ID:
-            _LOGGER.debug(f"{commit} {status}")
-
-            if latest_status_id < status.id:
-                if status.state == 'success':
-                    rc = True
-
-    return rc
-
-
-def get_labels_from_pr(pr):
-    """extract a list of strings from github.PaginatedList.PaginatedList of github.Label.Label"""
-    labels = []
-
-    try:
-        _labels = pr.as_issue().get_labels()
-        for _label in _labels:
-            labels.append(_label.name)
-    except AttributeError as e:
-        _LOGGER.error(e)
-
-    return labels
+logger.info(f"Version v{sesheta.__version__}")
 
 
 if __name__ == '__main__':
+    if not SESHETA_GITHUB_ACCESS_TOKEN:
+        logger.error(
+            'Github Token not provided via environment variable SESHETA_GITHUB_ACCESS_TOKEN')
+        exit(-1)
+
+    github, org, GITHUB_ORGANIZATION, GITHUB_REPOSITORIES, DEFAULT_LABELS = init_github_interface(
+        SESHETA_GITHUB_ACCESS_TOKEN)
+
+    logger.info(
+        f"Hi, I'm {github.get_user().name}, and I'm fully operational now!")
+    logger.debug("... and I am running in DEBUG mode!")
+
     for _repo in GITHUB_REPOSITORIES:
-        _LOGGER.info(
-            f"checking '{org.login}/{_repo}' for Pull Requests that could be 'approved'")
+        logger.info(
+            f"checking Repository '{org.login}/{_repo}' for Pull Requests that could be 'approved'")
 
         repo = org.get_repo(_repo)
 
         for pr in repo.get_pulls(state='open'):
-            _LOGGER.info(pr)
+            logger.debug(pr)
 
             labels = get_labels_from_pr(pr)
 
             if pr.title.startswith('WIP') or pr.title.startswith('[WIP]') or ('work-in-progress' in labels):
-                _LOGGER.info(
-                    f"'{pr.title}' is not mergeable, it's work-in-progress")
+                logger.info(
+                    f"'{pr.title}' is not mergeable, it's work-in-progress!")
 
                 if 'work-in-progress' not in labels:
                     pr.as_issue().add_to_labels('work-in-progress')
@@ -108,13 +60,13 @@ if __name__ == '__main__':
                 continue
 
             if not pr.mergeable:
-                _LOGGER.info(f"'{pr.title}' is not mergeable!")
+                logger.info(f"'{pr.title}' is not mergeable, it needs rebase!")
 
                 pr.as_issue().add_to_labels('needs-rebase')
                 continue
 
             if pr.mergeable and ('needs-rebase' in labels):
-                _LOGGER.info(
+                logger.info(
                     f"'{pr.title}' is mergeable, removieng 'needs-rebase' label")
 
                 pr.as_issue().remove_from_labels('needs-rebase')
@@ -126,15 +78,15 @@ if __name__ == '__main__':
             for commit in commits:
                 statuses = commit.get_statuses()
 
-                if commit_was_successful_tested(statuses):
-                    _LOGGER.info(
+                if commit_was_successful_tested(commit, statuses):
+                    logger.debug(
                         f"commit '{commit}' was successfully tested by {CICD_CONTEXT_ID}")
 
                     maybe_approve = True
 
             if maybe_approve:
-                _LOGGER.info(
-                    f"We are going to approve Pull Request '{pr.title}'")
+                logger.info(
+                    f"I are going to approve Pull Request '{pr.title}'")
             else:
-                _LOGGER.info(
-                    f"Pull Request '{pr.title}' could not be approved")
+                logger.info(
+                    f"Pull Request '{pr.title}' could not be approved due to failed CI")

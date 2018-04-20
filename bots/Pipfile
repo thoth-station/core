@@ -10,6 +10,7 @@ name = "pypi"
 pygithub = "*"
 thoth-common = "*"
 pyyaml = "*"
+daiquiri = "*"
 
 
 [dev-packages]
