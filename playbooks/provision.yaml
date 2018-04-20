@@ -22,5 +22,8 @@
   gather_facts: false
   connection: local
   roles:
-  - role: provision-thoth-core
-  - role: provision-thoth-frontend
+  - role: thoth-core
+  - role: thoth-frontend
+  - role: thoth-middletier
+  - role: thoth-backend
+  - role: thoth-jenkins

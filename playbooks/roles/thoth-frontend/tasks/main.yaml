@@ -42,10 +42,6 @@
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-user-api-deployment" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}"
 
-  - name: deploy Thoth Results API
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-result-api-deployment" \
-        -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}"
-
   - name: create Thoth Package Releases CronJob
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-package-releases-cronjob"
 
