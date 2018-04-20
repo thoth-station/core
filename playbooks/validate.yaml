@@ -14,5 +14,5 @@
   gather_facts: false
   connection: local
   roles:
-  - role: validate-thoth-core
+  - role: validate-thoth
     playbook_debug: true
