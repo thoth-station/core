@@ -87,6 +87,8 @@ if __name__ == '__main__':
             if maybe_approve:
                 logger.info(
                     f"I are going to approve Pull Request '{pr.title}'")
+                pr.as_issue().add_to_labels('approved')
+
             else:
                 logger.info(
                     f"Pull Request '{pr.title}' could not be approved due to failed CI")
