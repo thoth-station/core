@@ -72,10 +72,10 @@ objects:
                     name: thoth
                - name: KUBERNETES_API_URL
                  value: 'https://kubernetes.default.svc.cluster.local'
-               - name: THOTH_CLEANUP_DEBUG
+               - name: THOTH_LOG_CLEANUP_JOB
                  valueFrom:
                   configMapKeyRef:
-                    key: debug-cleanup
+                    key: log-cleanup-job
                     name: thoth
               resources:
                 requests:
