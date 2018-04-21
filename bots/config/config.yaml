@@ -1,0 +1,3 @@
+prowjob_namespace: goern-dev-prow
+pod_namespace: goern-dev-prow
+log_level: info

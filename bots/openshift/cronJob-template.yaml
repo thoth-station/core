@@ -8,7 +8,7 @@ metadata:
   annotations:
     description: This is Sesheta CronJob, this template is meant to be used by Jenkins, but could also be used by humans...
     openshift.io/display-name: 'Sesheta: Bot Cohort'
-    version: 0.1.0
+    version: 0.2.0
     tags: poc,thoth,sesheta,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This is Sesheta CronJob, this template is meant to be used by Jenkins, but could also be used by humans...
@@ -23,7 +23,7 @@ objects:
       app: sesheta
   spec:
     schedule: '21 4 * * *'
-    suspend: false
+    suspend: true
     concurrencyPolicy: Forbid
     successfulJobsHistoryLimit: 2
     failedJobsHistoryLimit: 4
@@ -95,7 +95,7 @@ objects:
       app: sesheta
   spec:
     schedule: '*/5 * * * *'
-    suspend: false
+    suspend: true
     concurrencyPolicy: Forbid
     successfulJobsHistoryLimit: 1
     failedJobsHistoryLimit: 4

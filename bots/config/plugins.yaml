@@ -1,0 +1,176 @@
+# Plugin repository whitelist.
+# Keys: Full repo name: "org/repo".
+# Values: List of plugins to run against the repo.
+---
+approve:
+- repos:
+  - goern/bots-playground
+  - thoth-station/core
+  - thoth-station/user-api
+  - thoth-station/result-api
+  - thoth-station/common
+  - thoth-station/storages
+  - thoth-station/analyzer
+  - thoth-station/advicer
+  - thoth-station/solver
+  - thoth-station/package-extract
+  - thoth-station/cleanup-job
+  - thoth-station/graph-refresh-job
+  - thoth-station/package-releases-job
+  - thoth-station/graph-sync-job
+  - thoth-station/dependency-monkey
+  - thoth-station/build-analysers
+
+plugins:
+  goern/bots-playground:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  goern/bots-playground:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/core:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/user-api:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/result-api:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/common:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/storages:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/analyzer:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/advicer:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/solver:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/package-extract:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/cleanup-job:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/graph-refresh-job:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/package-releases-job:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/graph-sync-job:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/dependency-monkey:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+
+  thoth-station/build-analysers:
+    - approve
+    - assign
+    - label
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
