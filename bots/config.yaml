@@ -15,6 +15,7 @@ repositories:
   - analyzer
   - build-analysers
   - dependency-monkey
+  - notebooks
 defaultLabels:
   - name: 'approved'
     color: '00cc00'
