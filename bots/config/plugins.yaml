@@ -20,6 +20,7 @@ approve:
   - thoth-station/graph-sync-job
   - thoth-station/dependency-monkey
   - thoth-station/build-analysers
+  - thoth-station/notebooks
 
 plugins:
   goern/bots-playground:
@@ -29,14 +30,7 @@ plugins:
     - wip
     - hold
     - lifecycle
-
-  goern/bots-playground:
-    - approve
-    - assign
-    - lgtm
-    - wip
-    - hold
-    - lifecycle
+    - size
 
   thoth-station/core:
     - approve
@@ -45,6 +39,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/user-api:
     - approve
@@ -53,6 +48,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/result-api:
     - approve
@@ -61,6 +57,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/common:
     - approve
@@ -69,6 +66,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/storages:
     - approve
@@ -77,6 +75,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/analyzer:
     - approve
@@ -85,6 +84,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/advicer:
     - approve
@@ -93,6 +93,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/solver:
     - approve
@@ -101,6 +102,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/package-extract:
     - approve
@@ -109,6 +111,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/cleanup-job:
     - approve
@@ -117,6 +120,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/graph-refresh-job:
     - approve
@@ -125,6 +129,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/package-releases-job:
     - approve
@@ -133,6 +138,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/graph-sync-job:
     - approve
@@ -141,6 +147,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/dependency-monkey:
     - approve
@@ -149,6 +156,7 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
 
   thoth-station/build-analysers:
     - approve
@@ -157,3 +165,13 @@ plugins:
     - wip
     - hold
     - lifecycle
+    - size
+
+  thoth-station/notebooks:
+    - approve
+    - assign
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+    - size
