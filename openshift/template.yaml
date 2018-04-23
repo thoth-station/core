@@ -45,52 +45,6 @@ objects:
 - apiVersion: batch/v2alpha1
   kind: CronJob
   metadata:
-    name: cleanup-job
-    namespace: ${THOTH_FRONTEND_NAMESPACE}
-    labels:
-      app: thoth-core
-  spec:
-    schedule: "@weekly"
-    suspend: true
-    successfulJobsHistoryLimit: 4
-    failedJobsHistoryLimit: 1
-    jobTemplate:
-      spec:
-        template:
-          spec:
-            serviceAccountName: analyzer
-            containers:
-            - image: cleanup-cronjob
-              name: cleanup-cronjob
-              env:
-               - name: KUBERNETES_VERIFY_TLS
-                 value: "0"
-               - name: THOTH_MIDDLEEND_NAMESPACE
-                 value: ${THOTH_MIDDLEEND_NAMESPACE}
-               - name: THOTH_ANALYZER_CLEANUP_TIME
-                 valueFrom:
-                  configMapKeyRef:
-                    key: analyzer-cleanup-time
-                    name: thoth
-               - name: KUBERNETES_API_URL
-                 value: 'https://kubernetes.default.svc.cluster.local'
-               - name: THOTH_LOG_CLEANUP_JOB
-                 valueFrom:
-                  configMapKeyRef:
-                    key: log-cleanup-job
-                    name: thoth
-              resources:
-                requests:
-                  memory: "32Mi"
-                  cpu: "100m"
-                limits:
-                  memory: "128Mi"
-                  cpu: "250m"
-            restartPolicy: OnFailure
-
-- apiVersion: batch/v2alpha1
-  kind: CronJob
-  metadata:
     name: graph-sync-job
     namespace: ${THOTH_BACKEND_NAMESPACE}
     labels:
@@ -210,18 +164,6 @@ parameters:
   displayName: Thoth Backend Namespace
   required: true
   name: THOTH_BACKEND_NAMESPACE
-
-- description: Time before analyzer pod gets removed from etcd.
-  displayName: Thoth analyzer cleanup time
-  required: true
-  name: THOTH_ANALYZER_CLEANUP_TIME
-  value: '7d'
-
-- description: Be verbose in cluster cleanup job.
-  displayName: Debug cleanup job
-  required: true
-  name: THOTH_CLEANUP_DEBUG
-  value: '1'
 
 - description: Turn on or off automatic observation syncing to the graph database.
   displayName: Sync observations
