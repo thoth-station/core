@@ -42,13 +42,33 @@
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-user-api-deployment" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}"
 
-  - name: create Thoth Package Releases CronJob
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-package-releases-cronjob"
-
   - name: deploy Thoth User API BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-user-api-buildconfig"
     ignore_errors: true
 
+  - name: create Thoth Package Releases CronJob
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-package-releases-cronjob"
+
   - name: create Thoth Package Releases BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-package-releases-buildconfig"
 
+  - name: create Thoth Package Releases ImageStream
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-package-releases-imagestream"
+
+  - name: create Thoth Graph Sync CronJob
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-sync-job-cronjob
+
+  - name: create Thoth Graph Sync BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-sync-job-buildconfig"
+
+  - name: create Thoth Graph Sync ImageStream
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-sync-job-imagestream"
+
+  - name: create Thoth Graph Refresh CronJob
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-refresh-job-cronjob"
+
+  - name: create Thoth Graph Refresh BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-refresh-job-buildconfig"
+
+  - name: create Thoth Graph Refresh BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-refresh-job-imagestream"

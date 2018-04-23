@@ -40,12 +40,6 @@
   - name: create Thoth Core configmap template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/configmap-template.yaml
  
-  - name: create Thoth Package Releases CronJob template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
- 
-  - name: create Thoth Package Releases BuildConfig template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
-
   - name: create JanusGraph Database Template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
