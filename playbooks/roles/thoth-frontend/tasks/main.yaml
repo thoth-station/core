@@ -70,5 +70,5 @@
   - name: create Thoth Graph Refresh BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-refresh-job-buildconfig"
 
-  - name: create Thoth Graph Refresh BuildConfig
+  - name: create Thoth Graph Refresh ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-refresh-job-imagestream"
