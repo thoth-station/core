@@ -18,21 +18,6 @@
 
   - name: create Thoth Core template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/template.yaml
-    register: template_rc
-
-  - name: create Thoth User API templates
-    command: "oc create --namespace {{ THOTH_INFRA_NAMESPACE }} --filename {{ item }}"
-    register: template_rc
-    with_items:
-      - "https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/deployment-template.yaml"
-      - "https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/buildConfig-template.yaml"
-
-  - name: create Thoth Result API templates
-    command: "oc create --namespace {{ THOTH_INFRA_NAMESPACE }} --filename {{ item }}"
-    register: template_rc
-    with_items:
-      - "https://raw.githubusercontent.com/thoth-station/result-api/master/openshift/deployment-template.yaml"
-      - "https://raw.githubusercontent.com/thoth-station/result-api/master/openshift/buildConfig-template.yaml"
 
   - name: create Thoth Core secrets template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/secret-template.yaml
@@ -44,30 +29,32 @@
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
 
-  - name: create Thoth Package Releases CronJob template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
- 
-  - name: create Thoth Package Releases BuildConfig template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
+  - name: create Thoth Core Deployment templates
+    command: "oc create --namespace {{ THOTH_INFRA_NAMESPACE }} --filename {{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/deployment-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/result-api/master/openshift/deployment-template.yaml
 
-  - name: create Thoth Package Releases ImageStream template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/imageStream-template.yaml
+  - name: create Thoth Core CronJob templates
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/cronJob-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/cronJob-template.yaml
+      
+  - name: create Thoth Core BuildConfig templates
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}" 
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/buildConfig-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/result-api/master/openshift/buildConfig-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/buildConfig-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/buildConfig-template.yaml
 
-  - name: create Thoth Graph Refresh CronJob template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/cronJob-template.yaml
- 
-  - name: create Thoth Graph Refresh BuildConfig template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/buildConfig-template.yaml
-
-  - name: create Thoth Graph Refresh ImageStream template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/imageStream-template.yaml
-
-  - name: create Thoth Cleanup CronJob template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/cronJob-template.yaml
-
-  - name: create Thoth Cleanup BuildConfig template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/buildConfig-template.yaml
-
-  - name: create Thoth Cleanup ImageStream template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/imageStream-template.yaml
+  - name: create Thoth Core ImageStream templates
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}""
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/imageStream-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/imageStream-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/imageStream-template.yaml
 
