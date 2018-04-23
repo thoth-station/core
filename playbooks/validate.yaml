@@ -7,11 +7,11 @@
   vars:
     openshift_master_url: "{{ lookup('env','OCP_URL') }}"
     token: "{{ lookup('env','OCP_TOKEN') }}"
-    THOTH_BACKEND_NAMESPACE: "thoth-test-back"
-    THOTH_MIDDLEEND_NAMESPACE: "thoth-test-middle"
+    THOTH_BACKEND_NAMESPACE: "{{ lookup('env','USER') }}-thoth-dev"
+    THOTH_MIDDLEEND_NAMESPACE: "{{ lookup('env','USER') }}-thoth-dev"
     THOTH_MIDDLETIER_NAMESPACE: "{{ THOTH_MIDDLEEND_NAMESPACE }}"
-    THOTH_FRONTEND_NAMESPACE: "thoth-test-front"
-    THOTH_INFRA_NAMESPACE: "thoth-test-infra"
+    THOTH_FRONTEND_NAMESPACE: "{{ lookup('env','USER') }}-thoth-dev"
+    THOTH_INFRA_NAMESPACE: "{{ lookup('env','USER') }}-thoth-dev"
     
   gather_facts: false
   connection: local
