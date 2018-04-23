@@ -157,6 +157,47 @@ objects:
                   cpu: "500m"
             restartPolicy: Never
 
+- apiVersion: batch/v2alpha1
+  kind: CronJob
+  metadata:
+    name: graph-refresh-job
+    namespace: ${THOTH_FRONTEND_NAMESPACE}
+    labels:
+      app: thoth-core
+  spec:
+    schedule: "@daily"
+    suspend: true
+    successfulJobsHistoryLimit: 5
+    failedJobsHistoryLimit: 1
+    concurrencyPolicy: Forbid
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            containers:
+            - image: graph-refresh-cronjob
+              name: graph-refresh-cronjob
+              env:
+              - name: THOTH_JANUSGRAPH_HOST
+                value: janusgraph
+              - name: THOTH_JANUSGRAPH_PORT
+                value: '80'
+              - name: KUBERNETES_VERIFY_TLS
+                value: "0"
+              - name: KUBERNETES_API_URL
+                value: 'https://kubernetes.default.svc.cluster.local'
+                # TODO: we should merge this logic with result API
+              - name: THOTH_SOLVER_OUTPUT
+                value: 'http://result-api/api/v1/solver-result'
+              resources:
+                requests:
+                  memory: "128Mi"
+                  cpu: "125m"
+                limits:
+                  memory: "256Mi"
+                  cpu: "500m"
+            restartPolicy: Never
+
 #
 # Image streams
 - apiVersion: v1
