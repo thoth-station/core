@@ -46,8 +46,6 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
         stage("End-to-End Test") {
             steps {
                 sh 'pipenv install'
