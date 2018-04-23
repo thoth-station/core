@@ -5,7 +5,7 @@ CI_NAMESPACE= env.CI_PIPELINE_NAMESPACE ?: 'ai-coe'
 CI_TEST_NAMESPACE = env.CI_THOTH_TEST_NAMESPACE ?: CI_NAMESPACE
 
 // IRC properties
-IRC_NICK = "aicoe-bot"
+IRC_NICK = "sesheta"
 IRC_CHANNEL = "#thoth-station"
 
 
@@ -44,6 +44,16 @@ pipeline {
                 script {
                     echo 'some day this stage will deploy a whole Thoth Service'
                 }
+            }
+        }
+    }
+    stages {
+        stage("End-to-End Test") {
+            steps {
+                sh 'pipenv install'
+                sh 'pipenv run behave'
+
+                junit 'reports/*.xml'
             }
         }
     }
