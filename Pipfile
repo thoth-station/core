@@ -1,0 +1,19 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+pytest = "*"
+pylint = "*"
+"autopep8" = "*"
+behave = "*"
+pyhamcrest = "*"
+requests = "*"
+
+
+[dev-packages]
+
