@@ -65,6 +65,8 @@ objects:
               env:
                - name: KUBERNETES_VERIFY_TLS
                  value: "0"
+               - name: THOTH_MIDDLEEND_NAMESPACE
+                 value: ${THOTH_MIDDLEEND_NAMESPACE}
                - name: THOTH_ANALYZER_CLEANUP_TIME
                  valueFrom:
                   configMapKeyRef:
