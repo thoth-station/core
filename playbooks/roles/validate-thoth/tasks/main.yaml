@@ -27,8 +27,8 @@
   - name: "checking for Thoth User API resources"
     command: "oc get {{ item }} --namespace {{ THOTH_FRONTEND_NAMESPACE }}"
     with_items:
-      - "template/thoth-user-api-deployment"
-      - "template/thoth-user-api-buildconfig"
+      - "template/user-api-deployment"
+      - "template/user-api-buildconfig"
       - "imagestream/user-api"
       - "buildconfig/user-api"
       - "svc/user-api"
@@ -48,7 +48,7 @@
   - name: "checking for Thoth Result API resources"
     command: "oc get {{ item }} --namespace {{ THOTH_MIDDLETIER_NAMESPACE }}"
     with_items:
-      - "template/thoth-result-api-buildconfig"
+      - "template/result-api-buildconfig"
       - "imagestreams/result-api"
       - "buildconfigs/result-api"
       - "svc/result-api"

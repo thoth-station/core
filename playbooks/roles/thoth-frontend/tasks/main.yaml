@@ -38,11 +38,11 @@
     ignore_errors: true
 
   - name: deploy Thoth User API
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-user-api-deployment" \
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/user-api-deployment" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}"
 
   - name: deploy Thoth User API BuildConfig
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-user-api-buildconfig"
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/user-api-buildconfig"
     ignore_errors: true
 
   - name: create Thoth Package Releases CronJob

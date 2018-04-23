@@ -31,10 +31,10 @@
     ignore_errors: true
 
   - name: deploy Thoth Result API
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-result-api-deployment"
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/result-api-deployment"
 
   - name: deploy Thoth Result API BuildConfig
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-result-api-buildconfig"
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/result-api-buildconfig"
 
   - name: deploy JanusGraph Database
     command: "oc new-app --template={{ THOTH_INFRA_NAMESPACE }}/janusgraph"
