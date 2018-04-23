@@ -56,7 +56,7 @@
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-package-releases-imagestream"
 
   - name: create Thoth Graph Sync CronJob
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-sync-job-cronjob
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-sync-job-cronjob"
 
   - name: create Thoth Graph Sync BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-graph-sync-job-buildconfig"
