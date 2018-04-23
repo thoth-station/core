@@ -1,0 +1,262 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: sesheta-hook
+  thoth: 0.1.0
+metadata:
+  name: sesheta-hook
+  annotations:
+    description: This is Sesheta Hook, this template is meant to be used by Jenkins, but could also be used by humans...
+    openshift.io/display-name: 'Sesheta: Bot Cohort'
+    version: 0.1.0
+    tags: poc,thoth,sesheta,ai-stacks,prow
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: This is Sesheta Hook, this template is meant to be used by Jenkins, but could also be used by humans...
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+parameters:
+- name: SOURCE_URL
+  displayName: Source URL
+  description: Git source URL to use for building the image
+  value: https://github.com/openshift/test-infra.git
+- name: SOURCE_REF
+  displayName: Source reference
+  description: Git source ref to use for building the image
+  value: master
+
+objects:
+- apiVersion: v1
+  data:
+    hmac: MjllMjVmYWFkODM0NTYwZDdhYmQ1ZjQwOWZmYjFkZWFlZGM2N2JmMjlhYjQ4NzIyMmY4NmRlODUzMDcyMmUwYw==
+  kind: Secret
+  metadata:
+    name: hmac-token
+  type: Opaque
+- apiVersion: v1
+  data:
+    oauth: NTY5ZjY0MmNlOWMxMzUzNjNjMDRkMzI5ZTUyYmRlOTYxODBiMWMwOA==
+  kind: Secret
+  metadata:
+    name: oauth-token
+  type: Opaque
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      app: sesheta
+      component: hook
+    name: hook
+
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: hook-binaries
+    labels:
+      app: sesheta
+      component: hook
+  spec:
+    successfulBuildsHistoryLimit: 1
+    failedBuildsHistoryLimit: 2
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "hook:binaries"
+    source:
+      git:
+        uri: "${SOURCE_URL}"
+        ref: "${SOURCE_REF}"
+      type: Git
+      dockerfile: |
+        FROM docker.io/golang:1.10.0
+
+        COPY . /go/src/k8s.io/test-infra
+        RUN cd /go/src/k8s.io/test-infra && \
+            cd prow && \
+            CGO_ENABLED=0 go install ./cmd/... && \
+            rm -rf /go/src /go/pkg
+    strategy:
+      dockerStrategy:
+        from:
+          kind: DockerImage
+          name: "docker.io/golang:1.10.0"
+        imageOptimizationPolicy: SkipLayers
+    triggers:
+    - type: ConfigChange
+
+- kind: BuildConfig
+  apiVersion: v1
+  metadata:
+    name: hook
+    labels:
+      app: sesheta
+      component: hook
+  spec:
+    successfulBuildsHistoryLimit: 1
+    failedBuildsHistoryLimit: 2
+    output:
+      to:
+        kind: ImageStreamTag
+        name: "hook:latest"
+    source:
+      git:
+        uri: "${SOURCE_URL}"
+        ref: "${SOURCE_REF}"
+      images:
+      - from:
+          kind: ImageStreamTag
+          name: "hook:binaries"
+        paths:
+        - destinationDir: .
+          sourcePath: "/go/bin/hook"
+    strategy:
+      dockerStrategy:
+        imageOptimizationPolicy: SkipLayers
+        dockerfilePath: "prow/cmd/hook/Dockerfile"
+    triggers:
+    - imageChange:
+        from:
+          kind: ImageStreamTag
+          name: "hook:binaries"
+      type: ImageChange
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: "hook"
+    labels:
+      app: sesheta
+      component: hook
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8888"
+  spec:
+    selector:
+      app: prow
+      component: "hook"
+    ports:
+    - port: 8888
+    type: ClusterIP
+
+- kind: DeploymentConfig
+  apiVersion: apps.openshift.io/v1
+  metadata:
+    name: "hook"
+    labels:
+      app: prow
+      component: "hook"
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 2
+    template:
+      metadata:
+        labels:
+          app: prow
+          component: "hook"
+      spec:
+        serviceAccountName: "hook"
+        containers:
+        - name: "hook"
+          image: " "
+          args:
+          - --dry-run=false
+          ports:
+            - name: http
+              containerPort: 8888
+          volumeMounts:
+          - name: hmac
+            mountPath: /etc/webhook
+            readOnly: true
+          - name: oauth
+            mountPath: /etc/github
+            readOnly: true
+          - name: config
+            mountPath: /etc/config
+            readOnly: true
+          - name: plugins
+            mountPath: /etc/plugins
+            readOnly: true
+          - name: tmp
+            mountPath: /tmp
+        volumes:
+        - name: hmac
+          secret:
+            secretName: hmac-token
+        - name: oauth
+          secret:
+            secretName: oauth-token
+        - name: config
+          configMap:
+            name: config
+        - name: plugins
+          configMap:
+            name: plugins
+        - name: tmp
+          emptyDir: {}
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - "hook"
+        from:
+          kind: ImageStreamTag
+          name: "hook:latest"
+      type: ImageChange
+
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: "hook"
+  spec:
+    path: /hook
+    tls:
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+    to:
+      kind: Service
+      name: "hook"
+
+- kind: ServiceAccount
+  apiVersion: v1
+  metadata:
+    name: "hook"
+    labels:
+      app: sesheta
+      component: hook
+
+- kind: Role
+  apiVersion: rbac.authorization.k8s.io/v1beta1
+  metadata:
+    name: "hook"
+    labels:
+      app: sesheta
+      component: hook
+  rules:
+    - apiGroups:
+        - "prow.k8s.io"
+      resources:
+        - prowjobs
+      verbs:
+        - create
+    - apiGroups:
+        - ""
+      resources:
+        - configmaps
+      verbs:
+        - update
+
+- kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1beta1
+  metadata:
+    name: "hook"
+    labels:
+      app: sesheta
+      component: hook
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: "hook"
+  subjects:
+  - kind: ServiceAccount
+    name: "hook"

@@ -11,13 +11,11 @@ pygithub = "*"
 thoth-common = "*"
 pyyaml = "*"
 daiquiri = "*"
-openshift = "*"
 
 
 [dev-packages]
 
 pylint = "*"
-rope = "*"
 
 
 [requires]

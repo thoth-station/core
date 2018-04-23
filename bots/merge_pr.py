@@ -9,7 +9,7 @@ import sesheta
 from github import Github
 from github import UnknownObjectException
 
-from sesheta.common import CICD_CONTEXT_ID, get_labels_from_pr, commit_was_successful_tested, init_github_interface
+from sesheta.common import CICD_CONTEXT_ID, DO_NOT_MERGE_LABELS, get_labels_from_pr, commit_was_successful_tested, init_github_interface
 
 
 DEBUG = bool(os.getenv('DEBUG', False))
@@ -59,7 +59,7 @@ if __name__ == '__main__':
                     if label.name == 'approved':
                         merge_it = True
 
-                    if (label.name == 'do-not-merge') or (label.name == 'work-in-progress'):
+                    if label.name in DO_NOT_MERGE_LABELS:
                         merge_it = False
 
                 if merge_it:

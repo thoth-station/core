@@ -34,6 +34,13 @@ logger = daiquiri.getLogger(__name__)
 
 
 CICD_CONTEXT_ID = 'continuous-integration/jenkins/pr-merge'
+DO_NOT_MERGE_LABELS = ['do-not-merge',
+                       'work-in-progress',
+                       # defined at https://github.com/openshift/test-infra/blob/master/prow/plugins/wip/wip-label.go#L35
+                       'do-not-merge/work-in-progress'
+                       # efined at https://github.com/openshift/test-infra/blob/master/prow/plugins/hold/hold.go#L36
+                       'do-not-merge/hold'
+                       ]
 
 
 def init_github_interface(SESHETA_GITHUB_ACCESS_TOKEN):
