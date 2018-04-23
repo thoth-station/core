@@ -41,77 +41,6 @@ objects:
       namespace: ${THOTH_FRONTEND_NAMESPACE}
 
 #
-# Cron jobs
-- apiVersion: batch/v2alpha1
-  kind: CronJob
-  metadata:
-    name: graph-sync-job
-    namespace: ${THOTH_BACKEND_NAMESPACE}
-    labels:
-      app: thoth-core
-  spec:
-    schedule: "@daily"
-    suspend: true
-    successfulJobsHistoryLimit: 5
-    failedJobsHistoryLimit: 1
-    concurrencyPolicy: Forbid
-    jobTemplate:
-      spec:
-        template:
-          spec:
-            containers:
-            - image: graph-sync-cronjob
-              name: graph-sync-cronjob
-              env:
-              - name: THOTH_DEPLOYMENT_NAME
-                valueFrom:
-                  configMapKeyRef:
-                    key: storage-bucket-name
-                    name: thoth
-              - name: THOTH_JANUSGRAPH_HOST
-                value: janusgraph
-              - name: THOTH_JANUSGRAPH_PORT
-                value: '80'
-              - name: THOTH_SYNC_OBSERVATIONS
-                valueFrom:
-                  configMapKeyRef:
-                    key: sync-observations
-                    name: thoth
-              - name: THOTH_CEPH_HOST
-                valueFrom:
-                  configMapKeyRef:
-                    key: ceph-host
-                    name: thoth
-              - name: THOTH_CEPH_BUCKET
-                valueFrom:
-                  configMapKeyRef:
-                    key: ceph-bucket-name
-                    name: thoth
-              - name: THOTH_CEPH_BUCKET_PREFIX
-                valueFrom:
-                  configMapKeyRef:
-                    key: ceph-bucket-prefix
-                    name: thoth
-              - name: THOTH_CEPH_KEY_ID
-                valueFrom:
-                  secretKeyRef:
-                    name: thoth
-                    key: ceph-key-id
-              - name: THOTH_CEPH_SECRET_KEY
-                valueFrom:
-                  secretKeyRef:
-                    name: thoth
-                    key: ceph-secret-key
-              resources:
-                requests:
-                  memory: "128Mi"
-                  cpu: "125m"
-                limits:
-                  memory: "256Mi"
-                  cpu: "500m"
-            restartPolicy: Never
-
-#
 # Image streams
 - apiVersion: v1
   kind: ImageStream
@@ -164,15 +93,3 @@ parameters:
   displayName: Thoth Backend Namespace
   required: true
   name: THOTH_BACKEND_NAMESPACE
-
-- description: Turn on or off automatic observation syncing to the graph database.
-  displayName: Sync observations
-  required: true
-  name: THOTH_SYNC_OBSERVATIONS
-  value: '0'
-
-- description: Storage bucket name to use for persisted files
-  displayName: Thoth Storage bucket name
-  required: true
-  value: thoth-test
-  name: THOTH_DEPLOYMENT_NAME
