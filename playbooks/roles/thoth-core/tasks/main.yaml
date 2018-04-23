@@ -43,3 +43,31 @@
   - name: create JanusGraph Database Template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
+
+  - name: create Thoth Package Releases CronJob template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
+ 
+  - name: create Thoth Package Releases BuildConfig template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/buildConfig-template.yaml
+
+  - name: create Thoth Package Releases ImageStream template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/imageStream-template.yaml
+
+  - name: create Thoth Graph Refresh CronJob template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/cronJob-template.yaml
+ 
+  - name: create Thoth Graph Refresh BuildConfig template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/buildConfig-template.yaml
+
+  - name: create Thoth Graph Refresh ImageStream template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/imageStream-template.yaml
+
+  - name: create Thoth Cleanup CronJob template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/cronJob-template.yaml
+
+  - name: create Thoth Cleanup BuildConfig template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/buildConfig-template.yaml
+
+  - name: create Thoth Cleanup ImageStream template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/imageStream-template.yaml
+
