@@ -16,7 +16,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""Thoth: Core: End-to-End Tests: Result API feature tests."""
+"""Thoth: Core: End-to-End Tests: Result API feature test steps."""
 
 from http import HTTPStatus
 
