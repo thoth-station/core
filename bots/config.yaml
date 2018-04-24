@@ -16,6 +16,8 @@ repositories:
   - build-analysers
   - dependency-monkey
   - notebooks
+  - jupyter-notebook
+  - lab
 defaultLabels:
   - name: 'approved'
     color: '00cc00'
