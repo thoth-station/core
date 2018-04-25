@@ -18,6 +18,7 @@ repositories:
   - notebooks
   - jupyter-notebook
   - lab
+  - naming-service
 defaultLabels:
   - name: 'approved'
     color: '00cc00'
