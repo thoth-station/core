@@ -1,0 +1,21 @@
+---
+  - name: "make sure to use project {{ THOTH_INFRA_NAMESPACE }}"
+    command: "oc project {{ THOTH_INFRA_NAMESPACE }}"
+    register: project_exists
+    ignore_errors: true
+
+  - name: importing CentOS7 Python3.6 S2I container images from CentOS
+    command: "oc import-image registry.centos.org/centos/python-36-centos7 --confirm"
+    ignore_errors: true
+    register: cent_os_registry
+
+  - name: importing CentOS7 Python3.6 S2I container images from Docker
+    command: "oc import-image docker.io/centos/python-36-centos7 --confirm"
+    when: cent_os_registry is failed
+
+  - name: importing required Fedora ImageStreamTags from upstream Registries
+    command: "oc tag --namespace {{ THOTH_INFRA_NAMESPACE }} registry.fedoraproject.org/fedora:{{ item }} fedora:{{ item }} --confirm"
+    with_items:
+      - 26
+      - 27
+
