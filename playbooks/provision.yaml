@@ -23,6 +23,7 @@
   connection: local
   roles:
   - role: thoth-core
+  - role: thoth-core-imagestreams
   - role: thoth-frontend
   - role: thoth-middletier
   - role: thoth-backend
