@@ -28,6 +28,7 @@ approve:
   - thoth-station/notebooks
   - thoth-station/lab
   - thoth-station/naming-service
+  - thoth-station/misc
 plugins:
   goern/bots-playground:
     - approve
@@ -202,6 +203,15 @@ plugins:
     - size
     - heart
   thoth-station/naming-service:
+    - approve
+    - assign
+    - lgtm
+    - wip
+    - hold
+    - lifecycle
+    - size
+    - heart
+  thoth-station/misc:
     - approve
     - assign
     - lgtm
