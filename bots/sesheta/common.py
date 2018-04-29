@@ -82,7 +82,7 @@ def ensure_label_present(repo, name, color, current_labels, description=''):
             repo.create_issue(f"can't create '{name}' label")
             logger.info('issue created!')
     else:
-        logger.info(f"label '{name}' was present")
+        logger.debug(f"label '{name}' was present")
 
 
 def get_labels_from_pr(pr):

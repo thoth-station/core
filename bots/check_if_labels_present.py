@@ -40,13 +40,13 @@ if __name__ == '__main__':
     logger.debug("... and I am running in DEBUG mode!")
 
     for repo in GITHUB_REPOSITORIES:
-        logger.info(
+        logger.debug(
             f"checking if all required labels are present in repository {repo}")
 
         _repo = org.get_repo(repo)
         current_labels = _repo.get_labels()
 
         for label in DEFAULT_LABELS:
-            logger.info(f"checking for '{label['name']}'")
+            logger.debug(f"checking for '{label['name']}'")
             ensure_label_present(
                 _repo, label['name'], label['color'], current_labels)
