@@ -39,3 +39,8 @@ defaultLabels:
     color: '0052cc'
   - name: 'component/bots'
     color: '0052cc'
+  - name: 'component/logging'
+    color: '0052cc'
+  - name: 'component/monitoring'
+    color: '0052cc'
+
