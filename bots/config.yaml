@@ -43,4 +43,5 @@ defaultLabels:
     color: '0052cc'
   - name: 'component/monitoring'
     color: '0052cc'
-
+  - name: 'component/notebook'
+    color: '0052cc'
