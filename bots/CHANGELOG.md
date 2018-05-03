@@ -1,5 +1,10 @@
 # Changelog for the Sesheta's Bot Cohort
 
+## [0.4.0] - 2018-May-03 - goern
+
+### Added
+
+Added a Playbook (`reset_buildpipeline`) to reset the OpenShift parts of the buildpipeline of a component to the latest stable build. This is the master branch of the git repository. No build will be initialized (as the stable container image is present), but a redeployment is initalized.
 
 ## [0.2.0] - 2018-04-19 - goern
 

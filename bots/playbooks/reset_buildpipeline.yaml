@@ -1,0 +1,45 @@
+---
+- name: Playbook to reset a component's buildpipeline to master -> test
+    - openshift
+    - thoth
+    - srcops
+    - sourceops
+
+  hosts: localhost
+  vars:
+    openshift_master_url: "{{ lookup('env','OCP_URL') }}"
+    token: "{{ lookup('env','OCP_TOKEN') }}"
+    THOTH_INFRA_NAMESPACE: "{{ lookup('env','THOTH_INFRA_NAMESPACE') }}"
+
+    
+  gather_facts: false
+
+  tasks:
+    - name: "make sure to use project {{ THOTH_INFRA_NAMESPACE }}"
+      command: "oc project {{ THOTH_INFRA_NAMESPACE }}"
+      register: project_exists
+      ignore_errors: true
+      changed_when: False
+
+    - name: "get Git source uri of {{ BUILD_CONFIG_NAME }}"
+      command: oc get buildconfig "{{ BUILD_CONFIG_NAME }}" -o=go-template --template=\{\{.spec.source.git.uri\}\}
+      register: git_uri
+      changed_when: False
+
+    - name: "resetting BuildConfig {{ BUILD_CONFIG_NAME }} to output to :test tag"
+      command: "oc patch buildconfig {{ BUILD_CONFIG_NAME }} -p '{\"spec\":{\"output\":{\"to\":{\"kind\": \"ImageStreamTag\", \"name\": \"{{BUILD_CONFIG_NAME}}:test\"}}}}'"
+
+    - name: "resetting BuildConfig {{ BUILD_CONFIG_NAME }} Git reference to master"
+      command: "oc patch buildconfig {{ BUILD_CONFIG_NAME }} -p '{\"spec\":{\"source\":{\"git\":{\"ref\": \"master\", \"uri\": \"{{git_uri.stdout}}\"}}}}'"
+
+    - name: "resetting ImageStreamTag :test of {{ IMAGE_STREAM_NAME }} to :stable"
+      command: "oc tag {{ IMAGE_STREAM_NAME }}:stable {{ IMAGE_STREAM_NAME }}:test"
+
+    - name: "canceling current rollout of {{ COMPONENT_NAME }} (if any is running)"
+      command: "oc rollout cancel {{ COMPONENT_NAME }}"
+      ignore_errors: true
+
+    - name: "rolling out latest stable container image of {{ COMPONENT_NAME }}"
+      command: "oc rollout latest {{ COMPONENT_NAME }}"
+
+

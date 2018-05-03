@@ -2,20 +2,19 @@
 
 This is a set of OpenShift CronJobs that support the Thoth-Station Organization on GitHub as a cyborg team member.
 
-## Install
+In addition to that, there are playbooks helping with maintaining the source and parts of the build pipeline: SrcOps!
 
-Set the following environment variables
+## Reset Build Pipeline
 
- * K8S_AUTH_HOST
- * K8S_AUTH_VERIFY_SSL
- * K8S_AUTH_API_KEY
- * SESHETA_GITHUB_ACCESS_TOKEN
+To reset a component to a stable state use `playbooks/reset_buildpipeline.yaml`. It will 
 
-Use the Ansible playbook `deploy-sesheta-cronjobs` to create a project and deploy the CronJobs.
+* reset the BuildConfig to use the master branch and push to the :test tag
+* reset the ImageStreamTag :test to :stable
+* redeploy the component
+
+Example: `ansible-playbook reset_buildpipeline.yaml -e BUILD_CONFIG_NAME=user-api -e IMAGE_STREAM_NAME=user-api -e COMPONENT_NAME=user-api`
 
 # Known Issues
-
-The Ansible playbooks do not work
 
 You need to create secrets for hook manually:
 
