@@ -1,0 +1,29 @@
+---
+- name: Playbook to bootstrap Thoth Core Stage Environment
+    - openshift
+    - thoth
+
+  hosts: localhost
+  vars:
+    openshift_master_url: "https://upshift.engineering.redhat.com"
+    token: "{{ lookup('env','OCP_TOKEN') }}"
+    THOTH_BACKEND_NAMESPACE: thoth-stage-core
+    THOTH_MIDDLETIER_NAMESPACE: thoth-stage-core
+    THOTH_FRONTEND_NAMESPACE: thoth-stage-core
+    THOTH_INFRA_NAMESPACE: thoth-stage-core
+    THOTH_DEPLOYMENT_NAME: thoth-stage-core
+    THOTH_CEPH_SECRET_KEY: "{{ lookup('env','THOTH_CEPH_SECRET_KEY') }}"
+    THOTH_CEPH_KEY_ID: "{{ lookup('env','THOTH_CEPH_KEY_ID') }}"
+    THOTH_CEPH_HOST: "{{ lookup('env','THOTH_CEPH_HOST') }}"
+    THOTH_CEPH_BUCKET: "DH-DEV-DATA"
+    THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
+    
+  gather_facts: false
+  connection: local
+  roles:
+  - role: thoth-core
+  - role: thoth-core-imagestreams
+  - role: thoth-infra-buildconfigs
+  - role: thoth-frontend
+  - role: thoth-middletier
+  - role: thoth-backend
