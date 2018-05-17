@@ -1,7 +1,8 @@
 ---
   - name: login to OpenShift using provided token
     command: "oc login --insecure-skip-tls-verify=true --token {{ token }} {{ openshift_master_url }}"
-
+    changed_when: False
+    
   - name: "create Thoth Tiers"
     command: "oc new-project {{ item }}"
     ignore_errors: true

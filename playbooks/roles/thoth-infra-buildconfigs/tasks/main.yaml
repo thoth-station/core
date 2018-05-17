@@ -1,0 +1,24 @@
+---
+  - name: "make sure to use project {{ THOTH_FRONTEND_NAMESPACE }}"
+    command: "oc project {{ THOTH_FRONTEND_NAMESPACE }}"
+    register: project_exists
+    ignore_errors: true
+    changed_when: False
+
+  - name: create Thoth User API BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/user-api-buildconfig"
+
+  - name: deploy Thoth Result API BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/result-api-buildconfig"
+
+  - name: create Thoth Package Releases BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-releases-buildconfig"
+
+  - name: create Thoth Graph Sync BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/graph-sync-buildconfig"
+
+  - name: create Thoth Graph Refresh BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/graph-refresh-buildconfig"
+
+  - name: create Thoth Cleanup BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cleanup-buildconfig"

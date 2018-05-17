@@ -3,6 +3,7 @@
     command: "oc project {{ THOTH_BACKEND_NAMESPACE }}"
     register: project_exists
     ignore_errors: true
+    changed_when: False
 
   - name: create required secrets
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-secret" \
