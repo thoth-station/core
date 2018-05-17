@@ -15,7 +15,7 @@ approve:
   - thoth-station/common
   - thoth-station/storages
   - thoth-station/analyzer
-  - thoth-station/advicer
+  - thoth-station/adviser
   - thoth-station/solver
   - thoth-station/package-extract
   - thoth-station/cleanup-job
@@ -94,7 +94,7 @@ plugins:
     - lifecycle
     - size
     - heart
-  thoth-station/advicer:
+  thoth-station/adviser:
     - approve
     - assign
     - lgtm
