@@ -14,7 +14,7 @@
     when: cent_os_registry is failed
 
   - name: importing required Fedora ImageStreamTags from upstream Registries
-    command: "oc tag --namespace {{ THOTH_INFRA_NAMESPACE }} registry.fedoraproject.org/fedora:{{ item }} fedora:{{ item }} --confirm"
+    command: "oc tag --namespace {{ THOTH_INFRA_NAMESPACE }} registry.fedoraproject.org/fedora:{{ item }} fedora:{{ item }}"
     with_items:
       - 26
       - 27
