@@ -22,6 +22,9 @@
         -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}"
     ignore_errors: true
 
+  - name: create Thoth Result API buildconfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/result-api-buildconfig"
+
   - name: deploy Thoth Result API
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/result-api-deployment"
 
