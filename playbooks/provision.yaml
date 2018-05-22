@@ -27,4 +27,5 @@
   - role: thoth-frontend
   - role: thoth-middletier
   - role: thoth-backend
+  - role: thoth-infra-buildconfigs
   - role: thoth-jenkins
