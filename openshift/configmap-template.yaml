@@ -103,3 +103,15 @@ parameters:
   name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
   required: true
   value: '1'
+
+- displayName: RSYSLOG_HOST
+  description: A host to rsyslog for logging.
+  name: RSYSLOG_HOST
+  required: true
+  value: 'rsyslog.dh-stage-ingest.svc'
+
+- displayName: RSYSLOG_PORT
+  description: A port to rsyslog for logging.
+  name: RSYSLOG_PORT
+  required: true
+  value: '10514'
