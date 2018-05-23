@@ -41,6 +41,8 @@ objects:
     sync-observations: ${THOTH_SYNC_OBSERVATIONS}
     log-cleanup-job: ${THOTH_LOG_CLEANUP_JOB}
     package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
+    rsyslog-host: ${RSYSLOG_HOST}
+    rsyslog-port: ${RSYSLOG_PORT}
 
 parameters:
 - description: Name of the Thoth Frontend Namespace
