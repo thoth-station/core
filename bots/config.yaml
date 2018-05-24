@@ -20,6 +20,7 @@ repositories:
   - lab
   - naming-service
   - misc
+  - kebechet
 defaultLabels:
   - name: 'approved'
     color: '00cc00'
