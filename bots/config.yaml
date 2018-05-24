@@ -22,6 +22,8 @@ repositories:
   - misc
   - kebechet
 defaultLabels:
+  - name: 'bot'
+    color: '698b69'
   - name: 'approved'
     color: '00cc00'
   - name: 'do-not-merge'
