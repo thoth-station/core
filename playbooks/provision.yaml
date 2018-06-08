@@ -17,6 +17,7 @@
     THOTH_CEPH_HOST: "{{ lookup('env','THOTH_CEPH_HOST') }}"
     THOTH_CEPH_BUCKET: "DH-DEV-DATA"
     THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
+    THOTH_APP_SECRET_KEY: "{{ lookup('env','THOTH_APP_SECRET_KEY') }}"
     
   gather_facts: false
   connection: local
