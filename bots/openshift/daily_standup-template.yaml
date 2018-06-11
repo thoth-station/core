@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: sesheta-daily-standup
+  thoth: 0.1.0
+metadata:
+  name: sesheta-daily-standup
+  annotations:
+    description: This is Sesheta Scrum Helper, daily standup!
+    openshift.io/display-name: 'Sesheta: Bot Cohort'
+    version: 0.1.0
+    tags: poc,thoth,sesheta,ai-stacks,daily_standup
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: This is Sesheta Scrum Helper, daily standup!
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+objects:
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: sesheta-bot-scrum
+    labels:
+      app: sesheta
+  stringData:
+    endpoint-url: "${ENDPOINT_URL}"
+
+- kind: CronJob
+  apiVersion: batch/v2alpha1
+  metadata:
+    name: sesheta-scrum
+    labels:
+      app: sesheta
+      component: daily_standup
+  spec:
+    schedule: "59 9 * * 1"
+    suspend: true
+    concurrencyPolicy: Forbid
+    successfulJobsHistoryLimit: 1
+    failedJobsHistoryLimit: 2
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            containers:
+            - image: sesheta
+              name: sesheta
+              env:
+              - name: APP_FILE
+                value: daily_standup.py
+              - name: SESHETA_ENDPOINT_URL
+                valueFrom:
+                  secretKeyRef:
+                    key: sesheta-bot-scrum
+                    name: endpoint-url
+              - name: SESHETA_BOT_MESSAGE
+                value: ":tada: the daily standup is due in one minute... dial in to https://bluejeans.com/5618223545"
+              resources:
+                requests:
+                  memory: "32Mi"
+                  cpu: "100m"
+                limits:
+                  memory: "128Mi"
+                  cpu: "250m"
+            restartPolicy: Never
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      app: sesheta
+    name: sesheta
+  spec:
+    name: latest
+    lookupPolicy:
+      local: true
+
+parameters:
+  - displayName: Mattermost Endpoint URL
+    description: This is the Mattermost Incoming Webhook URL, incl. the secret access token.
+    required: true
+    name: ENDPOINT_URL
