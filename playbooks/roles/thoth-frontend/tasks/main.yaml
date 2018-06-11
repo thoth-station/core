@@ -16,7 +16,7 @@
     command: oc new-app --namespace {{ THOTH_FRONTEND_NAMESPACE }} --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-configmap" \
         -p THOTH_DEPLOYMENT_NAME="{{ THOTH_DEPLOYMENT_NAME }}" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
-        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
+        -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
         -p THOTH_CEPH_HOST="{{ THOTH_CEPH_HOST }}" \
         -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}"
@@ -25,7 +25,7 @@
   - name: deploy Thoth Core
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
-        -p THOTH_MIDDLEEND_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
+        -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}"
     ignore_errors: true
 

@@ -32,7 +32,7 @@ If you would like to deploy Thoth onto a running OpenShift cluster, feel free to
 The overall architecture
 ------------------------
 
-The whole deployment is divided into three namespaces (or two OpenShift projects) - ``thoth-frontend``, ``thoth-middleend`` and ``thoth-backend``.
+The whole deployment is divided into three namespaces (or two OpenShift projects) - ``thoth-frontend``, ``thoth-middletier`` and ``thoth-backend``.
 
 .. figure:: https://raw.githubusercontent.com/thoth-station/core/master/images/design.png
 
@@ -40,7 +40,7 @@ The whole deployment is divided into three namespaces (or two OpenShift projects
 Thoth-core frontend
 ###################
 
-The ``thoth-frontend`` is used as a management namespace. Services running in this namespace have assigned a service account for running and managing pods that are available inside the ``thoth-middleend`` part.
+The ``thoth-frontend`` is used as a management namespace. Services running in this namespace have assigned a service account for running and managing pods that are available inside the ``thoth-middletier`` part.
 
 A user can interact with the user-facing API (see `it's repo <https://github.com/thoth-station/user-api>`_ for API OpenAPI specification). There can be run a pod that runs a container from requested image. The user can adjust environment variables, resource requests and other properties when running a pod.
 
@@ -49,10 +49,10 @@ Besides raw pods, there can be run specialized pods called "analyzers". The goal
 A pod called `thoth-cleanup-job <https://github.com/thoth-station/cleanup-job>`_ is responsible for cleaning up pod objects from etcd. By default, it is run once a week as Kubernetes CronJob. As CronJobs are pure Kubernetes objects, the thoth-cleanup-job is pulled from registry specified on deployment (see the `OpenShift YAML template <https://github.com/thoth-station/core/blob/master/openshift/template.yaml>`_) rather than using s2i.
 
 
-Thoth-core middleend
+Thoth-core middletier
 ####################
 
-All pods requested to be run run inside the middleend namespace. There is run the result-storing API service that is responsible for syncing results of pods run in the middleend namespace to a database (as the endpoint accepts textual JSON as an input to the POST request, pods cannot directly interact with the database).
+All pods requested to be run run inside the middletier namespace. There is run the result-storing API service that is responsible for syncing results of pods run in the middletier namespace to a database (as the endpoint accepts textual JSON as an input to the POST request, pods cannot directly interact with the database).
 
 
 Thoth-core backend
