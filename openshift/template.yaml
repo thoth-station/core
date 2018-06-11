@@ -29,7 +29,7 @@ objects:
   kind: RoleBinding
   metadata:
     name: role-jobs-binding
-    namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+    namespace: ${THOTH_MIDDLETIER_NAMESPACE}
     labels:
       app: thoth-core
   roleRef:
@@ -49,7 +49,7 @@ parameters:
 - description: Name of the Thoth Middle Tier Namespace
   displayName: Thoth Middle Tier Namespace
   required: true
-  name: THOTH_MIDDLEEND_NAMESPACE
+  name: THOTH_MIDDLETIER_NAMESPACE
 
 - description: Name of the Thoth Backend Namespace
   displayName: Thoth Backend Namespace

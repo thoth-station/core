@@ -27,7 +27,7 @@ objects:
       app: thoth-core
   data:
     frontend-namespace: ${THOTH_FRONTEND_NAMESPACE}
-    middletier-namespace: ${THOTH_MIDDLEEND_NAMESPACE}
+    middletier-namespace: ${THOTH_MIDDLETIER_NAMESPACE}
     middletier-pod-cpu-limit: '0.5'
     middletier-pod-memory-limit: '0.5Gi'
     backend-namespace: ${THOTH_BACKEND_NAMESPACE}
@@ -53,7 +53,7 @@ parameters:
 - description: Name of the Thoth Middle Tier Namespace
   displayName: Thoth Middle Tier Namespace
   required: true
-  name: THOTH_MIDDLEEND_NAMESPACE
+  name: THOTH_MIDDLETIER_NAMESPACE
 
 - description: Name of the Thoth Backend Namespace
   displayName: Thoth Backend Namespace
