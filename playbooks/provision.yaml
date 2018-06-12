@@ -14,7 +14,7 @@
     THOTH_DEPLOYMENT_NAME: "{{ lookup('env','USER') }}-thoth-dev"
     THOTH_CEPH_SECRET_KEY: "{{ lookup('env','THOTH_CEPH_SECRET_KEY') }}"
     THOTH_CEPH_KEY_ID: "{{ lookup('env','THOTH_CEPH_KEY_ID') }}"
-    THOTH_CEPH_HOST: "{{ lookup('env','THOTH_CEPH_HOST') }}"
+    THOTH_S3_ENDPOINT_URL : "{{ lookup('env','THOTH_S3_ENDPOINT_URL ') }}"
     THOTH_CEPH_BUCKET: "DH-DEV-DATA"
     THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
     THOTH_APP_SECRET_KEY: "{{ lookup('env','THOTH_APP_SECRET_KEY') }}"
