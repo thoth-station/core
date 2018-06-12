@@ -61,7 +61,7 @@ if __name__ == '__main__':
         SESHETA_GITHUB_ACCESS_TOKEN)
 
     _LOGGER.info(
-        f"Hi, I'm {github.get_user().name}, and I'm fully operational now!")
+        f"Hi, I'm {github.get_user().name}, running {sesheta.__version__} of myself, and I'm fully operational now!")
     _LOGGER.debug("... and I am running in DEBUG mode!")
 
     for _repo in GITHUB_REPOSITORIES:
@@ -93,13 +93,15 @@ if __name__ == '__main__':
                     _LOGGER.info(
                         f"I am going to merge Pull Request '{pr.title}'... let's do it!")
 
-                    # merged = pr.merge()
+                    merged = pr.merge()
 
                     _METRIC_MERGED_PULLREQUESTS.inc()
 
                     _LOGGER.info(f"Pull Request '{pr.title}' {merged.message}")
 
     if SESHETA_PROMETHEUS_PUSH_GATEWAY:
+        _LOGGER.info(f"Pushing metrics to '{SESHETA_PROMETHEUS_PUSH_GATEWAY}'")
+
         try:
             push_to_gateway(SESHETA_PROMETHEUS_PUSH_GATEWAY, job='sesheta-merge-pr',
                             registry=prometheus_registry)

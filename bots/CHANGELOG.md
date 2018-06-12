@@ -1,5 +1,11 @@
 # Changelog for the Sesheta's Bot Cohort
 
+## [0.5.0] - 2018-Jun-12 - goern
+
+### Added
+
+**merge_pr.py** will now send some metrics on merged PR to Prometheus, `pushgateway.thoth-test-core.svc:9091` is used as a default value for the push gateway.
+
 ## [0.4.0] - 2018-May-03 - goern
 
 ### Added
