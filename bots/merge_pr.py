@@ -86,7 +86,7 @@ if __name__ == '__main__':
         SESHETA_GITHUB_ACCESS_TOKEN)
 
     _LOGGER.info(
-        f"Hi, I'm {github.get_user().name}, and I'm fully operational now!")
+        f"Hi, I'm {github.get_user().name}, running {sesheta.__version__} of myself, and I'm fully operational now!")
     _LOGGER.debug("... and I am running in DEBUG mode!")
 
     for _repo in GITHUB_REPOSITORIES:
