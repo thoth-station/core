@@ -1,24 +1,20 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 pygithub = "*"
 thoth-common = "*"
 pyyaml = "*"
 daiquiri = "*"
 requests = "*"
-
+prometheus-client = "*"
 
 [dev-packages]
-
-pylint = "*"
-
+coala = "*"
+pycodestylebear = "*"
+yamllintbear = "*"
 
 [requires]
-
 python_version = "3.6"
