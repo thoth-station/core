@@ -9,6 +9,8 @@ IRC_NICK = "aicoe-bot"
 IRC_CHANNEL = "#thoth-station"
 
 // Initialize
+STABLE_LABEL = "stable"
+tagMap = [:]
 tagMap['core-e2e-test'] = '0.1.0'
 
 tokens = "${env.JOB_NAME}".tokenize('/')
