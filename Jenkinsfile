@@ -8,6 +8,8 @@ CI_TEST_NAMESPACE = env.CI_THOTH_TEST_NAMESPACE ?: CI_NAMESPACE
 IRC_NICK = "aicoe-bot"
 IRC_CHANNEL = "#thoth-station"
 
+// Initialize
+tagMap['core-e2e-test'] = '0.1.0'
 
 tokens = "${env.JOB_NAME}".tokenize('/')
 org = tokens[tokens.size()-3]
@@ -120,7 +122,7 @@ pipeline {
                     steps {
                         echo "Building Thoth End-to-End Tests container image..."
                         script {
-                            tagMap['user-api'] = aIStacksPipelineUtils.buildImageWithTag(CI_TEST_NAMESPACE, "core-e2e-test", "${env.TAG}")
+                            tagMap['core-e2e-test'] = aIStacksPipelineUtils.buildImageWithTag(CI_TEST_NAMESPACE, "core-e2e-test", "${env.TAG}")
                         }
 
                     } // steps
