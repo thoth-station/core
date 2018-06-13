@@ -50,7 +50,7 @@ pipeline {
     agent {
         kubernetes {
             cloud 'openshift'
-            label 'thoth'
+            label 'thoth-test-e2e'
             serviceAccount OPENSHIFT_SERVICE_ACCOUNT
             containerTemplate {
                 name 'jnlp'
