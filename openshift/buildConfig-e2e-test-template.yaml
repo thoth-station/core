@@ -8,7 +8,7 @@ metadata:
   annotations:
     description: This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
     openshift.io/display-name: 'Thoth Core: End-to-End Test BuildConfig'
-    version: 0.1.0
+    version: 0.2.0
     tags: poc,thoth,end-to-end,e2e,test,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
@@ -23,6 +23,13 @@ objects:
       app: thoth-core
       component: test
   spec:
+    resources:
+      requests:
+        cpu: 1
+        memory: 512Mi
+      limits:
+        cpu: 2
+        memory: 1024Mi
     output:
       to:
         kind: ImageStreamTag

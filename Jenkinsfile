@@ -39,14 +39,72 @@ pipeline {
         }
     }
     stages {
-        stage("Dummy Stage") {
+        stage("Setup BuildConfig") {
             steps {
-                script {
-                    echo 'some day this stage will deploy a whole Thoth Service'
+                script {                    
+                    env.TAG = "test"
+                    env.REF = "master"
+
+                    // TODO check if this works with branches that are not included in a PR
+                    if (env.BRANCH_NAME != 'master') {
+                        env.TAG = env.BRANCH_NAME.replace("/", "-")
+
+                        if (env.Tag.startsWith("PR")) {
+                            env.REF = "refs/pull/${env.CHANGE_ID}/head"
+                        } else {
+                            env.REF = branch.replace("%2F", "/")
+                        }
+                    }
+
+                    openshift.withCluster() {
+                        openshift.withProject(CI_TEST_NAMESPACE) {
+                            if (!openshift.selector("template/core-e2e-test-buildconfig").exists()) {
+                                openshift.apply(readFile('openshift/buildConfig-e2e-test-template.yaml'))
+                                echo "BuildConfig Template created!"
+                            }
+
+                            /* Process the template and return the Map of the result */
+                            def model = openshift.process('core-e2e-test-buildconfig',
+                                    "-p", 
+                                    "IMAGE_STREAM_TAG=${env.TAG}",
+                                    "GITHUB_REF=${env.REF}")
+
+                            echo "BuildConfig Model from Template"
+                            echo "${model}"
+
+                            echo "Updating BuildConfig from model..."
+                            createdObjects = openshift.apply(model)
+                        }
+                    }
                 }
-            }
-        }
-    }
+            } // steps
+        } // stage
+        stage("Get Changelog") {
+            steps {
+                node('master') {
+                    script {
+                        env.changeLogStr = pipelineUtils.getChangeLogFromCurrentBuild()
+                        echo env.changeLogStr
+                    }
+                    writeFile file: 'changelog.txt', text: env.changeLogStr
+                    archiveArtifacts allowEmptyArchive: true, artifacts: 'changelog.txt'
+                } // node: master
+            } // steps
+        } // stage
+        stage("Build Container Images") {
+            parallel {
+                stage("End-to-End Tests") {
+                    steps {
+                        echo "Building Thoth End-to-End Tests container image..."
+                        script {
+                            tagMap['user-api'] = aIStacksPipelineUtils.buildImageWithTag(CI_TEST_NAMESPACE, "core-e2e-test", "${env.TAG}")
+                        }
+
+                    } // steps
+                } // stage
+            } // 
+        } // stage
+    } // stages
     post {
         success {
             echo "All Systems GO!"
