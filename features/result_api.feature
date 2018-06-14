@@ -28,4 +28,4 @@ so that I get a complete dump of the stack including observations and recommenda
         And I get one of the solver results
         Then the result should not be empty
         And the solver should be "thoth-solver"
-        And the solver version should be "1.0.1"
+        And the solver version should be "1.0.2"

@@ -13,6 +13,7 @@ Feature: Analyse Container Image
         Examples: Container Image and Analysers
             | a container image | analyser image               |
             | fedora:27         | fridex/thoth-package-extract |
+            | kaggle/python     | fridex/thoth-package-extract |
 
     @wip
     Scenario: Query for currently available Analyser Results
