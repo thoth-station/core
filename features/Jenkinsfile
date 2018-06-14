@@ -55,7 +55,7 @@ pipeline {
             containerTemplate {
                 name 'jnlp'
                 args '${computer.jnlpmac} ${computer.name}'
-                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/core-e2e-test:latest'
+                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/jenkins-aicoe-slave:latest'
                 ttyEnabled false
                 command ''
             }
