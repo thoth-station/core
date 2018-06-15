@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: core-e2e-test-cronjob
+  thoth: 0.1.0
+metadata:
+  name: core-e2e-test-cronjob
+  annotations:
+    description: This is Thoth Core End-to-End Test CronJob, this template is meant to be used by Jenkins, but could also be used by humans...
+    openshift.io/display-name: 'Thoth Core: End-to-End Test CronJob'
+    version: 0.1.0
+    tags: poc,thoth,end-to-end,e2e,test,ai-stacks
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+objects:
+- apiVersion: batch/v2alpha1
+  kind: CronJob
+  metadata:
+    labels:
+      run: core-e2e-test
+    name: core-e2e-test
+  spec:
+    concurrencyPolicy: Forbid
+    jobTemplate:
+      spec:
+        backoffLimit: 2
+        activeDeadlineSeconds: 100
+        template:
+          metadata:
+            labels:
+              run: core-e2e-test
+          spec:
+            containers:
+            - name: core-e2e-test
+              args:
+              - behave
+              image: core-e2e-test
+              imagePullPolicy: Always
+              resources: {}
+            restartPolicy: Never
+    schedule: 0/5 * * * ?
+    suspend: true

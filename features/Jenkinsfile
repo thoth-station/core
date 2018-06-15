@@ -55,7 +55,7 @@ pipeline {
             containerTemplate {
                 name 'jnlp'
                 args '${computer.jnlpmac} ${computer.name}'
-                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/core-e2e-test:latest'
+                image DOCKER_REPO_URL + '/'+ CI_NAMESPACE +'/jenkins-aicoe-slave-python36:stable'
                 ttyEnabled false
                 command ''
             }
@@ -69,7 +69,8 @@ pipeline {
 
                     sh '''
                     cd features/
-                    # behave
+                    pipenv install
+                    behave
                     '''
                 }
             } // steps
