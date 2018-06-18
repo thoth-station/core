@@ -37,7 +37,7 @@ class HTTPError(Exception):
 __version__ = '0.2.0'
 
 
-DEBUG = bool(os.getenv('DEBUG', False))
+DEBUG = bool(os.getenv('DEBUG', True))
 
 SERVER_URL = os.getenv('SESHETA_SERVER_URL', 'https://chat.openshift.io')
 TEAM_ID = os.getenv('SESHETA_TEAM_ID', 'aicoe')
