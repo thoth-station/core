@@ -55,12 +55,3 @@
       - https://raw.githubusercontent.com/thoth-station/graph-sync-job/master/openshift/buildConfig-template.yaml
       - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/buildConfig-template.yaml
 
-  - name: create Thoth Core ImageStream templates
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
-    with_items:
-      - https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/imageStream-template.yaml
-      - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/imageStream-template.yaml
-      - https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/imageStream-template.yaml
-      - https://raw.githubusercontent.com/thoth-station/graph-sync-job/master/openshift/imageStream-template.yaml
-      - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/imageStream-template.yaml
-
