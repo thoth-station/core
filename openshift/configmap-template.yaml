@@ -121,7 +121,7 @@ parameters:
   value: '10514'
   
 - displayName: PROMETHEUS_PUSHGATEWAY_HOST
-  description: A host to start the pushgateway server.
+  description: A host to push the prometheus metrics via pushgateway.
   name: PROMETHEUS_PUSHGATEWAY_HOST
   required: true
   value: 'pushgateway'
