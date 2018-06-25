@@ -121,13 +121,13 @@ parameters:
   value: '10514'
   
 - displayName: PROMETHEUS_PUSHGATEWAY_HOST
-  description: A host to push the prometheus metrics via pushgateway.
+  description: A host to push prometheus metrics via pushgateway.
   name: PROMETHEUS_PUSHGATEWAY_HOST
   required: true
   value: 'pushgateway'
 
 - displayName: PROMETHEUS_PUSHGATEWAY_PORT
-  description: A port to listen to the pushgateway.
+  description: A port to send prometheus metrics via pushgateway
   name: PROMETHEUS_PUSHGATEWAY_PORT
   required: true
   value: '9091'
