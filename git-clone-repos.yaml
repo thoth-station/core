@@ -1,0 +1,84 @@
+---
+- name: Playbook that setup's the repositories of an organisation for the User in local.
+
+  hosts: localhost
+  vars:
+    ORG: "{{ org | default('thoth-station') }}"
+    DIR_PATH: "{{ dir_path | default('thoth-station') }}"
+    REPOS: "{{ lookup('env','REPOS') }}"
+    TOKEN: "{{ lookup('env','TOKEN') }}"
+    USER: "{{ lookup('env','USER') }}"
+    
+  gather_facts: false
+  connection: local
+  tasks: 
+    - name: Fetching repositories from {{ ORG }}
+      uri:
+        url: https://api.github.com/orgs/{{ ORG }}/repos
+        return_content: yes
+      register: repo_list
+    
+    - set_fact:
+        REPOS: "{{ repo_list.json | map(attribute='name') | list }}"
+      when: REPOS == ""
+    
+    - name: Forking repositories from {{ ORG }}
+      uri:
+        url:  https://api.github.com/repos/{{ ORG }}/{{ item }}/forks?access_token={{ TOKEN }}
+        method: POST
+        return_content: yes
+        status_code: 202
+      no_log: true
+      ignore_errors: true     
+      with_items: "{{ REPOS }}"
+      when: TOKEN != ""
+    - debug:
+        msg:
+          - "Please pass your GITHUB OAUTH TOKEN for FORKING the Repositories"
+      when: TOKEN == ""
+      
+    - name: Cloning repositories from {{ ORG }}
+      git:
+        repo: "git@github.com:{{ ORG }}/{{ item }}.git"
+        version: master
+        dest: ~/{{ DIR_PATH }}/{{ item }}
+      no_log: true
+      with_items: "{{ REPOS }}"
+
+    - name: Setting up the Remote
+      shell: |
+        cd ~/{{ DIR_PATH }}/{{ item }}
+        git remote rename origin upstream
+        git remote add origin git@github.com:{{ USER }}/{{ item }}.git
+      ignore_errors: true
+      no_log: true
+      with_items: "{{ REPOS }}"
+      when: USER != ""
+      
+    - name: Setting up the pre-commit Git hook
+      synchronize:
+        src: "~/{{ DIR_PATH }}/package-extract/.git_init/hooks/pre-commit"
+        dest: "~/{{ DIR_PATH }}/{{ item }}/.git/hooks/"
+        mode: pull
+      no_log: true
+      with_items:
+        - "{{ REPOS }}"     
+    - name: Checking for the file setup.py 
+      stat:
+        path: ~/{{ DIR_PATH }}/{{ item }}/setup.py
+      ignore_errors: true
+      no_log: true
+      register: file_details
+      with_items:
+      - "{{ REPOS }}"
+    - name: Setting up the pre-push Git hook
+      synchronize:
+        src: "~/{{ DIR_PATH }}/package-extract/.git_init/hooks/pre-push"
+        dest: "~/{{ DIR_PATH }}/{{ item.1 }}/.git/hooks/"
+        mode: pull
+      ignore_errors: true
+      no_log: true
+      when:  item.0.stat.exists
+      with_together:
+        - "{{ file_details.results }}"
+        - "{{ REPOS }}"
