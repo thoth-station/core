@@ -43,6 +43,8 @@ objects:
     package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
     rsyslog-host: ${RSYSLOG_HOST}
     rsyslog-port: ${RSYSLOG_PORT}
+    prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
+    prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
 
 parameters:
 - description: Name of the Thoth Frontend Namespace
@@ -117,3 +119,15 @@ parameters:
   name: RSYSLOG_PORT
   required: true
   value: '10514'
+  
+- displayName: PROMETHEUS_PUSHGATEWAY_HOST
+  description: A host to push prometheus metrics via pushgateway.
+  name: PROMETHEUS_PUSHGATEWAY_HOST
+  required: true
+  value: 'pushgateway'
+
+- displayName: PROMETHEUS_PUSHGATEWAY_PORT
+  description: A port to send prometheus metrics via pushgateway
+  name: PROMETHEUS_PUSHGATEWAY_PORT
+  required: true
+  value: '9091'
