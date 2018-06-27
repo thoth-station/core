@@ -1,0 +1,16 @@
+- project:
+    check:
+      queue: core
+      jobs:
+        - linters:
+            vars:
+              linters:
+                - ansible-lint
+    gate:
+      queue: core
+      jobs:
+        - linters:
+            vars:
+              linters:
+                - ansible-lint
+
