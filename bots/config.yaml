@@ -20,7 +20,6 @@ repositories:
   - lab
   - naming-service
   - misc
-  - kebechet
 defaultLabels:
   - name: 'bot'
     color: '698b69'
