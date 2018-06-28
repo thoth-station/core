@@ -8,6 +8,7 @@ import sesheta
 
 from github import Github
 from github import UnknownObjectException
+from github.GithubException import GithubException
 
 from sesheta.common import CICD_CONTEXT_ID, DO_NOT_MERGE_LABELS, get_labels_from_pr, commit_was_successful_tested, init_github_interface
 
@@ -63,9 +64,12 @@ if __name__ == '__main__':
                         merge_it = False
 
                 if merge_it:
-                    logger.info(
-                        f"I am going to merge Pull Request '{pr.title}'... let's do it!")
+                    try:
+                        logger.info(
+                            f"I am going to merge Pull Request '{pr.title}'... let's do it!")
 
-                    merged = pr.merge()
+                        merged = pr.merge()
 
-                    logger.info(f"Pull Request '{pr.title}' {merged.message}")
+                        logger.info(f"Pull Request '{pr.title}' {merged.message}")
+                    except GithubException as e:
+                        logger.error(e)
