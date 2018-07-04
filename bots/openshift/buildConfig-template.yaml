@@ -8,7 +8,7 @@ metadata:
   annotations:
     description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
     openshift.io/display-name: 'Sesheta: Bot Cohort BuildConfig'
-    version: 0.5.0
+    version: 0.6.0
     tags: poc,thoth,sesheta,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
