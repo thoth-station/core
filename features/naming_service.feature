@@ -10,6 +10,6 @@ Feature: Naming Service
             | solver-26-job | docker-registry.default.svc:5000/thoth-test-core/solver-f26-job |
             | solver-27-job | docker-registry.default.svc:5000/thoth-test-core/solver-f27-job |
 
-# TODO query for all analysers
+# TODO query for all analyzers
 
-# TODO query for the default analyser
+# TODO query for the default analyzer
