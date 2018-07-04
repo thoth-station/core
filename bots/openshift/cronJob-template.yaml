@@ -8,7 +8,7 @@ metadata:
   annotations:
     description: This is Sesheta CronJob, this template is meant to be used by Jenkins, but could also be used by humans...
     openshift.io/display-name: 'Sesheta: Bot Cohort'
-    version: 0.6.0
+    version: 0.6.2
     tags: poc,thoth,sesheta,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This is Sesheta CronJob, this template is meant to be used by Jenkins, but could also be used by humans...
@@ -78,6 +78,11 @@ objects:
                   secretKeyRef:
                     key: sesheta-github-access-token
                     name: github-access-tokens
+              - name: PROMETHEUS_PUSH_GATEWAY
+                valueFrom:
+                  configMapKeyRef:
+                    name: sesheta
+                    key: prometheus-pushgateway-url
               - name: SESHETA_ENDPOINT_URL
                 valueFrom:
                   secretKeyRef:
