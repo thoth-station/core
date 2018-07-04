@@ -27,10 +27,10 @@ objects:
 - kind: CronJob
   apiVersion: batch/v2alpha1
   metadata:
-    name: sesheta-scrum
+    name: sesheta-scrum-1
     labels:
       app: sesheta
-      component: daily_standup
+      component: daily_standup_1
   spec:
     schedule: "59 9 * * 2"
     suspend: true
@@ -66,10 +66,10 @@ objects:
 - kind: CronJob
   apiVersion: batch/v2alpha1
   metadata:
-    name: sesheta-scrum
+    name: sesheta-scrum-2
     labels:
       app: sesheta
-      component: daily_standup
+      component: daily_standup_2
   spec:
     schedule: "59 8 * * 1,3,4,5"
     suspend: true

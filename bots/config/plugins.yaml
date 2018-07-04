@@ -13,7 +13,6 @@ approve:
   - thoth-station/user-api
   - thoth-station/result-api
   - thoth-station/common
-  - thoth-station/storages
   - thoth-station/analyzer
   - thoth-station/adviser
   - thoth-station/solver
@@ -29,7 +28,6 @@ approve:
   - thoth-station/lab
   - thoth-station/naming-service
   - thoth-station/misc
-  - thoth-station/kebechet
 plugins:
   goern/bots-playground:
     - approve
@@ -76,16 +74,6 @@ plugins:
     - hold
     - lifecycle
     - size
-
-  thoth-station/storages:
-    - approve
-    - assign
-    - lgtm
-    - wip
-    - hold
-    - lifecycle
-    - size
-    - heart
   thoth-station/analyzer:
     - approve
     - assign
@@ -213,15 +201,6 @@ plugins:
     - size
     - heart
   thoth-station/misc:
-    - approve
-    - assign
-    - lgtm
-    - wip
-    - hold
-    - lifecycle
-    - size
-    - heart
-  thoth-station/kebechet:
     - approve
     - assign
     - lgtm

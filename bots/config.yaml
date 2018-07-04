@@ -3,7 +3,6 @@ repositories:
   - core
   - user-api
   - common
-  - storages
   - package-releases-job
   - graph-refresh-job
   - result-api
