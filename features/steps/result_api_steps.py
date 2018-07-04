@@ -32,7 +32,7 @@ def step_impl(context):
     context.endpoint_url = 'http://user-api-thoth-test-core.cloud.upshift.engineering.redhat.com/api/v1'
 
 
-@when('I query the Result API for a list of analyser results')
+@when('I query the Result API for a list of analyzer results')
 def step_impl(context):
     r = requests.get(f'{context.endpoint_url}/analyze')
 
@@ -56,7 +56,7 @@ def step_impl(context):
     context.result_list = result_list['results']
 
 
-@when('I get one of the analyser results')
+@when('I get one of the analyzer results')
 def step_impl(context):
     assert_that(len(context.result_list), not equal_to(0))
 
@@ -88,6 +88,18 @@ def step_impl(context):
     context.chosen_result_json = chosen_result_json
 
 
+@then('I query the Result API for the result of the latest analyzer')
+def step_impl(context):
+    analyzer_job_id = context.response['pod_id']
+    r = requests.get(f'{context.endpoint_url}/analyze/{context.analyzer_job_id}')
+
+    assert_that(r.status_code, equal_to(HTTPStatus.OK))
+    assert_that(r.headers['content-type'], equal_to('application/json'))
+    analyzer_result_json = r.json()
+    assert_that(analyzer_result_json, not_none)
+    context.latest_analyzer_result = analyzer_result_json
+
+
 @then('the list of results should not be empty')
 def step_impl(context):
     assert_that(len(context.result_list), not equal_to(0))
@@ -95,28 +107,32 @@ def step_impl(context):
 
 @then('the result should not be empty')
 def step_impl(context):
-    assert_that(context.chosen_result, not_none)
+    assert_that(len(context.chosen_result), not equal_to(0))
 
 
-@then('the analyser should be "{name}"')
+@then('the analyzer should be "{name}"')
 def step_impl(context, name):
     assert_that(context.chosen_result_json['metadata']['analyzer'],
                 equal_to(name))
 
 
-@then('the analyser version should be "{version}"')
-def step_impl(context, version):
-    assert_that(context.chosen_result_json['metadata']['analyzer_version'],
-                equal_to(version))
+@then('the analyzer version should not be empty')
+def step_impl(context):
+    assert_that(len(context.chosen_result_json['metadata']['analyzer_version']), not equal_to(0))
 
 
-@then(u'the solver should be "{name}"')
+@then('the solver should be "{name}"')
 def step_impl(context, name):
     assert_that(context.chosen_result_json['metadata']['analyzer'],
                 equal_to(name))
 
 
-@then(u'the solver version should be "{version}"')
-def step_impl(context, version):
-    assert_that(context.chosen_result_json['metadata']['analyzer_version'],
-                equal_to(version))
+@then('the solver version should not be empty')
+def step_impl(context):
+    assert_that(len(context.chosen_result_json['metadata']['analyzer_version']), not equal_to(0))
+
+
+@then('the list of analzer results should not be empty')
+def step_impl(context):
+    assert_that(len(context.latest_analyzer_result['result']), not equal_to(0))
+

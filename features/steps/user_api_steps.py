@@ -28,11 +28,11 @@ from behave import given, when, then
 from hamcrest import assert_that, equal_to, is_not, not_none, less_than
 
 
-@when(u'I submit {a_container_image} to the User API for analysis by {analyser_image}')
-def step_impl(context, a_container_image, analyser_image):
+@when('I submit {a_container_image} to the User API for analysis by {analyzer_image}')
+def step_impl(context, a_container_image, analyzer_image):
     payload = {
         'image': a_container_image,
-        'analyzer': analyser_image
+        'analyzer': analyzer_image
     }
 
     r = requests.post(f'{context.endpoint_url}/analyze', params=payload)
@@ -45,26 +45,7 @@ def step_impl(context, a_container_image, analyser_image):
     context.response = response
 
 
-@when(u'I query the Result API for my latest analyser result')
-def step_impl(context):
-    payload = {
-        'pod_id': context.analyzer_job_id
-    }
-    r = requests.get(
-        f'{context.endpoint_url}/log', params=payload)
-
-    assert_that(r.status_code, equal_to(HTTPStatus.OK))
-    assert_that(r.headers['content-type'], equal_to('application/json'))
-
-    analyzer_job_log = r.json()
-    assert_that(analyzer_job_log, not_none)
-
-    assert_that(analyzer_job_log['pod_id'], equal_to(context.analyzer_job_id))
-
-    context.analyzer_job_log = analyzer_job_log
-
-
-@then(u'I want to receive a Analyser Job ID')
+@then('I want to receive a analyzer Job ID')
 def step_impl(context):
     assert_that(context.response, not_none)
 
@@ -74,21 +55,17 @@ def step_impl(context):
     context.analyzer_job_id = analyzer_job_id
 
 
-@then(u'I wait for the Analyser Job to finish successful')
+@then('I wait for the analyzer Job to finish successful')
 def step_impl(context):
     time.sleep(15)
-
     analyzer_job_terminated = False
     analyzer_job_termination_retries = 0
 
     while not analyzer_job_terminated:
-        time.sleep(5)
+        time.sleep(10)
 
-        payload = {
-            'pod_id': context.analyzer_job_id
-        }
-        r = requests.get(
-            f'{context.endpoint_url}/status', params=payload)
+        analyzer_job_id = context.response['pod_id']
+        r = requests.get(f'{context.endpoint_url}/status/{analyzer_job_id}')
 
         assert_that(r.status_code, equal_to(HTTPStatus.OK))
         assert_that(r.headers['content-type'], equal_to('application/json'))
@@ -105,18 +82,14 @@ def step_impl(context):
         assert_that(analyzer_job_termination_retries, less_than(10))
 
 
-@then(u'the Analyzer Job Log should not be empty')
+@then('the Analyzer Job Log should not be empty')
 def step_impl(context):
-    payload = {
-        'pod_id': context.analyzer_job_id
-    }
+    analyzer_job_id = context.response['pod_id']
     r = requests.get(
-        f'{context.endpoint_url}/log', params=payload)
+        f'{context.endpoint_url}/log/{analyzer_job_id}')
 
     assert_that(r.status_code, equal_to(HTTPStatus.OK))
     assert_that(r.headers['content-type'], equal_to('application/json'))
 
     analyzer_job_log = r.json()
     assert_that(analyzer_job_log, not_none)
-
-    assert_that(analyzer_job_log['pod_id'], equal_to(context.analyzer_job_id))
