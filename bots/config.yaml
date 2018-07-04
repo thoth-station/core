@@ -3,7 +3,6 @@ repositories:
   - core
   - user-api
   - common
-  - storages
   - package-releases-job
   - graph-refresh-job
   - result-api
@@ -20,7 +19,6 @@ repositories:
   - lab
   - naming-service
   - misc
-  - kebechet
 defaultLabels:
   - name: 'bot'
     color: '698b69'
