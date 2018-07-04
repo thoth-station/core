@@ -1,0 +1,81 @@
+---
+- name: Playbook to provision Sesheta Bot Cohort
+  tags:
+    - openshift
+    - thoth
+    - Sesheta
+    - Kebechet
+    - bots
+    - SrcOps
+
+  hosts: localhost
+  vars:
+    THOTH_BOT_NAMESPACE: "aicoe-prod-bots"
+ 
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: "make sure to use project {{ THOTH_BOT_NAMESPACE }}"
+      command: "oc project {{ THOTH_BOT_NAMESPACE }}"
+      register: project_exists
+      ignore_errors: true
+
+    - name: importing CentOS7 Python3.6 S2I container images from CentOS
+      command: "oc import-image registry.centos.org/centos/python-36-centos7 --confirm"
+      ignore_errors: true
+      register: cent_os_registry
+
+    - name: importing CentOS7 Python3.6 S2I container images from Docker
+      command: "oc import-image docker.io/centos/python-36-centos7 --confirm"
+      when: cent_os_registry is failed
+
+    - name: importing required Fedora ImageStreamTags from upstream Registries
+      command: "oc tag registry.fedoraproject.org/fedora:{{ item }} fedora:{{ item }}"
+      with_items:
+        - 26
+        - 27
+
+    - name: configuring sesheta Templates
+      command: "oc apply -f {{ item }}"
+      with_items:
+        - ../openshift/buildConfig-template.yaml
+        - ../openshift/cronJob-template.yaml
+        - ../openshift/daily_standup-template.yaml
+        - ../openshift/sesheta-github-access-token.yaml
+
+    - name: check if we need to update Secret 'sesheta-bot-scrum'
+      command: oc get secret sesheta-bot-scrum
+      register: sesheta_bot_scrum_exists
+      ignore_errors: true
+
+    - name: create required Secret 'sesheta-bot-scrum'
+      command: oc create secret generic sesheta-bot-scrum \
+        --from-literal=endpoint-url="{{ SESHETA_MATTERMOST_ENDPOINT_URL }}"
+      when: sesheta_bot_scrum_exists is failed
+
+    - name: check if we need to update Secret 'github-access-tokens'
+      command: oc get secret github-access-tokens
+      register: github_access_tokens_exists
+      ignore_errors: true
+
+    - name: create required Secret 'github-access-tokens'
+      command: oc new-app --template=sesheta-github-access-token \
+        -p SESHETA_GITHUB_ACCESS_TOKEN="{{ SESHETA_GITHUB_ACCESS_TOKEN }}"
+      when: github_access_tokens_exists is failed
+
+    - name: check if we need to update ConfigMap 'sesheta'
+      command: oc get configmap sesheta
+      register: configmap_sesheta_exists
+      ignore_errors: true
+
+    - name: create required ConfigMap 'sesheta'
+      command: oc create configmap sesheta \
+        --from-literal=prometheus-pushgateway-url=pushgateway:9091
+      when: configmap_sesheta_exists is failed
+
+    - name: process and apply Sesheta BuildConfig and ImageStream Templates
+      shell: oc process sesheta-buildconfig | oc apply -f -
+
+    - name: process and apply Sesheta CronJob Template
+      shell: oc process sesheta-cronjob | oc apply -f -

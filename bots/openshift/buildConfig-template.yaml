@@ -7,8 +7,8 @@ metadata:
   name: sesheta-buildconfig
   annotations:
     description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
-    openshift.io/display-name: 'Sesheta: Bot Cohort BuildConfig'
-    version: 0.6.0
+    openshift.io/display-name: 'Sesheta: Bot Cohort: Sesheta BuildConfig'
+    version: 0.6.1
     tags: poc,thoth,sesheta,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
@@ -51,6 +51,17 @@ objects:
     triggers:
     - type: ImageChange
       imageChange: {}
+
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    labels:
+      app: sesheta
+    name: sesheta
+  spec:
+    name: "${IMAGE_STREAM_TAG}"
+    lookupPolicy:
+      local: true
 
 parameters:
 - description: Name of the github repository for Sesheta

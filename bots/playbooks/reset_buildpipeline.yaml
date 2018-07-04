@@ -1,5 +1,6 @@
 ---
 - name: Playbook to reset a component's buildpipeline to master -> test
+  tags:
     - openshift
     - thoth
     - srcops

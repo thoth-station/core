@@ -7,7 +7,7 @@ metadata:
   name: sesheta-hook
   annotations:
     description: This is Sesheta Hook, this template is meant to be used by Jenkins, but could also be used by humans...
-    openshift.io/display-name: 'Sesheta: Bot Cohort'
+    openshift.io/display-name: 'Sesheta: Bot Cohort: Hook'
     version: 0.5.0
     tags: poc,thoth,sesheta,ai-stacks,prow
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/

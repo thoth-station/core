@@ -1,0 +1,16 @@
+---
+- name: Send a notification to IRC
+  tags:
+    - thoth
+    - srcops
+    - sourceops
+
+  hosts: localhost
+
+  tasks:
+  - local_action:
+      module: irc
+      server: irc.freenode.net
+      channel: '#thoth-station'
+      msg: 'All finished at {{ ansible_date_time.iso8601 }}'
+      nick: sesheta
