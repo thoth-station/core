@@ -41,7 +41,12 @@ objects:
                 valueFrom:
                   secretKeyRef:
                     key: sesheta-github-access-token
-                    name: github-access-tokens                   
+                    name: github-access-tokens
+              - name: SESHETA_ENDPOINT_URL
+                valueFrom:
+                  secretKeyRef:
+                    key: sesheta-bot-scrum
+                    name: endpoint-url
               resources:
                 requests:
                   memory: "32Mi"

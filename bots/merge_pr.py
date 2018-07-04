@@ -3,6 +3,8 @@
 import os
 import logging
 
+import requests
+
 import daiquiri
 import sesheta
 
@@ -15,6 +17,9 @@ from sesheta.common import CICD_CONTEXT_ID, DO_NOT_MERGE_LABELS, get_labels_from
 
 DEBUG = bool(os.getenv('DEBUG', False))
 SESHETA_GITHUB_ACCESS_TOKEN = os.getenv('SESHETA_GITHUB_ACCESS_TOKEN', None)
+SERVER_URL = os.getenv('SESHETA_SERVER_URL', 'https://chat.openshift.io')
+TEAM_ID = os.getenv('SESHETA_TEAM_ID', 'aicoe')
+ENDPOINT_URL = os.getenv('SESHETA_ENDPOINT_URL', None)
 
 daiquiri.setup(level=logging.INFO)
 logger = daiquiri.getLogger('merger')
@@ -25,11 +30,31 @@ else:
     logger.setLevel(level=logging.INFO)
 
 
+class InvalidPayload(Exception):
+    pass
+
+
+class HTTPError(Exception):
+    pass
+
+
+def notify_channel(message):
+    payload = {'text': message,
+               'icon_url': 'https://avatars1.githubusercontent.com/u/33906690'}
+
+    r = requests.post(ENDPOINT_URL, json=payload)
+    if r.status_code != 200:
+        raise HTTPError(r.text)
+
 if __name__ == '__main__':
     if not SESHETA_GITHUB_ACCESS_TOKEN:
         logger.error(
             'Github Token not provided via environment variable SESHETA_GITHUB_ACCESS_TOKEN')
         exit(-1)
+
+    if ENDPOINT_URL is None:
+        logger.error('No Mattermost incoming webhook URL supplied!')
+        exit(-2)
 
     github, org, GITHUB_ORGANIZATION, GITHUB_REPOSITORIES, DEFAULT_LABELS = init_github_interface(
         SESHETA_GITHUB_ACCESS_TOKEN)
@@ -71,5 +96,11 @@ if __name__ == '__main__':
                         merged = pr.merge()
 
                         logger.info(f"Pull Request '{pr.title}' {merged.message}")
+
+                        notify_channel(
+                            f"Pull Request '{pr.title}' successfully merged :tada:")
+
+                    except HTTPError as e:
+                        logger.error(e)
                     except GithubException as e:
                         logger.error(e)

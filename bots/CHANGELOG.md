@@ -1,5 +1,11 @@
 # Changelog for the Sesheta's Bot Cohort
 
+## [0.5.0] - 2018-Jul-04 - goern
+
+### Added
+
+The merger will now send out a notification to a mattermost channel.
+
 ## [0.4.0] - 2018-May-03 - goern
 
 ### Added
