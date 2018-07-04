@@ -79,7 +79,7 @@ if __name__ == '__main__':
         exit(-1)
 
     if ENDPOINT_URL is None:
-        logger.error('No Mattermost incoming webhook URL supplied!')
+        _LOGGER.error('No Mattermost incoming webhook URL supplied!')
         exit(-2)
 
     github, org, GITHUB_ORGANIZATION, GITHUB_REPOSITORIES, DEFAULT_LABELS = init_github_interface(
@@ -127,7 +127,7 @@ if __name__ == '__main__':
                         _METRIC_MERGED_PULLREQUESTS.inc()
 
                         notify_channel(
-                            f"Pull Request <a herf='{pr.html_url}'>{pr.title}</a> has been successfully merged :tada:")
+                            f":white_check_mark: Pull Request [{pr.title}]({pr.html_url}) has been successfully merged :tada:")
 
                     except HTTPError as e:
                         _LOGGER.error(e)
