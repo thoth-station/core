@@ -98,7 +98,7 @@ if __name__ == '__main__':
                         logger.info(f"Pull Request '{pr.title}' {merged.message}")
 
                         notify_channel(
-                            f"Pull Request '{pr.title}' successfully merged :tada:")
+                            f"Pull Request <a herf='{pr.html_url}'>{pr.title}</a> has been successfully merged :tada:")
 
                     except HTTPError as e:
                         logger.error(e)
