@@ -1,15 +1,14 @@
 - project:
     check:
       jobs:
-        - linters
+        - linters:
+            vars:
+              linters:
+                - ansible-lint
     gate:
       queue: core
       jobs:
-        - linters
-    release:
-      jobs:
-        - upload-pypi-sesheta
-    kebechet-auto-gate:
-      queue: core
-      jobs:
-        - linters
+        - linters:
+            vars:
+              linters:
+                - ansible-lint
