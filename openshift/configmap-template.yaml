@@ -34,7 +34,7 @@ objects:
     storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
     ceph-bucket-name: ${THOTH_CEPH_BUCKET}
     ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
-    ceph-host: ${THOTH_S3_ENDPOINT_URL }
+    ceph-host: ${THOTH_S3_ENDPOINT_URL}
     ceph-results-path: /results
     user-api-service-port: '8080'
     analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
