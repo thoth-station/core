@@ -1,5 +1,5 @@
 ---
-- name: Playbook to provision Thoth Core
+- name: Playbook to deprovision Thoth Core
     - openshift
     - thoth
 
@@ -30,6 +30,17 @@
       - "package-extract-buildconfig"
       - "package-releases-buildconfig"
       - "package-releases-cronjob"
+      - "cleanup-imagestream"
+      - "graph-refresh-imagestream"
+      - "graph-sync-imagestream"
+      - "package-releases-imagestream"
+    ignore_errors: true
+
+  - name: "deleting Thoth Routes"
+    command: "oc delete route {{ item }}"
+    with_items:
+      - "user-api"
+      - "result-api"
     ignore_errors: true
 
   - name: "deleting Thoth RoleBindings and ServiceAccounts"
