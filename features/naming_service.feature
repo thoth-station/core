@@ -2,7 +2,7 @@ Feature: Naming Service
 
     Background: Test Environment
         Given I am using the TEST environement
-
+    @wip
     Scenario: I query for solver image
         When I query the naming service for solver image
         Then I want will get at least the following results:
