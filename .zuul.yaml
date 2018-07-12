@@ -12,4 +12,3 @@
             vars:
               linters:
                 - ansible-lint
-
