@@ -62,3 +62,4 @@
       - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/imageStream-template.yaml
       - https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/imageStream-template.yaml
       - https://raw.githubusercontent.com/thoth-station/graph-sync-job/master/openshift/imageStream-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/imageStream-template.yaml

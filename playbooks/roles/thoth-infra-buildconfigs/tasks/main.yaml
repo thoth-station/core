@@ -22,3 +22,6 @@
 
   - name: create Thoth Cleanup BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cleanup-buildconfig"
+
+  - name: create Thoth Adviser BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/adviser-buildconfig"
