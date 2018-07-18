@@ -8,7 +8,7 @@ metadata:
   annotations:
     description: This is Sesheta Scrum Helper, daily standup!
     openshift.io/display-name: 'Sesheta: Bot Cohort'
-    version: 0.2.0
+    version: 0.2.1
     tags: poc,thoth,sesheta,ai-stacks,daily_standup
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: This is Sesheta Scrum Helper, daily standup!
@@ -50,8 +50,8 @@ objects:
               - name: SESHETA_ENDPOINT_URL
                 valueFrom:
                   secretKeyRef:
-                    key: sesheta-bot-scrum
-                    name: endpoint-url
+                    name: sesheta-bot-scrum
+                    key: endpoint-url
               - name: SESHETA_BOT_MESSAGE
                 value: ":tada: the daily standup is due in one minute... dial in to https://bluejeans.com/5618223545"
               resources:
@@ -89,8 +89,8 @@ objects:
               - name: SESHETA_ENDPOINT_URL
                 valueFrom:
                   secretKeyRef:
-                    key: sesheta-bot-scrum
-                    name: endpoint-url
+                    name: sesheta-bot-scrum
+                    key: endpoint-url
               - name: SESHETA_BOT_MESSAGE
                 value: ":tada: the daily standup is due in one minute... dial in to https://bluejeans.com/5618223545"
               resources:
