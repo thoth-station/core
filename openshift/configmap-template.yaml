@@ -31,6 +31,7 @@ objects:
     middletier-pod-cpu-limit: '0.5'
     middletier-pod-memory-limit: '0.5Gi'
     backend-namespace: ${THOTH_BACKEND_NAMESPACE}
+    infra-namespace: ${THOTH_INFRA_NAMESPACE}
     storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
     ceph-bucket-name: ${THOTH_CEPH_BUCKET}
     ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
