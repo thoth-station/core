@@ -33,12 +33,14 @@
     command: "oc new-app --template={{ THOTH_INFRA_NAMESPACE }}/janusgraph"
     ignore_errors: true
 
-  - name: create Thoth solver pod template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
-    with_items:
-      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/pod-template.yaml
-
-  - name: create Thoth package-extract pod template
+  - name: create Thoth pod templates
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/pod-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/pod-template.yaml
+
+  - name: create Thoth Package Extract ImageStream
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-extract-imagestream"
+
+  - name: create Thoth Solver ImageStream
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/solver-imagestream"
