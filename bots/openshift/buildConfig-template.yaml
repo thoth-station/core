@@ -6,51 +6,66 @@ labels:
 metadata:
   name: sesheta-buildconfig
   annotations:
-    description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    description: >
+      This is Sesheta BuildConfig, this template is meant to be used by Bots,
+      but could also be used by humans...
     openshift.io/display-name: 'Sesheta: Bot Cohort BuildConfig'
     version: 0.6.0
     tags: poc,thoth,sesheta,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
-    template.openshift.io/long-description: This is Sesheta BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    template.openshift.io/long-description: >
+      This is Sesheta BuildConfig, this template is meant to be used by Bots,
+      but could also be used by humans...
     template.openshift.io/provider-display-name: Red Hat, Inc.
 
 objects:
-- kind: BuildConfig
-  apiVersion: v1
-  metadata:
-    name: sesheta
-    labels:
-      app: sesheta
-  spec:
-    resources:
-      limits:
-        cpu: 1
-        memory: 1Gi
-      requests:
-        cpu: 1
-        memory: 512Mi
-    output:
-      to:
-        kind: ImageStreamTag
-        name: "sesheta:${IMAGE_STREAM_TAG}"
-    source:
-      type: Git
-      git:
-        uri: ${GITHUB_URL}
-        ref: ${GITHUB_REF}
-      contextDir: ${GITHUB_CONTEXT_DIR}
-    strategy:
-      type: Source
-      sourceStrategy:
-        from:
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      name: sesheta
+      labels:
+        app: sesheta
+    spec:
+      resources:
+        requests:
+          cpu: 1
+          memory: 512Mi
+        limits:
+          cpu: 2
+          memory: 1Gi
+      output:
+        to:
           kind: ImageStreamTag
-          name: python-36-centos7:latest
-        env:
-          - name: ENABLE_PIPENV
-            value: '1'
-    triggers:
-    - type: ImageChange
-      imageChange: {}
+          name: "sesheta:${IMAGE_STREAM_TAG}"
+      source:
+        type: Git
+        git:
+          uri: ${GITHUB_URL}
+          ref: ${GITHUB_REF}
+        contextDir: ${GITHUB_CONTEXT_DIR}
+      strategy:
+        type: Source
+        sourceStrategy:
+          from:
+            kind: ImageStreamTag
+            name: python-36-centos7:latest
+          env:
+            - name: ENABLE_PIPENV
+              value: '1'
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+
+  - kind: ImageStream
+    apiVersion: v1
+    metadata:
+      labels:
+        app: sesheta
+      name: sesheta
+    spec:
+      name: latest
+      lookupPolicy:
+        local: true
 
 parameters:
 - description: Name of the github repository for Sesheta

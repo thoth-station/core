@@ -11,7 +11,6 @@
         -p THOTH_SECRET="{{ THOTH_SECRET }}" \
         -p THOTH_CEPH_KEY_ID="{{ THOTH_CEPH_KEY_ID }}" \
         -p THOTH_CEPH_SECRET_KEY="{{ THOTH_CEPH_SECRET_KEY }}"
-    ignore_errors: true
 
   - name: create required configmaps
     command: oc new-app --namespace {{ THOTH_FRONTEND_NAMESPACE }} --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-configmap" \
@@ -24,14 +23,12 @@
         -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}" \
         -p PROMETHEUS_PUSHGATEWAY_HOST="{{ PROMETHEUS_PUSHGATEWAY_HOST }}" \
         -p PROMETHEUS_PUSHGATEWAY_PORT="{{ PROMETHEUS_PUSHGATEWAY_PORT }}"
-    ignore_errors: true
 
   - name: deploy Thoth Core
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core" \
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
         -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}"
-    ignore_errors: true
 
   - name: deploy Thoth User API
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/user-api-deployment" \
