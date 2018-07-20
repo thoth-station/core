@@ -26,12 +26,10 @@
         -p PROMETHEUS_PUSHGATEWAY_PORT="{{ PROMETHEUS_PUSHGATEWAY_PORT }}"
     ignore_errors: true
 
-  - name: create Thoth adviser pod template
+  - name: create Thoth Adviser pod template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/pod-template.yaml
 
-  - name: create Thoth adviser BuildConfig template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
-    with_items:
-      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/buildConfig-template.yaml
+  - name: create Thoth Adviser ImageStream
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/adviser-imagestream"
