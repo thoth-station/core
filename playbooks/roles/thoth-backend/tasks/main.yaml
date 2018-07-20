@@ -19,13 +19,19 @@
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
         -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
+        -p THOTH_INFRA_NAMESPACE="{{ THOTH_INFRA_NAMESPACE }}" \
         -p THOTH_S3_ENDPOINT_URL="{{ THOTH_S3_ENDPOINT_URL  }}" \
         -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}" \
         -p PROMETHEUS_PUSHGATEWAY_HOST="{{ PROMETHEUS_PUSHGATEWAY_HOST }}" \
         -p PROMETHEUS_PUSHGATEWAY_PORT="{{ PROMETHEUS_PUSHGATEWAY_PORT }}"
     ignore_errors: true
 
-  - name: create Thoth adviser template
+  - name: create Thoth adviser pod template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/pod-template.yaml
+
+  - name: create Thoth adviser BuildConfig template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/buildConfig-template.yaml

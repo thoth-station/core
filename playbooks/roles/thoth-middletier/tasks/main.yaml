@@ -19,6 +19,7 @@
         -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
         -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
         -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
+        -p THOTH_INFRA_NAMESPACE="{{ THOTH_INFRA_NAMESPACE }}" \
         -p THOTH_S3_ENDPOINT_URL="{{ THOTH_S3_ENDPOINT_URL  }}" \
         -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}" \
         -p PROMETHEUS_PUSHGATEWAY_HOST="{{ PROMETHEUS_PUSHGATEWAY_HOST }}" \
@@ -31,3 +32,13 @@
   - name: deploy JanusGraph Database
     command: "oc new-app --template={{ THOTH_INFRA_NAMESPACE }}/janusgraph"
     ignore_errors: true
+
+  - name: create Thoth solver pod template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/pod-template.yaml
+
+  - name: create Thoth package-extract pod template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/pod-template.yaml
