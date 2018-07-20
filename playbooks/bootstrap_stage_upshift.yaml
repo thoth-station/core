@@ -5,7 +5,7 @@
 
   hosts: localhost
   vars:
-    openshift_master_url: "https://upshift.engineering.redhat.com"
+    openshift_master_url: "https://paas.upshift.redhat.com"
     token: "{{ lookup('env','OCP_TOKEN') }}"
     THOTH_BACKEND_NAMESPACE: thoth-stage-core
     THOTH_MIDDLETIER_NAMESPACE: thoth-stage-core
@@ -21,9 +21,9 @@
   gather_facts: false
   connection: local
   roles:
-  - role: thoth-core
   - role: thoth-core-imagestreams
-  - role: thoth-infra-buildconfigs
-  - role: thoth-frontend
-  - role: thoth-middletier
-  - role: thoth-backend
+#  - role: thoth-core
+#  - role: thoth-infra-buildconfigs
+#  - role: thoth-frontend
+#  - role: thoth-middletier
+#  - role: thoth-backend
