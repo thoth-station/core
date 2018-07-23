@@ -37,10 +37,8 @@ objects:
     ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
     ceph-host: ${THOTH_S3_ENDPOINT_URL}
     ceph-results-path: /results
-    user-api-service-port: '8080'
     analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
     sync-observations: ${THOTH_SYNC_OBSERVATIONS}
-    log-cleanup-job: ${THOTH_LOG_CLEANUP_JOB}
     package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
     rsyslog-host: ${RSYSLOG_HOST}
     rsyslog-port: ${RSYSLOG_PORT}
@@ -68,11 +66,6 @@ parameters:
   required: true
   name: THOTH_ANALYZER_CLEANUP_TIME
   value: '7d'
-
-- description: Set verbosity for the cleanup job.
-  displayName: Cleanup job verbosity level
-  name: THOTH_LOG_CLEANUP_JOB
-  value: 'DEBUG'
 
 - description: Turn on or off automatic observation syncing to the graph database.
   displayName: Sync observations
