@@ -52,7 +52,6 @@ metadata:
   annotations:
     description: This is Thoth Adviser BuildConfig...
     openshift.io/display-name: Thoth Adviser BuildConfig
-    version: 0.3.0
     tags: poc,thoth,ai-stacks,adviser
     template.openshift.io/documentation-url: https://github.com/Thoth-Station
     template.openshift.io/long-description: This is...
