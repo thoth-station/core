@@ -61,6 +61,11 @@ parameters:
   required: true
   name: THOTH_BACKEND_NAMESPACE
 
+- description: Name of the Thoth Infra Namespace
+  displayName: Thoth Infra Namespace
+  required: true
+  name: THOTH_INFRA_NAMESPACE
+
 - description: Time before analyzer pod gets removed from etcd.
   displayName: Thoth analyzer cleanup time
   required: true
