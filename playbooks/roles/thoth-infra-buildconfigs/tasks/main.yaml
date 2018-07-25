@@ -28,3 +28,6 @@
 
   - name: create Thoth Package Extract BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-extract-buildconfig"
+
+  - name: create Thoth Solver BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/solver-buildconfig"
