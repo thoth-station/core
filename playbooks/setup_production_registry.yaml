@@ -1,0 +1,47 @@
+---
+- name: Playbook to setup the internal registry shared by all environments
+    - openshift
+    - thoth
+
+  hosts: localhost
+  connection: local
+
+  gather_facts: false
+
+  vars:
+    REGISTRY_TOKEN: "{{ lookup('env','REGISTRY_TOKEN') }}"
+    THOTH_INFRA_NAMESPACE: thoth-station
+
+  tasks:
+    - name: login to registry
+      command: "oc login --token {{ REGISTRY_TOKEN }} registry.upshift.redhat.com:8443"
+
+    - name: importing CentOS7 Python 3.6 S2I container images from CentOS
+      command: oc --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
+        import-image registry.centos.org/centos/python-36-centos7 --confirm
+      ignore_errors: true
+      register: cent_os_registry
+
+    - name: importing CentOS7 Python 3.6 S2I container images from Docker
+      command: oc --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
+        import-image docker.io/centos/python-36-centos7 --confirm
+      when: cent_os_registry is failed
+
+    - name: creating Thoth ImageStreams
+      command: oc --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
+        new-app -f ../openshift/thoth-station-imageStream-template.yaml --param=IMAGESTREAM_NAME="{{ item }}"
+      with_items:
+        - user-api
+        - result-api
+        - cleanup-job
+        - graph-refresh-job
+        - graph-sync-job
+        - package-releases-job
+        - pypi-validator
+        - dependency-monkey
+        - jenkins-aicoe-slave
+        - jenkins
+
+    - name: importing Prometheus Pushgateway container images from Docker
+      command: oc --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
+        import-image docker.io/prom/pushgateway --confirm --reference-policy=local

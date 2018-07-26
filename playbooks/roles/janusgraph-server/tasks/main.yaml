@@ -1,0 +1,4 @@
+---
+# check if ceph secret is present, if not create
+# check if template present, if not create
+# create new app

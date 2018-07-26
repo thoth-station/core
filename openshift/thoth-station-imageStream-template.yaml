@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: thoth-station-imagestream
+  thoth: 0.1.0
+metadata:
+  name: thoth-station-imagestream
+  annotations:
+    description: This is Thoth Station ImageStream
+    openshift.io/display-name: "Thoth Station ImageStream"
+    version: 0.1.0
+    tags: poc,thoth,ai-stacks
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines and ImageStream Templated needed to deploy Thoth components.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+
+objects:
+  - kind: ImageStream
+    apiVersion: v1
+    metadata:
+      labels:
+        app: thoth-core
+      name: ${IMAGESTREAM_NAME}
+    spec:
+      name: latest
+      lookupPolicy:
+        local: true
+
+parameters:
+- description: Name of the ImageStream
+  displayName: Thoth Station ImageStream Name
+  required: true
+  name: IMAGESTREAM_NAME

@@ -1,0 +1,19 @@
+---
+- name: Playbook to update the JanusGraph ImageStream
+  tags:
+    - openshift
+    - thoth
+
+  gather_facts: false
+  connection: local
+
+  hosts: localhost
+
+  roles:
+    - role: janusgraph-imagestream
+#  - role: thoth-core-imagestreams
+#  - role: thoth-core
+#  - role: thoth-infra-buildconfigs
+#  - role: thoth-frontend
+#  - role: thoth-middletier
+#  - role: thoth-backend

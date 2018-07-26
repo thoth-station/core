@@ -1,12 +1,17 @@
 ---
 - name: Playbook to bootstrap Thoth Core Stage Environment
+  tags:
     - openshift
     - thoth
+    - env:stage
+
+  gather_facts: false
+  connection: local
 
   hosts: localhost
   vars:
     openshift_master_url: "https://paas.upshift.redhat.com"
-    token: "{{ lookup('env','OCP_TOKEN') }}"
+    cluster: https://paas.upshift.redhat.com:443
     THOTH_BACKEND_NAMESPACE: thoth-stage-core
     THOTH_MIDDLETIER_NAMESPACE: thoth-stage-core
     THOTH_FRONTEND_NAMESPACE: thoth-stage-core
@@ -17,11 +22,17 @@
     THOTH_S3_ENDPOINT_URL : "{{ lookup('env','THOTH_S3_ENDPOINT_URL ') }}"
     THOTH_CEPH_BUCKET: "DH-DEV-DATA"
     THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
-    
-  gather_facts: false
-  connection: local
+
   roles:
-  - role: thoth-core-imagestreams
+    - role: janusgraph-imagestream
+      vars:
+        - token: "{{ token }}"
+        - namespace: "{{ THOTH_MIDDLETIER_NAMESPACE }}"
+    - role: janusgraph-server
+      vars:
+        - token: "{{ token }}"
+        - namespace: "{{ THOTH_MIDDLETIER_NAMESPACE }}"
+#  - role: thoth-core-imagestreams
 #  - role: thoth-core
 #  - role: thoth-infra-buildconfigs
 #  - role: thoth-frontend

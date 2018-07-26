@@ -1,0 +1,15 @@
+---
+  - name: login to OpenShift using provided token
+    command: "oc login --insecure-skip-tls-verify=true --token {{ token }} {{ cluster }}"
+    changed_when: False
+
+  - name: "make sure to use project {{ namespace }}"
+    command: "oc project {{ namespace }}"
+
+  - name: "importing ImageStreams form quay.io: goern/janusgraph"
+    command: oc import-image quay.io/goern/janusgraph:latest
+    when: cluster == "https://registry.upshift.redhat.com:8443"
+
+  - name: "importing ImageStreams form registry-console-default.cloud.registry.upshift.redhat.com: thoth-station"
+    command: oc import-image --confirm --scheduled docker-registry-default.cloud.registry.upshift.redhat.com/thoth-station/janusgraph:latest
+    when: cluster != "https://registry.upshift.redhat.com:8443"
