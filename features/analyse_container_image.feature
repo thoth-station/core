@@ -3,7 +3,6 @@ Feature: analyze Container Image
     Background: Test Environment
         Given I am using the TEST environement
 
-    @wip
     Scenario Outline: Submitting a Container Image for analysis
         When I submit <a container image> to the User API for analysis by <analyzer image>
         Then I want to receive a analyzer Job ID
@@ -15,8 +14,8 @@ Feature: analyze Container Image
         Examples: Container Image and analyzers
             | a container image | analyzer image               |
             | fedora:27         | fridex/thoth-package-extract |
+            | fedora:28         | fridex/thoth-package-extract |
 
-    @wip
     Scenario: Query for currently available analyzer Results
         When I query the Result API for a list of analyzer results
         Then the list of results should not be empty
