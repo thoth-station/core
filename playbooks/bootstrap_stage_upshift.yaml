@@ -24,10 +24,11 @@
     THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
 
   roles:
-    - role: janusgraph-imagestream
-      vars:
-        - token: "{{ token }}"
-        - namespace: "{{ THOTH_MIDDLETIER_NAMESPACE }}"
+    - role: ansible.kubernetes-modules
+#    - role: janusgraph-imagestream
+#      vars:
+#        - token: "{{ token }}"
+#        - namespace: "{{ THOTH_MIDDLETIER_NAMESPACE }}"
     - role: janusgraph-server
       vars:
         - token: "{{ token }}"

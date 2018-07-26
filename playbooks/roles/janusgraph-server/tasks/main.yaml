@@ -1,4 +1,16 @@
 ---
+  - name: create the required Ceph secret
+    k8s:
+      state: present
+      definition:
+        kind: Secret
+        apiVersion: v1
+        metadata:
+          name: ceph-thoth-user-secret
+        type: kubernetes.io/rbd
+        data:
+          key: QVFBY3ZENWJzWEZVTUJBQVNCR2t3YkhRVDBIM09Od3FVeG1TZ3c9PQ==
+
 # check if ceph secret is present, if not create
 # check if template present, if not create
 # create new app
