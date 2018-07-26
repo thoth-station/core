@@ -12,81 +12,11 @@
   - fail: msg="Bailing out. this play requires 'THOTH_NAMESPACE'"
     when: THOTH_NAMESPACE is not defined
 
-  - name: "deleting Thoth Templates"
-    command: "oc delete template {{ item }} --namespace {{ THOTH_NAMESPACE }}"
-    with_items:
-      - "thoth-core"
-      - "thoth-core-secret"
-      - "thoth-core-configmap"
-      - "janusgraph"
-      - "result-api-deployment"
-      - "result-api-buildconfig"
-      - "cleanup-buildconfig"
-      - "cleanup-cronjob"
-      - "graph-refresh-buildconfig"
-      - "graph-refresh-cronjob"
-      - "graph-sync-buildconfig"
-      - "graph-sync-cronjob"
-      - "package-extract-buildconfig"
-      - "package-releases-buildconfig"
-      - "package-releases-cronjob"
-      - "cleanup-imagestream"
-      - "graph-refresh-imagestream"
-      - "graph-sync-imagestream"
-      - "package-releases-imagestream"
-    ignore_errors: true
+  - name: Deprovision Thoth
+    command: "oc delete bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+      secret,svc,sa,template,clusterrole --selector 'app=thoth'"
 
-  - name: "deleting Thoth Routes"
-    command: "oc delete route {{ item }}"
-    with_items:
-      - "user-api"
-      - "result-api"
-    ignore_errors: true
+  - name: Deprovision JanusGraph
+    # Deprovision everything except PVC.
+    command: oc delete bc,dc,is,pod,route,template,svc --selector 'app=janusgraph'
 
-  - name: "deleting Thoth RoleBindings and ServiceAccounts"
-    command: "oc delete {{ item }}"
-    with_items:
-      - "rolebinding/role-jobs-binding"
-      - "ServiceAccount/analyzer"
-    ignore_errors: true
-
-  - name: "deleting Thoth Secrets"
-    command: "oc delete secret {{ item }} --namespace {{ THOTH_NAMESPACE }}"
-    with_items:
-      - "thoth"
-    ignore_errors: true
-
-  - name: "deleting Thoth Config"
-    command: "oc delete configmap thoth --namespace {{ THOTH_NAMESPACE }}"
-    ignore_errors: true
-
-  - name: "deleting Thoth User API resources"
-    command: "oc delete {{ item }} --namespace {{ THOTH_NAMESPACE }}"
-    with_items:
-      - "template/user-api-deployment"
-      - "template/user-api-buildconfig"
-      - "imagestream/user-api"
-      - "buildconfig/user-api"
-      - "svc/user-api"
-      - "deploymentconfig/user-api"
-    ignore_errors: true
-
-  - name: "deleting Thoth CronJobs"
-    command: "oc delete cronjob {{ item }} --namespace {{ THOTH_NAMESPACE }}"
-    with_items:
-      - "cleanup-job"
-      - "package-releases"
-      - "graph-sync-job"
-    ignore_errors: true
-
-  - name: "deleting Thoth Result API resources"
-    command: "oc delete {{ item }} --namespace {{ THOTH_NAMESPACE }}"
-    with_items:
-      - "template/result-api-buildconfig"
-      - "imagestreams/result-api"
-      - "buildconfigs/result-api"
-      - "svc/result-api"
-      - "svc/janusgraph"
-      - "deploymentconfigs/result-api"
-      - "deploymentconfigs/janusgraph"
-    ignore_errors: true

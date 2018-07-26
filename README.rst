@@ -28,6 +28,16 @@ Installation
 
 If you would like to deploy Thoth onto a running OpenShift cluster, feel free to use directly OpenShift template.yaml. You need to specify at least specify running JanusGraph host (currently supported only JanusGraph websocket):
 
+Deprovisioning
+--------------
+
+.. code-block:: console
+
+  $ oc login <OCP_URL>
+  $ cd core
+  $ ansible-playbook playbooks/deprovision.yaml --extra-vars THOTH_NAMESPACE=<NAMESPACE>
+
+See `operations documentation <https://github.com/thoth-station/core/blob/master/doc/operations.md>`_ for more info.
 
 The overall architecture
 ------------------------
