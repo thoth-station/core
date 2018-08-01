@@ -12,8 +12,10 @@ ctr=$(buildah from registry.centos.org/centos/centos:7)
 mnt=$(buildah mount $ctr)
 
 ## Install dependencies
-buildah run $ctr -- yum update -y
-buildah run $ctr -- yum install -y ansible
+buildah run $ctr -- yum install -y --setopt='tsflags=nodocs' https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+buildah run $ctr -- yum update -y --setopt='tsflags=nodocs'
+buildah run $ctr -- yum install -y --setopt='tsflags=nodocs' ansible python2-pip
+
 buildah run $ctr -- pip install openshift
 
 # Cleanup
