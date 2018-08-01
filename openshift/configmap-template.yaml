@@ -121,10 +121,10 @@ parameters:
   description: A host to push prometheus metrics via pushgateway.
   name: PROMETHEUS_PUSHGATEWAY_HOST
   required: false
-  value: 'pushgateway'
+  value: 'pushgateway-dh-prod-monitoring.cloud.datahub.upshift.redhat.com'
 
 - displayName: PROMETHEUS_PUSHGATEWAY_PORT
   description: A port to send prometheus metrics via pushgateway
   name: PROMETHEUS_PUSHGATEWAY_PORT
   required: false
-  value: '9091'
+  value: '80'
