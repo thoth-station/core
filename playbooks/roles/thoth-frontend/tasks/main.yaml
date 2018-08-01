@@ -36,28 +36,28 @@
 
   - name: create Thoth Package Releases CronJob
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-releases-cronjob" \
-        -p THOTH_SUSPEND_CRONJOB="{{ THOTH_SUSPEND_CRONJOBS }}"
+        -p THOTH_SUSPEND_JOB="{{ THOTH_SUSPEND_CRONJOBS }}"
 
   - name: create Thoth Package Releases ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-releases-imagestream"
 
   - name: create Thoth Graph Sync CronJob
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/graph-sync-cronjob" \
-        -p THOTH_SUSPEND_CRONJOB="{{ THOTH_SUSPEND_CRONJOBS }}"
+        -p THOTH_SUSPEND_JOB="{{ THOTH_SUSPEND_CRONJOBS }}"
 
   - name: create Thoth Graph Sync ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/graph-sync-imagestream"
 
   - name: create Thoth Graph Refresh CronJob
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/graph-refresh-cronjob" \
-        -p THOTH_SUSPEND_CRONJOB="{{ THOTH_SUSPEND_CRONJOBS }}"
+        -p THOTH_SUSPEND_JOB="{{ THOTH_SUSPEND_CRONJOBS }}"
 
   - name: create Thoth Graph Refresh ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/graph-refresh-imagestream"
 
   - name: create Thoth Cleanup CronJob
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cleanup-cronjob" \
-        -p THOTH_SUSPEND_CRONJOB="{{ THOTH_SUSPEND_CRONJOBS }}"
+        -p THOTH_SUSPEND_JOB="{{ THOTH_SUSPEND_CRONJOBS }}"
 
   - name: create Thoth Cleanup ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cleanup-imagestream"
