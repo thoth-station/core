@@ -15,7 +15,6 @@ mnt=$(buildah mount $ctr)
 buildah run $ctr -- dnf update -y --setopt='tsflags=nodocs'
 buildah run $ctr -- dnf install -y --setopt='tsflags=nodocs' ansible origin
 buildah run $ctr -- pip install openshift
-buildah run $ctr -- ansible-galaxy install ansible.kubernetes-modules
 
 # Cleanup
 buildah run $ctr -- dnf clean all
@@ -23,6 +22,9 @@ buildah run $ctr -- rm -Rf /root/.cache
 
 # Setup user environment
 buildah run $ctr -- useradd -m thoth-ops
+
+# Install Ansible Modules...
+buildah run $ctr -- ansible-galaxy install ansible.kubernetes-modules --roles-path=/etc/ansible/roles
 
 # Copy the playbooks and roles
 mkdir -p $mnt/home/thoth-ops/playbooks
