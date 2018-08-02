@@ -1,11 +1,14 @@
 ---
   - name: create the required Ceph secret
     k8s:
+      api_key: "{{ token }}"
+      verify_ssl: no
       state: present
       definition:
         kind: Secret
         apiVersion: v1
         metadata:
+          namespace: "{{ namespace }}"
           name: ceph-thoth-user-secret
         type: kubernetes.io/rbd
         data:

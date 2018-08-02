@@ -12,9 +12,10 @@ ctr=$(buildah from registry.fedoraproject.org/fedora:28)
 mnt=$(buildah mount $ctr)
 
 ## Install dependencies
-buildah run $ctr -- dnf update -y
-buildah run $ctr -- dnf install -y ansible
+buildah run $ctr -- dnf update -y --setopt='tsflags=nodocs'
+buildah run $ctr -- dnf install -y --setopt='tsflags=nodocs' ansible origin
 buildah run $ctr -- pip install openshift
+buildah run $ctr -- ansible-galaxy install ansible.kubernetes-modules
 
 # Cleanup
 buildah run $ctr -- dnf clean all
@@ -26,9 +27,7 @@ buildah run $ctr -- useradd -m thoth-ops
 # Copy the playbooks and roles
 mkdir -p $mnt/home/thoth-ops/playbooks
 cp . -r $mnt/home/thoth-ops/playbooks/
-cp $(which oc) /home/thoth-ops/
 buildah run $ctr -- chown -R thoth-ops:thoth-ops /home/thoth-ops
-buildah run $ctr -- chmod 750 /home/thoth-ops/oc
 
 ## Include some buildtime annotations
 buildah config --annotation "ninja.thoth-station.build.host=$(uname -n)" $ctr
