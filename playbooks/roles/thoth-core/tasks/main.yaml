@@ -21,12 +21,15 @@
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/template.yaml
 
   - name: create Thoth Core secrets template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/secret-template.yaml
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - ../openshift/secret-template.yaml
+      - ../openshift/zuul-incoming-webhook-secret-template.yaml
 
   - name: create Thoth Core configmap template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/configmap-template.yaml
  
-  - name: create JanusGraph Database Template
+  - name: create JanusGraph Database template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
 

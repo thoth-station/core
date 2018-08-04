@@ -31,3 +31,7 @@
 
   - name: create Thoth Solver BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/solver-buildconfig"
+
+  - name: create Zuul Incoming Webhook Secret
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/zuul-incoming-webhook-secret \
+            -p ZUUL_INCOMING_WEBHOOK_SECRET="{{ ZUUL_INCOMING_WEBHOOK_SECRET }}"
