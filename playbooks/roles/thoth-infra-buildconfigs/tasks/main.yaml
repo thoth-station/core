@@ -31,3 +31,6 @@
 
   - name: create Thoth Solver BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/solver-buildconfig"
+
+  - name: create Thoth CVE Update BuildConfig
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cve-update-buildconfig"
