@@ -43,7 +43,8 @@
       - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/cronJob-template.yaml
       - https://raw.githubusercontent.com/thoth-station/cleanup-job/master/openshift/cronJob-template.yaml
       - https://raw.githubusercontent.com/thoth-station/graph-sync-job/master/openshift/cronJob-template.yaml
-      
+      - https://raw.githubusercontent.com/thoth-station/cve-update-job/master/openshift/cronJob-template.yaml
+
   - name: create Thoth Core BuildConfig templates
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}" 
     with_items:
@@ -56,6 +57,7 @@
       - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/buildConfig-template.yaml
       - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/buildConfig-template.yaml
       - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/buildConfig-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/cve-update-job/master/openshift/buildConfig-template.yaml
 
   - name: create Thoth Core ImageStream templates
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
@@ -67,3 +69,4 @@
       - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/imageStream-template.yaml
       - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/imageStream-template.yaml
       - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/imageStream-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/cve-update-job/master/openshift/imageStream-template.yaml

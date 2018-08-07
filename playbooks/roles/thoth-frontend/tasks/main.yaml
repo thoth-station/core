@@ -61,3 +61,10 @@
 
   - name: create Thoth Cleanup ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cleanup-imagestream"
+
+  - name: create Thoth CVE Update ImageStream
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cve-update-imagestream"
+
+  - name: create Thoth CVE Update CronJob
+    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/cve-update-cronjob" \
+        -p THOTH_SUSPEND_JOB="{{ THOTH_SUSPEND_CRONJOBS }}"
