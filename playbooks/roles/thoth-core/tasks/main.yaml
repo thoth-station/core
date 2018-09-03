@@ -18,26 +18,26 @@
     ignore_errors: true
 
   - name: create Thoth Core template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/template.yaml
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/template.yaml
 
   - name: create Thoth Core secrets template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/secret-template.yaml
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/secret-template.yaml
 
   - name: create Thoth Core configmap template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/configmap-template.yaml
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename ../openshift/configmap-template.yaml
  
   - name: create JanusGraph Database Template
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
         --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
 
   - name: create Thoth Core Deployment templates
-    command: "oc create --namespace {{ THOTH_INFRA_NAMESPACE }} --filename {{ item }}"
+    command: "oc create --save-config=true --namespace {{ THOTH_INFRA_NAMESPACE }} --filename {{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/deployment-template.yaml
       - https://raw.githubusercontent.com/thoth-station/result-api/master/openshift/deployment-template.yaml
 
   - name: create Thoth Core CronJob templates
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/cronJob-template.yaml
       - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/cronJob-template.yaml
@@ -46,7 +46,7 @@
       - https://raw.githubusercontent.com/thoth-station/cve-update-job/master/openshift/cronJob-template.yaml
 
   - name: create Thoth Core BuildConfig templates
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}" 
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}" 
     with_items:
       - https://raw.githubusercontent.com/thoth-station/user-api/master/openshift/buildConfig-template.yaml
       - https://raw.githubusercontent.com/thoth-station/result-api/master/openshift/buildConfig-template.yaml
@@ -60,7 +60,7 @@
       - https://raw.githubusercontent.com/thoth-station/cve-update-job/master/openshift/buildConfig-template.yaml
 
   - name: create Thoth Core ImageStream templates
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/package-releases-job/master/openshift/imageStream-template.yaml
       - https://raw.githubusercontent.com/thoth-station/graph-refresh-job/master/openshift/imageStream-template.yaml
