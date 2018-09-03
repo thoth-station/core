@@ -5,6 +5,9 @@
     ignore_errors: true
     changed_when: False
 
+  - name: create Secret for Zuul's incoming build triggers
+    command: oc create secret generic zuul-incoming-webhook --from-literal="WebHookSecretKey={{ ZUUL_INCOMING_WEBHOOK_SECRET }}"
+
   - name: create Thoth User API BuildConfig
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/user-api-buildconfig"
 
