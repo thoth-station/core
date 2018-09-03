@@ -31,5 +31,10 @@
     with_items:
       - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/pod-template.yaml
 
+  - name: create Thoth Provenance Checker pod template
+    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/pod-provenanceChecker-template.yaml
+
   - name: create Thoth Adviser ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/adviser-imagestream"
