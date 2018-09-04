@@ -28,7 +28,7 @@
  
   - name: create JanusGraph Database Template
     command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE }}" \
-        --filename https://raw.githubusercontent.com/goern/janusgraph-openshift/master/template.yaml
+        --filename ../openshift/janusgraph-server-template.yaml
 
   - name: create Thoth Core Deployment templates
     command: "oc create --namespace {{ THOTH_INFRA_NAMESPACE }} --filename {{ item }}"

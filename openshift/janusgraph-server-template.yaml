@@ -1,0 +1,108 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: janusgraph-ephemeral
+  annotations:
+    description: This is JanusGraph Server PoC on OpenShift.
+    openshift.io/display-name: JanusGraph Server POC
+    tags: poc,janus,janusgraph,tinkerpop,gremlin,thoth
+    template.openshift.io/documentation-url: https://github.com/goern/janusgraph-openshift/
+    template.openshift.io/long-description: >
+      This template defines resources needed to deploy JanusGraph Server as a Proof-of-Concept to OpenShift.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    app: janusgraph
+    component: janusgraph-server
+message: |-
+  For more information about using this template see https://github.com/goern/janusgraph-openshift/
+
+objects:
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      app: janusgraph
+      component: janusgraph-server
+    name: janusgraph
+    annotations:
+      template.alpha.openshift.io/wait-for-ready: "true"
+  spec:
+    replicas: 1
+    selector:
+      service: janusgraph
+    template:
+      metadata:
+        labels:
+          service: janusgraph
+      spec:
+        containers:
+          - name: janusgraph
+            image: quay.io/goern/janusgraph
+            env:
+            - name: _JAVA_OPTIONS
+              value: "-Djava.net.preferIPv4Stack=true"
+            - name: JANUSGRAPH_USE_INDEXES
+              value: "1"
+            ports:
+              - containerPort: 8182
+                protocol: TCP
+            readinessProbe:
+              exec:
+                command: ["sh", "/tmp/readiness.sh"]
+              initialDelaySeconds: 480
+              periodSeconds: 30
+              timeoutSeconds: 10
+              failureThreshold: 3
+            resources:
+              limits:
+                cpu: '4'
+                memory: 8Gi
+              requests:
+                cpu: '4'
+                memory: 8Gi
+        restartPolicy: Always
+    triggers:
+      - type: ConfigChange
+
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: janusgraph-db
+    labels:
+      app: janusgraph
+      component: janusgraph-server
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: janusgraph
+      component: janusgraph-server
+      service: janusgraph
+    name: janusgraph
+  spec:
+    ports:
+      - port: 80
+        protocol: TCP
+        targetPort: 8182
+    selector:
+      service: janusgraph
+
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: janusgraph
+    labels:
+      app: janusgraph
+      component: janusgraph-server
+  spec:
+    host:
+    to:
+      kind: Service
+      name: janusgraph
