@@ -34,7 +34,7 @@
     ignore_errors: true
 
   - name: create Thoth pod templates
-    command: oc create --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
       - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/pod-template.yaml
       - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/pod-template.yaml
