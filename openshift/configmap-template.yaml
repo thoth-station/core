@@ -3,9 +3,9 @@ kind: Template
 metadata:
   name: thoth-core-configmap
   annotations:
-    description: This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API 
+    description: This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API
     openshift.io/display-name: Thoth Core Configmap
-    version: 0.2.0
+    version: 0.3.0
     tags: poc,thoth,ai-stacks
     template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
     template.openshift.io/long-description: This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
@@ -16,115 +16,116 @@ metadata:
     component: configmap
 
 objects:
-- kind: ConfigMap
-  apiVersion: v1
-  metadata:
-    name: thoth
-    labels:
-      app: thoth
-      component: configmap
-  data:
-    frontend-namespace: ${THOTH_FRONTEND_NAMESPACE}
-    middletier-namespace: ${THOTH_MIDDLETIER_NAMESPACE}
-    middletier-pod-cpu-limit: '0.5'
-    middletier-pod-memory-limit: '0.5Gi'
-    backend-namespace: ${THOTH_BACKEND_NAMESPACE}
-    infra-namespace: ${THOTH_INFRA_NAMESPACE}
-    storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
-    ceph-bucket-name: ${THOTH_CEPH_BUCKET}
-    ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
-    ceph-host: ${THOTH_S3_ENDPOINT_URL}
-    ceph-results-path: /results
-    analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
-    sync-observations: ${THOTH_SYNC_OBSERVATIONS}
-    package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
-    rsyslog-host: ${RSYSLOG_HOST}
-    rsyslog-port: ${RSYSLOG_PORT}
-    prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
-    prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
+  - kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: thoth
+      labels:
+        app: thoth
+        component: configmap
+    data:
+      frontend-namespace: ${THOTH_FRONTEND_NAMESPACE}
+      middletier-namespace: ${THOTH_MIDDLETIER_NAMESPACE}
+      middletier-pod-cpu-limit: "0.5"
+      middletier-pod-memory-limit: "0.5Gi"
+      backend-namespace: ${THOTH_BACKEND_NAMESPACE}
+      infra-namespace: ${THOTH_INFRA_NAMESPACE}
+      storage-bucket-name: ${THOTH_DEPLOYMENT_NAME}
+      ceph-bucket-name: ${THOTH_CEPH_BUCKET}
+      ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
+      ceph-host: ${THOTH_S3_ENDPOINT_URL}
+      ceph-results-path: /results
+      analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
+      sync-observations: ${THOTH_SYNC_OBSERVATIONS}
+      package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
+      rsyslog-host: ${RSYSLOG_HOST}
+      rsyslog-port: ${RSYSLOG_PORT}
+      prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
+      prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
+      metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
 
 parameters:
-- description: Name of the Thoth Frontend Namespace
-  displayName: Thoth Frontend Namespace
-  required: true
-  name: THOTH_FRONTEND_NAMESPACE
+  - description: Name of the Thoth Frontend Namespace
+    displayName: Thoth Frontend Namespace
+    required: true
+    name: THOTH_FRONTEND_NAMESPACE
 
-- description: Name of the Thoth Middle Tier Namespace
-  displayName: Thoth Middle Tier Namespace
-  required: true
-  name: THOTH_MIDDLETIER_NAMESPACE
+  - description: Name of the Thoth Middle Tier Namespace
+    displayName: Thoth Middle Tier Namespace
+    required: true
+    name: THOTH_MIDDLETIER_NAMESPACE
 
-- description: Name of the Thoth Backend Namespace
-  displayName: Thoth Backend Namespace
-  required: true
-  name: THOTH_BACKEND_NAMESPACE
+  - description: Name of the Thoth Backend Namespace
+    displayName: Thoth Backend Namespace
+    required: true
+    name: THOTH_BACKEND_NAMESPACE
 
-- description: Name of the Thoth Infra Namespace
-  displayName: Thoth Infra Namespace
-  required: true
-  name: THOTH_INFRA_NAMESPACE
+  - description: Name of the Thoth Infra Namespace
+    displayName: Thoth Infra Namespace
+    required: true
+    name: THOTH_INFRA_NAMESPACE
 
-- description: Time before analyzer pod gets removed from etcd.
-  displayName: Thoth analyzer cleanup time
-  required: true
-  name: THOTH_ANALYZER_CLEANUP_TIME
-  value: '7d'
+  - description: Time before analyzer pod gets removed from etcd.
+    displayName: Thoth analyzer cleanup time
+    required: true
+    name: THOTH_ANALYZER_CLEANUP_TIME
+    value: "7d"
 
-- description: Turn on or off automatic observation syncing to the graph database.
-  displayName: Sync observations
-  required: true
-  name: THOTH_SYNC_OBSERVATIONS
-  value: '0'
+  - description: Turn on or off automatic observation syncing to the graph database.
+    displayName: Sync observations
+    required: true
+    name: THOTH_SYNC_OBSERVATIONS
+    value: "0"
 
-- description: Name of bucket where results are stored to.
-  displayName: Ceph bucket name
-  required: true
-  name: THOTH_CEPH_BUCKET
-  value: 'DH-DEV-DATA'
+  - description: Name of bucket where results are stored to.
+    displayName: Ceph bucket name
+    required: true
+    name: THOTH_CEPH_BUCKET
+    value: "DH-DEV-DATA"
 
-- description: Thoth Ceph bucket prefix.
-  displayName: Thoth Ceph bucket prefix
-  required: true
-  name: THOTH_CEPH_BUCKET_PREFIX
-  value: 'data/thoth'
+  - description: Thoth Ceph bucket prefix.
+    displayName: Thoth Ceph bucket prefix
+    required: true
+    name: THOTH_CEPH_BUCKET_PREFIX
+    value: "data/thoth"
 
-- description: A host:port where Ceph endpoint can be used to store/retrieve data.
-  displayName: Ceph host
-  required: true
-  name: THOTH_S3_ENDPOINT_URL
+  - description: A host:port where Ceph endpoint can be used to store/retrieve data.
+    displayName: Ceph host
+    required: true
+    name: THOTH_S3_ENDPOINT_URL
 
-- description: Storage bucket name to use for persisted files
-  displayName: Thoth Storage bucket name
-  required: true
-  value: thoth-test
-  name: THOTH_DEPLOYMENT_NAME
+  - description: Storage bucket name to use for persisted files
+    displayName: Thoth Storage bucket name
+    required: true
+    value: thoth-test
+    name: THOTH_DEPLOYMENT_NAME
 
-- displayName: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
-  description: Only insert packages that have been seen within the Graph database.
-  name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
-  required: true
-  value: '1'
+  - displayName: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
+    description: Only insert packages that have been seen within the Graph database.
+    name: THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN
+    required: true
+    value: "1"
 
-- displayName: RSYSLOG_HOST
-  description: A host to rsyslog for logging.
-  name: RSYSLOG_HOST
-  required: true
-  value: 'rsyslog.dh-stage-ingest.svc'
+  - displayName: RSYSLOG_HOST
+    description: A host to rsyslog for logging.
+    name: RSYSLOG_HOST
+    required: false
+    value: "rsyslog"
 
-- displayName: RSYSLOG_PORT
-  description: A port to rsyslog for logging.
-  name: RSYSLOG_PORT
-  required: true
-  value: '10514'
-  
-- displayName: PROMETHEUS_PUSHGATEWAY_HOST
-  description: A host to push prometheus metrics via pushgateway.
-  name: PROMETHEUS_PUSHGATEWAY_HOST
-  required: false
-  value: 'pushgateway'
+  - displayName: RSYSLOG_PORT
+    description: A port to rsyslog for logging.
+    name: RSYSLOG_PORT
+    required: false
+    value: "10514"
 
-- displayName: PROMETHEUS_PUSHGATEWAY_PORT
-  description: A port to send prometheus metrics via pushgateway
-  name: PROMETHEUS_PUSHGATEWAY_PORT
-  required: false
-  value: '9091'
+  - displayName: PROMETHEUS_PUSHGATEWAY_HOST
+    description: A host to push prometheus metrics via pushgateway.
+    name: PROMETHEUS_PUSHGATEWAY_HOST
+    required: false
+    value: "pushgateway"
+
+  - displayName: PROMETHEUS_PUSHGATEWAY_PORT
+    description: A port to send prometheus metrics via pushgateway
+    name: PROMETHEUS_PUSHGATEWAY_PORT
+    required: false
+    value: "80"
