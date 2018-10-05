@@ -1,0 +1,9 @@
+---
+- name: Playbook to create and external service for JanusGraph
+    - janusgraph
+    - thoth
+
+  hosts: localhost
+  
+  roles:
+    - role: ansible.kubernetes-modules
