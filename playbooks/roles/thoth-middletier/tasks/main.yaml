@@ -36,8 +36,8 @@
   - name: create Thoth pod templates
     command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
-      - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/pod-template.yaml
-      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/pod-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/job-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/job-template.yaml
 
   - name: create Thoth Package Extract ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-extract-imagestream"
