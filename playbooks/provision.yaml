@@ -21,6 +21,7 @@
     THOTH_SUSPEND_CRONJOBS: "false"
     PROMETHEUS_PUSHGATEWAY_HOST: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_HOST') }}"
     PROMETHEUS_PUSHGATEWAY_PORT: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_PORT') }}"
+    ZUUL_INCOMING_WEBHOOK_SECRET: "{{ lookup('env','ZUUL_INCOMING_WEBHOOK_SECRET') }}"
 
   gather_facts: false
   connection: local
