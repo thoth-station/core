@@ -6,4 +6,6 @@
   hosts: localhost
   
   roles:
-    - role: ansible.kubernetes-modules
+  - role: thoth-station.external_janusgraph_service
+    janusgraph_server_ip_address: 10.8.253.255
+    namespace: "thoth-test-core"
