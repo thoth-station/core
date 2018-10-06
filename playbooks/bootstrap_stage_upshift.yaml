@@ -5,8 +5,6 @@
 
   hosts: localhost
   vars:
-    openshift_master_url: "https://paas.upshift.redhat.com"
-    token: "{{ lookup('env','OCP_TOKEN') }}"
     THOTH_BACKEND_NAMESPACE: thoth-stage-core
     THOTH_MIDDLETIER_NAMESPACE: thoth-stage-core
     THOTH_FRONTEND_NAMESPACE: thoth-stage-core
@@ -21,7 +19,9 @@
   gather_facts: false
   connection: local
   roles:
-  - role: thoth-core-imagestreams
+  - role: thoth-station.core_templates
+    openshift_api_url: "https://paas.upshift.redhat.com"
+    namespace: "{{ THOTH_INFRA_NAMESPACE }}"
 #  - role: thoth-core
 #  - role: thoth-infra-buildconfigs
 #  - role: thoth-frontend
