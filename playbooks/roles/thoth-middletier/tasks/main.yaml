@@ -44,3 +44,8 @@
 
   - name: create Thoth Solver ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/solver-imagestream"
+
+  - name: create Thoth Dependency Monkey pod template
+    command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
+    with_items:
+      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/pod-dependencyMonkey-template.yaml
