@@ -19,6 +19,11 @@
     THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
     THOTH_APP_SECRET_KEY: "{{ lookup('env','THOTH_APP_SECRET_KEY') }}"
     THOTH_SUSPEND_CRONJOBS: "false"
+    # The DSN can be found in Sentry by navigating to:
+    #    [Project Name] -> Project Settings -> Client Keys (DSN).
+    # Its template resembles the following:
+    #   '{PROTOCOL}://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}'
+    SENTRY_DSN: "{{ lookup('env','SENTRY_DSN') }}"
     PROMETHEUS_PUSHGATEWAY_HOST: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_HOST') }}"
     PROMETHEUS_PUSHGATEWAY_PORT: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_PORT') }}"
     ZUUL_INCOMING_WEBHOOK_SECRET: "{{ lookup('env','ZUUL_INCOMING_WEBHOOK_SECRET') }}"
