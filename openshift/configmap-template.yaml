@@ -3,12 +3,13 @@ kind: Template
 metadata:
   name: thoth-core-configmap
   annotations:
-    description: This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API
+    description: This is Thoth - All the configmaps required to deploy Thoth.
     openshift.io/display-name: Thoth Core Configmap
-    version: 0.3.0
-    tags: poc,thoth,ai-stacks
+    version: 0.4.0
+    tags: poc,thoth,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
-    template.openshift.io/long-description: This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
+    template.openshift.io/long-description: >
+      This template defines resources needed to deploy Thoth Services to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
     app: thoth
@@ -42,7 +43,6 @@ objects:
       rsyslog-port: ${RSYSLOG_PORT}
       prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
       prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
-      sentry-dsn: ${SENTRY_DSN}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
 
 parameters:
@@ -130,8 +130,3 @@ parameters:
     name: PROMETHEUS_PUSHGATEWAY_PORT
     required: false
     value: "80"
-
-  - displayName: SENTRY_DSN
-    description: A DSN to a Sentry instance to log to.
-    name: SENTRY_DSN
-    required: false
