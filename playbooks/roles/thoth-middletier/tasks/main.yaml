@@ -33,11 +33,11 @@
     command: "oc new-app --template={{ THOTH_INFRA_NAMESPACE }}/janusgraph"
     ignore_errors: true
 
-  - name: create Thoth pod templates
+  - name: create Thoth Job templates
     command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
-      - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/pod-template.yaml
-      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/pod-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/job-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/job-template.yaml
 
   - name: create Thoth Package Extract ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/package-extract-imagestream"
@@ -45,7 +45,7 @@
   - name: create Thoth Solver ImageStream
     command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/solver-imagestream"
 
-  - name: create Thoth Dependency Monkey pod template
+  - name: create Thoth Dependency Monkey Job template
     command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
-      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/pod-dependencyMonkey-template.yaml
+      - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-dependencyMonkey-template.yaml
