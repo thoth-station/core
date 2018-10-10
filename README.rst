@@ -10,10 +10,13 @@ Thoth repository <https://github.com/thoth-station/thoth>`_.
 Installation
 ------------
 
+The Ansible playbooks require a few Roles to be unstalled.
+
 .. code-block:: console
 
  git clone https://github.com/thoth-station/core
  cd core
+ ansible-galaxy install -r requirements.yaml
  vim playbooks/provision.yaml  # review deployment parameters
  ansible-playbook playbooks/provision.yaml
 

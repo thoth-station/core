@@ -5,8 +5,7 @@
 
   hosts: localhost
   vars:
-    openshift_master_url: "{{ lookup('env','OCP_URL') }}"
-    token: "{{ lookup('env','OCP_TOKEN') }}"
+    openshift_master_url: "https://paas.upshift.redhat.com"
     THOTH_BACKEND_NAMESPACE: "thoth-test-core"
     THOTH_MIDDLETIER_NAMESPACE: "thoth-test-core"
     THOTH_FRONTEND_NAMESPACE: "thoth-test-core"
@@ -19,6 +18,11 @@
     THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
     THOTH_APP_SECRET_KEY: "{{ lookup('env','THOTH_APP_SECRET_KEY') }}"
     THOTH_SUSPEND_CRONJOBS: "false"
+    # The DSN can be found in Sentry by navigating to:
+    #    [Project Name] -> Project Settings -> Client Keys (DSN).
+    # Its template resembles the following:
+    #   '{PROTOCOL}://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}'
+    SENTRY_DSN: "{{ lookup('env','SENTRY_DSN') }}"
     PROMETHEUS_PUSHGATEWAY_HOST: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_HOST') }}"
     PROMETHEUS_PUSHGATEWAY_PORT: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_PORT') }}"
     ZUUL_INCOMING_WEBHOOK_SECRET: "{{ lookup('env','ZUUL_INCOMING_WEBHOOK_SECRET') }}"
@@ -27,7 +31,9 @@
   connection: local
   roles:
   - role: thoth-core-imagestreams
-  - role: thoth-core
+  - role: thoth-station.core_templates
+    openshift_api_url: "https://paas.upshift.redhat.com"
+    namespace: "{{ THOTH_INFRA_NAMESPACE }}"
   - role: thoth-frontend
   - role: thoth-middletier
   - role: thoth-backend

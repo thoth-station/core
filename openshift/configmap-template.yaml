@@ -3,12 +3,14 @@ kind: Template
 metadata:
   name: thoth-core-configmap
   annotations:
-    description: This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API
+    description: >
+      This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API
     openshift.io/display-name: Thoth Core Configmap
-    version: 0.3.0
+    version: 0.4.0
     tags: poc,thoth,ai-stacks
-    template.openshift.io/documentation-url: https://github.com/AICoE/Thoth/
-    template.openshift.io/long-description: This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
     app: thoth
@@ -43,6 +45,8 @@ objects:
       prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
       prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
+      janusgraph-service-host: ${JANUSGRAPH_SERVICE_HOST}
+      janusgraph-service-port: ${JANUSGRAPH_SERVICE_PORT}
 
 parameters:
   - description: Name of the Thoth Frontend Namespace
@@ -125,7 +129,24 @@ parameters:
     value: "pushgateway"
 
   - displayName: PROMETHEUS_PUSHGATEWAY_PORT
-    description: A port to send prometheus metrics via pushgateway
+    description: A port to send prometheus metrics via pushgateway.
     name: PROMETHEUS_PUSHGATEWAY_PORT
     required: false
     value: "80"
+
+  - displayName: JANUSGRAPH_SERVICE_HOST
+    description: The hostname of the JanusGraph Server.
+    name: JANUSGRAPH_SERVICE_HOST
+    required: true
+    value: "janusgraph"
+
+  - displayName: JANUSGRAPH_SERVICE_PORT
+    description: The port of the JanusGraph Server.
+    name: JANUSGRAPH_SERVICE_PORT
+    required: true
+    value: "8182"
+
+  - displayName: SENTRY_DSN
+    description: A DSN to a Sentry instance to log to.
+    name: SENTRY_DSN
+    required: false
