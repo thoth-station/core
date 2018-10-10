@@ -16,7 +16,7 @@ The Ansible playbooks require a few Roles to be unstalled.
 
  git clone https://github.com/thoth-station/core
  cd core
- ansible-galaxy install -r requirements.yaml
+ ansible-galaxy install --role-file=requirements.yaml --roles-path=/etc/ansible/roles --force # to update any existing role
  vim playbooks/provision.yaml  # review deployment parameters
  ansible-playbook playbooks/provision.yaml
 

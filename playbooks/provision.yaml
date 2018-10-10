@@ -1,41 +1,100 @@
 ---
 - name: Playbook to provision Thoth Core
+  tags:
     - openshift
     - thoth
 
   hosts: localhost
-  vars:
-    openshift_master_url: "https://paas.upshift.redhat.com"
-    THOTH_BACKEND_NAMESPACE: "thoth-test-core"
-    THOTH_MIDDLETIER_NAMESPACE: "thoth-test-core"
-    THOTH_FRONTEND_NAMESPACE: "thoth-test-core"
-    THOTH_INFRA_NAMESPACE: "thoth-test-core"
-    THOTH_DEPLOYMENT_NAME: "thoth-test-core"
-    THOTH_CEPH_SECRET_KEY: "{{ lookup('env','THOTH_CEPH_SECRET_KEY') }}"
-    THOTH_CEPH_KEY_ID: "{{ lookup('env','THOTH_CEPH_KEY_ID') }}"
-    THOTH_S3_ENDPOINT_URL : "{{ lookup('env','THOTH_S3_ENDPOINT_URL ') }}"
-    THOTH_CEPH_BUCKET: "DH-DEV-DATA"
-    THOTH_SECRET: "{{ lookup('env','THOTH_SECRET') }}"
-    THOTH_APP_SECRET_KEY: "{{ lookup('env','THOTH_APP_SECRET_KEY') }}"
-    THOTH_SUSPEND_CRONJOBS: "false"
-    # The DSN can be found in Sentry by navigating to:
-    #    [Project Name] -> Project Settings -> Client Keys (DSN).
-    # Its template resembles the following:
-    #   '{PROTOCOL}://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}'
-    SENTRY_DSN: "{{ lookup('env','SENTRY_DSN') }}"
-    PROMETHEUS_PUSHGATEWAY_HOST: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_HOST') }}"
-    PROMETHEUS_PUSHGATEWAY_PORT: "{{ lookup('env','PROMETHEUS_PUSHGATEWAY_PORT') }}"
-    ZUUL_INCOMING_WEBHOOK_SECRET: "{{ lookup('env','ZUUL_INCOMING_WEBHOOK_SECRET') }}"
-
-  gather_facts: false
   connection: local
+  gather_facts: false
+
+  # vars:
+  #   migrated to group_vars/all/vars
+
   roles:
-  - role: thoth-core-imagestreams
-  - role: thoth-station.core_templates
-    openshift_api_url: "https://paas.upshift.redhat.com"
-    namespace: "{{ THOTH_INFRA_NAMESPACE }}"
-  - role: thoth-frontend
-  - role: thoth-middletier
-  - role: thoth-backend
-  - role: thoth-infra-buildconfigs
-  - role: thoth-jenkins
+    # create all the templates and imagestreams
+    - role: thoth-station.core_templates
+      namespace: "{{ infra_namespace }}"
+      token: "{{ openshift_api_token }}"
+    - role: thoth-station.core_imagestreams
+      namespace: "{{ infra_namespace }}"
+
+    #create a service for the external janusgraph server
+    - role: thoth-station.external_janusgraph_service
+      janusgraph_server_ip_address: "{{ thoth_stage_janusgraph_server_ip_address }}"
+      namespace: "{{ middletier_namespace }}"
+
+    # create configmap and secret required by all components
+    - role: thoth-station.configmaps_and_secrets
+      THOTH_APP_SECRET_KEY: "{{ app_secret }}"
+      THOTH_SECRET: "{{ app_secret }}"
+      THOTH_CEPH_SECRET_KEY: "{{ ceph_secret_key }}"
+      THOTH_CEPH_KEY_ID: "{{ ceph_key_id }}"
+      SENTRY_DSN: "{{ sentry_dsn }}"
+      ZUUL_INCOMING_WEBHOOK_SECRET: "{{ zuul_incoming_webhook_secret }}"      
+      THOTH_DEPLOYMENT_NAME: "{{ deployment_name }}"
+      TARGET_NAMESPACE: "{{ middletier_namespace }}" # FIXME
+      THOTH_INFRA_NAMESPACE: "{{ infra_namespace }}"
+      THOTH_FRONTEND_NAMESPACE: "{{ frontend_namespace }}"
+      THOTH_MIDDLETIER_NAMESPACE: "{{ middletier_namespace }}"
+      THOTH_BACKEND_NAMESPACE: "{{ backend_namespace }}"
+      THOTH_S3_ENDPOINT_URL : "{{ s3_endpoint_url }}"
+      THOTH_CEPH_BUCKET: "{{ ceph_bucket }}"
+      PROMETHEUS_PUSHGATEWAY_HOST: "{{ prometheus_pushgateway_host }}"
+      PROMETHEUS_PUSHGATEWAY_PORT: "{{ prometheus_pushgateway_port }}"
+
+    # create the CronJobs we need in the frontend project
+    - role: thoth-station.cronjob
+      namespace: "{{ frontend_namespace }}"
+      cronjob_name: "package-releases"
+      suspend: false
+    - role: thoth-station.cronjob
+      namespace: "{{ frontend_namespace }}"
+      cronjob_name: "cve-update"
+      suspend: False
+    - role: thoth-station.cronjob
+      namespace: "{{ frontend_namespace }}"
+      cronjob_name: "graph-sync"
+      suspend: False
+    - role: thoth-station.cronjob
+      namespace: "{{ frontend_namespace }}"
+      cronjob_name: "graph-refresh"
+      suspend: false
+
+  tasks:
+    - name: "creating ServiceAccounts and RoleBindings in {{ frontend_namespace }}"
+      shell: oc process --namespace="{{ infra_namespace  }}" thoth-core \
+        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" \
+        -p THOTH_MIDDLETIER_NAMESPACE="{{ middletier_namespace }}" \
+        -p THOTH_BACKEND_NAMESPACE="{{ backend_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "create Job Templates in {{ infra_namespace  }}"
+      command: "oc create --save-config=true --namespace {{ infra_namespace  }} --filename {{ item }}"
+      with_items:
+        - https://raw.githubusercontent.com/thoth-station/package-extract/master/openshift/job-template.yaml
+        - https://raw.githubusercontent.com/thoth-station/solver/master/openshift/job-template.yaml
+        - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-dependencyMonkey-template.yaml
+        - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-adviser-template.yaml
+        - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-provenanceChecker-template.yaml
+
+    - name: "deploy Result API in {{ middletier_namespace }}"
+      shell: "oc process --namespace {{ infra_namespace  }} result-api-deployment | oc apply --namespace {{ middletier_namespace }} -f -"
+    
+    - name: "deploy User API {{ frontend_namespace }}"
+      shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment \
+        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" \ 
+        -p THOTH_JANUSGRAPH_HOST="{{ janusgraph_service_host }}" \
+        -p THOTH_JANUSGRAPH_PORT="{{ janusgraph_service_port }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "create Thoth Core component's BuildConfigs in {{ infra_namespace }}"
+      shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ infra_namespace }} -f -"
+      with_items:
+        - package-releases-buildconfig
+        - package-extract-buildconfig
+        - graph-refresh-buildconfig
+        - graph-sync-buildconfig
+        - adviser-buildconfig
+        - solver-buildconfig
+        - cve-update-buildconfig
+        - result-api-buildconfig
+        - user-api-buildconfig

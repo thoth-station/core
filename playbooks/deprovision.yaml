@@ -1,12 +1,12 @@
 ---
 - name: Playbook to deprovision Thoth Core
+  tags:
     - openshift
     - thoth
 
   hosts: localhost
-
-  gather_facts: false
   connection: local
+  gather_facts: false
 
   tasks:
   - fail: msg="Bailing out. this play requires 'THOTH_NAMESPACE'"
@@ -16,7 +16,4 @@
     command: "oc delete bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
       secret,svc,sa,template,clusterrole --selector 'app=thoth'"
 
-  - name: Deprovision JanusGraph
-    # Deprovision everything except PVC.
-    command: oc delete bc,dc,is,pod,route,template,svc --selector 'app=janusgraph'
 
