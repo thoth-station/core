@@ -106,3 +106,4 @@ openshift/conf.sh
 *.retry
 .vscode/
 scratch.txt
+.vault_pass
