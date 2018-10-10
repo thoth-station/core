@@ -6,12 +6,16 @@ labels:
 metadata:
   name: core-e2e-test-buildconfig
   annotations:
-    description: This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    description: >
+      This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by bots,
+      but could also be used by humans...
     openshift.io/display-name: 'Thoth Core: End-to-End Test BuildConfig'
     version: 0.1.0
     tags: poc,thoth,end-to-end,e2e,test,ai-stacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
-    template.openshift.io/long-description: This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by Jenkins, but could also be used by humans...
+    template.openshift.io/long-description: >
+      This is Thoth Core End-to-End Test BuildConfig, this template is meant to be used by bots,
+      but could also be used by humans...
     template.openshift.io/provider-display-name: Red Hat, Inc.
 
 objects:
