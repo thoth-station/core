@@ -82,7 +82,9 @@
     
     - name: "deploy User API {{ frontend_namespace }}"
       shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment \
-        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" \ 
+        -p THOTH_JANUSGRAPH_HOST="{{ janusgraph_service_host }}" \
+        -p THOTH_JANUSGRAPH_PORT="{{ janusgraph_service_port }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "create Thoth Core component's BuildConfigs in {{ infra_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ infra_namespace }} -f -"

@@ -114,13 +114,13 @@ parameters:
     description: A host to rsyslog for logging.
     name: RSYSLOG_HOST
     required: false
-    value: "rsyslog"
+    value: ""
 
   - displayName: RSYSLOG_PORT
     description: A port to rsyslog for logging.
     name: RSYSLOG_PORT
     required: false
-    value: "10514"
+    value: ""
 
   - displayName: PROMETHEUS_PUSHGATEWAY_HOST
     description: A host to push prometheus metrics via pushgateway.
