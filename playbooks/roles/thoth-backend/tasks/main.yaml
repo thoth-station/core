@@ -5,27 +5,6 @@
     ignore_errors: true
     changed_when: False
 
-  - name: create required secrets
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-secret" \
-        -p THOTH_APP_SECRET_KEY="{{ THOTH_APP_SECRET_KEY }}" \
-        -p THOTH_SECRET="{{ THOTH_SECRET }}" \
-        -p THOTH_CEPH_KEY_ID="{{ THOTH_CEPH_KEY_ID }}" \
-        -p THOTH_CEPH_SECRET_KEY="{{ THOTH_CEPH_SECRET_KEY }}"
-    ignore_errors: true
-
-  - name: create required configmaps
-    command: oc new-app --template="{{ THOTH_INFRA_NAMESPACE  }}/thoth-core-configmap" \
-        -p THOTH_DEPLOYMENT_NAME="{{ THOTH_DEPLOYMENT_NAME }}" \
-        -p THOTH_FRONTEND_NAMESPACE="{{ THOTH_FRONTEND_NAMESPACE }}" \
-        -p THOTH_MIDDLETIER_NAMESPACE="{{ THOTH_MIDDLETIER_NAMESPACE }}" \
-        -p THOTH_BACKEND_NAMESPACE="{{ THOTH_BACKEND_NAMESPACE }}" \
-        -p THOTH_INFRA_NAMESPACE="{{ THOTH_INFRA_NAMESPACE }}" \
-        -p THOTH_S3_ENDPOINT_URL="{{ THOTH_S3_ENDPOINT_URL  }}" \
-        -p THOTH_CEPH_BUCKET="{{ THOTH_CEPH_BUCKET }}" \
-        -p PROMETHEUS_PUSHGATEWAY_HOST="{{ PROMETHEUS_PUSHGATEWAY_HOST }}" \
-        -p PROMETHEUS_PUSHGATEWAY_PORT="{{ PROMETHEUS_PUSHGATEWAY_PORT }}"
-    ignore_errors: true
-
   - name: create Thoth Adviser Job template
     command: oc create --save-config=true --namespace "{{ THOTH_INFRA_NAMESPACE  }}" --filename "{{ item }}"
     with_items:
