@@ -77,14 +77,25 @@
         - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-adviser-template.yaml
         - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-provenanceChecker-template.yaml
 
+    - name: "check if JanusGraph service exists, it is required by all other components"
+      k8s_raw:
+        api_version: v1
+        kind: Service
+        name: janusgraph
+        namespace: "{{ frontend_namespace }}"
+      register: janusgraph_service
+      ignore_errors: true
+
+    - fail:
+        msg: "JanusGraph Service not found, it is required!"
+      when: janusgraph_service.failed
+
     - name: "deploy Result API in {{ middletier_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} result-api-deployment | oc apply --namespace {{ middletier_namespace }} -f -"
     
-    - name: "deploy User API {{ frontend_namespace }}"
+    - name: "deploy User API {{ frontend_namespace }} (dependencies: service/janusgraph)"
       shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment \
-        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" \ 
-        -p THOTH_JANUSGRAPH_HOST="{{ janusgraph_service_host }}" \
-        -p THOTH_JANUSGRAPH_PORT="{{ janusgraph_service_port }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "create Thoth Core component's BuildConfigs in {{ infra_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ infra_namespace }} -f -"
