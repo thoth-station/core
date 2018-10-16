@@ -18,6 +18,7 @@
       token: "{{ openshift_api_token }}"
     - role: thoth-station.core_imagestreams
       namespace: "{{ infra_namespace }}"
+      THOTH_INFRA_NAMESPACE: "{{ infra_namespace }}" # FIXME here is something wrong...
 
     #create a service for the external janusgraph server
     - role: thoth-station.external_janusgraph_service
@@ -101,12 +102,12 @@
     - name: "create Thoth Core component's BuildConfigs in {{ infra_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ infra_namespace }} -f -"
       with_items:
-        - package-releases-buildconfig
-        - package-extract-buildconfig
-        - graph-refresh-buildconfig
-        - graph-sync-buildconfig
-        - adviser-buildconfig
-        - solver-buildconfig
-        - cve-update-buildconfig
-        - result-api-buildconfig
-        - user-api-buildconfig
+        - "package-releases-buildconfig"
+        - "package-extract-buildconfig"
+        - "graph-refresh-buildconfig"
+        - "graph-sync-buildconfig"
+        - "adviser-buildconfig"
+        - "solver-buildconfig"
+        - "cve-update-buildconfig"
+        - "result-api-buildconfig"
+        - "user-api-buildconfig"
