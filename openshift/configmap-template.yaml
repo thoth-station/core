@@ -42,6 +42,7 @@ objects:
       package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
       rsyslog-host: ${RSYSLOG_HOST}
       rsyslog-port: ${RSYSLOG_PORT}
+      amun-api-url: ${AMUN_API_URL}
       prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
       prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
@@ -119,6 +120,12 @@ parameters:
   - displayName: RSYSLOG_PORT
     description: A port to rsyslog for logging.
     name: RSYSLOG_PORT
+    required: false
+    value: ""
+
+  - displayName: AMUN_API_URL
+    description: An url of Amun service for stack validation.
+    name: AMUN_API_URL
     required: false
     value: ""
 
