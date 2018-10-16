@@ -40,6 +40,7 @@
       THOTH_BACKEND_NAMESPACE: "{{ backend_namespace }}"
       THOTH_S3_ENDPOINT_URL : "{{ s3_endpoint_url }}"
       THOTH_CEPH_BUCKET: "{{ ceph_bucket }}"
+      AMUN_API_URL: "{{ amun_api_url }}"
       PROMETHEUS_PUSHGATEWAY_HOST: "{{ prometheus_pushgateway_host }}"
       PROMETHEUS_PUSHGATEWAY_PORT: "{{ prometheus_pushgateway_port }}"
 
