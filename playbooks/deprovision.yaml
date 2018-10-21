@@ -1,5 +1,5 @@
 ---
-- name: Playbook to deprovision Thoth Core
+- name: "Playbook to deprovision Thoth Core"
   tags:
     - openshift
     - thoth
@@ -12,8 +12,9 @@
   - fail: msg="Bailing out. this play requires 'THOTH_NAMESPACE'"
     when: THOTH_NAMESPACE is not defined
 
-  - name: Deprovision Thoth
+  - name: "Deprovision Thoth components"
     command: "oc delete bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
-      secret,svc,sa,template,clusterrole --selector 'app=thoth'"
+      secret,svc,template,clusterrole --selector 'app=thoth'"
 
-
+  - name: "Deprovision Thoth ServiceAccounts"
+    command: "oc delete sa --selector 'app=thoth'"

@@ -14,7 +14,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "hideControls": false,
-    "id": 7,
+    "id": 9,
     "links": [],
     "refresh": false,
     "rows": [{
@@ -144,7 +144,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                            "expr": "graph_sync_analysis_results_processed",
+                            "expr": "graph_sync_analysis_results_processed_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "processed",
@@ -152,7 +152,7 @@
                             "step": 120
                         },
                         {
-                            "expr": "graph_sync_analysis_results_skipped",
+                            "expr": "graph_sync_analysis_results_skipped_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "skipped",
@@ -160,7 +160,7 @@
                             "step": 120
                         },
                         {
-                            "expr": "graph_sync_analysis_results_failed",
+                            "expr": "graph_sync_analysis_results_failed_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "failed",
@@ -168,7 +168,7 @@
                             "step": 120
                         },
                         {
-                            "expr": "graph_sync_analysis_results_synced",
+                            "expr": "graph_sync_analysis_results_synced_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "synced",
@@ -242,7 +242,7 @@
                     "stack": false,
                     "steppedLine": false,
                     "targets": [{
-                            "expr": "graph_sync_solver_results_processed",
+                            "expr": "graph_sync_solver_results_processed_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "processed",
@@ -250,7 +250,7 @@
                             "step": 120
                         },
                         {
-                            "expr": "graph_sync_solver_results_skipped",
+                            "expr": "graph_sync_solver_results_skipped_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "skipped",
@@ -258,7 +258,7 @@
                             "step": 120
                         },
                         {
-                            "expr": "graph_sync_solver_results_failed",
+                            "expr": "graph_sync_solver_results_failed_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "failed",
@@ -266,7 +266,7 @@
                             "step": 120
                         },
                         {
-                            "expr": "graph_sync_solver_results_synced",
+                            "expr": "graph_sync_solver_results_synced_total",
                             "format": "time_series",
                             "intervalFactor": 2,
                             "legendFormat": "synced",
@@ -520,6 +520,89 @@
             "showTitle": false,
             "title": "Dashboard Row",
             "titleSize": "h6"
+        },
+        {
+            "collapse": false,
+            "height": 250,
+            "panels": [{
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "dh-prod-monitoring",
+                "fill": 1,
+                "id": 6,
+                "legend": {
+                    "avg": false,
+                    "current": false,
+                    "max": false,
+                    "min": false,
+                    "show": true,
+                    "total": false,
+                    "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "links": [],
+                "nullPointMode": "null",
+                "percentage": false,
+                "pointradius": 5,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "span": 6,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [{
+                    "expr": "thoth_package_version_total{ecosystem=\"pypi\",solver=\"unsolved\"}",
+                    "format": "time_series",
+                    "intervalFactor": 2,
+                    "legendFormat": "Pypi, unsolved",
+                    "refId": "A",
+                    "step": 120
+                }],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeShift": null,
+                "title": "Graph Database: Package-Version Vertices",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 0,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [{
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    },
+                    {
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    }
+                ]
+            }],
+            "repeat": null,
+            "repeatIteration": null,
+            "repeatRowId": null,
+            "showTitle": false,
+            "title": "Dashboard Row",
+            "titleSize": "h6"
         }
     ],
     "schemaVersion": 14,
@@ -558,6 +641,6 @@
         ]
     },
     "timezone": "",
-    "title": "Thoth Services",
-    "version": 15
+    "title": "Thoth",
+    "version": 1
 }
