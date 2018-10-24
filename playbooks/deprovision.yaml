@@ -15,5 +15,3 @@
   - name: Deprovision Thoth
     command: "oc delete bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
       secret,svc,sa,template,clusterrole --selector 'app=thoth'"
-
-

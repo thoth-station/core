@@ -10,14 +10,14 @@ Thoth repository <https://github.com/thoth-station/thoth>`_.
 Installation
 ------------
 
-The Ansible playbooks require a few Roles to be unstalled.
+The Ansible playbooks require a few Roles to be unstalled, and a vault password.
 
 .. code-block:: console
 
  git clone https://github.com/thoth-station/core
  cd core
  ansible-galaxy install --role-file=requirements.yaml --roles-path=/etc/ansible/roles --force # to update any existing role
- vim playbooks/provision.yaml  # review deployment parameters
+ vim playbooks/group_vas/all/vars  # review deployment parameters
  ansible-playbook playbooks/provision.yaml
 
 Deprovisioning

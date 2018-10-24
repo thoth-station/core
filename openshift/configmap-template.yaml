@@ -6,8 +6,8 @@ metadata:
     description: >
       This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API
     openshift.io/display-name: Thoth Core Configmap
-    version: 0.4.0
-    tags: poc,thoth,ai-stacks
+    version: 0.5.0
+    tags: thoth,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
       This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
@@ -48,6 +48,7 @@ objects:
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
       janusgraph-service-host: ${JANUSGRAPH_SERVICE_HOST}
       janusgraph-service-port: ${JANUSGRAPH_SERVICE_PORT}
+      sentry-environment: ${SENTRY_ENVIRONMENT}
 
 parameters:
   - description: Name of the Thoth Frontend Namespace
@@ -156,4 +157,9 @@ parameters:
   - displayName: SENTRY_DSN
     description: A DSN to a Sentry instance to log to.
     name: SENTRY_DSN
+    required: false
+
+  - displayName: SENTRY_ENVIRONMENT
+    description: A Environment name to be used by Sentry.
+    name: SENTRY_ENVIRONMENT
     required: false
