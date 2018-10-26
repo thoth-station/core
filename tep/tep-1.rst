@@ -52,14 +52,22 @@ The workload manager should be able to execute workers based on rules. Using thi
 feature the workload manager should be able to dynamically adopt the number of 
 workers executed at the same time.
 
+Solution Alternatives
+=====================
+
+OpenShift Operator
+------------------
+
+Jobs, Workers, and the Workload manager could be implemented using the Operator
+pattern [1]_.
 
 Resources
 =========
-
+n/a
 
 References
 ==========
-
+.. [1] `Introducing the Operator Framework: Building Apps on Kubernetes` https://blog.openshift.com/introducing-the-operator-framework/
 
 Copyright
 =========
