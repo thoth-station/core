@@ -59,7 +59,12 @@ OpenShift Operator
 ------------------
 
 Jobs, Workers, and the Workload manager could be implemented using the Operator
-pattern [1]_.
+pattern [1]_: a CronJob would scan the Solver and Analysis Storage for documents,
+each document will be submitted to the Workload Manager by creating a new Resource. 
+The Workload manager will check if the document has been added to the graph database
+before, if not, the workload manager will create a Job to add the document. Monitoring
+the current number of running jobs, the workload manager could adjust the frequency
+of new job creations. If a job finished successful, the job is deleted. 
 
 Resources
 =========
