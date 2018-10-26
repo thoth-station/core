@@ -19,10 +19,39 @@ Rationale
 
 Implementing a trivial (or brute force) cronjob based graph sync or 
 graph refresh does not scale. We need to continuously add and update 
-information in the graph database. All app/update tasks should happen
-asynchruounesly. Solver or Analysis documents stored on disk should 
-be processed individually to split up huge chunks of work into small 
-chuncks.
+information in the graph database. 
+
+Requirements
+============
+
+All app/update tasks should happen asynchruounesly. Solver or Analysis
+documents stored on disk should be processed individually to split up 
+huge chunks of work into small chuncks.
+
+Proposal
+========
+
+Periodic Job
+------------
+
+Periodic jobs should scan for new solver or analysis documents stored on disk. 
+The periodic job should defere add/update operations to a worker, this worker 
+should read the document and add/update the graph database. Deferral of operations
+should be processed via a workload manager.
+
+Worker
+------
+
+The worker should read the solver or analysis file, parse its content and add/update
+information in the graph database. The worker should process one document.
+
+Workload Manager
+----------------
+
+The workload manager should be able to execute workers based on rules. Using this 
+feature the workload manager should be able to dynamically adopt the number of 
+workers executed at the same time.
+
 
 Resources
 =========
