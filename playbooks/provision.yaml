@@ -45,6 +45,10 @@
       PROMETHEUS_PUSHGATEWAY_HOST: "{{ prometheus_pushgateway_host }}"
       PROMETHEUS_PUSHGATEWAY_PORT: "{{ prometheus_pushgateway_port }}"
 
+    # Deploy Metrics Exporter
+    - role: thoth-station.metrics_exporter
+      project_name: "thoth-test-core"
+
     # create the CronJobs we need in the frontend project
     - role: thoth-station.cronjob
       namespace: "{{ frontend_namespace }}"
