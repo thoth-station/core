@@ -1,5 +1,5 @@
 ---
-- name: Playbook to provision Thoth Core
+- name: "Playbook to provision Thoth and Amun"
   tags:
     - openshift
     - thoth
@@ -62,6 +62,16 @@
       namespace: "{{ frontend_namespace }}"
       cronjob_name: "graph-refresh"
       suspend: false
+
+    # deploy Amun and all it's components
+    - role: thoth-station.amun
+      AMUN_INFRA_NAMESPACE: "{{ infra_namespace }}"
+      AMUN_API_NAMESPACE: "{{ amun_api_namespace }}"
+      AMUN_INSPECTION_NAMESPACE: "{{ amun_inspection_namespace }}"
+      AMUN_API_APP_SECRET_KEY: "{{ amun_app_secret }}"
+      PROMETHEUS_PUSHGATEWAY_HOST: "{{ prometheus_pushgateway_host }}"
+      PROMETHEUS_PUSHGATEWAY_PORT: "{{ prometheus_pushgateway_port }}"
+      SENTRY_DSN: "{{ sentry_dsn }}"
 
   tasks:
     - name: "creating ServiceAccounts and RoleBindings in {{ frontend_namespace }}"
