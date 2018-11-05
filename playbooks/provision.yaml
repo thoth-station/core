@@ -78,6 +78,37 @@
       SENTRY_DSN: "{{ sentry_dsn }}"
 
   tasks:
+    - name: "check if JanusGraph service exists, it is required by all other components"
+      k8s_raw:
+        api_version: v1
+        kind: Service
+        name: janusgraph
+        namespace: "{{ frontend_namespace }}"
+      register: janusgraph_service
+      ignore_errors: true
+
+    - fail:
+        msg: "JanusGraph Service not found, it is required!"
+      when: janusgraph_service.failed
+
+    - name: "creating Thoth-Ops ServiceAccounts in '{{ item }}' Project"
+      k8s_raw:
+        state: present
+        definition:
+          api_version: v1
+          kind: ServiceAccount
+          metadata:
+            namespace: "{{ item }}"
+            name: "thoth-ops"
+            labels:
+              app: thoth-ops
+              component: serviceaccount
+      with_items:
+        - "{{ infra_namespace }}"
+
+    - name: "granting Admin Role to ServiceAccount 'thoth-ops'"
+      command: "oc policy add-role-to-user admin --serviceaccount=thoth-ops --namespace {{ infra_namespace }}"
+
     - name: "creating ServiceAccounts and RoleBindings in {{ frontend_namespace }}"
       shell: oc process --namespace="{{ infra_namespace  }}" thoth-core \
         -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" \
@@ -93,25 +124,11 @@
         - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-adviser-template.yaml
         - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-provenanceChecker-template.yaml
 
-    - name: "check if JanusGraph service exists, it is required by all other components"
-      k8s_raw:
-        api_version: v1
-        kind: Service
-        name: janusgraph
-        namespace: "{{ frontend_namespace }}"
-      register: janusgraph_service
-      ignore_errors: true
-
-    - fail:
-        msg: "JanusGraph Service not found, it is required!"
-      when: janusgraph_service.failed
-
     - name: "deploy Result API in {{ middletier_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} result-api-deployment | oc apply --namespace {{ middletier_namespace }} -f -"
     
     - name: "deploy User API {{ frontend_namespace }} (dependencies: service/janusgraph)"
-      shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment \
-        -p THOTH_FRONTEND_NAMESPACE="{{ frontend_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+      shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "create Thoth Core component's BuildConfigs in {{ infra_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ infra_namespace }} -f -"
@@ -125,3 +142,4 @@
         - "cve-update-buildconfig"
         - "result-api-buildconfig"
         - "user-api-buildconfig"
+

@@ -17,3 +17,10 @@
     command: "oc delete --namespace={{ THOTH_NAMESPACE }} \
       bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
       secret,svc,sa,template,clusterrole --selector 'app=thoth'"
+
+  # We are not deleting the thoth-ops ServiceAccount as we want to keep the token alive!
+
+  - name: Deprovision Amun
+    command: "oc delete --namespace={{ THOTH_NAMESPACE }} \
+      bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+      secret,svc,sa,template,clusterrole --selector 'app=amun'"
