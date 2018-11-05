@@ -66,6 +66,10 @@
       namespace: "{{ frontend_namespace }}"
       cronjob_name: "graph-refresh"
       suspend: false
+    - role: thoth-station.cronjob
+      namespace: "{{ frontend_namespace }}"
+      cronjob_name: "cleanup"
+      suspend: false
 
     # deploy Amun and all it's components
     - role: thoth-station.amun
