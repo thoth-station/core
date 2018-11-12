@@ -16,9 +16,9 @@ spec:
         configMapKeyRef:
           key: storage-bucket-name
           name: thoth
-    - name: THOTH_JANUSGRAPH_HOST
+    - name: JANUSGRAPH_SERVICE_HOST
       value: janusgraph
-    - name: THOTH_JANUSGRAPH_PORT
+    - name: JANUSGRAPH_SERVICE_PORT
       value: '80'
     - name: THOTH_GRAPH_SYNC_DEBUG
       value: '1'
