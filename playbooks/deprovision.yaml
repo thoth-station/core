@@ -24,3 +24,16 @@
     command: "oc delete --namespace={{ THOTH_NAMESPACE }} \
       bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
       secret,svc,sa,template,clusterrole --selector 'app=amun'"
+
+  - name: Deprovision Osiris
+    command: "oc delete --namespace={{ THOTH_NAMESPACE }} \
+      bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+      secret,svc,sa,template,clusterrole --selector 'app=osiris'"
+
+  - name: Cleaning up leftover Jobs
+    command: "oc delete --namespace={{ THOTH_NAMESPACE }} jobs --all"
+
+  - name: Cleaning up leftover Zuul components
+    command: "oc delete --namespace={{ THOTH_NAMESPACE }} \
+      bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+      secret,svc,sa,template,clusterrole --selector 'app=zuul'"
