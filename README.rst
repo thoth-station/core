@@ -34,10 +34,12 @@ See `operations documentation <https://github.com/thoth-station/core/blob/master
 Architecture Overview
 ---------------------
 
-The whole deployment is divided into three namespaces (or two OpenShift projects) - ``thoth-frontend``, ``thoth-middletier`` and
-``thoth-backend``.
+The whole deployment is divided into multiple namespaces (or OpenShift projects) - ``thoth-frontend``, ``thoth-middletier``,
+``thoth-backend``, ``inspection`` and ``tensorflow build``.
 
 .. figure:: https://raw.githubusercontent.com/thoth-station/core/master/doc/architecture.png
+
+Some components are deployed multiple times. They serve the same purpose, but the operated namespace is parametrized. For example ``cleanup-job`` responsible for cleaning ``backend`` namespace is in the architecture overview shown as a rectangle with curly braces donating namespace which is operated by the ``cleanup-job``. The same applies for other components, such as ``workload-operator``.
 
 Frontend Namespace
 ##################
@@ -63,6 +65,8 @@ sync and operational:
 * `graph-sync-job <https://github.com/thoth-station/graph-sync-job>`_ - a job responsible for syncing data in JSON format persisten on Ceph to JanusGraph database
 * `package-releases-job <https://github.com/thoth-station/package-releases-job>`_ - a job responsible for tracking new releases on Python's package index (the public one is `PyPI.org <https://pypi.org>`_)
 * `cve-update-job <https://github.com/thoth-station/cve-update-job>`_ - a job responsible for gathering CVE information about packages
+* `workload-operator <https://github.com/thoth-station/workload-operator>`_ - an OpenShift operator responsible for scheduling jobs into namespaces, it respects allocated resources dedicated for the namespace in which jobs run
+* `graph-sync-operator <https://github.com/thoth-station/graph-sync-operator>`_ - an OpenShift operator responsible for scheduling graph-sync-jobs that sync results of analyzer job runs into graph database
 
 Middletier Namespace
 ####################
