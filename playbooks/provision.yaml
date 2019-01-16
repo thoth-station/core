@@ -20,7 +20,7 @@
       namespace: "{{ infra_namespace }}"
       THOTH_INFRA_NAMESPACE: "{{ infra_namespace }}" # FIXME here is something wrong...
 
-    #create a service for the external janusgraph server
+    # create a service for the external janusgraph server
     - role: thoth-station.external_janusgraph_service
       janusgraph_server_ip_address: "{{ thoth_janusgraph_server_ip_address }}"
       namespace: "{{ middletier_namespace }}"
@@ -125,11 +125,17 @@
         - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-adviser-template.yaml
         - https://raw.githubusercontent.com/thoth-station/adviser/master/openshift/job-provenanceChecker-template.yaml
 
-    - name: "deploy Result API in {{ middletier_namespace }}"
+    - name: "deploy Result API to {{ middletier_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} result-api-deployment | oc apply --namespace {{ middletier_namespace }} -f -"
     
-    - name: "deploy User API {{ frontend_namespace }} (dependencies: service/janusgraph)"
+    - name: "deploy User API to {{ frontend_namespace }} (dependencies: service/janusgraph)"
       shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "deploy Isis API to {{ frontend_namespace }}"
+      shell: oc process --namespace "{{ infra_namespace  }}" isis-api-deployment | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "deploy Management API to {{ frontend_namespace }}"
+      shell: oc process --namespace "{{ infra_namespace  }}" management-api-deployment | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "create Thoth Core component's BuildConfigs in {{ infra_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ infra_namespace }} -f -"
@@ -144,4 +150,21 @@
         - "result-api-buildconfig"
         - "user-api-buildconfig"
         - "cleanup-buildconfig"
+        - "isis-api-buildconfig"
+        - "management-api-buildconfig"
 
+    - name: "create Graph Sync Operator Templates"
+      command: oc create --save-config=true --namespace "{{ infra_namespace  }}" --filename "{{ item }}"
+      with_items:
+        - https://raw.githubusercontent.com/thoth-station/graph-sync-operator/master/openshift/buildConfig-template.yaml
+        - https://raw.githubusercontent.com/thoth-station/graph-sync-operator/master/openshift/imageStream-template.yaml
+        - https://raw.githubusercontent.com/thoth-station/graph-sync-operator/master/openshift/deployment-template.yaml
+
+    - name: "create Graph Sync Operator ImageStream and BuildConfig"
+      shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ frontend_namespace }} -f -"
+      with_items:
+        - "graph-sync-operator-imagestream"
+        - "graph-sync-operator-buildconfig"
+
+    - name: "deploy Graph Sync Operator"
+      shell: "oc process --namespace {{ infra_namespace  }} graph-sync-operator-deployment | oc apply --namespace {{ frontend_namespace }} -f -"

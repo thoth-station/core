@@ -107,3 +107,4 @@ openshift/conf.sh
 .vscode/
 scratch.txt
 .vault_pass
+.vault_pass

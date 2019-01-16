@@ -22,7 +22,7 @@
     - name: "creating BuildConfig in {{ frontend_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} init-job-buildconfig | oc apply --namespace {{ frontend_namespace }} -f -"
     
-    - name: "deploy Init Jon in {{ frontend_namespace }}"
+    - name: "deploy Init Job in {{ frontend_namespace }}"
       shell: oc process --namespace "{{ infra_namespace  }}" init-job | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "wait for init-job to be successfully finished"
