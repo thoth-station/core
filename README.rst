@@ -29,7 +29,7 @@ Deprovisioning
   cd core
   ansible-playbook playbooks/deprovision.yaml --extra-vars THOTH_NAMESPACE=<NAMESPACE>
 
-See `operations documentation <https://github.com/thoth-station/core/blob/master/doc/operations.md>`_ for more info.
+See `operations documentation <https://github.com/thoth-station/core/blob/master/doc/operations.rst>`_ for more info.
 
 Architecture Overview
 ---------------------
