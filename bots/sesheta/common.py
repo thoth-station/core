@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 #   sesheta
 #   Copyright(C) 2018 Christoph Görn
 #

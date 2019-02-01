@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 # thoth-core
 # Copyright (C) 2018 Christoph Görn
 #
