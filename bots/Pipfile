@@ -6,15 +6,10 @@ name = "pypi"
 [packages]
 pygithub = "*"
 thoth-common = "*"
-pyyaml = "*"
+pyyaml = ">=4.2b1"
 daiquiri = "*"
-requests = "*"
+requests = ">=2.20.0"
 prometheus-client = "*"
-
-[dev-packages]
-coala = "*"
-pycodestylebear = "*"
-yamllintbear = "*"
 
 [requires]
 python_version = "3.6"
