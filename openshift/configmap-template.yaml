@@ -125,9 +125,10 @@ parameters:
     value: ""
 
   - displayName: AMUN_API_URL
-    description: An url of Amun service for stack validation.
+    description: An URL with scheme and path to API version of Amun service for stack validation.
     name: AMUN_API_URL
     required: false
+    # e.g. http://amun-api.redhat.com/api/v1
     value: ""
 
   - displayName: PROMETHEUS_PUSHGATEWAY_HOST
