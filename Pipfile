@@ -4,7 +4,6 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
 
 pytest = "*"
@@ -12,8 +11,10 @@ pylint = "*"
 "autopep8" = "*"
 behave = "*"
 pyhamcrest = "*"
-requests = "*"
-
+urllib3 = ">=1.23"
+requests = ">=2.20.0"
 
 [dev-packages]
 
+[requires]
+python_version = "3.6"
