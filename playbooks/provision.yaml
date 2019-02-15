@@ -50,7 +50,7 @@
     - role: thoth-station.metrics_exporter
       project_name: "thoth-test-core"
 
-    # create the CronJobs we need in the frontend project
+    # create the CronJobs we need
     - role: thoth-station.cronjob
       namespace: "{{ frontend_namespace }}"
       cronjob_name: "package-releases"
@@ -63,10 +63,7 @@
       namespace: "{{ frontend_namespace }}"
       cronjob_name: "graph-refresh"
       suspend: false
-    - role: thoth-station.cronjob
-      namespace: "{{ frontend_namespace }}"
-      cronjob_name: "cleanup"
-      suspend: false 
+    # This is provisioning to a single namespace, so skipping the cleanup job deployments. see below
 
     # deploy Amun and all it's components
     - role: thoth-station.amun
@@ -152,19 +149,74 @@
         - "cleanup-buildconfig"
         - "isis-api-buildconfig"
         - "management-api-buildconfig"
+        - "graph-sync-scheduler-buildconfig"
+        - "build-watcher-buildconfig"
 
-    - name: "create Graph Sync Operator Templates"
-      command: oc create --save-config=true --namespace "{{ infra_namespace  }}" --filename "{{ item }}"
+    # TODO the following tasks could be moved into their own roles....
+
+    - name: "create Graph Sync Scheduler ImageStream"
+      shell: oc process --namespace "{{ infra_namespace  }}" "{{ item }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
       with_items:
-        - https://raw.githubusercontent.com/thoth-station/graph-sync-operator/master/openshift/buildConfig-template.yaml
-        - https://raw.githubusercontent.com/thoth-station/graph-sync-operator/master/openshift/imageStream-template.yaml
-        - https://raw.githubusercontent.com/thoth-station/graph-sync-operator/master/openshift/deployment-template.yaml
+        - "graph-sync-scheduler-imagestream"
+        - "build-watcher-imagestream"
 
-    - name: "create Graph Sync Operator ImageStream and BuildConfig"
-      shell: "oc process --namespace {{ infra_namespace  }} {{ item }} | oc apply --namespace {{ frontend_namespace }} -f -"
-      with_items:
-        - "graph-sync-operator-imagestream"
-        - "graph-sync-operator-buildconfig"
+    - name: "deploy Graph Sync Scheduler for Middletier"
+      shell: oc process --namespace "{{ infra_namespace }}" graph-sync-scheduler-deployment \
+        -p THOTH_SERVICE_ACCOUNT_NAME="inspector" \
+        -p THOTH_SCHEDULER_NAMESPACE="{{ middletier_namespace }}" \
+        -p THOTH_GRAPH_SYNC_NAMESPACE="{{ middletier_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
 
-    - name: "deploy Graph Sync Operator"
-      shell: "oc process --namespace {{ infra_namespace  }} graph-sync-operator-deployment | oc apply --namespace {{ frontend_namespace }} -f -"
+    - name: "deploy Graph Sync Scheduler to Middletier"
+      shell: oc process --namespace "{{ infra_namespace }}" graph-sync-scheduler-deployment \
+        -p THOTH_SERVICE_ACCOUNT_NAME="inspector" \
+        -p THOTH_SCHEDULER_NAMESPACE="{{ backend_namespace }}" \
+        -p THOTH_GRAPH_SYNC_NAMESPACE="{{ backend_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+      ignore_errors: true
+
+    - name: "deploy Graph Sync Scheduler for Amun"
+      shell: oc process --namespace "{{ infra_namespace }}" graph-sync-scheduler-deployment \
+        -p THOTH_SERVICE_ACCOUNT_NAME="inspector" \
+        -p THOTH_SCHEDULER_NAMESPACE="{{ amun_inspection_namespace }}" \
+        -p THOTH_GRAPH_SYNC_NAMESPACE="{{ amun_inspection_namespace }}" | oc apply --namespace "{{ amun_api_namespace }}" -f -
+      ignore_errors: true
+
+    - name: "deploy Build Watcher"
+      shell: oc process --namespace "{{ infra_namespace }}" build-watcher-deployment \
+        -p THOTH_WATCHED_NAMESPACE="{{ amun_inspection_namespace }}" \
+        -p THOTH_USER_API_HOST="{{ thoth_user_api_host }}" | oc apply --namespace "{{ amun_api_namespace }}" -f -
+
+    - name: "Create Cleanup Job"
+      shell: oc process --namespace "{{ infra_namespace }}" cleanup-cronjob \
+        -p THOTH_SUSPEND_JOB=false \
+        -p THOTH_CLEANUP_NAMESPACE="{{ middletier_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "Create Cleanup Job"
+      shell: oc process --namespace "{{ infra_namespace }}" cleanup-cronjob \
+        -p THOTH_SUSPEND_JOB=false \
+        -p THOTH_CLEANUP_NAMESPACE="{{ backend_namespace }}" | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "Create Cleanup Job"
+      shell: oc process --namespace "{{ infra_namespace }}" cleanup-cronjob \
+        -p THOTH_SUSPEND_JOB=false \
+        -p THOTH_CLEANUP_NAMESPACE="{{ amun_inspection_namespace }}" | oc apply --namespace "{{ amun_api_namespace }}" -f -
+
+    - name: "creating Workload Operator ImageStream"
+      shell: "oc create --save-config=true --namespace {{ frontend_namespace  }} --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/imageStream-template.yaml"
+
+    - name: "creating Workload Operator BuildConfig"
+      shell: "oc create --save-config=true --namespace {{ frontend_namespace  }} --filename       https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/buildConfig-template.yaml"
+
+    - name: "deploying Workload Operator for Middletier"
+      shell: oc process --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/deployment-template.yaml \
+        -p THOTH_OPERATOR_NAMESPACE="{{ middletier_namespace }}" \
+        -p THOTH_SERVICE_ACCOUNT_NAME="analyzer" | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "deploying Workload Operator for Backend"
+      shell: oc process --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/deployment-template.yaml \
+        -p THOTH_OPERATOR_NAMESPACE="{{ backend_namespace }}" \
+        -p THOTH_SERVICE_ACCOUNT_NAME="analyzer" | oc apply --namespace "{{ frontend_namespace }}" -f -
+
+    - name: "deploying Workload Operator for Amun"
+      shell: oc process --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/deployment-template.yaml \
+        -p THOTH_OPERATOR_NAMESPACE="{{ amun_inspection_namespace }}" \
+        -p THOTH_SERVICE_ACCOUNT_NAME="analyzer" | oc apply --namespace "{{ amun_api_namespace }}" -f -
