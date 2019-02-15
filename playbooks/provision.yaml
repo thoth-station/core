@@ -201,10 +201,10 @@
         -p THOTH_CLEANUP_NAMESPACE="{{ amun_inspection_namespace }}" | oc apply --namespace "{{ amun_api_namespace }}" -f -
 
     - name: "creating Workload Operator ImageStream"
-      shell: "oc create --save-config=true --namespace {{ frontend_namespace  }} --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/imageStream-template.yaml"
+      shell: oc process --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/imageStream-template.yaml | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "creating Workload Operator BuildConfig"
-      shell: "oc create --save-config=true --namespace {{ frontend_namespace  }} --filename       https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/buildConfig-template.yaml"
+      shell: oc process --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/buildConfig-template.yaml | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "deploying Workload Operator for Middletier"
       shell: oc process --filename https://raw.githubusercontent.com/thoth-station/workload-operator/master/openshift/deployment-template.yaml \
