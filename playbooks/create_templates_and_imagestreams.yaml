@@ -1,0 +1,27 @@
+---
+- name: "Playbook to provision Templates and ImageStreams required by Thoth, Amun, and Osiris"
+  tags:
+    - openshift
+    - thoth
+
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  # vars:
+  #   migrated to group_vars/all/vars
+
+  tasks:
+    - name: "creating core Templates"
+      include_role:
+        name: thoth-station.core_templates
+      vars:
+        namespace: "{{ infra_namespace }}"
+        token: "{{ openshift_api_token }}"
+
+    - name: "creating core ImageStreams"
+      include_role:
+        name: thoth-station.core_imagestreams
+      vars:
+        namespace: "{{ infra_namespace }}"
+        THOTH_INFRA_NAMESPACE: "{{ infra_namespace }}" # FIXME here is something wrong...

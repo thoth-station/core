@@ -1,0 +1,41 @@
+---
+- name: "Playbook to create ConfigMaps and Secrets required by Thoth, Amun, and Osiris"
+  tags:
+    - openshift
+    - thoth
+
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: "creating ConfigMaps and Secrets in all Projects"
+      include_role:
+        name: thoth-station.configmaps_and_secrets
+      vars:
+        THOTH_APP_SECRET_KEY: "{{ app_secret }}"
+        THOTH_SECRET: "{{ app_secret }}"
+        THOTH_CEPH_SECRET_KEY: "{{ ceph_secret_key }}"
+        THOTH_CEPH_KEY_ID: "{{ ceph_key_id }}"
+        SENTRY_DSN: "{{ sentry_dsn }}"
+        ZUUL_INCOMING_WEBHOOK_SECRET: "{{ zuul_incoming_webhook_secret }}"
+        THOTH_DEPLOYMENT_NAME: "{{ deployment_name }}"
+        TARGET_NAMESPACE: "{{ target_namespace }}"
+        THOTH_INFRA_NAMESPACE: "{{ infra_namespace }}"
+        THOTH_FRONTEND_NAMESPACE: "{{ frontend_namespace }}"
+        THOTH_MIDDLETIER_NAMESPACE: "{{ middletier_namespace }}"
+        THOTH_BACKEND_NAMESPACE: "{{ backend_namespace }}"
+        THOTH_S3_ENDPOINT_URL: "{{ s3_endpoint_url }}"
+        THOTH_CEPH_BUCKET: "{{ ceph_bucket }}"
+        AMUN_API_URL: "{{ amun_api_url }}"
+        PROMETHEUS_PUSHGATEWAY_HOST: "{{ prometheus_pushgateway_host }}"
+        PROMETHEUS_PUSHGATEWAY_PORT: "{{ prometheus_pushgateway_port }}"
+      loop:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"
+      loop_control:
+        loop_var: target_namespace

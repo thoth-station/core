@@ -1,0 +1,71 @@
+---
+- name: "Playbook to deprovision Thoth Core"
+  tags:
+    - openshift
+    - thoth
+    - operations
+
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: "Deprovision Thoth from all Projects"
+      command: "oc delete --namespace={{ item }} \
+        bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+        secret,svc,sa,template,clusterrole --selector 'app=thoth'"
+      with_items:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"
+
+    # We are not deleting the thoth-ops ServiceAccount as we want to keep the token alive!
+
+    - name: Deprovision Amun from all Projects
+      command: "oc delete --namespace={{ item }} \
+        bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+        secret,svc,sa,template,clusterrole --selector 'app=amun'"
+      with_items:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"
+
+    - name: Deprovision Osiris from all Projects
+      command: "oc delete --namespace={{ item }} \
+        bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+        secret,svc,sa,template,clusterrole --selector 'app=osiris'"
+      with_items:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"
+
+    - name: Cleaning up leftover Jobs from all Projects
+      command: "oc delete --namespace={{ item }} jobs --all"
+      with_items:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"
+
+    - name: Cleaning up leftover Zuul components from all Projects
+      command: "oc delete --namespace={{ item }} \
+        bc,configmap,cronjob,dc,is,pod,role,rolebinding,route,\
+        secret,svc,sa,template,clusterrole --selector 'app=zuul'"
+      with_items:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"

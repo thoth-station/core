@@ -1,0 +1,69 @@
+---
+- name: "Playbook to create ServiceAccounts, RoleBindings required by Thoth, Amun, and Osiris"
+  tags:
+    - openshift
+    - thoth
+
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    # This is used for thoth-ops to auth to all projects
+    - name: "creating Thoth-Ops ServiceAccounts 'thoth-ops' in all namespaces"
+      k8s_raw:
+        state: present
+        definition:
+          api_version: v1
+          kind: ServiceAccount
+          metadata:
+            namespace: "{{ item }}"
+            name: "thoth-ops"
+            labels:
+              app: thoth-ops
+              component: serviceaccount
+      with_items:
+        - "{{ frontend_namespace }}"
+        - "{{ middletier_namespace }}"
+        - "{{ backend_namespace }}"
+        - "{{ infra_namespace }}"
+        - "{{ amun_api_namespace }}"
+        - "{{ amun_inspection_namespace }}"
+
+    - name: "granting Admin Role to ServiceAccount 'thoth-ops'"
+      command: "oc policy add-role-to-user admin --serviceaccount=thoth-ops --namespace {{ infra_namespace }}"
+
+    - name: "creating Analyzer ServiceAccounts in frontend_namespace"
+      k8s_raw:
+        state: present
+        definition:
+          kind: ServiceAccount
+          apiVersion: v1
+          automountServiceAccountToken: true
+          metadata:
+            labels:
+              app: thoth
+              component: serviceaccount
+            name: analyzer
+            namespace: "{{ frontend_namespace }}"
+
+    # TODO have a service account for each component
+
+    - name: "creating RoleBinding 'role-jobs-binding' in frontend_namespace"
+      k8s_raw:
+        state: present
+        definition:
+          kind: RoleBinding
+          apiVersion: v1
+          metadata:
+            labels:
+              app: thoth
+            name: role-jobs-binding
+            namespace: "{{ middletier_namespace }}"
+          roleRef:
+            kind: ClusterRole
+            name: edit
+          subjects:
+            - kind: ServiceAccount
+              name: analyzer
+              namespace: "{{ frontend_namespace }}"
