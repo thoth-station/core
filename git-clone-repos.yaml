@@ -17,7 +17,7 @@
   tasks:
     - name: Fetching repositories from {{ ORG }}
       uri:
-        url: https://api.github.com/orgs/{{ ORG }}/repos
+        url: https://api.github.com/orgs/{{ ORG }}/repos?per_page=100 
         return_content: yes
       register: repo_list
       when: REPOS == ""
