@@ -43,6 +43,8 @@
       THOTH_CEPH_BUCKET: "{{ ceph_bucket }}"
       # A full URL to AMUN API including API version - e.g. http:/amun-api/api/v1
       AMUN_API_URL: "{{ amun_api_url }}"
+      # A full URL to Isis API including API version - e.g. http:/amun-api/api/v1
+      ISIS_API_URL: "{{ isis_api_url }}"
       PROMETHEUS_PUSHGATEWAY_HOST: "{{ prometheus_pushgateway_host }}"
       PROMETHEUS_PUSHGATEWAY_PORT: "{{ prometheus_pushgateway_port }}"
 

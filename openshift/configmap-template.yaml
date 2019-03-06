@@ -43,6 +43,7 @@ objects:
       rsyslog-host: ${RSYSLOG_HOST}
       rsyslog-port: ${RSYSLOG_PORT}
       amun-api-url: ${AMUN_API_URL}
+      isis-api-url: ${ISIS_API_URL}
       prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
       prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
@@ -126,6 +127,12 @@ parameters:
 
   - displayName: AMUN_API_URL
     description: An url of Amun service for stack validation.
+    name: AMUN_API_URL
+    required: false
+    value: ""
+
+  - displayName: ISIS_API_URL
+    description: An url of Isis API for project2vec based queries.
     name: AMUN_API_URL
     required: false
     value: ""
