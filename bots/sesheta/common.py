@@ -48,7 +48,7 @@ def init_github_interface(SESHETA_GITHUB_ACCESS_TOKEN):
     github = Github(SESHETA_GITHUB_ACCESS_TOKEN)
 
     with open("config.yaml", 'r') as config:
-        RUNTIME_CONFIG = yaml.load(config)
+        RUNTIME_CONFIG = yaml.safe_load(config)
 
     GITHUB_ORGANIZATION = RUNTIME_CONFIG['organization']
     GITHUB_REPOSITORIES = RUNTIME_CONFIG['repositories']
