@@ -134,7 +134,7 @@ parameters:
 
   - displayName: ISIS_API_URL
     description: An url of Isis API for project2vec based queries.
-    name: AMUN_API_URL
+    name: ISIS_API_URL
     required: false
     value: ""
 
