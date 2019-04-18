@@ -46,8 +46,8 @@ objects:
       prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
       prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
-      janusgraph-service-host: ${JANUSGRAPH_SERVICE_HOST}
-      janusgraph-service-port: ${JANUSGRAPH_SERVICE_PORT}
+      graph-service-host: ${GRAPH_SERVICE_HOST}
+      graph-service-port: ${GRAPH_SERVICE_PORT}
       sentry-environment: ${SENTRY_ENVIRONMENT}
 
 parameters:
@@ -143,17 +143,17 @@ parameters:
     required: false
     value: "80"
 
-  - displayName: JANUSGRAPH_SERVICE_HOST
-    description: The hostname of the JanusGraph Server.
-    name: JANUSGRAPH_SERVICE_HOST
+  - displayName: GRAPH_SERVICE_HOST
+    description: The hostname of the Dgraph database instance.
+    name: GRAPH_SERVICE_HOST
     required: true
-    value: "janusgraph"
+    value: "dgraph"
 
-  - displayName: JANUSGRAPH_SERVICE_PORT
-    description: The port of the JanusGraph Server.
-    name: JANUSGRAPH_SERVICE_PORT
+  - displayName: GRAPH_SERVICE_PORT
+    description: The port of the Dgraph database instance.
+    name: GRAPH_SERVICE_PORT
     required: true
-    value: "8182"
+    value: "9080"
 
   - displayName: SENTRY_DSN
     description: A DSN to a Sentry instance to log to.
