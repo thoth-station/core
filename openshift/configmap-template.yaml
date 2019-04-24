@@ -50,8 +50,7 @@ objects:
       janusgraph-service-host: ${JANUSGRAPH_SERVICE_HOST}
       janusgraph-service-port: ${JANUSGRAPH_SERVICE_PORT}
       sentry-environment: ${SENTRY_ENVIRONMENT}
-      graph_service_host: "${GRAPH_SERVICE_HOST}"
-      graph_tls_path: "${GRAPH_TLS_PATH}"
+      graph-service-host: "${GRAPH_SERVICE_HOST}"
 
 parameters:
   - description: Name of the Thoth Frontend Namespace
@@ -179,8 +178,3 @@ parameters:
     name: "GRAPH_SERVICE_HOST"
     required: true
 
-  - displayName: "GRAPH_TLS_PATH"
-    description: "Directory name containing cert/key required for gRPC."
-    name: "GRAPH_TLS_PATH"
-    required: true
-    value: "/var/run/secrets/dgraph"
