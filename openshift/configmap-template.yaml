@@ -4,13 +4,13 @@ metadata:
   name: thoth-core-configmap
   annotations:
     description: >
-      This is Thoth Core - All the configmaps required to deploy Thoth Core Analyzer and Results API
+      Thoth: All the configmaps required to deploy Thoth Core Analyzer and Results API
     openshift.io/display-name: Thoth Core Configmap
-    version: 0.5.0
+    version: 0.6.0
     tags: thoth,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
-      This template defines resources needed to deploy Thoth Core Services as a Proof-of-Concept to OpenShift.
+      This template defines resources needed to deploy Thoth Core Services to OpenShift.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
     app: thoth
@@ -50,6 +50,8 @@ objects:
       janusgraph-service-host: ${JANUSGRAPH_SERVICE_HOST}
       janusgraph-service-port: ${JANUSGRAPH_SERVICE_PORT}
       sentry-environment: ${SENTRY_ENVIRONMENT}
+      graph_service_host: "${GRAPH_SERVICE_HOST}"
+      graph_tls_path: "${GRAPH_TLS_PATH}"
 
 parameters:
   - description: Name of the Thoth Frontend Namespace
@@ -171,3 +173,14 @@ parameters:
     description: A Environment name to be used by Sentry.
     name: SENTRY_ENVIRONMENT
     required: false
+
+  - displayName: "GRAPH_SERVICE_HOST"
+    description: "Hostname of the Dgraph Alpha."
+    name: "GRAPH_SERVICE_HOST"
+    required: true
+
+  - displayName: "GRAPH_TLS_PATH"
+    description: "Directory name containing cert/key required for gRPC."
+    name: "GRAPH_TLS_PATH"
+    required: true
+    value: "/var/run/secrets/dgraph"
