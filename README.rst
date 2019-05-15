@@ -62,7 +62,7 @@ sync and operational:
 
 * `cleanup-job <https://github.com/thoth-station/cleanup-job>`_ - a job responsible for cleaning up resources left in the cluster
 * `graph-refresh-job <https://github.com/thoth-station/graph-refresh-job>`_ - - a job responsible for scheduling analyses of packages that were not yet analyzed
-* `graph-sync-job <https://github.com/thoth-station/graph-sync-job>`_ - a job responsible for syncing data in JSON format persisten on Ceph to JanusGraph database
+* `graph-sync-job <https://github.com/thoth-station/graph-sync-job>`_ - a job responsible for syncing data in JSON format persisten on Ceph to DGraph database
 * `package-releases-job <https://github.com/thoth-station/package-releases-job>`_ - a job responsible for tracking new releases on Python's package index (the public one is `PyPI.org <https://pypi.org>`_)
 * `cve-update-job <https://github.com/thoth-station/cve-update-job>`_ - a job responsible for gathering CVE information about packages
 * `workload-operator <https://github.com/thoth-station/workload-operator>`_ - an OpenShift operator responsible for scheduling jobs into namespaces, it respects allocated resources dedicated for the namespace in which jobs run
