@@ -20,11 +20,6 @@
       namespace: "{{ infra_namespace }}"
       THOTH_INFRA_NAMESPACE: "{{ infra_namespace }}" # FIXME here is something wrong...
 
-    # create a service for the external janusgraph server
-    - role: thoth-station.external_janusgraph_service
-      janusgraph_server_ip_address: "{{ thoth_janusgraph_server_ip_address }}"
-      namespace: "{{ middletier_namespace }}"
-
     # create configmap and secret required by all components
     - role: thoth-station.configmaps_and_secrets
       THOTH_APP_SECRET_KEY: "{{ app_secret }}"
@@ -78,19 +73,6 @@
       SENTRY_DSN: "{{ sentry_dsn }}"
 
   tasks:
-    - name: "check if JanusGraph service exists, it is required by all other components"
-      k8s_raw:
-        api_version: v1
-        kind: Service
-        name: janusgraph
-        namespace: "{{ frontend_namespace }}"
-      register: janusgraph_service
-      ignore_errors: true
-
-    - fail:
-        msg: "JanusGraph Service not found, it is required!"
-      when: janusgraph_service.failed
-
     - name: "creating Thoth-Ops ServiceAccounts in {{ item }} Project"
       k8s_raw:
         state: present
@@ -126,8 +108,8 @@
 
     - name: "deploy Result API to {{ middletier_namespace }}"
       shell: "oc process --namespace {{ infra_namespace  }} result-api-deployment | oc apply --namespace {{ middletier_namespace }} -f -"
-    
-    - name: "deploy User API to {{ frontend_namespace }} (dependencies: service/janusgraph)"
+
+    - name: "deploy User API to {{ frontend_namespace }} (dependencies: dgraph)"	
       shell: oc process --namespace "{{ infra_namespace  }}" user-api-deployment | oc apply --namespace "{{ frontend_namespace }}" -f -
 
     - name: "deploy Isis API to {{ frontend_namespace }}"

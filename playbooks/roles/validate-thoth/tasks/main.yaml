@@ -52,12 +52,7 @@
       - "imagestreams/result-api"
       - "buildconfigs/result-api"
       - "svc/result-api"
-      - "svc/janusgraph"
       - "deploymentconfigs/result-api"
-      - "deploymentconfigs/janusgraph"
-
-  - name: "checking for Thoth Backend PersistentVolumeClaims"
-    command: "oc get pvc janusgraph-db --namespace {{ THOTH_MIDDLETIER_NAMESPACE }}"
 
   - name: "checking for Thoth Backend CronJobs"
     command: "oc get cronjob graph-sync-job --namespace {{ THOTH_BACKEND_NAMESPACE }}"

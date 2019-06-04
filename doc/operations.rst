@@ -80,10 +80,3 @@ annotations:
         template: adviser-buildconfig
         app: thoth
         component: adviser
-
-Using the Ops container
------------------------
-
-Run the ops container using `sudo podman run --rm -ti --volume $(pwd):/opt/redhat/thoth:Z --volume $HOME/.kube:/home/user/.kube:Z localhost/thoth-ops-container:latest bash` (`pwd` should be a git clone of the core repository). From within the container (given you are logged in to OpenShift) you can run Ansible playbooks to create OpenShift objects: `K8S_AUTH_API_KEY=$(oc whoami --show-token) K8S_AUTH_HOST=https://paas.upshift.redhat.com K8S_AUTH_VERIFY_SSL=false ansible-playbook create_external_service_janusgraph.yaml`
-
-A prebuild container image can be found at https://quay.io/repository/thoth-station/thoth-ops-container
