@@ -2,5 +2,4 @@
 - src: thoth-station.core_templates
 - src: thoth-station.configmaps_and_secrets
 - src: thoth-station.cronjob
-- src: thoth-station.external_janusgraph_service
 - src: thoth-station.amun
