@@ -44,8 +44,6 @@ objects:
       rsyslog-port: ${RSYSLOG_PORT}
       amun-api-url: ${AMUN_API_URL}
       isis-api-url: ${ISIS_API_URL}
-      prometheus-pushgateway-host: ${PROMETHEUS_PUSHGATEWAY_HOST}
-      prometheus-pushgateway-port: ${PROMETHEUS_PUSHGATEWAY_PORT}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
       sentry-environment: ${SENTRY_ENVIRONMENT}
       graph-service-host: "${GRAPH_SERVICE_HOST}"
