@@ -46,7 +46,6 @@ objects:
       isis-api-url: ${ISIS_API_URL}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
       sentry-environment: ${SENTRY_ENVIRONMENT}
-      graph-service-host: "${GRAPH_SERVICE_HOST}"
 
 parameters:
   - description: Name of the Thoth Frontend Namespace
@@ -156,9 +155,3 @@ parameters:
     description: A Environment name to be used by Sentry.
     name: SENTRY_ENVIRONMENT
     required: false
-
-  - displayName: "GRAPH_SERVICE_HOST"
-    description: "Hostname of the Dgraph Alpha."
-    name: "GRAPH_SERVICE_HOST"
-    required: true
-
