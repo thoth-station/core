@@ -45,7 +45,7 @@ objects:
       amun-api-url: ${AMUN_API_URL}
       isis-api-url: ${ISIS_API_URL}
       metrics-pushgateway-url: ${PROMETHEUS_PUSHGATEWAY_HOST}:${PROMETHEUS_PUSHGATEWAY_PORT}
-      sentry-environment: ${SENTRY_ENVIRONMENT}
+      sentry-dsn: ${SENTRY_DSN}
 
 parameters:
   - description: Name of the Thoth Frontend Namespace
@@ -151,7 +151,7 @@ parameters:
     name: SENTRY_DSN
     required: false
 
-  - displayName: SENTRY_ENVIRONMENT
+  - displayName: SENTRY_DSN
     description: A Environment name to be used by Sentry.
-    name: SENTRY_ENVIRONMENT
+    name: SENTRY_DSN
     required: false
