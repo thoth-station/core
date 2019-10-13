@@ -37,7 +37,6 @@ objects:
       ceph-bucket-prefix: ${THOTH_CEPH_BUCKET_PREFIX}
       ceph-host: ${THOTH_S3_ENDPOINT_URL}
       ceph-results-path: /results
-      analyzer-cleanup-time: ${THOTH_ANALYZER_CLEANUP_TIME}
       sync-observations: ${THOTH_SYNC_OBSERVATIONS}
       package-releases-only-if-package-seen: ${THOTH_PACKAGE_RELEASES_ONLY_IF_PACKAGE_SEEN}
       rsyslog-host: ${RSYSLOG_HOST}
@@ -67,12 +66,6 @@ parameters:
     displayName: Thoth Infra Namespace
     required: true
     name: THOTH_INFRA_NAMESPACE
-
-  - description: Time before analyzer pod gets removed from etcd.
-    displayName: Thoth analyzer cleanup time
-    required: true
-    name: THOTH_ANALYZER_CLEANUP_TIME
-    value: "7d"
 
   - description: Turn on or off automatic observation syncing to the graph database.
     displayName: Sync observations
