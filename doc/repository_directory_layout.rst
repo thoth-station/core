@@ -7,7 +7,7 @@ OpenShift Templates
 -------------------
 
 The `openshift/` directory shall contain all the OpenShift template files. These may be processed by Ansible Playbooks
-or used directly by humans using `oc applf -f ...`.
+or used directly by humans using `oc apply -f ...`.
 
 This directory also contains OpenShift Templates to create Argo Workflows.
 
