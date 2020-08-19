@@ -1,5 +1,0 @@
-- src: thoth-station.core_imagestreams
-- src: thoth-station.core_templates
-- src: thoth-station.configmaps_and_secrets
-- src: thoth-station.cronjob
-- src: thoth-station.amun
