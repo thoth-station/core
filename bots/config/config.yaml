@@ -1,3 +1,0 @@
-prowjob_namespace: aicoe-prod-bots
-pod_namespace: aicoe-prod-bots
-log_level: info
