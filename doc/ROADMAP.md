@@ -3,6 +3,19 @@
 After the current and coordinated release of Thoth's components, we started this document to outline our
 current focus areas and the major items we are working on.
 
+For a more detailed overview of our current activities, have a look at our GitHub projects. We use them to plan our
+sprints.
+
+* [Thoth Knowledge Graph](https://github.com/orgs/thoth-station/projects/8)
+* [Amun](https://github.com/orgs/thoth-station/projects/12)
+* [Investigator](https://github.com/orgs/thoth-station/projects/14)
+* [Performance Indicators](https://github.com/orgs/thoth-station/projects/10)
+* [Security Indicators](https://github.com/orgs/thoth-station/projects/2)
+* [Adviser](https://github.com/orgs/thoth-station/projects/4)
+* [Solver](https://github.com/orgs/thoth-station/projects/6)
+* [Kebechet](https://github.com/orgs/thoth-station/projects/3)
+* [User API](https://github.com/orgs/thoth-station/projects/7)
+
 ## Informative Advises
 
 Based on a [command line tool](https://github.com/orgs/thoth-station/projects/3) and our
