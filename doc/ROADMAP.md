@@ -16,10 +16,10 @@ sprints.
 * [Kebechet](https://github.com/orgs/thoth-station/projects/3)
 * [User API](https://github.com/orgs/thoth-station/projects/7)
 
-## Informative Advises
+## Informative Advice
 
 Based on a [command line tool](https://github.com/orgs/thoth-station/projects/3) and our
-[GitHub App](https://github.com/marketplace/qeb-hwt) we will extend the advises we give to human developers. This
+[GitHub App](https://github.com/marketplace/qeb-hwt) we will extend the advice we give to human developers. This
 extension will not only broaden the coverage of Python packages known by Thoth, but also include tips how to deploy
 Python-based machine learning and data science applications.
 
@@ -45,16 +45,16 @@ The following section describes the services we provide.
 ### Kebechet GitHub Application
 
 [Qeb-Hwt (or Kebechet)](https://github.com/marketplace/qeb-hwt) is a GitHub Application we provide on GitHub's
-marketplace. It is gathering information, advises and justification based on Thoth's Knowledge Graph per Pull Request
+marketplace. It is gathering information, advice and justification based on Thoth's Knowledge Graph per Pull Request
 opened for each repository the application is enabled for. With this information presented as a Check Status, we
 hope to educate human developers on their software, the changes they do in that specific pull request and what our
-advises is (based on the existing knowledge). Each repository containing a Python application that is unknown to Thoth
+advice is (based on the existing knowledge). Each repository containing a Python application that is unknown to Thoth
 will be used to learn new observations, as Thoth automatically extends its Knowledge Graph.
 
 ### Thamos command-line tool
 
 Thamos is our command-line tool to access Thoth's Knowledge Graph, it could be run on a local directory and give
-advises without hosting a repository on GitHub.
+advice without hosting a repository on GitHub.
 
 ### Build Pipeline repository
 
