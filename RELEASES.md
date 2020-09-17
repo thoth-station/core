@@ -1,4 +1,4 @@
-# Release 2020.09.16
+# Release 2020.09.17
 
 This of all, why do we use [CalVer](https://calver.org/) for the core repository? Because the Thoth Services and
 Tools consist of a large set of [GitHub-hosted repositories](https://github.com/thoth-station/),
@@ -22,7 +22,8 @@ None are known, please [file issues](https://github.com/thoth-station/core/issue
 * [some new TensorFlow related observations/justfications have been created](https://github.com/thoth-station/adviser/commit/46da6d0fa8208a36f6804049b600c5e7e0ae83ea)
 * [a recommendation to configure MKL correctly was added](https://github.com/thoth-station/adviser/commit/c7474f7720773a6acc79321eb4d8d73aa671df3f)
 * general stabilization of Argo-Workflows based backend services
-* adviser now supports advises specific for manifest changes (e.g. adjusting environment variables)
+* adviser now supports advises specific for manifest changes (e.g. adjusting environment variables of OpenShift
+DeploymentConfigs)
 
 ## Notes
 
