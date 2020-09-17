@@ -1,6 +1,6 @@
 # Release 2020.09.17
 
-This of all, why do we use [CalVer](https://calver.org/) for the core repository? Because the Thoth Services and
+First of all, why do we use [CalVer](https://calver.org/) for the core repository? Because the Thoth Services and
 Tools consist of a large set of [GitHub-hosted repositories](https://github.com/thoth-station/),
 [Python modules](https://pypi.org/search/?q=thoth-), [container images](https://quay.io/organization/thoth-station) and
 even [RPMs](https://pkgs.org/search/?q=micropipenv).
