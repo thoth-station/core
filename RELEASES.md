@@ -10,6 +10,13 @@ releases in the contexts of
 * Thoth Service - our back end services, the knowledge generation
 * the toolbox - command line tools and their packages
 
+## Index of Justifications
+
+Starting with this release, we publish a [human-readable list of justifications](https://thoth-station.ninja/justifications). This list is references from any `thamos advise` output on the terminal, or any pipeline integration. Its purpose is
+to show the knowledge contained in Thoth's services and to act as a jump-page to more detailed and background information.
+Especially the jump-page character is important to users, as we don't want to clutter the terminal/pipeline output, but
+want to reveal to results of our reinforcement learning process in a transparent way.
+
 ## Breaking Changes
 
 None are known, please [file issues](https://github.com/thoth-station/core/issues) if you hit any!
