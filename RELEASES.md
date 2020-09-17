@@ -4,7 +4,7 @@ This of all, why do we use [CalVer](https://calver.org/) for the core repository
 Tools consist of a large set of [GitHub-hosted repositories](https://github.com/thoth-station/),
 [Python modules](https://pypi.org/search/?q=thoth-), [container images](https://quay.io/organization/thoth-station) and
 even [RPMs](https://pkgs.org/search/?q=micropipenv).
-Any of this components might yield a release at any time. This release note file covers an aggregation of important
+Any of these components might yield to a release at any time. This release note file covers the aggregation of important
 releases in the contexts of
 
 * Thoth Service - our back end services, the knowledge generation
