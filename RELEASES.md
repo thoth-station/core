@@ -1,6 +1,6 @@
 # Thoth Release Notes
 
-## Release 2020.09.30
+## Release 2020.10.01
 
 We have do a lot of 'internal' updates and maintenance, focusing on renewing the way Thoth handles learning
 about new releases of packages.
