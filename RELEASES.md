@@ -5,6 +5,8 @@
 We have do a lot of 'internal' updates and maintenance, focusing on renewing the way Thoth handles learning
 about new releases of packages.
 
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.01) for a definitive list of all the versions used in this release.
+
 ### Investigator v0.5
 
 [Thoth Investigator](https://github.com/thoth-station/investigator/) is an agent sent out by Thoth to seek new
