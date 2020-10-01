@@ -2,7 +2,7 @@
 
 ## Release 2020.10.01
 
-We have do a lot of 'internal' updates and maintenance, focusing on renewing the way Thoth handles learning
+We have done a lot of 'internal' updates and maintenance, focusing on renewing the way Thoth handles learning
 about new releases of packages.
 
 See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.01) for a definitive list of all the versions used in this release.
