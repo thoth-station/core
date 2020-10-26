@@ -1,11 +1,79 @@
 # Thoth Release Notes
 
+## Release 2020.10.27
+
+With this release we have focused on knowledge generation: a) by better connecting the backend components and b) by
+broadening the security related indicators.
+
+### Breaking Changes
+
+None, please [file an issue](https://github.com/thoth-station/core/issues) if you hit any!
+
+### Notes
+
+All our end-user tools (like thamos or glyph) are available as part of the
+[Thoth Toolbox container image](https://quay.io/repository/thoth-station/thoth-toolbox?tab=info).
+
+### Investigator v0.7
+
+Thoth's investigator is a Kafka based component that consumes all messages produced by Thoth components and reacts to
+them by scheduling Argo Workflows.
+
+It has a monitoring system in places that allow Thoth's DevOps team to observe what is happening within Thoth in
+terms of Kafka, OpenShift, and Argo for all the different components.
+
+Depending on the type of message received by Investigator, a workflow is scheduled to increase or update the knowledge
+stored by Thoth. As always, the [readme](https://github.com/thoth-station/investigator#welcome-to-thoths-investigator-documentation)
+is a great source of detailed information.
+
+`thoth-glyph` for this release:
+
+```
+0   correct link (#345)                                       features
+1   confluent rework (#344)* use wip: messaging ch...       perfective
+2   add kebechet run url (#342)* added kebechet ru...         features
+3   :pushpin: automatic update of dependency hypot...         features
+4   :pushpin: automatic update of dependency thoth...         features
+5   :pushpin: automatic update of dependency thoth...         features
+6   add docs for thoth investigator (#330)* add do...         features
+7   :pushpin: automatic update of dependency hypot...         features
+8   :pushpin: automatic update of dependency thoth...         features
+9   remove producer from investigator (#329)* remo...          unknown
+10  :pushpin: automatic update of dependency mypy ...         features
+11  :pushpin: automatic update of dependency thoth...         features
+```
+
+### Security Indicators v0.1
+
+We have [introduced Security Indicators](https://github.com/thoth-station/workflows/issues/26): all package releases
+observed by Thoth are augmented with [bandit](https://github.com/PyCQA/bandit) related information. These information
+is used during advise generation to add or remove packages from candidate stacks. Security Indicators are taken into
+consideration when using the ['security' recommendation type](https://thoth-station.ninja/recommendation-types/)
+with `thamos advise`.
+
+### Adviser v0.18
+
+Adviser is [Thoth's recommendation system](https://github.com/thoth-station/adviser#thoth-adviser), depending on the
+recommendation type, it takes a set of observations into account when resolving a software stack and generating a
+recommendation to the user.
+
+This release features the technical requirements to include Security Indicators into a software stack resolution.
+
+If you would like to interact with Thoth from a user's perspective, check [Thamos](https://github.com/thoth-station/thamos).
+
+### Thoth Toolbox v0.5.4
+
+Adding [thoth-glyph](https://github.com/thoth-station/glyph) to our toolbox container image enables a developer to get
+a quick view of what changes in which categories. The Glyph readme is a great source of information, please go ahead
+and pull the container image from https://quay.io/repository/thoth-station/thoth-toolbox?tab=info
+
 ## Release 2020.10.01
 
 We have done a lot of 'internal' updates and maintenance, focusing on renewing the way Thoth handles learning
 about new releases of packages.
 
-See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.01) for a definitive list of all the versions used in this release.
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.01) for a
+definitive list of all the versions used in this release.
 
 ### Investigator v0.5
 
