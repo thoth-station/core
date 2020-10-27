@@ -5,6 +5,12 @@
 With this release we have focused on knowledge generation: a) by better connecting the backend components and b) by
 broadening the security related indicators.
 
+All backend features feed directly into the quality of [Thoth's services](https://github.com/thoth-station/core/blob/master/doc/ROADMAP.md#thoth-services),
+more specifically Kebechet and Thamos.
+
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.27) for a
+definitive list of all the versions used in this release.
+
 ### Breaking Changes
 
 None, please [file an issue](https://github.com/thoth-station/core/issues) if you hit any!
@@ -51,7 +57,7 @@ is used during advise generation to add or remove packages from candidate stacks
 consideration when using the ['security' recommendation type](https://thoth-station.ninja/recommendation-types/)
 with `thamos advise`.
 
-### Adviser v0.18
+### Adviser v0.19
 
 Adviser is [Thoth's recommendation system](https://github.com/thoth-station/adviser#thoth-adviser), depending on the
 recommendation type, it takes a set of observations into account when resolving a software stack and generating a
