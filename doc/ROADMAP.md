@@ -25,22 +25,22 @@ Python-based machine learning and data science applications.
 
 The command-line tool is the base for Optimizing Deployment Pipeline.
 
-## Optimizing Deployment Pipeline
+## Reproducible Deployment Pipeline
 
-Integrating Thoth's advise service, we create an optimizing deployment pipeline for intelligent applications running
-on OpenShift. This will select the best possible (based on Thoth's knowledge graph) application stack, apply
-runtime specific configuration, and will optimize machine learning models if possible.
+Integrating Thoth's advise service, we create an optimizing and reproducible deployment pipeline for intelligent
+applications running on OpenShift. This will select the best possible (based on Thoth's knowledge graph) application
+stack, apply runtime specific configuration, and will optimize machine learning models if possible.
 
-## Build Pipelines
+## Pipelines for Reproducible Builds
 
-As a foundation to the [Open Data Hub](http://opendatahub.io/) and the Optimizing Deployment Pipelines, we host build
-pipelines for CUDA-enabled Jupyter Notebook container images, Thoth-enabled Python 3.6 and 3.8 builder images and
-Tekton Pipeline Tasks, and accompanying documentation how to replicate these on-premise or OpenShift deployments
-operated by our customers and partners.
+As a foundation to the [Open Data Hub](http://opendatahub.io/) and the Optimizing Reproducible Deployment Pipelines,
+we host build pipelines for CUDA-enabled Jupyter Notebook container images, Thoth-enabled Python 3.6 and 3.8 builder
+images and Tekton Pipeline Tasks, and accompanying documentation how to replicate these on-premise or OpenShift
+deployments operated by our customers and partners.
 
 ## Thoth Services
 
-The following section describes the services we provide.
+The following section describes the services we provide to open source projects.
 
 ### Kebechet GitHub Application
 
