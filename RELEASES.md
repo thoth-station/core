@@ -1,6 +1,6 @@
 # Thoth Release Notes
 
-## Release 2020.10.27
+## Release 2020.10.28
 
 With this release we have focused on knowledge generation: a) by better connecting the backend components and b) by
 broadening the security related indicators.
@@ -8,7 +8,7 @@ broadening the security related indicators.
 All backend features feed directly into the quality of [Thoth's services](https://github.com/thoth-station/core/blob/master/doc/ROADMAP.md#thoth-services),
 more specifically Kebechet and Thamos.
 
-See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.27) for a
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2020.10.28) for a
 definitive list of all the versions used in this release.
 
 ### Breaking Changes
