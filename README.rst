@@ -10,7 +10,7 @@ Thoth repository <https://github.com/thoth-station/>`_.
 Architectural decisions
 -----------------------
 
-We keep track of architectural decisions using a lightweigh architectural decision records. More information on the
+We keep track of architectural decisions using lightweight architectural decision records. More information on the
 used format is available at https://adr.github.io/madr/. General information about architectural decision records
 is available at `https://adr.github.io/ <https://adr.github.io/>`_.
 
