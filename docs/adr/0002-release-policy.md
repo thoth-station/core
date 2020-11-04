@@ -1,7 +1,7 @@
 # Project Thoth Release Policy
 
 * Status: proposed
-* Date: 2020-Nov-03
+* Date: 2020-Nov-04
 
 Technical Story: As an Open Source project, we want to document the policies and guideline on how we create a new
 release.
@@ -28,6 +28,7 @@ project/product level while maintianing freedom of others to update.
 * a release can be referenced from documents, so that operational procedures have a clear relationship with component
   versions being used
 * we can maintain sets of different versions for different deployment environments
+* we can provide a version string with each API provided by the project
 
 ### Negative Consequences <!-- optional -->
 
