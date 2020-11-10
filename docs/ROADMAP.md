@@ -65,6 +65,7 @@ and Tekton Pipelines.
 
 ### Jupyter Requirements Management
 
-A tool focused on the Data Scientist workflow is [nb-requirements]() and [jupyterlab-requirements](), it features a
+A tool focused on the Data Scientist workflow is [nb-requirements](https://github.com/thoth-station/jupyter-nbrequirements)
+and [jupyterlab-requirements](https://github.com/thoth-station/jupyterlab-requirements), it features a
 similar functionality as thamos, but embeds the dependencies and the locked dependencies within the meta information
 of the Jupyter Notebook file itself.
