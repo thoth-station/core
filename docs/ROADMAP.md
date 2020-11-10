@@ -62,3 +62,10 @@ Thoth's build pipeline repository, or Tekton Task repository, is our contributio
 [Tekton catalog](https://github.com/tektoncd/catalog), and enables Python application developers to integrate
 Thoth Service consuming tasks (for example a Python module provenance check, or Security report) into their OpenShift
 and Tekton Pipelines.
+
+### Jupyter Requirements Management
+
+A tool focused on the Data Scientist workflow is [nb-requirements](https://github.com/thoth-station/jupyter-nbrequirements)
+and [jupyterlab-requirements](https://github.com/thoth-station/jupyterlab-requirements), it features a
+similar functionality as thamos, but embeds the dependencies and the locked dependencies within the meta information
+of the Jupyter Notebook file itself.
