@@ -7,6 +7,8 @@ The main aim for this project is to provide a deployment for Thoth core
 components. For more information about Thoth project and its goals see `the
 Thoth repository <https://github.com/thoth-station/>`_.
 
+You are invited to join our `developer chat <https://chat.google.com/room/AAAAVjnVXFk>`_ 
+
 Architectural decisions
 -----------------------
 
