@@ -33,9 +33,12 @@ When: Mondays 9:30 AM EST (3:30 PM CET).
 
 Where: `BJN link <https://bluejeans.com/5618223545>`_.
 
+Past sessions if you missed one: `Thoth Youtube Channel <https://www.youtube.com/channel/UClUIDuq_hQ6vlzmqM59B2Lw/featured>`_.
 
-Chat to talk with Thoth team
-----------------------------
+
+Interact with Thoth team
+-------------------------
 
 How: `Google chat Thoth Developers <https://chat.google.com/room/AAAAVjnVXFk>`_.
 
+Of course you can always open issues in Thoth station or start contributing to any project under Thoth station.
