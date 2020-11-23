@@ -1,5 +1,34 @@
 # Thoth Release Notes
 
+This release notes file describes new and important changes to the frontend services and toolbox and to backend
+services and the knowledge graph of Thoth.
+
+Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
+state of planning, have a look at out [Projects](https://github.com/orgs/thoth-station/projects).
+
+## Release 2020.11.25
+
+After releasing some features to our backend and knowledge graph last time, we are now happy to announce the avaiability
+of new GitHub App to the general public! The two apps help you keeping your source code fresh and up to data, and
+apply Thoth's knowledge to your project. Please feel free to join our newly created developer chat.
+
+### Developer Chat
+
+We have created a public channel on Google Hangouts: [Thoth Station Developer Chat](https://chat.google.com/room/AAAAVjnVXFk),
+this is meant as an open and interactive channel to ask questions with regards to Thoth's usage, development, deployment.
+As we are a very Python focused community, feel free to ask how we (the cyborgs and the humans) can help!
+
+### GitHub App: Khebhut
+
+Whats new whats cool whats the diff to kebechet?
+
+
+
+### Breaking Changes
+
+None, please [file an issue](https://github.com/thoth-station/core/issues) if you hit any, our join our
+[Thoth Station Developer Chat](https://chat.google.com/room/AAAAVjnVXFk)!
+
 ## Release 2020.10.28
 
 With this release we have focused on knowledge generation: a) by better connecting the backend components and b) by
@@ -34,7 +63,7 @@ is a great source of detailed information.
 
 `thoth-glyph` for this release:
 
-```
+```bash
 0   correct link (#345)                                       features
 1   confluent rework (#344)* use wip: messaging ch...       perfective
 2   add kebechet run url (#342)* added kebechet ru...         features
