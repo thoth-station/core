@@ -22,8 +22,8 @@ Architectural decisions
 * `ADR-0001 <docs/adr/0001-use-gpl3-as-license.md>`_ - Use GNU GPL as license 
 
 
-Weekly Demo Session
-------------------
+Demo Session
+------------
 
 We have demo session every two weeks where we discuss what we have been working on and get feedback from one another.
 
