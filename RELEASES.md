@@ -6,11 +6,14 @@ services and the knowledge graph of Thoth.
 Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
 state of planning, have a look at out [Projects](https://github.com/orgs/thoth-station/projects).
 
-## Release 2020.11.25
+## Release 2020.12.01
 
 After releasing some features to our backend and knowledge graph last time, we are now happy to announce the avaiability
 of new GitHub App to the general public! The two apps help you keeping your source code fresh and up to data, and
 apply Thoth's knowledge to your project. Please feel free to join our newly created developer chat.
+
+For all the nitty gritty details of our features (backend or services) have a look at our
+[Sprint Demo recordings](http://bit.ly/thoth-on-youtube).
 
 ### Developer Chat
 
@@ -18,11 +21,105 @@ We have created a public channel on Google Hangouts: [Thoth Station Developer Ch
 this is meant as an open and interactive channel to ask questions with regards to Thoth's usage, development, deployment.
 As we are a very Python focused community, feel free to ask how we (the cyborgs and the humans) can help!
 
-### GitHub App: Khebhut
+### GitHub App: Khebhut (aka Kebechet)
 
-Whats new whats cool whats the diff to kebechet?
+After a rework on our backend, we are happy to announce that GitHub has approved our new and updated Junior Cyborg Developer
+application "[Khebhut](https://github.com/thoth-station/kebechet)"! The main activity of Khebhut is to keep your dependencies
+up to data, create releases of your software (incl. bouncing version numbers). Please add Khebhut to your repository and
+[give it a try](https://bit.ly/khebhut-github-app), [let us know what you think](https://github.com/thoth-station/kebechet/issues/new)!
 
+### Toolbox: Thamos v1.5
 
+We have updated [thamos](https://github.com/thoth-station/thamos/blob/master/CHANGELOG.md#release-150-2020-11-26t165214) with two new commands:
+
+* `check` - to check `.thoth.yaml` and `Pipfile` for consistency: for example, is the same Python version used in both files.
+* overlay directorys - so that we could handle multiple different software stacks per repository
+
+### Toolbox: Container Image
+
+The toolbox container image has been updated to v0.5.10, containing the latest versions of micropipenv, thamos and
+thoth-glyph.
+
+Try it out or your Fedora or Red Hat Enterprise Linux Workstation:
+
+#### Create your toolbox container
+
+```shell
+[user@hostname ~]$ toolbox create --image quay.io/thoth-station/thoth-toolbox:v0.5.10
+Created container: thoth-toolbox
+Enter with: toolbox enter --container thoth-toolbox-v0.5.10
+[user@hostname ~]$
+```
+
+This will create a container called `thoth-toolbox-v0.5.10`.
+
+#### Enter the toolbox
+
+```shell
+[user@hostname ~]$ toolbox enter --container thoth-toolbox-v0.5.10
+⬢[user@toolbox ~]$ thamos version
+Thamos Client version: 1.5.0
+...
+...
+```
+
+### Adviser v0.21.1
+
+#### Features
+
+* Add a generic alias pseudonym unit
+* Add a link to Jupyter Notebook demonstrating pipelines
+* Propagate statistics to the final report
+* Handle SIGUSR1 handler to stop exploitation phase (#1527)
+* Introduce a sieve for filtering out incompatible TensorFlow for Py3.9 (#1528)
+* Provide stack info in security indicators
+* Increase verbosity to see where inspections are triggered
+* Add links to termial random
+* Implement a sieve that filters out TensorFlow releases based on API (#1560)
+* Consider library usage for TF 42475 wrap (#1564)
+* Add a pipeline unit wrap for slow keras embedding layer (#1558)
+* Add missing link to user-stack scoring justification (#1556)
+* Include dependency if at least one lib always requires it (#1594)
+* properly JSON formatted advised manifest changes (#1584)
+* Add a warning to TF API (#1581)
+* h5py==3 causes troubles also on TensorFlow 2.3.1 (#1576)
+
+#### Improvements
+
+* Link Jupyter notebook showing TD-learning and MCTS predictors
+* A pipeline unit that suggests not to use h5py>=3 with TF==2.1 (#1529)
+* Add links to TDS and Jupyter Notebook
+* Implement a boot pipeline unit for checking Pipfile hash (#1571)
+* Report warning if Python versions do not match (#1565)
+* Adjust tests accordingly
+* :sparkles: remove the Zuul config file, as we dont use Zuul anymore
+* Adjust tests for stack_info provided by security indicators
+* Implement a boot pipeline unit for checking Pipfile hash (#1571)
+* Report warning if Python versions do not match (#1565)
+
+#### Bug Fixes
+
+* Improve message logged when reporting resolver's progress (#1569)
+* Match score of the user's stack printed with the final score reported (#1570)
+* Add a wrap that notifies about a bug when mutliple instances of TF are running (#1559)
+* Handle exception raised when the given record was not found
+* Fix issue when signal is sent in one call in livenenss.py
+* Handle cannot produce stack exception so results are not overwritten
+
+### User-API v0.9.0
+
+#### Features
+
+* Fix 404 for queued requests (#1124)
+* Place dependencies under package to conform other endpoints (#1120)
+* Place metadata info into Python packages section (#1119)
+* Expose all packages (#1104)
+* Messaging 0.7.13 (#1136)
+* Removed list endpoints (#1143)
+
+#### Bug Fixes
+
+* Make sure the advise endpoint is available when becoming ready (#1134)
 
 ### Breaking Changes
 
