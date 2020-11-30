@@ -18,7 +18,7 @@ For all the nitty gritty details of our features (backend or services) have a lo
 
 After a rework on our backend, we are happy to announce that GitHub has approved our newly updated Junior Cyborg Developer
 application "[Khebhut](https://github.com/thoth-station/kebechet)"! The main activity of Khebhut is to keep your dependencies
-up to data, create releases of your software (incl. bouncing version numbers). Please add Khebhut to your repository and
+up to date, create releases of your software (incl. bouncing version numbers). Please add Khebhut to your repository and
 [give it a try](https://bit.ly/khebhut-github-app), [let us know what you think](https://github.com/thoth-station/kebechet/issues/new)!
 
 ### Developer Chat
