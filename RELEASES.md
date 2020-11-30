@@ -1,6 +1,6 @@
 # Thoth Release Notes
 
-This release notes file describes new and important changes to the frontend services and toolbox and to backend
+This release notes file describes new and important changes to the frontend services, toolbox, backend
 services and the knowledge graph of Thoth.
 
 Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
@@ -8,25 +8,24 @@ state of planning, have a look at out [Projects](https://github.com/orgs/thoth-s
 
 ## Release 2020.12.01
 
-After releasing some features to our backend and knowledge graph last time, we are now happy to announce the avaiability
-of new GitHub App to the general public! The two apps help you keeping your source code fresh and up to data, and
-apply Thoth's knowledge to your project. Please feel free to join our newly created developer chat.
+After releasing some features to our backend and knowledge graph last time, we are now happy to announce the general 
+availability of a new GitHub App called "Khebhut"! Please feel free to join our newly created developer chat.
 
 For all the nitty gritty details of our features (backend or services) have a look at our
 [Sprint Demo recordings](http://bit.ly/thoth-on-youtube).
+
+### GitHub App: Khebhut (aka Kebechet)
+
+After a rework on our backend, we are happy to announce that GitHub has approved our newly updated Junior Cyborg Developer
+application "[Khebhut](https://github.com/thoth-station/kebechet)"! The main activity of Khebhut is to keep your dependencies
+up to data, create releases of your software (incl. bouncing version numbers). Please add Khebhut to your repository and
+[give it a try](https://bit.ly/khebhut-github-app), [let us know what you think](https://github.com/thoth-station/kebechet/issues/new)!
 
 ### Developer Chat
 
 We have created a public channel on Google Hangouts: [Thoth Station Developer Chat](https://chat.google.com/room/AAAAVjnVXFk),
 this is meant as an open and interactive channel to ask questions with regards to Thoth's usage, development, deployment.
 As we are a very Python focused community, feel free to ask how we (the cyborgs and the humans) can help!
-
-### GitHub App: Khebhut (aka Kebechet)
-
-After a rework on our backend, we are happy to announce that GitHub has approved our new and updated Junior Cyborg Developer
-application "[Khebhut](https://github.com/thoth-station/kebechet)"! The main activity of Khebhut is to keep your dependencies
-up to data, create releases of your software (incl. bouncing version numbers). Please add Khebhut to your repository and
-[give it a try](https://bit.ly/khebhut-github-app), [let us know what you think](https://github.com/thoth-station/kebechet/issues/new)!
 
 ### Toolbox: Thamos v1.5
 
