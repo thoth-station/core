@@ -4,7 +4,7 @@ This release notes file describes new and important changes to the frontend serv
 services and the knowledge graph of Thoth.
 
 Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
-state of planning, have a look at out [Projects](https://github.com/orgs/thoth-station/projects).
+state of planning, have a look at our [Projects](https://github.com/orgs/thoth-station/projects).
 
 ## Release 2020.12.02
 
