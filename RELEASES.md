@@ -6,7 +6,7 @@ services and the knowledge graph of Thoth.
 Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
 state of planning, have a look at out [Projects](https://github.com/orgs/thoth-station/projects).
 
-## Release 2020.12.01
+## Release 2020.12.02
 
 After releasing some features to our backend and knowledge graph last time, we are now happy to announce the general 
 availability of a new GitHub App called "Khebhut"! Please feel free to join our newly created developer chat.
