@@ -32,7 +32,7 @@ As we are a very Python focused community, feel free to ask how we (the cyborgs 
 We have updated [thamos](https://github.com/thoth-station/thamos/blob/master/CHANGELOG.md#release-150-2020-11-26t165214) with two new commands:
 
 * `check` - to check `.thoth.yaml` and `Pipfile` for consistency: for example, is the same Python version used in both files.
-* overlay directorys - so that we could handle multiple different software stacks per repository
+* overlay directories - so that we could handle multiple different software stacks per repository
 
 ### Toolbox: Container Image
 
