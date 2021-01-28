@@ -1,0 +1,38 @@
+sigs:
+  - dir: sig-docs
+    name: Docs
+    mission_statement: >
+      Work on all things that need documentation, may it be an API, a new feature or the general vision!
+
+    charter_link: charter.md
+    label: docs
+    leadership:
+      chairs:
+        - github: goern
+          name: Christoph Görn
+          company: Red Hat
+      tech_leads:
+        - github: fridex
+          name: Fridolín Pokorný
+          company: Red Hat
+    meetings:
+      - description: Let's talk Thoth Tech
+        day: Thursday
+        time: "15:00"
+        tz: UTC (Coordinated Universal Time)
+        frequency: weekly
+        url: https://meet.google.com/kxd-axiz-tym
+    contact:
+      liaison:
+        github: goern
+        name: Christoph Görn
+    subprojects:
+      - name: core
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/core/master/OWNERS
+      - name: thoth-station.github.io
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/thoth-station.github.io/master/OWNERS
+workinggroups: []
+usergroups: []
+committees: []
