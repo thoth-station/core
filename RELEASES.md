@@ -26,7 +26,7 @@ We added another tool to aggregate more information and learn from them: a bot t
 OpenShift cluster and automatically submits container images and build logs to Thoth Service. This bot helps Thoth
 to aggregate new knowledge about build failures and possible package issues.
 
-This is something that could even be deployed on you on premise cluster and help with extending the Thoth
+This is something that could even be deployed on you on-premise cluster and help with extending the Thoth
 knowledge graph.
 
 ### Update: Developer Chat
@@ -41,11 +41,11 @@ all the current container images on [our organization on quay.io](https://quay.i
 
 ### Source-to-Image (S2I) Builds
 
-Since version 0.21 the Thoth S2I builder images are label to include security related knowledge into account while
+Since version 0.21 the Thoth S2I builder images are label to include security-related knowledge into account while
 generating a software stack recommendation (or advise as we call it). As a result of a large knowledge generation
 activity during December and January, we are now able to provide security (specifically CVE and bandit based)
 information advise! The effect of this large gain in knowledge will be more secure software stacks! You can get
-these recommendations by selection the appropriate `recommendation_type` (`latest` or `security`) via thamos'
+these recommendations by selecting the appropriate `recommendation_type` (`latest` or `security`) via thamos'
 configuration, see [thamos documentation on recommendation types](https://thoth-station.ninja/recommendation-types/)
 for more details.
 
