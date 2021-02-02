@@ -6,13 +6,181 @@ services and the knowledge graph of Thoth.
 Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
 state of planning, have a look at our [Projects](https://github.com/orgs/thoth-station/projects).
 
-## Release 2020.12.02
-
-After releasing some features to our backend and knowledge graph last time, we are now happy to announce the general 
-availability of a new GitHub App called "Khebhut"! Please feel free to join our newly created developer chat.
-
 For all the nitty gritty details of our features (backend or services) have a look at our
 [Sprint Demo recordings](http://bit.ly/thoth-on-youtube).
+
+## Release 2021.02.01
+
+With this release, we are happy to announce that our service has moved to a publicly accessible location! We have
+invested a lot of work to migrate all our services to an OpenShift platform that is maintained by our friends of
+[Operate First](https://operate-first.cloud): Bots and Cyborgs, Pipelines and CI, Prow and all our GitHub applications
+have been migrated to run on the [MOC](https://massopen.cloud/)! Thanks to all our supporters in these two great
+projects!
+
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2021.02.01) for a
+definitive list of all the versions used in this release.
+
+### Build Watcher 0.8.0
+
+We added another tool to aggregate more information and learn from them: a bot that watches for builds done in an
+OpenShift cluster and automatically submits container images and build logs to Thoth Service. This bot helps Thoth
+to aggregate new knowledge about build failures and possible package issues.
+
+This is something that could even be deployed on you on premise cluster and help with extending the Thoth
+knowledge graph.
+
+### Update: Developer Chat
+
+As we can not open up the chat in general, we would like to ask you to open an issue on GitHub, and we will invite you
+to our channel. Please include the Google ID you would like us to send the invite to.
+
+### Toolbox: Container Images Update
+
+As always, we have release new container images via our OpenShift Pipelines based release toolchain, please find
+all the current container images on [our organization on quay.io](https://quay.io/repository/thoth-station/thoth-toolbox).
+
+### Source-to-Image (S2I) Builds
+
+Since version 0.21 the Thoth S2I builder images are abel to include security related knowledge into account while
+generating a software stack recommendation (or advise as we call it). As a result of a large knowledge generation
+activity during December and Januaray, we are now able to provide security (specifically CVE and bandit based)
+information advise! The effect of this large gain in knowledge will be more secure software stacks! You can get
+these recommendation by selection the appropriate `recommendation_type` (`latest` or `security`) via thamos'
+configuration, see [thamos documentation on recommendation types](https://thoth-station.ninja/recommendation-types/)
+for more details.
+
+#### Investigator 0.9.1
+
+#### Features
+
+* Remove use-before-declared linter warning (#390)
+* Buildlog analysis trigger (#393)
+* Manual update of dependencies (#405)
+* analsysis->analysis (#410)
+* remove message contents (link instead) (#409)
+* decs are applied inside-out (#424)
+* Add metric schema (#428)
+* Standardize metrics for revision check (#434)
+
+#### Improvements
+
+* Do not use mutable arguments in functions (#391)
+* removed bissenbay, thanks for your contributions!
+* Update dependencies to have more recent thoth-common (#418)
+* retry on exceptions and other error handling (#389)
+
+### Advirer 0.22.0
+
+#### Features
+
+* State python_requires in the compatibility section of docs (#1619)
+* Implement a sieve that filters out TensorFlow==2.4.0 on non-AVX2 CPU (#1617)
+* Add justification to stack info if a package with CVE is avoided (#1611)
+* Recommend TensorFlow 2.4 based on CUDA support (#1605)
+* Relock so that typing extensions have the right environment marker (#1607)
+* Fix testsuite for Python 3.8 (#1603)
+* Introduce THOTH_CONFIG_CHECK environment variable (#1592)
+* Update TensorFlow symbols database (#1587)
+* port to python 38
+
+### Meta-Information Indicator 2.3.1
+
+#### Features
+
+* Add specific labels to issues (#286)
+* Fix/dependency update author (#290)
+* PullRequestDiscussion entity (#302)
+* add dominik to approvers (#305)
+* Add explicitly thoth-pytest38 (#303)
+* Multiple entities now passed as comma sep. string (#296)
+* Check if readme exists (#319)
+* Check that patch can be None (#320)
+
+#### Improvements
+
+* Add title and body attributes for inspection (#298)
+* Add requirements for PyPI, remove unnecessary dependencies (#310)
+
+### Build Watcher 0.8.0
+
+#### Features
+
+* Adjustments to use new build analysis endpoint (#183)
+* port to python 38 (#176)
+* :snowman: support pre-commit (#174)
+* Remove latest versions limitation (#171)
+* added a 'tekton trigger tag_release pipeline issue'
+* Catch the manifest exception as warning
+* Fixing traceback raise issue with warning
+* Remove redundant if statement
+* Fixing @ issue in image push to quay
+* Flexibility to push images to quay
+* Happy new year!
+* Use RHEL instead of UBI
+* Update Thoth configuration file and Thoth's s2i configuration
+* updated templates with annotations and param thoth-advise-value
+* Propagate deployment name for sentry environment
+* openshift deployment templates changed
+* Distinguish TLS verification flag
+* :bowtie: update few fixes and also prometheus metrics set operation
+* :notes: build-watcher is updated to send prometheus metrics
+* :tada: update to watch the entire build(images, base_image & buildlog)
+* Update zuul pipeline to use the new version trigger build job
+* Added a required field for deployment of dc and imagestream in different namespace
+* Use versions of libraries from PyPI
+* Report environment type of images submitted for analysis
+* Propagate environment type on provisioning
+* Create service account in deployment
+* Provide Ansible playbooks
+* State service account configuration in README
+* State presence of s2i container
+* Implement process pool of workers
+* Add skopeo binary
+* Add ability to push containers to an external registry
+* Do not share OpenShift instance across namespaces
+* Introduce event producer following workqueue pattern
+* Do not clash with env var used by thoth-common
+* State Thamos env var to disable TLS warnings
+* Do not propagate credentials if user did not request analysis (#219)
+* Extend README file with links (#218)
+* No submit parameters (#217)
+* Adjust deployment templates and README
+* Provide parameters to avoid submitting specific inputs (#215)
+* Fix typing in the application (#212)
+* Use s2i-thoth-ubi-8-py38 as a base image (#195)
+* Fix logged entries which might be None (#202)
+* Add pull-request template (#196)
+* Tweak environment variables supplied (#203)
+* Fix pre-commit issues and bump black version (#197)
+* Fix API version in sources (#199)
+
+#### Bug Fixes
+
+* Relock to fix typing extensions issue caused by Pipenv resolver (#191)
+* :bug: fixed the webhook url of the build trigger job
+* Push to registry only if the push registry was provided (#204)
+* Improve error message reported to the user (#1588)
+
+#### Improvements
+
+* Provide version identifier for Kebechet and expose it in logs (#190)
+* sa and rolebinding creation separated
+* Do not run adviser from bc in debug mode
+* Distinguish between runtime and buildtime images monitored
+* Fixes and improvements during dh-jupyterhub deployment
+* Fixes needed for correct pushing
+* Add missing parameter, make TLS disabling of warnings parametrizable
+* Minor improvements in template
+
+### Breaking Changes
+
+None, please [file an issue](https://github.com/thoth-station/core/issues) if you hit any, our join our
+[Thoth Station Developer Chat](https://chat.google.com/room/AAAAVjnVXFk)
+
+## Release 2020.12.02
+
+After releasing some features to our backend and knowledge graph last time, we are now happy to announce the general
+availability of a new GitHub App called "Khebhut"! Please feel free to join our newly created developer chat.
 
 ### GitHub App: Khebhut (aka Kebechet)
 
