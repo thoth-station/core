@@ -36,16 +36,16 @@ to our channel. Please include the Google ID you would like us to send the invit
 
 ### Toolbox: Container Images Update
 
-As always, we have release new container images via our OpenShift Pipelines based release toolchain, please find
+As always, we have released new container images via our OpenShift Pipelines based release toolchain, please find
 all the current container images on [our organization on quay.io](https://quay.io/repository/thoth-station/thoth-toolbox).
 
 ### Source-to-Image (S2I) Builds
 
-Since version 0.21 the Thoth S2I builder images are abel to include security related knowledge into account while
+Since version 0.21 the Thoth S2I builder images are label to include security related knowledge into account while
 generating a software stack recommendation (or advise as we call it). As a result of a large knowledge generation
-activity during December and Januaray, we are now able to provide security (specifically CVE and bandit based)
+activity during December and January, we are now able to provide security (specifically CVE and bandit based)
 information advise! The effect of this large gain in knowledge will be more secure software stacks! You can get
-these recommendation by selection the appropriate `recommendation_type` (`latest` or `security`) via thamos'
+these recommendations by selection the appropriate `recommendation_type` (`latest` or `security`) via thamos'
 configuration, see [thamos documentation on recommendation types](https://thoth-station.ninja/recommendation-types/)
 for more details.
 
