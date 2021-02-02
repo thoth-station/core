@@ -6,6 +6,9 @@ services and the knowledge graph of Thoth.
 Release cycles may vary from 2 to 4 weeks, depending on complexity of features or capacity of the team! For the current
 state of planning, have a look at our [Projects](https://github.com/orgs/thoth-station/projects).
 
+For all the nitty gritty details of our features (backend or services) have a look at our
+[Sprint Demo recordings](http://bit.ly/thoth-on-youtube).
+
 ## Release 2021.02.01
 
 With this release, we are happy to announce that our service has moved to a publicly accessible location! We have
@@ -13,6 +16,9 @@ invested a lot of work to migrate all our services to an OpenShift platform that
 [Operate First](https://operate-first.cloud): Bots and Cyborgs, Pipelines and CI, Prow and all our GitHub applications
 have been migrated to run on the [MOC](https://massopen.cloud/)! Thanks to all our supporters in these two great
 projects!
+
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2021.02.01) for a
+definitive list of all the versions used in this release.
 
 ### Build Watcher 0.8.0
 
@@ -175,9 +181,6 @@ None, please [file an issue](https://github.com/thoth-station/core/issues) if yo
 
 After releasing some features to our backend and knowledge graph last time, we are now happy to announce the general
 availability of a new GitHub App called "Khebhut"! Please feel free to join our newly created developer chat.
-
-For all the nitty gritty details of our features (backend or services) have a look at our
-[Sprint Demo recordings](http://bit.ly/thoth-on-youtube).
 
 ### GitHub App: Khebhut (aka Kebechet)
 
