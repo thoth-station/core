@@ -108,3 +108,6 @@ openshift/conf.sh
 scratch.txt
 .vault_pass
 .vault_pass
+
+community/go.sum
+community/go.mod

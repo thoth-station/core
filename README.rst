@@ -20,6 +20,7 @@ Architectural decisions
 
 * `ADR-0000 <docs/adr/0000-use-markdown-architectural-decision-records.md>`_ - Use Markdown Architectural Decision Records
 * `ADR-0001 <docs/adr/0001-use-gpl3-as-license.md>`_ - Use GNU GPL as license 
+* `ADR-0002 <docs/adr/0002-release-policy.md>`_ - Release Policy 
 
 
 Demo Session
@@ -29,9 +30,7 @@ We have demo session every two weeks where we discuss what we have been working 
 
 Anyone is welcome to attend, if they would like to see what Thoth team is working on and discuss any topic or just to listen in.
 
-When: Mondays 9:30 AM EST (3:30 PM CET).
-
-Where: `BJN link <https://bluejeans.com/5618223545>`_.
+Have a look at our community calendar to find out about the date, time, and url. 
 
 Past sessions if you missed one: `Thoth Youtube Channel <https://www.youtube.com/channel/UClUIDuq_hQ6vlzmqM59B2Lw/featured>`_.
 
@@ -39,6 +38,13 @@ Past sessions if you missed one: `Thoth Youtube Channel <https://www.youtube.com
 Interact with Thoth team
 -------------------------
 
-How: `Google chat Thoth Developers <https://chat.google.com/room/AAAAVjnVXFk>`_.
+How: `Google chat Thoth Developers <https://chat.google.com/room/AAAAVjnVXFk>`_. Please feel free to open an issue and
+ask for an invite!
 
 Of course you can always open issues in Thoth station or start contributing to any project under Thoth station.
+
+
+Community
+---------
+
+This repository also contains a description of all the `Project Thoth SIGs (Special Interest Groups) <community/sig-list.md>`_ 
