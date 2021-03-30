@@ -30,7 +30,9 @@ We have demo session every two weeks where we discuss what we have been working 
 
 Anyone is welcome to attend, if they would like to see what Thoth team is working on and discuss any topic or just to listen in.
 
-Have a look at our community calendar to find out about the date, time, and url. 
+When: every other Monday 10:30 AM EST (14:30 UTC).
+
+Where: `BJN link <https://bluejeans.com/5618223545>`_.
 
 Past sessions if you missed one: `Thoth Youtube Channel <https://www.youtube.com/channel/UClUIDuq_hQ6vlzmqM59B2Lw/featured>`_.
 
