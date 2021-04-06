@@ -2,19 +2,19 @@
 
 Thoth Station Hibabitants, v0.3.0, 2021-Mar-30
 
-A scrum sprint (or iteration) is 2 weeks of calendar time, and a task shouldcan not span more than one sprint.
+A scrum sprint (or iteration) is 2 weeks of calendar time, and a task should/can not span more than one sprint.
 If a task can not be accomplished in one sprint it must be broken up. Issues are created by the team. Issues are
 assigned to persons (they become an assignee of the issue) when a person picks up the card and starts working on
 it (pulls it into the ‘in progress’ list).
 
 An Issue must include a User Story, a list of Acceptance Criteria, (optionally) a link to a Key Result, and a
 measure of complexity/time estimate. A list of References to the prior art, external documents, … could be included.
-Time is equivalent to the splits of an iteration you need to deliver the complexity of ana issue.
+Time is equivalent to the splits of an iteration, you need to deliver the complexity of an issue.
 
 Links to PRs that are implementing/fulfilling the acceptance criteria should be included as a comment on the issue.
 It must be present if the issue is closed.
 
-We have a list of Projects to cluster issues into contexts, but issues must not be on a project, they can also be just
+We have a list of [Github Projects](https://github.com/orgs/thoth-station/projects) to cluster issues into contexts, there is no hard requirement that all issues must not be on a project, some of them can just stay
 within a repository.
 
 Issues are managed on GitHub, we use [labels](https://github.com/thoth-station/core/blob/master/community/labels.md).
@@ -30,7 +30,7 @@ be planned accordingly.
 ## Backlog Refinement Session
 
 The team is refining the set and content of the issues in any ‘new’ or 'backlog' list of any of [Thoth Station Projects](https://github.com/orgs/thoth-station/projects).
-The goal of the backlog refinement session if to prepare all issues to:
+The goal of the backlog refinement session is to prepare all issues to:
 
 * have a User Story
 * list of high-level Acceptance Criteria/Goals (that is signed off by the team, and unchangeable)
@@ -46,8 +46,8 @@ Pull the issues which support the high-level team objectives/theme and key resul
 team is clear of what is to be worked on in the next sprint.
 
 During the session, issues are open to allocation to any team member, and the team agrees to the interested team member
-to work on the issue. If the interested team member needs to be trained to fulfil the task, then a 'th
-task has to be added and taken by the team member. If the training task is not feasible, another team member should
+to work on the issue. If the interested team member needs to be trained to fulfill the task, then a
+task has to be added for training required and taken by another team member who is knowledgeable of the topic. If the training task is not feasible, another team member should
 take the initial task.
 
 ## Scrum Standup
