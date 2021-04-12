@@ -4,8 +4,8 @@ requirements_format: pipenv
 
 runtime_environments:
   - name: rhel:8
-    operating_system: 
+    operating_system:
       name: rhel
       version: "8"
-    python_version: "3.6"
+    python_version: "3.8"
     recommendation_type: latest

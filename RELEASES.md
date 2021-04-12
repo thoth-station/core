@@ -9,6 +9,30 @@ state of planning, have a look at our [Projects](https://github.com/orgs/thoth-s
 For all the nitty gritty details of our features (backend or services) have a look at our
 [Sprint Demo recordings](http://bit.ly/thoth-on-youtube).
 
+## Release 2021.04.12
+
+With this "Cumulative update Release" we announce the continuous update of all Thoth Services running on
+[Operate First](https://www.operate-first.cloud/).
+
+For the past six weeks, we have rolled out a release every two weeks! Most of the updates were ongoing service
+maintenance and service improvements. With this release we have added some new features.
+
+See [Thoth Application Kustomize manifests](https://github.com/thoth-station/thoth-application/tree/v2021.04.12) for a
+definitive list of all the versions used in this release.
+
+### Prescriptions for Thoth's Adviser
+
+The Prescriptions project keeps a database of known issues in Python open-source projects. The database is used in
+Thoth to resolve high quality Python software stacks. Have a look at our [introduction video on YouTube](https://www.youtube.com/watch?v=dg6_WhUK5Ew).
+
+If you would like to write a prescription for resolver, check the [following docs](https://thoth-station.ninja/docs/developers/adviser/prescription.html).
+
+### Toolbox: Thamos v1.16.1
+
+Besides all the continuously applied dependency updates (Thanks Kebechet!!) we have added the capability to manage
+virtual environments and added a [`thamos install` command](https://github.com/thoth-station/thamos/blob/master/README.rst#installing-requirements),
+this is accompanied by the earlier added [`add` command](https://github.com/thoth-station/thamos/blob/master/README.rst#using-thamos-as-a-cli-tool).
+
 ## Release 2021.02.01
 
 With this release, we are happy to announce that our service has moved to a publicly accessible location! We have

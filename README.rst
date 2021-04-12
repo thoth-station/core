@@ -50,3 +50,5 @@ Community
 ---------
 
 This repository also contains a description of all the `Project Thoth SIGs (Special Interest Groups) <community/sig-list.md>`_ 
+
+We have created a short overview of `how we work <docs/TermsAndConditionsForTheScrum.md>`_ too. 
