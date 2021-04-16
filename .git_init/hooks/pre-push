@@ -2,10 +2,10 @@
 [ -n "$THOTH_NO_PREPUSH_TEST" ] && exit 0
 
 which pipenv > /dev/null 2>&1 || {
-	RED='\033[0;31m'
-	NC='\033[0m'
-	echo "${RED}Skipping the pre-push test,as PIPENV is NOT installed${NC}"
-	exit 0
+    RED='\033[0;31m'
+    NC='\033[0m'
+    echo "${RED}Skipping the pre-push test,as PIPENV is NOT installed${NC}"
+    exit 0
 }
 
 pipenv run python3 setup.py test || exit 0
