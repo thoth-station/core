@@ -77,7 +77,7 @@ The following [subprojects][subproject-definition] are owned by the {{.Name}} Co
   - [Mailing List]({{.Contact.MailingList}})
 {{- end }}
 {{- if .Contact.GithubTeams }}
-  - GitHub Teams: 
+  - GitHub Teams:
 {{- range .Contact.GithubTeams }}
     - [@kubernetes/{{.Name}}](https://github.com/orgs/kubernetes/teams/{{.Name}}) {{- if .Description }} - {{.Description}}{{- end}}
 {{- end }}

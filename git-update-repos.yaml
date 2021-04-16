@@ -5,7 +5,7 @@
   vars:
     REMOTE: "{{ remote | default('upstream') }}"
     DIR_PATH: "{{ dir_path | default('thoth-station') }}"
-    
+
   gather_facts: false
   connection: local
   tasks:
@@ -15,10 +15,10 @@
         file_type: directory
         recurse: no
       register: folders
-    
+
     - set_fact:
         REPOS: "{{ folders.files | map(attribute='path') | list }}"
-    
+
     - name: Update all the repositories from {{ DIR_PATH }}
       shell: |
         cd {{ item }}

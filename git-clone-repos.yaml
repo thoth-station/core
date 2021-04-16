@@ -17,7 +17,7 @@
   tasks:
     - name: Fetching repositories from {{ ORG }}
       uri:
-        url: https://api.github.com/orgs/{{ ORG }}/repos?per_page=100 
+        url: https://api.github.com/orgs/{{ ORG }}/repos?per_page=100
         return_content: yes
       register: repo_list
       when: REPOS == ""
@@ -33,7 +33,7 @@
         return_content: yes
         status_code: 202
       no_log: true
-      ignore_errors: true     
+      ignore_errors: true
       with_items: "{{ REPOS }}"
       when: GITHUB_TOKEN != ""
     - debug:
@@ -73,7 +73,7 @@
       with_items:
         - "{{ REPOS }}"
       when: NO_GIT_HOOKS != '1'
-    - name: Checking for the file setup.py 
+    - name: Checking for the file setup.py
       stat:
         path: "~/{{ DIR_PATH }}/{{ item }}/setup.py"
       ignore_errors: true
