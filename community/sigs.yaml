@@ -73,7 +73,7 @@ sigs:
   - dir: sig-observability
     name: Observability
     mission_statement: >
-      Work on all things that concerns Observability! This includes the definition of metrics, monitoring, reporting and alerting.
+      Work on all things that concern Observability! This includes the definition of metrics, monitoring, reporting and alerting.
 
     charter_link: charter.md
     label: observability
