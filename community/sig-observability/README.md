@@ -25,7 +25,7 @@ The [charter](charter.md) defines the scope and governance of the Observability 
 
 The Chairs of the SIG run operations and processes governing the SIG.
 
-* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
+* Christoph Görn (**[@goern](https://github.com/goern)**), Red Hat
 
 ### Technical Leads
 
@@ -38,27 +38,27 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 
 - Slack: [#](https://kubernetes.slack.com/messages/)
 - [Mailing list]()
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fpipelines)
+- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fobservability)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects
 
 The following [subprojects][subproject-definition] are owned by sig-observability:
-### metrics-exporter
-- **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
 ### advise-reporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
-### slo-reporter
-- **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
 ### investigator-exporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
+### metrics-exporter
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
 ### monitoring/alerting
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
+### slo-reporter
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->

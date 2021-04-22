@@ -24,7 +24,7 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 Most community activity is organized into Special Interest Groups (SIGs),
 time bounded Working Groups, and the [community meeting](communication/README.md#weekly-meeting).
 
-SIGs follow these [guidelines](https://github.com/kubernetes/community/blob/master/committee-steering/governance/sig-governance.md) although each of these groups may operate a little differently
+SIGs follow these [guidelines](governance.md) although each of these groups may operate a little differently
 depending on their needs and workflow.
 
 Each group's material is in its subdirectory in this project.
@@ -36,8 +36,8 @@ When the need arises, a [new SIG can be created](sig-wg-lifecycle.md)
 | Name | Label | Chairs | Contact | Meetings |
 |------|-------|--------|---------|----------|
 |[Docs](sig-docs/README.md)|docs|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
+|[Observability](sig-observability/README.md)|observability|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 |[Pipelines](sig-pipelines/README.md)|pipelines|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
-|[Observability](sig-observability/README.md)|observability|* [Francesco Murdaca](https://github.com/pacospace), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 
 ### Committees
 
