@@ -36,7 +36,8 @@ When the need arises, a [new SIG can be created](sig-wg-lifecycle.md)
 | Name | Label | Chairs | Contact | Meetings |
 |------|-------|--------|---------|----------|
 |[Docs](sig-docs/README.md)|docs|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
-|[Pipelines](sig-pipelines/README.md)|pipelines|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
+|[Observability](sig-observability/README.md)|observability|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
+|[Pipelines](sig-pipelines/README.md)|pipelines|* [Francesco Murdaca](https://github.com/pacospace), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 
 ### Committees
 
