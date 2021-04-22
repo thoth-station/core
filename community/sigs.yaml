@@ -70,6 +70,49 @@ sigs:
       - name: thoth-ops-infra
         owners:
           - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+  - dir: sig-observability
+    name: Observability
+    mission_statement: >
+      Work on all things that concerns Observability! This includes the definition of metrics, monitoring, reporting and alerting.
+
+    charter_link: charter.md
+    label: observability
+    leadership:
+      chairs:
+        - github: goern
+          name: Christoph Görn
+          company: Red Hat
+      tech_leads:
+        - github: pacospace
+          name: Francesco Murdaca
+          company: Red Hat
+    meetings:
+      - description: Let's talk Thoth Tech
+        day: Thursday
+        time: "15:00"
+        tz: UTC (Coordinated Universal Time)
+        frequency: weekly
+        url: https://meet.google.com/kxd-axiz-tym
+    contact:
+      liaison:
+        github: goern
+        name: Christoph Görn
+    subprojects:
+      - name: metrics-exporter
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
+      - name: advise-reporter
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
+      - name: slo-reporter
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
+      - name: investigator-exporter
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
+      - name: monitoring/alerting
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
 workinggroups: []
 usergroups: []
 committees: []
