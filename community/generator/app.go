@@ -286,7 +286,6 @@ func (c *Context) Validate() []error {
                 if group.CharterLink == "" {
                     errors = append(errors, fmt.Errorf("%s: has no charter", group.Dir))
                 }
-                // TODO(spiffxp): is this required though?
                 if group.MissionStatement == "" {
                     errors = append(errors, fmt.Errorf("%s: has no mission statement", group.Dir))
                 }
