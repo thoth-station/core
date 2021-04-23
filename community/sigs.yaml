@@ -42,8 +42,8 @@ sigs:
     label: observability
     leadership:
       chairs:
-        - github: goern
-          name: Christoph Görn
+        - github: pacospace
+          name: Francesco Murdaca
           company: Red Hat
       tech_leads:
         - github: pacospace
@@ -85,8 +85,8 @@ sigs:
     label: pipelines
     leadership:
       chairs:
-        - github: goern
-          name: Christoph Görn
+        - github: harshad16
+          name: Harshad Nalla
           company: Red Hat
       tech_leads:
         - github: harshad16

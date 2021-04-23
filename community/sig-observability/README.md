@@ -25,7 +25,7 @@ The [charter](charter.md) defines the scope and governance of the Observability 
 
 The Chairs of the SIG run operations and processes governing the SIG.
 
-* Christoph Görn (**[@goern](https://github.com/goern)**), Red Hat
+* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
 
 ### Technical Leads
 

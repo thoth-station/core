@@ -25,7 +25,7 @@ The [charter](charter.md) defines the scope and governance of the Pipelines Spec
 
 The Chairs of the SIG run operations and processes governing the SIG.
 
-* Christoph Görn (**[@goern](https://github.com/goern)**), Red Hat
+* Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
 
 ### Technical Leads
 

@@ -29,15 +29,13 @@ depending on their needs and workflow.
 
 Each group's material is in its subdirectory in this project.
 
-When the need arises, a [new SIG can be created](sig-wg-lifecycle.md)
-
 ### Special Interest Groups
 
 | Name | Label | Chairs | Contact | Meetings |
 |------|-------|--------|---------|----------|
 |[Docs](sig-docs/README.md)|docs|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
-|[Observability](sig-observability/README.md)|observability|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
-|[Pipelines](sig-pipelines/README.md)|pipelines|* [Francesco Murdaca](https://github.com/pacospace), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
+|[Observability](sig-observability/README.md)|observability|* [Francesco Murdaca](https://github.com/pacospace), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
+|[Pipelines](sig-pipelines/README.md)|pipelines|* [Harshad Nalla](https://github.com/harshad16), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 
 ### Committees
 
