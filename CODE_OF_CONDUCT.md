@@ -16,7 +16,7 @@ Examples of unacceptable behavior by participants include:
 * Personal attacks
 * Trolling or insulting/derogatory comments
 * Public or private harassment
-* Publishing others' private information, such as physical or electronic addresses,
+* Publishing private information of others, such as physical or electronic addresses,
  without explicit permission
 * Other unethical or unprofessional conduct.
 
