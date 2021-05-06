@@ -43,10 +43,10 @@ If you want to update documentation, [README.md](README.md) is the file you're l
 
 ### Requirements for Pull Requests (PR)
 
-- Use `pre-commit` (see [below](#checkerslintersformatters--pre-commit)).
-- Use common sense when creating commits, not too big, not too small. You can also squash them at the end of review. See [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
+- Use `pre-commit` (see [below](#checkerslintersformatters--pre-commit)), a [positive status in context `aicoe-ci/prow/pre-commit` is required for merging](https://github.com/thoth-station/thoth-application/blob/master/prow/overlays/cnv-prod/config.yaml#L79-L84)
+- All tests have to pass, a [positive status in context `aicoe-ci/prow/pytest` might be required for merging](https://github.com/thoth-station/thoth-application/blob/master/prow/overlays/cnv-prod/config.yaml#L258-L302)
 - Cover new code with a test case (new or existing one).
-- All tests have to pass.
+- Use common sense when creating commits, not too big, not too small. You can also squash them at the end of review. See [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
 - Rebase against updated `master` branch before creating a PR to have linear git history.
 - Create a PR against the `master` branch.
 
