@@ -29,7 +29,7 @@ Conduct may be permanently removed from the project team.
 
 This code of conduct applies both within project spaces and in public spaces
 when an individual is representing the project or its community. All repositories
-unter https://github.com/thoth-station/ are considered the project or its community.
+under https://github.com/thoth-station/ are considered the project or its community.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior in Project Thoth may
 be reported by contacting the <aicoe-thoth@redhat.com>.
