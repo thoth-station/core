@@ -15,3 +15,6 @@ presubmits:
             requests:
               memory: "256Mi"
               cpu: "200m"
+            limits:
+              memory: "500Mi"
+              cpu: "300m"
