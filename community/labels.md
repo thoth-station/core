@@ -28,13 +28,14 @@ larger set of contributors to apply/remove them.
 - Add automation that consumes/produces the label
 - Open a PR, _with a single commit_, that:
   - updates [labels.yaml](https://github.com/thoth-station/thoth-application/blob/master/prow/overlays/cnv-prod/labels_thoth-station.yaml) with the new label(s)
-- After the PR is merged, a CronJob is responsible for syncing labels
+- After the PR is merged, a CronJob is responsible for syncing labels 
 
 
 ## Labels that apply to all repos, for both issues and PRs
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | --- |
+| <a id="bot" href="#bot">`bot`</a> | This Issue or PR is being worked on by a bot| human or bot |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-stage" href="#deployment_name/ocp4-stage">`deployment_name/ocp4-stage`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-stage`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-test" href="#deployment_name/ocp4-test">`deployment_name/ocp4-test`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-test`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/zero-prod" href="#deployment_name/zero-prod">`deployment_name/zero-prod`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/moc`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
@@ -68,6 +69,7 @@ larger set of contributors to apply/remove them.
 | <a id="sig/user-experience" href="#sig/user-experience">`sig/user-experience`</a> | Issues or PRs related to the User Experience of our Services, Tools, and Libraries.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="thoth/human-intervention-required" href="#thoth/human-intervention-required">`thoth/human-intervention-required`</a> | This isse/PR requires himan intervention!| both | |
 | <a id="thoth/potential-observation" href="#thoth/potential-observation">`thoth/potential-observation`</a> | This is a potential observation we need to learn from!| humans | |
+| <a id="triage/accepted" href="#triage/accepted">`triage/accepted`</a> | Indicates an issue or PR is ready to be actively worked on.| org members |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="triage/duplicate" href="#triage/duplicate">`triage/duplicate`</a> | Indicates an issue is a duplicate of other open issue. <br><br> This was previously `close/duplicate`, `duplicate`, | humans | |
 | <a id="triage/needs-information" href="#triage/needs-information">`triage/needs-information`</a> | Indicates an issue needs more information in order to work on it. <br><br> This was previously `close/needs-information`, | humans | |
 | <a id="triage/not-reproducible" href="#triage/not-reproducible">`triage/not-reproducible`</a> | Indicates an issue can not be reproduced as described. <br><br> This was previously `close/not-reproducible`, | humans | |
@@ -103,3 +105,5 @@ larger set of contributors to apply/remove them.
 | <a id="tide/merge-method-merge" href="#tide/merge-method-merge">`tide/merge-method-merge`</a> | Denotes a PR that should use a standard merge by tide when it merges.| humans | |
 | <a id="tide/merge-method-rebase" href="#tide/merge-method-rebase">`tide/merge-method-rebase`</a> | Denotes a PR that should be rebased by tide when it merges.| humans | |
 | <a id="tide/merge-method-squash" href="#tide/merge-method-squash">`tide/merge-method-squash`</a> | Denotes a PR that should be squashed by tide when it merges. <br><br> This was previously `tide/squash`, | humans | |
+
+
