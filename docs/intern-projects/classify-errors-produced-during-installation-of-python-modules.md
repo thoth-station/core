@@ -20,7 +20,7 @@ Please check you have all the following:
 * Access to GitHub using your GitHub your account
     * Thoth Station
 * Get access to JupyterHub
-    * https://jupyterhub.datahub.redhat.com/
+    * https://odh.operate-first.cloud/
 
 ## Project outline
 1. Welcome to the Thoth Station!
