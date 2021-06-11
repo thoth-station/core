@@ -44,4 +44,4 @@ Please check you have all the following:
 ## Stretch goals
 
 * Create a small Python application that can check how similar two project names are, discuss its usability for detecting typosquatting
-* Create a new Kebechet manager using new logic (https://github.com/thoth-station/kebechet/issues/727) 
+* Create a new Kebechet manager using new logic (https://github.com/thoth-station/kebechet/issues/727)
