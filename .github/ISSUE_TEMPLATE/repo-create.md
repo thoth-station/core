@@ -2,7 +2,7 @@
 name: Repository creation
 about: Create a repository into Thoth-Station Org
 title: ''
-labels: bot 
+labels: bot
 assignees: ''
 
 ---

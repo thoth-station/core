@@ -28,7 +28,7 @@ These names are for the core repository name, then `overlays` will allow for com
 
 ## Decision Outcome
 
-Chosen option: 
+Chosen option:
 
 ### Positive Consequences <!-- optional -->
 
