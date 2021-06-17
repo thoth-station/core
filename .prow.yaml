@@ -29,7 +29,18 @@ postsubmits:
             - -c
             - |
               set -ex
-              /peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth --fix-org --confirm
+              /peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+                --min-admins=2 \
+                --maximum-removal-delta=0.15 \
+                --require-self=true \
+                --fix-org \
+                --fix-org-members \ 
+                --fix-repos \
+                --fix-teams \
+                --fix-team-members \
+                --fix-team-repos \
+                --allow-repo-archival \
+                --confirm
           volumeMounts:
             - name: github-oauth
               mountPath: /etc/github
