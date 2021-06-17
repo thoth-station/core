@@ -1,4 +1,4 @@
-# Project Thoth Release Policy
+# Project Thoth Naming Schema for Images
 
 * Status: proposed
 * Date: 2021-Jun-17
