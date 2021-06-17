@@ -15,7 +15,7 @@ Image names are important for branding and let others identify easily a specific
 * `odh-{application}` for branding/marketing having ODH in front seems to be the best solution, in this way the name will be shorter as well.
 * `curated-stack-{application}` as it shows what our intention is: we want to provide a curated/predictable software stack, it might be used by ODH or RHODS or others, it might use S2I or other technology.
 
-These names are for the core repository name, then `overlays` will allow for combinations of libraries based on other criteria, for example `ml_framework` or `hardware`:
+These names are for the core repository name, then `overlays` will allow for combinations of libraries based on other criteria, for example `ml_framework` and/or `hardware`:
 
     `odh-nlp`
     ├── overlays                    # Overlays structure for builds
