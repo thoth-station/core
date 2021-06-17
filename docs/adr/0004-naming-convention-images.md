@@ -15,12 +15,14 @@ Image names are important for branding and let others identify easily a specific
 * `odh-{application}`
 * `curated-stack-{application}`
 
-These names are for the core repository name, then `overlays` will allow for combinations of libraries based on other criteria, for example `ml_framework`:
+These names are for the core repository name, then `overlays` will allow for combinations of libraries based on other criteria, for example `ml_framework` or `hardware`:
 
     `odh-nlp`
     ├── overlays                    # Overlays structure for builds
     │   ├── odh-nlp-tensorflow          # NLP image with TensorFlow ML framework
+    │   ├── odh-nlp-tensorflow-gpu      # NLP image with TensorFlow ML framework for GPU
     │   ├── odh-nlp-pytorch             # NLP image with Pytorch ML framework
+    │   ├── odh-nlp-pytorch-gpu         # NLP image with Pytorch ML framework for GPU
     │   └── odh-nlp-scikit-learn        # NLP image with Scikit-learn ML framework
     └── ...
 
