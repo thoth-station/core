@@ -28,7 +28,7 @@ These names are for the core repository name, then `overlays` will allow for com
 
 ## Decision Outcome
 
-Chosen option:
+Chosen option: `curated-stack-{application}` as it shows what our intention is: we want to provide a curated/predictable software stack, it might be used by ODH or RHODS or others, it might use S2I or other technology.
 
 ### Positive Consequences <!-- optional -->
 
