@@ -1,4 +1,4 @@
-# Project Thoth Naming Schema for Images
+# Project Thoth Naming Convention Schema for Images
 
 * Status: proposed
 * Date: 2021-Jun-17
@@ -11,9 +11,9 @@ Image names are important for branding and let others identify easily a specific
 
 ## Considered Options
 
-* `s2i-{application}`
-* `odh-{application}`
-* `curated-stack-{application}`
+* `s2i-{application}` standard name currently, but not everyone knows what S2I is.
+* `odh-{application}` for branding/marketing having ODH in front seems to be the best solution, in this way the name will be shorter as well.
+* `curated-stack-{application}` as it shows what our intention is: we want to provide a curated/predictable software stack, it might be used by ODH or RHODS or others, it might use S2I or other technology.
 
 These names are for the core repository name, then `overlays` will allow for combinations of libraries based on other criteria, for example `ml_framework` or `hardware`:
 
@@ -28,7 +28,7 @@ These names are for the core repository name, then `overlays` will allow for com
 
 ## Decision Outcome
 
-Chosen option: for branding/marketing having ODH in front seems to be the best solution, in this way the name will be shorter as well.
+Chosen option: 
 
 ### Positive Consequences <!-- optional -->
 
