@@ -1,0 +1,1121 @@
+orgs:
+  thoth-station:
+    admins:
+      - fridex
+      - goern
+      - harshad16
+      - sesheta
+    email: aicoe-thoth@redhat.com
+    billing_email: goern@redhat.com
+    blog: https://thoth-station.ninja/
+    company: ""
+    default_repository_permission: read
+    description:
+      Using Artificial Intelligence to analyse and recommend Software Stacks
+      for the Python Ecosystem.
+    has_organization_projects: true
+    has_repository_projects: false
+    location: Earth (any shape)
+    members:
+      - 4n4nd
+      - bjoernh2000
+      - erikerlandson
+      - Gregory-Pereira
+      - HumairAK
+      - KPostOffice
+      - larsks
+      - LaVLaS
+      - pacospace
+      - sesheta-srcops
+      - sub-mod
+      - tlegen-k
+      - tumido
+      - xtuchyna
+    members_can_create_repositories: false
+    name: Thoth Station
+    repos:
+      Github-Issues-Classifier:
+        description:
+          "Multi-label prediction for GitHub issues with state of the art
+          NLP models and state of the art performance. \U0001F60E"
+        has_projects: false
+        has_wiki: false
+      adviser:
+        description:
+          The recommendation engine for Python software stacks and Dependency
+          Monkey in project Thoth.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io
+      amun-api:
+        description:
+          Thoth's execution engine for inspecting quality, performance,
+          and usability of software and software stacks in a cluster.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja/
+      amun-client:
+        description: A library for communicating with Amun API
+        has_projects: false
+        has_wiki: false
+      amun-hwinfo:
+        description:
+          A simple application for gathering information about hardware
+          on nodes where pods run
+        has_projects: false
+        has_wiki: false
+      analyzer:
+        description: Analyzer library for the Thoth project
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      ansible-role-amun:
+        archived: true
+        description:
+          This role will deploy all Amun components to a given OpenShift
+          Project.
+        has_projects: false
+        has_wiki: false
+      ansible-role-argo-workflows:
+        archived: true
+        description: Ansible Role - Argo Workflows
+        has_projects: false
+        has_wiki: false
+        homepage: https://galaxy.ansible.com/thoth-station/argo_workflows
+      ansible-role-configmaps-and-secrets:
+        archived: true
+        description: This will create all ConfigMaps and Secrets required by Thoth.
+        has_projects: false
+        has_wiki: false
+      ansible-role-core-imagestreams:
+        archived: true
+        description: A set of Ansible Roles used by Thoth
+        has_projects: false
+        has_wiki: false
+      ansible-role-core-templates:
+        archived: true
+        description:
+          This Ansible role will create an OpenShift Templates required
+          to deploy Thoth.
+        has_projects: false
+        has_wiki: false
+      ansible-role-cronjob:
+        archived: true
+        description: Create a Thoth CronJob in an OpenShift Project/namespace.
+        has_projects: false
+        has_wiki: false
+      ansible-role-kebechet:
+        archived: true
+        has_projects: false
+      ansible-role-metrics-exporter:
+        archived: true
+        description:
+          This Ansible role will deploy the Thoth Metrics Exporter to a
+          given OpenShift Project.
+        has_projects: false
+        has_wiki: false
+      ansible-role-postgresql:
+        archived: true
+        description: Ansible role to provision PostgreSQL into Thoth
+        has_projects: false
+      ansible-role-postgresql-metrics-exporter:
+        archived: true
+        description: Metrics exporter for Thoth's knowledge database
+        has_projects: false
+        has_wiki: false
+      ash-api:
+        archived: true
+        description: Topics in the Python ecosystem
+        has_projects: false
+        has_wiki: false
+      build-analyzers:
+        archived: true
+        description: A tool to retrieve information from build logs.
+        has_projects: false
+        has_wiki: false
+      build-watcher:
+        description:
+          Watch for builds done in OpenShift and automatically submit new
+          images to Thoth's image analysis
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja
+      buildlog-parser:
+        description:
+          Parse OpenShift's s2i build log into its structured representation
+          with all the metadata available
+        has_projects: false
+        has_wiki: false
+      bz1816214-example:
+        archived: true
+        description: Example for Bugzilla 1816214
+        has_projects: false
+        has_wiki: false
+      cleanup-job:
+        archived: true
+        description:
+          A job for cleaning up old OpenShift objects created by one-time
+          analyses
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      cli-examples:
+        description: Examples of Thoth's recommendations using Thamos CLI
+        has_projects: false
+        has_wiki: false
+      common:
+        description: A common library for the Thoth project
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      contra-env-infra:
+        description:
+          Repository to store core infrastructure s2i templates and dockerfiles
+          to support DevOps and CI/CD workflows
+        has_issues: false
+        has_projects: false
+      core:
+        description:
+          Using Artificial Intelligence to analyse and recommend Software
+          Stacks for Artificial Intelligence applications.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      cuda:
+        has_projects: false
+      cve-update-job:
+        description: Update Thoth's database of CVEs
+        has_projects: false
+        has_wiki: false
+      datasets:
+        description: Thoth Datasets to share Thoth heritage and create new ideas...
+        has_projects: false
+        has_wiki: false
+        homepage: http://thoth-station.ninja/
+      dependency-monkey:
+        archived: true
+        description:
+          The "Dependency Monkey" is a service for validating of package
+          dependencies within an application stack.
+        has_projects: false
+        has_wiki: false
+      dependency-monkey-zoo:
+        description:
+          A set of configurations for Thoth's Dependency Monkey to resolve
+          certain software stacks
+        has_projects: false
+      dgraph-operator:
+        archived: true
+        description: A Dgraph Operator
+        has_projects: false
+        has_wiki: false
+      dgraph-thoth-config:
+        archived: true
+        description: This is an OpenShift deployment for Dgraph
+        has_projects: false
+        has_wiki: false
+      elyra-resnet:
+        has_projects: false
+      external-janusgraph-service:
+        archived: true
+        description:
+          This Ansible role will create an OpenShift Service object to
+          integrate an external JanusGraph Server.
+        has_projects: false
+        has_wiki: false
+      fext:
+        description:
+          Fast CPython extensions to Python standard library with focus
+          on performance.
+        has_projects: false
+      glyph:
+        description:
+          Generate CHANGELOG entries out of commit messages using AI/ML
+          techniques
+        has_projects: false
+        has_wiki: false
+      goblinoid:
+        archived: true
+        description: Create a graph database schema and indexes from source code automatically
+        has_projects: false
+      graph-backup-job:
+        description: A periodic cronjob to backup Thoth's knowledge graph
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja/docs/developers/storages
+      graph-cache-refresh-job:
+        archived: true
+        description: A job which refreshes graph cache
+        has_projects: false
+        has_wiki: false
+      graph-metrics-exporter:
+        description: Export metrics out of knowledge graph asynchronously
+        has_projects: false
+        has_wiki: false
+      graph-refresh-job:
+        description:
+          A job for scheduling solver to resolve dependency graphs of new
+          packages
+        has_projects: false
+        has_wiki: false
+      graph-sync-job:
+        description: Job for syncing data from object store to a graph database
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      graph-sync-scheduler:
+        archived: true
+        description: OpenShift operator for managing Thoth's graph syncs
+        has_projects: false
+        has_wiki: false
+      graphexp:
+        archived: true
+        description: Graph explorer for Thoth
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      httpd-aicoe-container:
+        description:
+          Apache HTTP container images based on Red Hat Software Collections
+          and intended for OpenShift and general usage. Users can choose between Red
+          Hat Enterprise Linux, Fedora, and CentOS based images.
+        has_projects: false
+        has_wiki: false
+        homepage: http://softwarecollections.org
+      image-pusher:
+        description: Push images to an external registry from internal OpenShift registry
+        has_projects: false
+      init-job:
+        description:
+          Thoth's initialization job that automatically initializes a fresh
+          deployment
+        has_projects: false
+        has_wiki: false
+      integration-tests:
+        description:
+          Integration tests for the Thoth project to make sure deployment
+          works as expected
+        has_projects: false
+        has_wiki: false
+      invectio:
+        description:
+          Statically analyze sources and extract information about called
+          or exported library functions in Python applications
+        has_projects: false
+      investigator:
+        description:
+          Thoth investigator is a Kafka based component that consumes all
+          messages produced by Thoth components.
+        has_projects: false
+        has_wiki: false
+      isis-api:
+        description: API exposing algorithms on top of project2vec
+        has_projects: false
+      janusgraph-thoth-config:
+        archived: true
+        description: Thoth's additions to JanusGraph
+        has_projects: false
+        has_wiki: false
+      jupyter-nbrequirements:
+        description: Dependency management and optimization in Jupyter Notebooks
+        has_projects: false
+        has_wiki: false
+      jupyter-nbtemplates:
+        archived: true
+        description: Jupyter Notebook extension for template notebooks.
+        has_projects: false
+      jupyter-notebook:
+        description: Jupyter notebook s2i build for project Thoth
+        has_projects: false
+        has_wiki: false
+      jupyter-notebook-s2i:
+        description: Jupyter notebook S2I builder image.
+        has_projects: false
+      jupyter-notebooks:
+        archived: true
+        description: Jupyter Notebooks for OpenDataHub
+        has_projects: false
+        has_wiki: false
+        homepage: http://opendatahub.io/
+        private: true
+      jupyterlab-requirements:
+        description: JupyterLab Extension for dependency management and optimization
+        has_projects: false
+        has_wiki: false
+      jupyternb-build-pipeline:
+        description:
+          Openshift-pipelines and tekton based pipeline for packaging jupyternb
+          in to image.
+        has_projects: false
+      kebechet:
+        description:
+          I'm Kebechet bot, goddess of freshness - I will keep your source
+          code fresh and up-to-date
+        has_projects: false
+        has_wiki: false
+      kebechet-website-tooling:
+        description: This is for the Kebechet website
+        has_projects: false
+        has_wiki: false
+        private: true
+      lab:
+        description: Code for Thoth experiments in Jupyter notebooks
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      management-api:
+        description: An API service used for administration of deployed Thoth
+        has_projects: false
+        has_wiki: false
+      messaging:
+        description: This is Thoth messaging, I will send my knowledge to the Universe!
+        has_projects: false
+        has_wiki: false
+      metrics-exporter:
+        description: This is a Prometheus exporter for Thoth.
+        has_projects: false
+        has_wiki: false
+      mi:
+        description: an experiment on Source Operation Metrics
+        has_projects: false
+        has_wiki: false
+      mi-scheduler:
+        description: This repository schedules workflows for thoth-station/mi project
+        has_projects: false
+      microbenchmarks:
+        archived: true
+        description: Collection of microbenchmarks for various AI/ML libraries
+        has_projects: false
+      micropipenv:
+        description:
+          A lightweight wrapper for pip to support requirements.txt, Pipenv
+          and Poetry lock files or converting them to pip-tools compatible output.
+          Designed for containerized Python applications but not limited to them.
+        has_projects: false
+        has_wiki: false
+        homepage: https://pypi.org/project/micropipenv/
+      misc:
+        description:
+          A /dev/null repository with various helper scripts that do not
+          belong anywhere.
+        has_projects: false
+        has_wiki: false
+      naming-service:
+        archived: true
+        description: Naming Service, ask me if you want to find things...
+        has_projects: false
+        has_wiki: false
+      nefertem:
+        archived: true
+        description: Check a Python codebase for issues and not so beautiful code
+        has_projects: false
+        has_wiki: false
+      nepthys:
+        description:
+          Bringing your code back to live as an interactive documentation
+          automatically
+        has_projects: false
+        has_wiki: false
+      notebooks:
+        description: A set of notebooks to experiment with data in project Thoth
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      nvidia-usage-dashboard:
+        description: A grokket based NVIDIA usage analysis
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+        private: true
+      observations:
+        archived: true
+        description: Observations from Build Logs
+        has_projects: false
+        has_wiki: false
+      odo-devfiles-registry:
+        description: "A repository of devfile 2.0 stacks for odo "
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      openblas:
+        description: OpenBLAS s2i
+        has_projects: false
+        has_wiki: false
+      optimized-pipeline:
+        default_branch: main
+        has_projects: false
+      osiris:
+        archived: true
+        description:
+          Build log aggregation service which integrates with OpenShift
+          and Ceph storage.
+        has_projects: false
+        has_wiki: false
+      osiris-build-observer:
+        archived: true
+        description: Openshift namespace build event observer.
+        has_projects: false
+        has_wiki: false
+      package-analyzer:
+        archived: true
+        description: Analyze Python artifacts
+        has_projects: false
+        has_wiki: false
+      package-build-controller:
+        archived: true
+        description: OpenShift controller/operator to Build tensorflow, numpy packages
+        has_projects: false
+        has_wiki: false
+      package-extract:
+        description:
+          Manipulation with package dependencies in containers and install
+          logs
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      package-releases-job:
+        description:
+          A job for monitoring new releases on PyPI and creating relevant
+          entries in the graph database
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      package-update-job:
+        description: Aggregate updates from Packages hosted in Indices...
+        has_projects: false
+        has_wiki: false
+      performance:
+        description: Scripts to benchmark libraries used by Amun
+        has_projects: false
+      pipeline-helpers:
+        description: All code required to help pipelines (e.g Tekton).
+        has_projects: false
+      pipelines-catalog:
+        description: A repository for OpenShift Pipelines tasks
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      pipenv:
+        archived: true
+        description: " Python Development Workflow for Humans."
+        has_issues: false
+        has_projects: false
+        homepage: https://pipenv.kennethreitz.org
+      postgresql-thoth-config:
+        archived: true
+        description: This is an OpenShift deployment for PostgreSQL as used in Thoth
+        has_projects: false
+      prescription-sync-job:
+        archived: true
+        description: Sync prescriptions in a Thoth deployment
+        has_projects: false
+      prescriptions:
+        description:
+          "⚕️\U0001F48A Prescriptions to heal your applications and application
+          dependencies \U0001F48A⚕️"
+        has_projects: false
+        homepage: https://thoth-station.ninja/docs/developers/adviser/prescription.html
+      prescriptions-gh-release-notes-job:
+        description:
+          Automatically construct prescriptions for linking GitHub release
+          notes based on thoth-solver results
+        has_projects: false
+      prometheus-pushgateway:
+        archived: true
+        description:
+          An Ansible role to deploy a Prometheus Pushgateway to an OpenShift
+          project.
+        has_projects: false
+        has_wiki: false
+      purge-job:
+        description: Purging old data out of a Thoth deployment
+        has_projects: false
+      python:
+        description: Library for Python related code
+        has_projects: false
+        has_wiki: false
+      python-ssdeep:
+        description: Python wrapper for ssdeep fuzzy hashing library
+        has_projects: false
+        has_wiki: false
+      qeb-hwt:
+        description:
+          I'm Kebechet bot, goddess of freshness - I will keep your dependencies
+          fresh and up-to-date
+        has_projects: false
+        has_wiki: false
+      rapidsai-build:
+        default_branch: branch-0.7
+        description: RAPIDS from-source and Docker build files
+        has_projects: false
+        has_wiki: false
+      report-processing:
+        description:
+          Library for processing all outputs/reports produced by Thoth
+          components.
+        has_projects: false
+        has_wiki: false
+      report-visualization:
+        archived: true
+        description:
+          This library is used to visualize processed reports as created
+          by report-processing library from Thoth components reports/outputs.
+        has_projects: false
+        has_wiki: false
+      reporter:
+        description:
+          Thoth Reporter to provide information on status of thoth services
+          from analysis of documents stored on Ceph.
+        has_projects: false
+        has_wiki: false
+      result-api:
+        archived: true
+        description: API service that handles data storing in project Thoth
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      revsolver:
+        description: A reverse solver implementation
+        has_projects: false
+      s2i:
+        description:
+          Tooling and a library for Thoth's Python Source-To-Image (s2i)
+          applications
+        has_projects: false
+        has_wiki: false
+      s2i-example:
+        description:
+          An example of Thoth's recommendations in OpenShift's s2i builds
+          for a TensorFlow stack
+        has_projects: false
+        has_wiki: false
+      s2i-example-flask:
+        archived: true
+        description: Example of an Python's s2i application consuming Thoth's recommendations
+        has_projects: false
+      s2i-example-migration:
+        description:
+          An example repository for a project to be migrated to use Thoth
+          (demo)
+        has_projects: false
+      s2i-generic-data-science-notebook:
+        has_projects: false
+        has_wiki: false
+      s2i-minimal-notebook:
+        description: A minimal Jupyter Notebook S2I image
+        has_projects: false
+      s2i-python-container:
+        description:
+          Python container images based on Red Hat Software Collections
+          and intended for OpenShift and general usage, that provide a platform for
+          building and running Python applications. Users can choose between Red Hat
+          Enterprise Linux, Fedora, and CentOS based images.
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+        homepage: http://softwarecollections.org
+      s2i-pytorch-notebook:
+        description:
+          s2i image build repository for jupyter notebook PyTorch related
+          packages.
+        has_projects: false
+      s2i-scipy-notebook:
+        description:
+          s2i image build repository for jupyter notebook SciPy related
+          packages.
+        has_projects: false
+      s2i-tensorflow-gpu-notebook:
+        description:
+          s2i image build repository for jupyter notebook with TensorFlow
+          GPU related packages.
+        has_projects: false
+      s2i-tensorflow-notebook:
+        description:
+          s2i image build repository for jupyter notebook TensorFlow related
+          packages.
+        has_projects: false
+      s2i-thoth:
+        description:
+          Thoth's addition to OpenShift's s2i Python builds to benefit
+          from Thoth's recommendations in your application
+        has_projects: false
+        has_wiki: false
+      selinon-api:
+        archived: true
+        description: API exposing data workloads of Selinon flows to users
+        has_projects: false
+      selinon-worker:
+        archived: true
+        description:
+          Selinon worker used for data gathering, data cleansing and experiments
+          in project Thoth
+        has_projects: false
+      sentry-openshift:
+        archived: true
+        description:
+          "Deployment of Sentry onto OpenShift for monitoring your OpenShift
+          application "
+        has_projects: false
+        has_wiki: false
+      si-aggregator:
+        description: Thoth's Security Indicator Aggragator
+        has_projects: false
+        has_wiki: false
+      si-bandit:
+        description: Thoth's Security Indicator using bandit
+        has_projects: false
+        has_wiki: false
+      si-cloc:
+        description: Thoth's Security Indicator using cloc
+        has_projects: false
+        has_wiki: false
+      slo-reporter:
+        description: Provide report on Thoth Service Level Objectives (SLO) to stakeholders.
+        has_projects: false
+        has_wiki: false
+      socrates:
+        description:
+          Experimental project on reviewer recommendation based on source
+          code and srcops analysis.
+        has_projects: false
+        has_wiki: false
+      solver:
+        description: Dependency solver for the Thoth project
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja/
+      solver-error-classfier:
+        description:
+          A machine learning model to automatically classify errors during
+          Python package installation
+        has_projects: false
+      solver-errors-reporter:
+        description:
+          Cluster solver errors collected by Thoth Dependency Solver and
+          report back to take actions.
+        has_projects: false
+      source-management:
+        description: Thoth's interaction library for different source management systems
+        has_projects: false
+      srcops-testing:
+        description: This is a SrcOps test repository
+        has_projects: false
+        has_wiki: false
+      statusfy:
+        description: I show the status of services of the Thoth Station
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+        homepage: https://status.thoth-station.ninja/
+        private: true
+      statusfy-ops:
+        description:
+          I operate the website to show the status of services of the Thoth
+          Station
+        has_projects: false
+        has_wiki: false
+        private: true
+      storages:
+        description: Storage and database adapters for project Thoth
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      stub-api:
+        description:
+          This is a project demonstrating the basic structure of a API
+          Service as used by the Thoth-Station.
+        has_projects: false
+        has_wiki: false
+      sync-job:
+        description: A one time job to sync all Thoth data
+        has_projects: false
+      talks:
+        description: Talks, presentations and research papers published about Thoth
+        has_projects: false
+      template-project:
+        description: This is a Template for any Python based project
+        has_projects: false
+        has_wiki: false
+      tensorflow:
+        description: An Open Source Machine Learning Framework for Everyone
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+        homepage: https://tensorflow.org
+      tensorflow-build-s2i:
+        description:
+          Source-to-Image Builder Image for building Tensorflow binaries
+          artifacts on OpenShift
+        has_projects: false
+        has_wiki: false
+      tensorflow-release-api:
+        description: "A application to release tensorflow builds "
+        has_projects: false
+        has_wiki: false
+      tensorflow-release-job:
+        description:
+          A job for triggering new builds and jobs for tensorflow-build
+          releases
+        has_projects: false
+      tensorflow-serving-build:
+        description: Tensorflow serving binary build
+        has_projects: false
+      tensorflow-symbols:
+        description: Tooling and scripts used for gathering symbols provided by TensorFlow
+        has_projects: false
+      termial-random:
+        default_branch: main
+        description: C extension for CPython implementing termial random
+        has_projects: false
+      test-infra:
+        archived: true
+        description: Test infrastructure for the Kubernetes project.
+        has_issues: false
+        has_projects: false
+        has_wiki: false
+      thamos:
+        description: A CLI tool and library for communicating with Thoth
+        has_projects: false
+        has_wiki: false
+        homepage: http://thoth-station.ninja
+      thoth:
+        description:
+          Platform for analyzing and recommending Python packages and Python
+          software stacks not only for AI/ML applications
+        has_projects: false
+        homepage: https://thoth-station.ninja/docs/developers/adviser
+      thoth-application:
+        description: Thoth-Station ArgoCD Applications
+        has_projects: false
+        has_wiki: false
+      thoth-ops:
+        description: This is a Red Hat internal ops repo...
+        has_projects: false
+        has_wiki: false
+        private: true
+      thoth-ops-infra:
+        description: Infrastructure project to have collections of container images.
+        has_projects: false
+        has_wiki: false
+      thoth-pybench:
+        description: Adopted Python benchmark tool "pybench" - https://openbenchmarking.org/test/pts/pybench
+        has_projects: false
+      thoth-station.github.io:
+        description: Project Thoth website
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      thoth-toolbox:
+        description: This is a Thoth tool box! A toolbox of Thoth tools...
+        has_projects: false
+        has_wiki: false
+      twitter-together:
+        default_branch: main
+        description: This is our place to tweet together...
+        has_projects: false
+        has_wiki: false
+        private: true
+      user-api:
+        description: Web Service exposing Thoth functions to the RESTful worlds
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/
+      website:
+        description: Thoth Station public website.
+        has_projects: false
+        has_wiki: false
+      website-tooling:
+        description: This is the content and theme for the website...
+        has_projects: false
+        has_wiki: false
+        private: true
+      workflow-controller:
+        archived: true
+        has_projects: false
+      workflow-helpers:
+        description: All code required to help workflows (e.g Argo).
+        has_projects: false
+        has_wiki: false
+      workflows:
+        description: Argo workflows used to get certain Thoth jobs done.
+        has_projects: false
+        has_wiki: false
+      workload-operator:
+        archived: true
+        description: Operator for managing jobs in project Thoth
+        has_projects: false
+        has_wiki: false
+      zuul-config:
+        archived: true
+        has_projects: false
+        has_wiki: false
+      zuul-jobs:
+        archived: true
+        has_projects: false
+        has_wiki: false
+    teams:
+      Cyborg-Supervisors:
+        description: These are the Humans supervising some Cyborgs
+        maintainers:
+          - goern
+          - fridex
+          - harshad16
+        privacy: closed
+        repos:
+          termial-random: read
+      Devs:
+        description: We are the Devs!
+        maintainers:
+          - goern
+          - fridex
+          - harshad16
+          - sesheta
+        members:
+          - larsks
+          - erikerlandson
+          - sub-mod
+          - tumido
+          - HumairAK
+          - KPostOffice
+          - Gregory-Pereira
+          - 4n4nd
+          - pacospace
+          - xtuchyna
+          - bjoernh2000
+          - tlegen-k
+          - sesheta-srcops
+        privacy: closed
+        repos:
+          Github-Issues-Classifier: triage
+          analyzer: triage
+          common: triage
+          cve-update-job: triage
+          datasets: triage
+          graph-refresh-job: triage
+          graph-sync-job: triage
+          httpd-aicoe-container: triage
+          invectio: triage
+          jupyter-notebook: triage
+          management-api: triage
+          metrics-exporter: triage
+          mi: triage
+          mi-scheduler: triage
+          nepthys: triage
+          notebooks: triage
+          openblas: triage
+          package-update-job: triage
+          performance: triage
+          python: triage
+          si-bandit: triage
+          srcops-testing: triage
+          stub-api: triage
+          talks: triage
+          tensorflow-build-s2i: triage
+          tensorflow-release-api: triage
+          tensorflow-release-job: triage
+          termial-random: triage
+          thoth: triage
+          thoth-pybench: triage
+          twitter-together: triage
+          workflow-helpers: triage
+        teams:
+          DevOps:
+            description: ""
+            maintainers:
+              - goern
+              - harshad16
+              - sesheta
+            members:
+              - tumido
+              - Gregory-Pereira
+              - pacospace
+            privacy: closed
+            repos:
+              Github-Issues-Classifier: triage
+              analyzer: triage
+              common: triage
+              cve-update-job: triage
+              datasets: triage
+              graph-refresh-job: triage
+              graph-sync-job: triage
+              httpd-aicoe-container: triage
+              invectio: triage
+              jupyter-notebook: triage
+              kebechet-website-tooling: triage
+              management-api: triage
+              metrics-exporter: triage
+              mi: triage
+              mi-scheduler: triage
+              nepthys: triage
+              notebooks: triage
+              openblas: triage
+              package-update-job: triage
+              performance: triage
+              python: triage
+              rapidsai-build: triage
+              si-bandit: triage
+              srcops-testing: triage
+              statusfy: triage
+              statusfy-ops: triage
+              stub-api: triage
+              talks: triage
+              tensorflow-build-s2i: triage
+              tensorflow-release-api: triage
+              tensorflow-release-job: triage
+              termial-random: triage
+              thoth: triage
+              thoth-ops-infra: triage
+              thoth-pybench: triage
+              twitter-together: triage
+              workflow-helpers: triage
+          SourceOps:
+            description: This is our SourceOps team, they keep the source fresh.
+            maintainers:
+              - goern
+              - fridex
+              - harshad16
+            members:
+              - pacospace
+              - sesheta
+              - sesheta-srcops
+            privacy: closed
+            repos:
+              Github-Issues-Classifier: admin
+              adviser: admin
+              amun-api: admin
+              amun-client: admin
+              amun-hwinfo: admin
+              analyzer: admin
+              ash-api: admin
+              build-watcher: admin
+              buildlog-parser: admin
+              cli-examples: admin
+              common: admin
+              contra-env-infra: admin
+              core: admin
+              cve-update-job: admin
+              datasets: admin
+              fext: admin
+              glyph: admin
+              graph-backup-job: admin
+              graph-metrics-exporter: admin
+              graph-refresh-job: admin
+              graph-sync-job: admin
+              httpd-aicoe-container: admin
+              init-job: admin
+              integration-tests: admin
+              invectio: admin
+              investigator: admin
+              isis-api: admin
+              janusgraph-thoth-config: admin
+              jupyter-nbrequirements: admin
+              jupyter-notebook: admin
+              jupyter-notebook-s2i: admin
+              jupyter-notebooks: admin
+              jupyternb-build-pipeline: admin
+              kebechet: admin
+              kebechet-website-tooling: admin
+              lab: admin
+              management-api: admin
+              messaging: admin
+              metrics-exporter: admin
+              mi: admin
+              mi-scheduler: admin
+              microbenchmarks: admin
+              micropipenv: admin
+              misc: admin
+              naming-service: admin
+              nefertem: admin
+              nepthys: admin
+              notebooks: admin
+              nvidia-usage-dashboard: admin
+              observations: admin
+              odo-devfiles-registry: admin
+              openblas: admin
+              osiris: read
+              osiris-build-observer: read
+              package-analyzer: admin
+              package-extract: admin
+              package-releases-job: admin
+              package-update-job: admin
+              performance: admin
+              prescriptions-gh-release-notes-job: admin
+              prometheus-pushgateway: admin
+              python: admin
+              python-ssdeep: admin
+              qeb-hwt: admin
+              rapidsai-build: admin
+              report-processing: admin
+              report-visualization: admin
+              reporter: admin
+              result-api: admin
+              revsolver: admin
+              s2i: admin
+              s2i-example: admin
+              s2i-example-flask: admin
+              s2i-example-migration: admin
+              s2i-generic-data-science-notebook: admin
+              s2i-minimal-notebook: admin
+              s2i-python-container: admin
+              s2i-scipy-notebook: admin
+              s2i-tensorflow-notebook: admin
+              s2i-thoth: admin
+              selinon-api: read
+              selinon-worker: read
+              sentry-openshift: admin
+              si-aggregator: admin
+              si-bandit: admin
+              si-cloc: admin
+              slo-reporter: admin
+              socrates: admin
+              solver: admin
+              solver-error-classfier: admin
+              solver-errors-reporter: admin
+              source-management: admin
+              srcops-testing: admin
+              statusfy: admin
+              statusfy-ops: admin
+              storages: admin
+              stub-api: admin
+              sync-job: admin
+              talks: admin
+              template-project: admin
+              tensorflow: admin
+              tensorflow-build-s2i: admin
+              tensorflow-release-api: admin
+              tensorflow-release-job: admin
+              tensorflow-serving-build: admin
+              termial-random: admin
+              test-infra: admin
+              thamos: admin
+              thoth: admin
+              thoth-application: admin
+              thoth-ops: admin
+              thoth-ops-infra: admin
+              thoth-pybench: admin
+              thoth-station.github.io: admin
+              thoth-toolbox: admin
+              twitter-together: admin
+              user-api: admin
+              website: admin
+              workflow-helpers: admin
+              workflows: admin
+              workload-operator: admin
+              zuul-config: admin
+              zuul-jobs: admin
+      frameworks:
+        description:
+          this is about AICoE - AI/ML Frameworks (TensorFlow, PyTorch,
+          Keras, MXNet, ...) and supporting Libraries (OpenBLAS, NumPy, ...)
+        maintainers:
+          - goern
+        members:
+          - erikerlandson
+          - sub-mod
+          - pacospace
+        privacy: closed
+        repos:
+          nvidia-usage-dashboard: write
+          rapidsai-build: read
+          tensorflow-build-s2i: write
+          termial-random: read
