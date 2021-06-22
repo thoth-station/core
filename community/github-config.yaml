@@ -1044,6 +1044,7 @@ orgs:
               performance: admin
               prescriptions-gh-release-notes-job: admin
               prometheus-pushgateway: admin
+              pulp-repository-sync-job: admin
               python: admin
               python-ssdeep: admin
               qeb-hwt: admin
