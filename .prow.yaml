@@ -34,7 +34,7 @@ postsubmits:
                 --maximum-removal-delta=0.15 \
                 --require-self=true \
                 --fix-org \
-                --fix-org-members \ 
+                --fix-org-members \
                 --fix-repos \
                 --fix-teams \
                 --fix-team-members \

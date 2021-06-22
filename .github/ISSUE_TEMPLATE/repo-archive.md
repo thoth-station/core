@@ -2,7 +2,7 @@
 name: Repository archival
 about: Retire and archive a Thoth-Station repository
 title: ''
-labels: bot 
+labels: bot
 assignees: ''
 
 ---
