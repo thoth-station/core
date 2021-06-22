@@ -527,6 +527,9 @@ orgs:
           project.
         has_projects: false
         has_wiki: false
+      pulp-repository-sync-job:
+        has_projects: false
+        has_wiki: false
       purge-job:
         description: Purging old data out of a Thoth deployment
         has_projects: false
