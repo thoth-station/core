@@ -535,7 +535,7 @@ orgs:
         description: This is a repository for a Predictive Stack for Natural Language Processing (NLP)
         has_projects: false
         has_wiki: false
-      pulp-repository-sync-job:
+      pulp-pypi-sync-job:
         has_projects: false
         has_wiki: false
       purge-job:
@@ -1054,7 +1054,7 @@ orgs:
               prometheus-pushgateway: admin
               ps-cv: admin
               ps-nlp: admin
-              pulp-repository-sync-job: admin
+              pulp-pypi-sync-job: admin
               python: admin
               python-ssdeep: admin
               qeb-hwt: admin
