@@ -21,6 +21,8 @@ Architectural decisions
 * `ADR-0000 <docs/adr/0000-use-markdown-architectural-decision-records.md>`_ - Use Markdown Architectural Decision Records
 * `ADR-0001 <docs/adr/0001-use-gpl3-as-license.md>`_ - Use GNU GPL as license
 * `ADR-0002 <docs/adr/0002-release-policy.md>`_ - Release Policy
+* `ADR-0003 <docs/adr/0003-decommision-qeb-hwt.md>`_ - Decommision Qeb-Hwt Bot
+* `ADR-0004 <docs/adr/0004-naming-convention-images.md>`_ - Naming convention for Thoth Predictable Stack Images
 
 
 Demo Session
