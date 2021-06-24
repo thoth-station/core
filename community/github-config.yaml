@@ -705,6 +705,10 @@ orgs:
           Cluster solver errors collected by Thoth Dependency Solver and
           report back to take actions.
         has_projects: false
+      solver-project-url-job:
+        description: A job responsible for extracting project URL information out of solver documents
+        has_projects: false
+        has_wiki: false
       source-management:
         description: Thoth's interaction library for different source management systems
         has_projects: false
@@ -1085,6 +1089,7 @@ orgs:
               solver: admin
               solver-error-classfier: admin
               solver-errors-reporter: admin
+              solver-project-url-job: admin
               source-management: admin
               srcops-testing: admin
               statusfy: admin
