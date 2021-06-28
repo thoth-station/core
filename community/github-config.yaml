@@ -25,6 +25,7 @@ orgs:
       - KPostOffice
       - larsks
       - LaVLaS
+      - meile18
       - pacospace
       - sesheta-srcops
       - sub-mod
@@ -886,22 +887,22 @@ orgs:
           - harshad16
           - sesheta
         members:
-          - larsks
+          - 4n4nd
+          - bjoernh2000
           - erikerlandson
-          - sub-mod
-          - tumido
+          - Gregory-Pereira
           - HumairAK
           - KPostOffice
-          - Gregory-Pereira
-          - 4n4nd
+          - larsks
+          - meile18
           - pacospace
-          - xtuchyna
-          - bjoernh2000
-          - tlegen-k
           - sesheta-srcops
+          - sub-mod
+          - tlegen-k
+          - tumido
+          - xtuchyna
         privacy: closed
         repos:
-          Github-Issues-Classifier: triage
           analyzer: triage
           common: triage
           cve-update-job: triage
@@ -917,7 +918,6 @@ orgs:
           mi-scheduler: triage
           nepthys: triage
           notebooks: triage
-          openblas: triage
           package-update-job: triage
           performance: triage
           python: triage
