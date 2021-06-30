@@ -1,0 +1,435 @@
+# default: global configuration to be applied to all repos
+# repos: list of repos with specific configuration to be applied in addition to default
+#   labels: list of labels - keys for each item: color, description, name, target, deleteAfter, previously
+#     deleteAfter: 2006-01-02T15:04:05Z (rfc3339)
+#     previously: list of previous labels (color name deleteAfter, previously)
+#     target: one of issues, prs, or both (also TBD)
+#     addedBy: human? prow plugin? other?
+---
+default:
+  labels:
+    - color: 698b69
+      description: This Issue or PR is being worked on by a bot
+      name: bot
+      target: both
+      prowPlugin: label
+      addedBy: human or bot
+
+    - color: d5f48d
+      description: This Issue or PR is related to a specific deployment.
+      name: deployment_name/zero-prod
+      previously:
+        - name: deployment_name/moc
+      target: both
+      prowPlugin: label
+      addedBy: human
+    - color: d5f48d
+      description: This Issue or PR is related to a specific deployment.
+      name: deployment_name/ocp4-stage
+      previously:
+        - name: deployment_name/ocp-stage
+      target: both
+      prowPlugin: label
+      addedBy: human
+    - color: d5f48d
+      description: This Issue or PR is related to a specific deployment.
+      name: deployment_name/ocp4-test
+      previously:
+        - name: deployment_name/ocp-test
+      target: both
+      prowPlugin: label
+      addedBy: human
+
+    - color: ff9695
+      description: This is an Issue or PR someone want to give a demo or request a demo.
+      name: kind/demo
+      target: both
+      prowPlugin: label
+      addedBy: human
+    - color: 0e8a16
+      description: Indicates a PR has been approved by an approver from all required OWNERS files.
+      name: approved
+      target: prs
+      prowPlugin: approve
+      addedBy: approvers
+    - color: e11d21
+      description: Indicates that a PR should not merge because it touches files in blocked paths.
+      name: do-not-merge/blocked-paths
+      target: prs
+      prowPlugin: blockade
+      addedBy: prow
+    - color: e11d21
+      description: Indicates that a PR should not merge because someone has issued a /hold command.
+      name: do-not-merge/hold
+      target: prs
+      prowPlugin: hold
+      addedBy: anyone
+    - color: e11d21
+      description: Indicates that a PR should not merge because it has an invalid OWNERS file in it.
+      name: do-not-merge/invalid-owners-file
+      target: prs
+      prowPlugin: verify-owners
+      addedBy: prow
+    - color: e11d21
+      description: Indicates that a PR should not merge because it is a work in progress.
+      name: do-not-merge/work-in-progress
+      target: prs
+      prowPlugin: wip
+      addedBy: prow
+
+    - color: e11d21
+      description: Categorizes issue or PR as related to a bug.
+      name: kind/bug
+      previously:
+        - name: bug
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Categorizes issue or PR as related to cleaning up code, process, or technical debt.
+      name: kind/cleanup
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: e11d21
+      description: Categorizes issue or PR as related to a feature/enhancement marked for deprecation.
+      name: kind/deprecation
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Categorizes issue or PR as related to documentation.
+      name: kind/documentation
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: c7def8
+      description: Categorizes issue or PR as related to a new feature.
+      name: kind/feature
+      previously:
+        - name: enhancement
+        - name: kind/enhancement
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: d455d0
+      description: Categorizes issue or PR as a support question.
+      name: kind/question
+      previously:
+        - name: close/support
+        - name: question
+        - name: triage/support
+      target: both
+      addedBy: humans
+    - color: 15dd18
+      description: Indicates that a PR is ready to be merged.
+      name: lgtm
+      target: prs
+      prowPlugin: lgtm
+      addedBy: reviewers or members
+    - color: d3e2f0
+      description: Indicates that an issue or PR should not be auto-closed due to staleness.
+      name: lifecycle/frozen
+      previously:
+        - name: keep-open
+      target: both
+      prowPlugin: lifecycle
+      addedBy: anyone
+    - color: 8fc951
+      description: Indicates that an issue or PR is actively being worked on by a contributor.
+      name: lifecycle/active
+      previously:
+        - name: active
+      target: both
+      prowPlugin: lifecycle
+      addedBy: anyone
+    - color: "604460"
+      description: Denotes an issue or PR that has aged beyond stale and will be auto-closed.
+      name: lifecycle/rotten
+      target: both
+      prowPlugin: lifecycle
+      addedBy: anyone
+    - color: "795548"
+      description: Denotes an issue or PR has remained open with no activity and has become stale.
+      name: lifecycle/stale
+      previously:
+        - name: stale
+      target: both
+      prowPlugin: lifecycle
+      addedBy: anyone
+    - color: e11d21
+      description: Indicates a PR that requires an org member to verify it is safe to test. # This is to prevent spam/abuse of our CI system, and can be circumvented by becoming an org member. Org members can remove this label with the `/ok-to-test` command.
+      name: needs-ok-to-test
+      target: prs
+      prowPlugin: trigger
+      addedBy: prow
+    - color: e11d21
+      description: Indicates a PR cannot be merged because it has merge conflicts with HEAD.
+      name: needs-rebase
+      target: prs
+      prowPlugin: needs-rebase
+      isExternalPlugin: true
+      addedBy: prow
+    - color: fef2c0
+      description: Lowest priority. Possibly useful, but not yet enough support to actually get it done. # These are mostly place-holders for potentially good ideas, so that they don't get completely forgotten, and can be referenced /deduped every time they come up.
+      name: priority/awaiting-more-evidence
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fbca04
+      description: Higher priority than priority/awaiting-more-evidence. # There appears to be general agreement that this would be good to have, but we may not have anyone available to work on it right now or in the immediate future. Community contributions would be most welcome in the mean time (although it might take a while to get them reviewed if reviewers are fully occupied with higher priority issues, for example immediately before a release).
+      name: priority/backlog
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: e11d21
+      description: Highest priority. Must be actively worked on as someone's top priority right now. # Stuff is burning. If it's not being actively worked on, someone is expected to drop what they're doing immediately to work on it. Team leaders are responsible for making sure that all the issues, labeled with this priority, in their area are being actively worked on. Examples include user-visible bugs in core features, broken builds or tests and critical security issues.
+      name: priority/critical-urgent
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: eb6420
+      description: Important over the long term, but may not be staffed and/or may need multiple releases to complete.
+      name: priority/important-longterm
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: eb6420
+      description: Must be staffed and worked on either currently, or very soon, ideally in time for the next release.
+      name: priority/important-soon
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: ee9900
+      description: Denotes a PR that changes 100-499 lines, ignoring generated files.
+      name: size/L
+      target: prs
+      prowPlugin: size
+      addedBy: prow
+    - color: eebb00
+      description: Denotes a PR that changes 30-99 lines, ignoring generated files.
+      name: size/M
+      target: prs
+      prowPlugin: size
+      addedBy: prow
+    - color: 77bb00
+      description: Denotes a PR that changes 10-29 lines, ignoring generated files.
+      name: size/S
+      target: prs
+      prowPlugin: size
+      addedBy: prow
+    - color: ee5500
+      description: Denotes a PR that changes 500-999 lines, ignoring generated files.
+      name: size/XL
+      target: prs
+      prowPlugin: size
+      addedBy: prow
+    - color: "009900"
+      description: Denotes a PR that changes 0-9 lines, ignoring generated files.
+      name: size/XS
+      target: prs
+      prowPlugin: size
+      addedBy: prow
+    - color: ee0000
+      description: Denotes a PR that changes 1000+ lines, ignoring generated files.
+      name: size/XXL
+      target: prs
+      prowPlugin: size
+      addedBy: prow
+    - color: ffaa00
+      description: Denotes a PR that should be squashed by tide when it merges.
+      name: tide/merge-method-squash
+      target: prs
+      addedBy: humans
+      previously:
+        - name: tide/squash
+    - color: ffaa00
+      description: Denotes a PR that should be rebased by tide when it merges.
+      name: tide/merge-method-rebase
+      target: prs
+      addedBy: humans
+    - color: ffaa00
+      description: Denotes a PR that should use a standard merge by tide when it merges.
+      name: tide/merge-method-merge
+      target: prs
+      addedBy: humans
+    - color: e11d21
+      description: Denotes an issue that blocks the tide merge queue for a branch while it is open.
+      name: tide/merge-blocker
+      target: issues
+      addedBy: humans
+      previously:
+        - name: merge-blocker
+    - color: f9d0c4
+      description: ¯\\\_(ツ)_/¯
+      name: "¯\\_(ツ)_/¯"
+      target: both
+      prowPlugin: shrug
+      addedBy: humans
+
+    - color: 99cdf8
+      description: Issues targeting the hacktoberfest participants.
+      name: hacktoberfest
+      previously:
+        - name: #hacktoberfest
+      target: issue
+      prowPlugin: label
+      addedBy: anyone
+    - color: 99cdf8
+      description: PR that has been accepted for hacktoberfest!
+      name: hacktoberfest-accepted
+      target: prs
+      prowPlugin: label
+      addedBy: humans
+
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Cyborgs and Bots.
+      name: sig/cyborgs
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG DevOps.
+      name: sig/devops
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Docs.
+      name: sig/docs
+      target: both
+      prowPlugin: label
+      previously:
+        - name: sig/documentation
+      addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD)
+      name: sig/pipelines
+      previously:
+        - name: sig/build
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Observability
+      name: sig/observability
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+
+    - addedBy: human
+      color: fef2c0
+      description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/14
+      name: sig/investigator
+      prowPlugin: label
+      target: both
+    - addedBy: human
+      color: fef2c0
+      description: Issues or PRs related to {meta|performance|security} indicators.
+      name: sig/indicators
+      prowPlugin: label
+      target: both
+    - addedBy: human
+      color: fef2c0
+      description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/8
+      name: sig/knowledge-graph
+      prowPlugin: label
+      target: both
+    - addedBy: human
+      color: fef2c0
+      description: Issues or PRs related to Solvers
+      name: sig/solvers
+      prowPlugin: label
+      target: both
+    - addedBy: human
+      color: fef2c0
+      description:
+        Issues or PRs related to Service Level Indicators and Objectives
+        and their reporting
+      name: sig/slo
+      prowPlugin: label
+      target: both
+    - addedBy: human
+      color: fef2c0
+      description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
+      name: sig/advisor
+      prowPlugin: label
+      target: both
+    - addedBy: human
+      color: fef2c0
+      description:
+        Issues or PRs related to the User Experience of our Services, Tools,
+        and Libraries.
+      name: sig/user-experience
+      prowPlugin: label
+      target: both
+
+    - color: 8fc951
+      description: Indicates an issue or PR is ready to be actively worked on.
+      name: triage/accepted
+      target: both
+      prowPlugin: label
+      addedBy: org members
+    - color: d455d0
+      description: Indicates an issue is a duplicate of other open issue.
+      name: triage/duplicate
+      target: both
+      previously:
+        - name: close/duplicate
+        - name: duplicate
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue needs more information in order to work on it.
+      name: triage/needs-information
+      previously:
+        - name: close/needs-information
+      target: both
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue can not be reproduced as described.
+      name: triage/not-reproducible
+      previously:
+        - name: close/not-reproducible
+      target: both
+      addedBy: humans
+    - color: d455d0
+      description: Indicates an issue that can not or will not be resolved.
+      name: triage/unresolved
+      previously:
+        - name: close/unresolved
+        - name: invalid
+        - name: wontfix
+      target: both
+      addedBy: humans
+
+    - color: fbca04
+      description: This issue could be used for group programming, offer or request.
+      name: thoth/group-programming
+      target: issues
+      addedBy: humans
+    - color: fbca04
+      description: This isse/PR requires himan intervention!
+      name: thoth/human-intervention-required
+      target: both
+      addedBy: both
+    - color: fbca04
+      description: This is a potential observation we need to learn from!
+      name: thoth/potential-observation
+      target: both
+      addedBy: humans
+
+repos:
+  thoth-station/thoth-application:
+    labels:
+      - addedBy: anyone
+        color: e11d21
+        description: This issue is related to an operations alert!
+        name: alert💥
+        prowPlugin: label
+        target: issue
+      - color: e11d21
+        description: Categorizes issues as operational alerts (created by alert-manager)
+        name: kind/alert
+        target: issue
+        prowPlugin: label
+        addedBy: anyone

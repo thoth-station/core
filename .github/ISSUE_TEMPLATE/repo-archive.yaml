@@ -1,0 +1,28 @@
+name: Repository archival
+description: Retire and archive an Thoth-Station repository
+title: "RETIRE: <repo_name>"
+labels: [bot]
+assignees: []
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository to archive
+      description: Repository name
+      placeholder: repository name
+    validations:
+      required: true
+  - type: input
+    id: approval
+    attributes:
+      label: Approved by
+      description: Repository owners that are approving this archival
+      placeholder: example_user
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context for request
+    validations:
+      required: false
