@@ -743,6 +743,10 @@ orgs:
           Service as used by the Thoth-Station.
         has_projects: false
         has_wiki: false
+      support:
+        description: "ℹ Any Thoth related support questions"
+        has_projects: false
+        has_wiki: false
       sync-job:
         description: A one time job to sync all Thoth data
         has_projects: false
@@ -1109,6 +1113,7 @@ orgs:
               statusfy-ops: admin
               storages: admin
               stub-api: admin
+              support: admin
               sync-job: admin
               talks: admin
               template-project: admin

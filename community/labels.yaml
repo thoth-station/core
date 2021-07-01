@@ -408,7 +408,7 @@ default:
       target: issues
       addedBy: humans
     - color: fbca04
-      description: This isse/PR requires himan intervention!
+      description: This isse/PR requires human intervention!
       name: thoth/human-intervention-required
       target: both
       addedBy: both
@@ -423,7 +423,21 @@ repos:
     labels:
       - addedBy: anyone
         color: e11d21
-        description: This issue is related to an operations alert!
+        description: Categorizes issues as operational alerts (created by alert-manager)
+        name: alert💥
+        prowPlugin: label
+        target: issue
+      - color: e11d21
+        description: Categorizes issues as operational alerts (created by alert-manager)
+        name: kind/alert
+        target: issue
+        prowPlugin: label
+        addedBy: anyone
+  thoth-station/support:
+    labels:
+      - addedBy: anyone
+        color: e11d21
+        description: Categorizes issues as operational alerts (created by alert-manager)
         name: alert💥
         prowPlugin: label
         target: issue
