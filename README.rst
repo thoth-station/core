@@ -54,3 +54,18 @@ Community
 This repository also contains a description of all the `Project Thoth SIGs (Special Interest Groups) <community/sig-list.md>`_
 
 We have created a short overview of `how we work <docs/TermsAndConditionsForTheScrum.md>`_ too.
+
+Automated Community Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
++---------------+---------------------+
+| Job           | Status              |
++===============+=====================+
+| label sync    | |Label Sync Job|    |
++---------------+---------------------+
+| GitHub config | |GitHub Config Job| |
++---------------+---------------------+
+
+.. |Label Sync Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=thoth-station-labels
+.. |GitHub Config Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=thoth-station-peribolos
+
