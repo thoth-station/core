@@ -1,0 +1,38 @@
+name: Repository creation
+description: Create a repository in Thoth-Station Org
+title: "CREATE: <repo_name>"
+labels: [bot]
+assignees: []
+body:
+  - type: input
+    id: new-repo
+    attributes:
+      label: New Repository
+      description: Name of the new repository
+      placeholder: repository name
+    validations:
+      required: true
+  - type: textarea
+    id: repo-desc
+    attributes:
+      label: Repository description
+      description: What should the repo description be
+      placeholder: What should the repo description be
+    validations:
+      required: true
+  - type: textarea
+    id: admin-access
+    attributes:
+      label: Admin access
+      description: Users or teams who should have admin access
+      placeholder: userid, userid
+    validations:
+      required: true
+  - type: textarea
+    id: write-access
+    attributes:
+      label: Write access
+      description: Users or teams who should have write access
+      placeholder: userid, userid
+    validations:
+      required: true
