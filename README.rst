@@ -68,4 +68,3 @@ Automated Community Management
 
 .. |Label Sync Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=thoth-station-labels
 .. |GitHub Config Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=thoth-station-peribolos
-
