@@ -1,4 +1,4 @@
-# SIG Docs Charter
+# SIG Observability Charter
 
 This charter adheres to the conventions described in the [Kubernetes Charter README] and uses
 the Roles and Organization Management outlined in [sig-governance]. For all things taken from the Kubernetes
@@ -6,14 +6,7 @@ community, we use scaled down variants, Kubernetes documents are references.
 
 ## Scope
 
-The goal of this SIG is to identify items that need documentation and generate the documentation, this
-might be in the form of API docs, blog articles or screen casts on our YouTube channel.
-
-The way how we generate documentation and where we publish is also within the scope of this SIG.
-
-### Out of scope
-
-- SIG Docs is not responsible for creating new feature documentation.
+Work on all things that concerns Observability! This includes the definition of metrics, monitoring, reporting and alerting.
 
 ## Roles and Organization Management
 

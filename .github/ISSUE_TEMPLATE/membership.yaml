@@ -1,0 +1,35 @@
+name: Organization Membership Request
+description: Request membership in Thoth-Station Org
+title: "REQUEST: New membership for <your-GH-handle>"
+labels: [bot]
+assignees: []
+body:
+  - type: input
+    id: username
+    attributes:
+      label: GitHub Username
+      placeholder: "@example_user"
+    validations:
+      required: true
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements
+      description: "By submitting this request I declare that:"
+      options:
+        - label: I have enabled 2FA on my GitHub account (https://github.com/settings/security)
+          required: true
+        - label: I am actively contributing to 1 or more subprojects
+          required: true
+        - label: I have a sponsor
+          required: true
+        - label: I have spoken to my sponsor ahead of this application
+          required: true
+  - type: textarea
+    id: sponsors
+    attributes:
+      label: Sponsors
+      description: Please list your sponsors who are already members of this organization who instructed you apply for membership. It can be project owners, managers or fellow contributors.
+      placeholder: "@sponsor"
+    validations:
+      required: true

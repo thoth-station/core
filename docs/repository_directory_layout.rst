@@ -1,4 +1,4 @@
-Repository Directory Layout 
+Repository Directory Layout
 ===========================
 
 This section describes to directory layout common to all the Thoth-Station repositories.

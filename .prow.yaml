@@ -1,0 +1,135 @@
+presubmits:
+  - name: pre-commit
+    decorate: true
+    skip_report: false
+    always_run: true
+    context: aicoe-ci/prow/pre-commit
+    spec:
+      containers:
+        - image: quay.io/thoth-station/thoth-precommit-py38:v0.12.9
+          command:
+            - "pre-commit"
+            - "run"
+            - "--all-files"
+  - name: peribolos
+    decorate: true
+    run_if_changed: ^community/github-config\.yaml$
+    skip_report: false
+    context: community-management/prow/peribolos
+    spec:
+      containers:
+        - image: gcr.io/k8s-prow/peribolos:latest
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - |
+              set -ex
+              /peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+                --min-admins=2 \
+                --maximum-removal-delta=0.15 \
+                --require-self=true \
+                --fix-org \
+                --fix-org-members \
+                --fix-repos \
+                --fix-teams \
+                --fix-team-members \
+                --fix-team-repos \
+                --allow-repo-archival \
+          volumeMounts:
+            - name: github-oauth
+              mountPath: /etc/github
+      volumes:
+        - name: github-oauth
+          secret:
+            secretName: oauth-token
+  - name: labels
+    decorate: true
+    run_if_changed: ^community/labels.yaml$
+    skip_report: false
+    context: community-management/prow/labels
+    spec:
+      containers:
+        - image: gcr.io/k8s-prow/label_sync:latest
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - |
+              set -ex
+              /app/label_sync/app.binary \
+              --config=community/labels.yaml \
+              --orgs=thoth-station \
+              --token=/etc/github/oauth
+          volumeMounts:
+            - name: github-oauth
+              mountPath: /etc/github
+      volumes:
+        - name: github-oauth
+          secret:
+            secretName: oauth-token
+
+postsubmits:
+  - name: thoth-station-peribolos
+    decorate: true
+    run_if_changed: ^community/github-config\.yaml$
+    skip_report: false
+    context: community-management/prow/peribolos
+    branches:
+      - ^master$
+    spec:
+      containers:
+        - image: gcr.io/k8s-prow/peribolos:latest
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - |
+              set -ex
+              /peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+                --min-admins=2 \
+                --maximum-removal-delta=0.15 \
+                --require-self=true \
+                --fix-org \
+                --fix-org-members \
+                --fix-repos \
+                --fix-teams \
+                --fix-team-members \
+                --fix-team-repos \
+                --allow-repo-archival \
+                --confirm
+          volumeMounts:
+            - name: github-oauth
+              mountPath: /etc/github
+      volumes:
+        - name: github-oauth
+          secret:
+            secretName: oauth-token
+  - name: thoth-station-labels
+    decorate: true
+    run_if_changed: ^community/(github-config|labels)\.yaml$
+    skip_report: false
+    context: community-management/prow/labels
+    branches:
+      - ^master$
+    spec:
+      containers:
+        - image: gcr.io/k8s-prow/label_sync:latest
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - |
+              set -ex
+              /app/label_sync/app.binary \
+              --config=community/labels.yaml \
+              --orgs=thoth-station  \
+              --token=/etc/github/oauth \
+              --confirm
+          volumeMounts:
+            - name: github-oauth
+              mountPath: /etc/github
+      volumes:
+        - name: github-oauth
+          secret:
+            secretName: oauth-token

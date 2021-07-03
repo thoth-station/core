@@ -10,11 +10,11 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 --->
 
-# Pipelines Special Interest Group
+# Observability Special Interest Group
 
-Work on all things that are used by Pipelines! This includes the pipelines themselves, supporting container images, tooling, and architectural decisions. This SIG is also responsible for triaging operational issues.
+Work on all things that concern Observability! This includes the definition of metrics, monitoring, reporting and alerting.
 
-The [charter](charter.md) defines the scope and governance of the Pipelines Special Interest Group.
+The [charter](charter.md) defines the scope and governance of the Observability Special Interest Group.
 
 ## Meetings
 * Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time)](https://meet.google.com/kxd-axiz-tym) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
@@ -25,34 +25,40 @@ The [charter](charter.md) defines the scope and governance of the Pipelines Spec
 
 The Chairs of the SIG run operations and processes governing the SIG.
 
-* Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
+* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
 
 ### Technical Leads
 
 The Technical Leads of the SIG establish new subprojects, decommission existing
 subprojects, and resolve cross-subproject technical issues and decisions.
 
-* Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
+* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
 
 ## Contact
 
 - Slack: [#](https://kubernetes.slack.com/messages/)
 - [Mailing list]()
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fpipelines)
+- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fobservability)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects
 
-The following [subprojects][subproject-definition] are owned by sig-pipelines:
-### aicoe-ci
+The following [subprojects][subproject-definition] are owned by sig-observability:
+### advise-reporter
 - **Owners:**
-  - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
-### opf-ci-prow
+  - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
+### investigator-exporter
 - **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
-### thoth-ops-infra
+  - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
+### metrics-exporter
 - **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
+### monitoring/alerting
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
+### slo-reporter
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->

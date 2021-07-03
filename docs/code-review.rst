@@ -22,7 +22,7 @@ The following requirements must be met to start merging a Pull Request:
 
 -  a ‘approved’ `GitHub
    review <https://help.github.com/articles/about-pull-request-reviews/>`__
-   must exists
+   must exist
 -  the ‘approved’
    `label <https://help.github.com/articles/about-labels/>`__ must be
    set

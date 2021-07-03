@@ -2,8 +2,9 @@ aliases:
   sig-docs-leads:
     - fridex
     - goern
+  sig-observability-leads:
+    - pacospace
   sig-pipelines-leads:
-    - goern
     - harshad16
 ## BEGIN CUSTOM CONTENT
 
