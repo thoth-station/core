@@ -8,6 +8,12 @@
 ---
 default:
   labels:
+    - color: 0052cc
+      description: Issues or PRs related to Prescriptions
+      name: area/prescriptions
+      target: both
+      addedBy: label
+
     - color: 698b69
       description: This Issue or PR is being worked on by a bot
       name: bot

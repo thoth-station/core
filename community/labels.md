@@ -35,6 +35,7 @@ larger set of contributors to apply/remove them.
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | --- |
+| <a id="area/prescriptions" href="#area/prescriptions">`area/prescriptions`</a> | Issues or PRs related to Prescriptions| label | |
 | <a id="bot" href="#bot">`bot`</a> | This Issue or PR is being worked on by a bot| human or bot |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-stage" href="#deployment_name/ocp4-stage">`deployment_name/ocp4-stage`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-stage`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-test" href="#deployment_name/ocp4-test">`deployment_name/ocp4-test`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-test`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
@@ -67,7 +68,7 @@ larger set of contributors to apply/remove them.
 | <a id="sig/slo" href="#sig/slo">`sig/slo`</a> | Issues or PRs related to Service Level Indicators and Objectives and their reporting| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/solvers" href="#sig/solvers">`sig/solvers`</a> | Issues or PRs related to Solvers| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/user-experience" href="#sig/user-experience">`sig/user-experience`</a> | Issues or PRs related to the User Experience of our Services, Tools, and Libraries.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
-| <a id="thoth/human-intervention-required" href="#thoth/human-intervention-required">`thoth/human-intervention-required`</a> | This isse/PR requires himan intervention!| both | |
+| <a id="thoth/human-intervention-required" href="#thoth/human-intervention-required">`thoth/human-intervention-required`</a> | This isse/PR requires human intervention!| both | |
 | <a id="thoth/potential-observation" href="#thoth/potential-observation">`thoth/potential-observation`</a> | This is a potential observation we need to learn from!| humans | |
 | <a id="triage/accepted" href="#triage/accepted">`triage/accepted`</a> | Indicates an issue or PR is ready to be actively worked on.| org members |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="triage/duplicate" href="#triage/duplicate">`triage/duplicate`</a> | Indicates an issue is a duplicate of other open issue. <br><br> This was previously `close/duplicate`, `duplicate`, | humans | |
