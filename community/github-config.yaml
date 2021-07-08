@@ -1064,13 +1064,13 @@ orgs:
               observations: admin
               odo-devfiles-registry: admin
               openblas: admin
-              osiris: read
-              osiris-build-observer: read
               package-analyzer: admin
               package-extract: admin
               package-releases-job: admin
               package-update-job: admin
               performance: admin
+              prescription-sync-job: admin
+              prescriptions: admin
               prescriptions-gh-release-notes-job: admin
               prometheus-pushgateway: admin
               ps-cv: admin
@@ -1095,8 +1095,6 @@ orgs:
               s2i-scipy-notebook: admin
               s2i-tensorflow-notebook: admin
               s2i-thoth: admin
-              selinon-api: read
-              selinon-worker: read
               sentry-openshift: admin
               si-aggregator: admin
               si-bandit: admin
