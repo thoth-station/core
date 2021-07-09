@@ -34,7 +34,7 @@ Please check you have all the following:
 2. Get familiar with thoth-solver [1], study its output
 
 3. Get access to solver dataset that is present on Ceph, explore the dataset
-   using Jupyter Notebooks, create a batch of solver documents
+   using Jupyter Notebooks, create a batch of solver documents, see https://github.com/orgs/thoth-station/projects/21#card-64687425
 
     1. You can also check available datasets on Kaggle [2] and GitHub [3]
 
