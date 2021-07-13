@@ -206,6 +206,7 @@ orgs:
           A set of configurations for Thoth's Dependency Monkey to resolve
           certain software stacks
         has_projects: false
+        has_wiki: false
       dgraph-operator:
         archived: true
         description: A Dgraph Operator
@@ -218,6 +219,7 @@ orgs:
         has_wiki: false
       elyra-resnet:
         has_projects: false
+        has_wiki: false
       external-janusgraph-service:
         archived: true
         description:
@@ -230,6 +232,7 @@ orgs:
           Fast CPython extensions to Python standard library with focus
           on performance.
         has_projects: false
+        has_wiki: false
       glyph:
         description:
           Generate CHANGELOG entries out of commit messages using AI/ML
@@ -287,6 +290,7 @@ orgs:
       image-pusher:
         description: Push images to an external registry from internal OpenShift registry
         has_projects: false
+        has_wiki: false
       init-job:
         description:
           Thoth's initialization job that automatically initializes a fresh
@@ -304,6 +308,7 @@ orgs:
           Statically analyze sources and extract information about called
           or exported library functions in Python applications
         has_projects: false
+        has_wiki: false
       investigator:
         description:
           Thoth investigator is a Kafka based component that consumes all
@@ -326,6 +331,7 @@ orgs:
         archived: true
         description: Jupyter Notebook extension for template notebooks.
         has_projects: false
+        has_wiki: false
       jupyter-notebook:
         description: Jupyter notebook s2i build for project Thoth
         has_projects: false
@@ -333,6 +339,7 @@ orgs:
       jupyter-notebook-s2i:
         description: Jupyter notebook S2I builder image.
         has_projects: false
+        has_wiki: false
       jupyter-notebooks:
         archived: true
         description: Jupyter Notebooks for OpenDataHub
@@ -384,10 +391,12 @@ orgs:
       mi-scheduler:
         description: This repository schedules workflows for thoth-station/mi project
         has_projects: false
+        has_wiki: false
       microbenchmarks:
         archived: true
         description: Collection of microbenchmarks for various AI/ML libraries
         has_projects: false
+        has_wiki: false
       micropipenv:
         description:
           A lightweight wrapper for pip to support requirements.txt, Pipenv
@@ -489,6 +498,7 @@ orgs:
       performance:
         description: Scripts to benchmark libraries used by Amun
         has_projects: false
+        has_wiki: false
       pipeline-helpers:
         description: All code required to help pipelines (e.g Tekton).
         has_projects: false
@@ -502,6 +512,7 @@ orgs:
         description: " Python Development Workflow for Humans."
         has_issues: false
         has_projects: false
+        has_wiki: false
         homepage: https://pipenv.kennethreitz.org
       postgresql-thoth-config:
         archived: true
@@ -511,17 +522,20 @@ orgs:
         archived: true
         description: Sync prescriptions in a Thoth deployment
         has_projects: false
+        has_wiki: false
       prescriptions:
         description:
           "⚕️\U0001F48A Prescriptions to heal your applications and application
           dependencies \U0001F48A⚕️"
         has_projects: false
+        has_wiki: false
         homepage: https://thoth-station.ninja/docs/developers/adviser/prescription.html
       prescriptions-gh-release-notes-job:
         description:
           Automatically construct prescriptions for linking GitHub release
           notes based on thoth-solver results
         has_projects: false
+        has_wiki: false
       prometheus-pushgateway:
         archived: true
         description:
@@ -543,6 +557,7 @@ orgs:
       purge-job:
         description: Purging old data out of a Thoth deployment
         has_projects: false
+        has_wiki: false
       python:
         description: Library for Python related code
         has_projects: false
@@ -590,6 +605,7 @@ orgs:
       revsolver:
         description: A reverse solver implementation
         has_projects: false
+        has_wiki: false
       s2i:
         description:
           Tooling and a library for Thoth's Python Source-To-Image (s2i)
@@ -606,6 +622,7 @@ orgs:
         archived: true
         description: Example of an Python's s2i application consuming Thoth's recommendations
         has_projects: false
+        has_wiki: false
       s2i-example-migration:
         description:
           An example repository for a project to be migrated to use Thoth
@@ -632,21 +649,25 @@ orgs:
           s2i image build repository for jupyter notebook PyTorch related
           packages.
         has_projects: false
+        has_wiki: false
       s2i-scipy-notebook:
         description:
           s2i image build repository for jupyter notebook SciPy related
           packages.
         has_projects: false
+        has_wiki: false
       s2i-tensorflow-gpu-notebook:
         description:
           s2i image build repository for jupyter notebook with TensorFlow
           GPU related packages.
         has_projects: false
+        has_wiki: false
       s2i-tensorflow-notebook:
         description:
           s2i image build repository for jupyter notebook TensorFlow related
           packages.
         has_projects: false
+        has_wiki: false
       s2i-thoth:
         description:
           Thoth's addition to OpenShift's s2i Python builds to benefit
@@ -663,6 +684,7 @@ orgs:
           Selinon worker used for data gathering, data cleansing and experiments
           in project Thoth
         has_projects: false
+        has_wiki: false
       sentry-openshift:
         archived: true
         description:
@@ -702,11 +724,13 @@ orgs:
           A machine learning model to automatically classify errors during
           Python package installation
         has_projects: false
+        has_wiki: false
       solver-errors-reporter:
         description:
           Cluster solver errors collected by Thoth Dependency Solver and
           report back to take actions.
         has_projects: false
+        has_wiki: false
       solver-project-url-job:
         description: A job responsible for extracting project URL information out of solver documents
         has_projects: false
@@ -714,6 +738,7 @@ orgs:
       source-management:
         description: Thoth's interaction library for different source management systems
         has_projects: false
+        has_wiki: false
       srcops-testing:
         description: This is a SrcOps test repository
         has_projects: false
@@ -760,7 +785,6 @@ orgs:
       tensorflow:
         description: An Open Source Machine Learning Framework for Everyone
         has_issues: false
-        has_projects: false
         has_wiki: false
         homepage: https://tensorflow.org
       tensorflow-build-s2i:
