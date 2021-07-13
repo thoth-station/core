@@ -13,6 +13,41 @@ default:
       name: area/prescriptions
       target: both
       addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Investigator
+      name: area/investigator
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Amun
+      name: area/amun
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Adviser
+      name: area/adviser
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Solver
+      name: area/solver
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Bots, Apps, Cyborgs, and Kebechet
+      name: area/cyborgs
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Knowledge Graph
+      name: area/knowledge-graph
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to {meta\|performance\|security} indicators.
+      name: area/indicators
+      target: both
+      addedBy: label
 
     - color: 698b69
       description: This Issue or PR is being worked on by a bot
@@ -325,13 +360,13 @@ default:
 
     - addedBy: human
       color: fef2c0
-      description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/14
+      description: Issues or PRs related to Investigator
       name: sig/investigator
       prowPlugin: label
       target: both
     - addedBy: human
       color: fef2c0
-      description: Issues or PRs related to {meta|performance|security} indicators.
+      description: Issues or PRs related to {meta\|performance\|security} indicators.
       name: sig/indicators
       prowPlugin: label
       target: both
@@ -357,8 +392,10 @@ default:
       target: both
     - addedBy: human
       color: fef2c0
-      description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/4
-      name: sig/advisor
+      description: Issues or PRs related to Adviser
+      name: sig/adviser
+      previously:
+        -name: sig/advisor
       prowPlugin: label
       target: both
     - addedBy: human
