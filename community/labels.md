@@ -42,8 +42,11 @@ larger set of contributors to apply/remove them.
 | <a id="area/indicators" href="#area/indicators">`area/indicators`</a> | Issues or PRs related to {meta\|performance\|security} indicators.| label | |
 | <a id="area/investigator" href="#area/investigator">`area/investigator`</a> | Issues or PRs related to Investigator| label | |
 | <a id="area/knowledge-graph" href="#area/knowledge-graph">`area/knowledge-graph`</a> | Issues or PRs related to Knowledge Graph| label | |
+| <a id="area/management-api" href="#area/management-api">`area/management-api`</a> | Issues or PRs related to the Management API|  | |
+| <a id="area/metrics-exporter" href="#area/metrics-exporter">`area/metrics-exporter`</a> | Issues or PRs related to the Metrics Exporter|  | |
 | <a id="area/prescriptions" href="#area/prescriptions">`area/prescriptions`</a> | Issues or PRs related to Prescriptions| label | |
 | <a id="area/solver" href="#area/solver">`area/solver`</a> | Issues or PRs related to Solver| label | |
+| <a id="area/user-api" href="#area/user-api">`area/user-api`</a> | Issues or PRs related to the User API| label | |
 | <a id="bot" href="#bot">`bot`</a> | This Issue or PR is being worked on by a bot| human or bot |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-stage" href="#deployment_name/ocp4-stage">`deployment_name/ocp4-stage`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-stage`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-test" href="#deployment_name/ocp4-test">`deployment_name/ocp4-test`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-test`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |

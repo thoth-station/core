@@ -48,6 +48,19 @@ default:
       name: area/indicators
       target: both
       addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to the User API
+      name: area/user-api
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to the Management API
+      name: area/management-api
+      target: both
+    - color: 0052cc
+      description: Issues or PRs related to the Metrics Exporter
+      name: area/metrics-exporter
+      target: both
 
     - color: 698b69
       description: This Issue or PR is being worked on by a bot
