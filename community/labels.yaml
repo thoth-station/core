@@ -395,7 +395,7 @@ default:
       description: Issues or PRs related to Adviser
       name: sig/adviser
       previously:
-        -name: sig/advisor
+        - name: sig/advisor
       prowPlugin: label
       target: both
     - addedBy: human

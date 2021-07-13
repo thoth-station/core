@@ -35,7 +35,14 @@ larger set of contributors to apply/remove them.
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | --- |
+| <a id="area/adviser" href="#area/adviser">`area/adviser`</a> | Issues or PRs related to Adviser| label | |
+| <a id="area/amun" href="#area/amun">`area/amun`</a> | Issues or PRs related to Amun| label | |
+| <a id="area/cyborgs" href="#area/cyborgs">`area/cyborgs`</a> | Issues or PRs related to Bots, Apps, Cyborgs, and Kebechet| label | |
+| <a id="area/indicators" href="#area/indicators">`area/indicators`</a> | Issues or PRs related to {meta\|performance\|security} indicators.| label | |
+| <a id="area/investigator" href="#area/investigator">`area/investigator`</a> | Issues or PRs related to Investigator| label | |
+| <a id="area/knowledge-graph" href="#area/knowledge-graph">`area/knowledge-graph`</a> | Issues or PRs related to Knowledge Graph| label | |
 | <a id="area/prescriptions" href="#area/prescriptions">`area/prescriptions`</a> | Issues or PRs related to Prescriptions| label | |
+| <a id="area/solver" href="#area/solver">`area/solver`</a> | Issues or PRs related to Solver| label | |
 | <a id="bot" href="#bot">`bot`</a> | This Issue or PR is being worked on by a bot| human or bot |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-stage" href="#deployment_name/ocp4-stage">`deployment_name/ocp4-stage`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-stage`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-test" href="#deployment_name/ocp4-test">`deployment_name/ocp4-test`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-test`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
@@ -56,12 +63,12 @@ larger set of contributors to apply/remove them.
 | <a id="priority/critical-urgent" href="#priority/critical-urgent">`priority/critical-urgent`</a> | Highest priority. Must be actively worked on as someone's top priority right now.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="priority/important-longterm" href="#priority/important-longterm">`priority/important-longterm`</a> | Important over the long term, but may not be staffed and/or may need multiple releases to complete.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="priority/important-soon" href="#priority/important-soon">`priority/important-soon`</a> | Must be staffed and worked on either currently, or very soon, ideally in time for the next release.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
-| <a id="sig/advisor" href="#sig/advisor">`sig/advisor`</a> | Issues or PRs related to https://github.com/orgs/thoth-station/projects/4| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="sig/adviser" href="#sig/adviser">`sig/adviser`</a> | Issues or PRs related to Adviser <br><br> This was previously `sig/advisor`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/cyborgs" href="#sig/cyborgs">`sig/cyborgs`</a> | Categorizes an issue or PR as relevant to SIG Cyborgs and Bots.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/devops" href="#sig/devops">`sig/devops`</a> | Categorizes an issue or PR as relevant to SIG DevOps.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/docs" href="#sig/docs">`sig/docs`</a> | Categorizes an issue or PR as relevant to SIG Docs. <br><br> This was previously `sig/documentation`, | anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
-| <a id="sig/indicators" href="#sig/indicators">`sig/indicators`</a> | Issues or PRs related to {meta|performance|security} indicators.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
-| <a id="sig/investigator" href="#sig/investigator">`sig/investigator`</a> | Issues or PRs related to https://github.com/orgs/thoth-station/projects/14| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="sig/indicators" href="#sig/indicators">`sig/indicators`</a> | Issues or PRs related to {meta\|performance\|security} indicators.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="sig/investigator" href="#sig/investigator">`sig/investigator`</a> | Issues or PRs related to Investigator| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/knowledge-graph" href="#sig/knowledge-graph">`sig/knowledge-graph`</a> | Issues or PRs related to https://github.com/orgs/thoth-station/projects/8| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/observability" href="#sig/observability">`sig/observability`</a> | Categorizes an issue or PR as relevant to SIG Observability| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/pipelines" href="#sig/pipelines">`sig/pipelines`</a> | Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD) <br><br> This was previously `sig/build`, | anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
