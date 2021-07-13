@@ -464,6 +464,13 @@ default:
 repos:
   thoth-station/thoth-application:
     labels:
+      - color: 0052cc
+        description: Issues or PRs related to Release Engineering
+        name: area/release-eng
+        target: both
+        prowPlugin: label
+        addedBy: anyone
+
       - addedBy: anyone
         color: e11d21
         description: Categorizes issues as operational alerts (created by alert-manager)
