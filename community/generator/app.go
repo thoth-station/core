@@ -286,60 +286,6 @@ func (c *Context) Validate() []error {
                 if group.CharterLink == "" {
                     errors = append(errors, fmt.Errorf("%s: has no charter", group.Dir))
                 }
-
-                if group.MissionStatement == "" {
-                    errors = append(errors, fmt.Errorf("%s: has no mission statement", group.Dir))
-                }
-                if len(group.Subprojects) == 0 {
-                    errors = append(errors, fmt.Errorf("%s: has no subprojects", group.Dir))
-                }
-            }
-        }
-    }
-    return errors
-=======
-    errors := []error{}
-    people := make(map[string]Person)
-    for prefix, groups := range c.PrefixToGroupMap() {
-        for _, group := range groups {
-            expectedDir := group.DirName(prefix)
-            if expectedDir != group.Dir {
-                errors = append(errors, fmt.Errorf("expected dir: %s, got: %s", expectedDir, group.Dir))
-            }
-            expectedLabel := group.LabelName(prefix)
-            if expectedLabel != group.Label {
-                errors = append(errors, fmt.Errorf("%s: expected label: %s, got: %s", group.Dir, expectedLabel, group.Label))
-            }
-            for prefix, persons := range group.Leadership.PrefixToPersonMap() {
-                for _, person := range persons {
-                    if val, ok := people[person.GitHub]; ok {
-                        if val.Name != person.Name || (prefix != "emeritus_lead" && val.Company != person.Company) {
-                            errors = append(errors, fmt.Errorf("%s: %ss: expected person: %v, got: %v", group.Dir, prefix, val, person))
-                        }
-                    } else if prefix != "emeritus_lead" {
-                        people[person.GitHub] = person
-                    }
-
-                    if prefix == "emeritus_lead" && person.Company != "" {
-                        errors = append(errors, fmt.Errorf("%s: emeritus leads should not have company specified; company specified for: %s", group.Dir, person.Name))
-                    }
-                }
-            }
-            if len(group.StakeholderSIGs) != 0 {
-                if prefix == "wg" {
-                    for _, name := range group.StakeholderSIGs {
-                        if index(c.Sigs, func(g Group) bool { return g.Name == name }) == -1 {
-                            errors = append(errors, fmt.Errorf("%s: invalid stakeholder sig name %s", group.Dir, name))
-                        }
-                    }
-                } else {
-                    errors = append(errors, fmt.Errorf("%s: only WGs may have stakeholder_sigs", group.Dir))
-                }
-            }
-            if prefix == "sig" {
-                if group.CharterLink == "" {
-                    errors = append(errors, fmt.Errorf("%s: has no charter", group.Dir))
-                }
                 if group.MissionStatement == "" {
                     errors = append(errors, fmt.Errorf("%s: has no mission statement", group.Dir))
                 }
