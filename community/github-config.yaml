@@ -411,6 +411,10 @@ orgs:
           belong anywhere.
         has_projects: false
         has_wiki: false
+      moldavite-api:
+        description: Moldavite - a Project Meteor Proof-of-Concept
+        has_projects: false
+        has_wiki: false
       naming-service:
         archived: true
         description: Naming Service, ask me if you want to find things...
@@ -1086,6 +1090,7 @@ orgs:
               microbenchmarks: admin
               micropipenv: admin
               misc: admin
+              moldavite-api: admin
               naming-service: admin
               nefertem: admin
               nepthys: admin
