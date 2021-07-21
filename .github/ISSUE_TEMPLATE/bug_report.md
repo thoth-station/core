@@ -1,9 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-assignees: sesheta
-labels: bot
-labels: "bug, kind/bug"
+labels: "kind/bug, needs-triage"
 ---
 
 **Describe the bug**

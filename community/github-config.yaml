@@ -411,6 +411,10 @@ orgs:
           belong anywhere.
         has_projects: false
         has_wiki: false
+      moldavite-api:
+        description: Moldavite - a Project Meteor Proof-of-Concept
+        has_projects: false
+        has_wiki: false
       naming-service:
         archived: true
         description: Naming Service, ask me if you want to find things...
@@ -739,6 +743,10 @@ orgs:
         description: Thoth's interaction library for different source management systems
         has_projects: false
         has_wiki: false
+      srcops-notify-bot:
+        description: This repository contains a Google Hangout chat bot that will send notifications based on GitHub events. This is one of the incarnations of Sesheta!
+        has_projects: false
+        has_wiki: false
       srcops-testing:
         description: This is a SrcOps test repository
         has_projects: false
@@ -963,6 +971,7 @@ orgs:
           performance: triage
           python: triage
           si-bandit: triage
+          srcops-notify-bot: triage
           srcops-testing: triage
           stub-api: triage
           talks: triage
@@ -1010,6 +1019,7 @@ orgs:
               python: triage
               rapidsai-build: triage
               si-bandit: triage
+              srcops-notify-bot: triage
               srcops-testing: triage
               statusfy: triage
               statusfy-ops: triage
@@ -1080,6 +1090,7 @@ orgs:
               microbenchmarks: admin
               micropipenv: admin
               misc: admin
+              moldavite-api: admin
               naming-service: admin
               nefertem: admin
               nepthys: admin
@@ -1130,6 +1141,7 @@ orgs:
               solver-errors-reporter: admin
               solver-project-url-job: admin
               source-management: admin
+              srcops-notify-bot: admin
               srcops-testing: admin
               statusfy: admin
               statusfy-ops: admin
