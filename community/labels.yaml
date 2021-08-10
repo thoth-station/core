@@ -9,6 +9,22 @@
 default:
   labels:
     - color: 0052cc
+      description: Issues or PRs related to bring-your-own-notebook
+      name: area/byon
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to Stack Guidance
+      name: area/stack-guidance
+      target: both
+      addedBy: label
+    - color: 0052cc
+      description: Issues or PRs related to the Predictable Stack Pattern
+      name: area/predictable-stack
+      target: both
+      addedBy: label
+
+    - color: 0052cc
       description: Issues or PRs related to Prescriptions
       name: area/prescriptions
       target: both
@@ -94,6 +110,12 @@ default:
       prowPlugin: label
       addedBy: human
 
+    - color: ff9695
+      description: This is a Key Result we want to archieve.
+      name: kind/key-result
+      target: issue
+      prowPlugin: label
+      addedBy: human
     - color: ff9695
       description: This is an Issue or PR someone want to give a demo or request a demo.
       name: kind/demo
