@@ -527,7 +527,7 @@ repos:
         addedBy: anyone
   thoth-station/core:
     labels:
-      - color: ff9695
+      - color: c7def8
         description: This is a Key Result we want to archieve.
         name: kind/key-result
         target: issue
