@@ -576,6 +576,15 @@ orgs:
           fresh and up-to-date
         has_projects: false
         has_wiki: false
+      ray-ml-notebook:
+        has_projects: false
+        has_wiki: false
+      ray-ml-worker:
+        has_projects: false
+        has_wiki: false
+      ray-operator:
+        has_projects: false
+        has_wiki: false
       rapidsai-build:
         default_branch: branch-0.7
         description: RAPIDS from-source and Docker build files
@@ -1114,6 +1123,9 @@ orgs:
               python: admin
               python-ssdeep: admin
               qeb-hwt: admin
+              ray-ml-notebook: admin
+              ray-ml-worker: admin
+              ray-operator: admin
               rapidsai-build: admin
               report-processing: admin
               report-visualization: admin
