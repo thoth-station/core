@@ -551,6 +551,10 @@ orgs:
         description: This is a repository for a Predictive Stack for Computer Vision (CV)
         has_projects: false
         has_wiki: false
+      ps-ip:
+        description: This is a repository for a Predictive Stack for Image Processing (IP)
+        has_projects: false
+        has_wiki: false
       ps-nlp:
         description: This is a repository for a Predictive Stack for Natural Language Processing (NLP)
         has_projects: false
@@ -1118,6 +1122,7 @@ orgs:
               prescriptions-gh-release-notes-job: admin
               prometheus-pushgateway: admin
               ps-cv: admin
+              ps-ip: admin
               ps-nlp: admin
               pulp-pypi-sync-job: admin
               python: admin
