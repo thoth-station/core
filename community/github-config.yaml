@@ -540,6 +540,10 @@ orgs:
           notes based on thoth-solver results
         has_projects: false
         has_wiki: false
+      prescriptions-refresh-job:
+        description: A periodic job to refresh Thoth's prescriptions
+        has_projects: false
+        has_wiki: false
       prometheus-pushgateway:
         archived: true
         description:
@@ -976,12 +980,13 @@ orgs:
           jupyter-notebook: triage
           management-api: triage
           metrics-exporter: triage
-          mi: triage
           mi-scheduler: triage
+          mi: triage
           nepthys: triage
           notebooks: triage
           package-update-job: triage
           performance: triage
+          prescriptions-refresh-job: triage
           python: triage
           si-bandit: triage
           srcops-notify-bot: triage
@@ -992,8 +997,8 @@ orgs:
           tensorflow-release-api: triage
           tensorflow-release-job: triage
           termial-random: triage
-          thoth: triage
           thoth-pybench: triage
+          thoth: triage
           twitter-together: triage
           workflow-helpers: triage
         teams:
@@ -1118,8 +1123,9 @@ orgs:
               package-update-job: admin
               performance: admin
               prescription-sync-job: admin
-              prescriptions: admin
               prescriptions-gh-release-notes-job: admin
+              prescriptions-refresh-job: admin
+              prescriptions: admin
               prometheus-pushgateway: admin
               ps-cv: admin
               ps-ip: admin
