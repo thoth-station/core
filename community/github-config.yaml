@@ -547,6 +547,7 @@ orgs:
           notes based on thoth-solver results
         has_projects: false
         has_wiki: false
+        archived: true
       prescriptions-refresh-job:
         description: A periodic job to refresh Thoth's prescriptions
         has_projects: false
