@@ -281,6 +281,11 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.github.io/
+      helm-charts:
+        description: A Place for our Helm Charts
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/helm-charts/
       httpd-aicoe-container:
         description:
           Apache HTTP container images based on Red Hat Software Collections
@@ -1089,6 +1094,7 @@ orgs:
               graph-metrics-exporter: admin
               graph-refresh-job: admin
               graph-sync-job: admin
+              helm-charts: admin
               httpd-aicoe-container: admin
               init-job: admin
               integration-tests: admin
