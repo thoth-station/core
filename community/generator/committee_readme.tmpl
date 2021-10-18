@@ -23,6 +23,7 @@ The [charter]({{.CharterLink}}) defines the scope and governance of the {{.Name}
 {{- if .Leadership.Chairs }}
 
 ## Members
+
 {{ range .Leadership.Chairs }}
 * {{.Name}} (**[@{{.GitHub}}](https://github.com/{{.GitHub}})**){{if .Company}}, {{.Company}}{{end}}
 {{- end }}
@@ -32,25 +33,22 @@ The [charter]({{.CharterLink}}) defines the scope and governance of the {{.Name}
 ## Contact
 
 {{- if .Contact.Slack }}
-- Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
+* Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
 {{- end }}
 {{- if .Contact.MailingList }}
-- [Mailing list]({{.Contact.MailingList}})
+* [Mailing list]({{.Contact.MailingList}})
 {{- end }}
 {{- if .Contact.PrivateMailingList }}
-- Private Mailing List: {{.Contact.PrivateMailingList}}
-{{- end }}
-{{- if .Label }}
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/committee%2F{{.Label}})
+* Private Mailing List: {{.Contact.PrivateMailingList}}
 {{- end }}
 {{- if .Contact.GithubTeams }}
-- GitHub Teams:
+* GitHub Teams:
 {{- range .Contact.GithubTeams }}
-    - [@kubernetes/{{.Name}}](https://github.com/orgs/kubernetes/teams/{{.Name}}) {{- if .Description }} - {{.Description}} {{- end}}
+    - [@thoth-station/{{.Name}}](https://github.com/orgs/thoth-station/teams/{{.Name}}) {{- if .Description }} - {{.Description}} {{- end}}
 {{- end }}
 {{- end }}
 {{- if .Contact.Liaison.Name }}
-- Steering Committee Liaison: {{.Contact.Liaison.Name}} (**[@{{.Contact.Liaison.GitHub}}](https://github.com/{{.Contact.Liaison.GitHub}})**)
+* Steering Committee Liaison: {{.Contact.Liaison.Name}} (**[@{{.Contact.Liaison.GitHub}}](https://github.com/{{.Contact.Liaison.GitHub}})**)
 {{- end }}
 
 {{- if .Subprojects }}
@@ -64,12 +62,12 @@ The following [subprojects][subproject-definition] are owned by the {{.Name}} Co
 {{- if .Description }}
 {{ trimSpace .Description }}
 {{- end }}
-- **Owners:**
+* **Owners:**
 {{- range .Owners }}
   - {{.}}
 {{- end }}
 {{- if .Contact }}
-- **Contact:**
+* **Contact:**
 {{- if .Contact.Slack }}
   - Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
 {{- end }}
@@ -84,7 +82,7 @@ The following [subprojects][subproject-definition] are owned by the {{.Name}} Co
 {{- end }}
 {{- end }}
 {{- if .Meetings }}
-- **Meetings:**
+* **Meetings:**
 {{- range .Meetings }}
   - {{.Description}}: [{{.Day}}s at {{.Time}} {{.TZ}}]({{.URL}}) ({{.Frequency}}). [Convert to your timezone](http://www.thetimezoneconverter.com/?t={{.Time}}&tz={{.TZ | tzUrlEncode}}).
 {{- if .ArchiveURL }}

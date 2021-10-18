@@ -54,19 +54,14 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 
 ## Contact
 
-- Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
-- [Mailing list]({{.Contact.MailingList}})
-{{- if .Label }}
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2F{{.Label}})
-{{- end }}
 {{- if .Contact.GithubTeams }}
-- GitHub Teams:
+* GitHub Teams:
 {{- range .Contact.GithubTeams }}
-    - [@kubernetes/{{.Name}}](https://github.com/orgs/kubernetes/teams/{{.Name}}) {{- if .Description }} - {{.Description}} {{- end}}
+    - [@thoth-station/{{.Name}}](https://github.com/orgs/thoth-station/teams/{{.Name}}) {{- if .Description }} - {{.Description}} {{- end}}
 {{- end }}
 {{- end }}
 {{- if .Contact.Liaison.Name }}
-- Steering Committee Liaison: {{.Contact.Liaison.Name}} (**[@{{.Contact.Liaison.GitHub}}](https://github.com/{{.Contact.Liaison.GitHub}})**)
+* Steering Committee Liaison: {{.Contact.Liaison.Name}} (**[@{{.Contact.Liaison.GitHub}}](https://github.com/{{.Contact.Liaison.GitHub}})**)
 {{- end }}
 
 {{- if .Subprojects }}
@@ -81,22 +76,16 @@ The following [subprojects][subproject-definition] are owned by sig-{{.Label}}:
 {{- if .Description }}
 {{ trimSpace .Description }}
 {{- end }}
-- **Owners:**
+* **Owners:**
 {{- range .Owners }}
   - {{.}}
 {{- end }}
 {{- if .Contact }}
-- **Contact:**
-{{- if .Contact.Slack }}
-  - Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
-{{- end }}
-{{- if .Contact.MailingList }}
-  - [Mailing List]({{.Contact.MailingList}})
-{{- end }}
+* **Contact:**
 {{- if .Contact.GithubTeams }}
   - GitHub Teams:
 {{- range .Contact.GithubTeams }}
-    - [@kubernetes/{{.Name}}](https://github.com/orgs/kubernetes/teams/{{.Name}}) {{- if .Description }} - {{.Description}}{{- end}}
+    - [@thoth-station/{{.Name}}](https://github.com/orgs/thoth-station/teams/{{.Name}}) {{- if .Description }} - {{.Description}}{{- end}}
 {{- end }}
 {{- end }}
 {{- end }}

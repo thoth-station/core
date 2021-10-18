@@ -372,6 +372,12 @@ default:
         - name: sig/documentation
       addedBy: anyone
     - color: fef2c0
+      description: Work on all the messages, releated frameworks and dev and devops topics.
+      name: sig/messaging
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fef2c0
       description: Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD)
       name: sig/pipelines
       previously:

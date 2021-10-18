@@ -77,6 +77,7 @@ larger set of contributors to apply/remove them.
 | <a id="sig/indicators" href="#sig/indicators">`sig/indicators`</a> | Issues or PRs related to {meta\|performance\|security} indicators.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/investigator" href="#sig/investigator">`sig/investigator`</a> | Issues or PRs related to Investigator| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/knowledge-graph" href="#sig/knowledge-graph">`sig/knowledge-graph`</a> | Issues or PRs related to https://github.com/orgs/thoth-station/projects/8| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="sig/messaging" href="#sig/messaging">`sig/messaging`</a> | Work on all the messages, releated frameworks and dev and devops topics.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/observability" href="#sig/observability">`sig/observability`</a> | Categorizes an issue or PR as relevant to SIG Observability| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/pipelines" href="#sig/pipelines">`sig/pipelines`</a> | Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD) <br><br> This was previously `sig/build`, | anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/slo" href="#sig/slo">`sig/slo`</a> | Issues or PRs related to Service Level Indicators and Objectives and their reporting| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |

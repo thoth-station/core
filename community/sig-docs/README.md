@@ -35,20 +35,16 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Fridolín Pokorný (**[@fridex](https://github.com/fridex)**), Red Hat
 
 ## Contact
-
-- Slack: [#](https://kubernetes.slack.com/messages/)
-- [Mailing list]()
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fdocs)
-- Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
+* Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects
 
 The following [subprojects][subproject-definition] are owned by sig-docs:
 ### core
-- **Owners:**
+* **Owners:**
   - https://raw.githubusercontent.com/thoth-station/core/master/OWNERS
 ### thoth-station.github.io
-- **Owners:**
+* **Owners:**
   - https://raw.githubusercontent.com/thoth-station/thoth-station.github.io/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects

@@ -35,23 +35,19 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
 
 ## Contact
-
-- Slack: [#](https://kubernetes.slack.com/messages/)
-- [Mailing list]()
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fpipelines)
-- Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
+* Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects
 
 The following [subprojects][subproject-definition] are owned by sig-pipelines:
 ### aicoe-ci
-- **Owners:**
+* **Owners:**
   - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
 ### opf-ci-prow
-- **Owners:**
+* **Owners:**
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
 ### thoth-ops-infra
-- **Owners:**
+* **Owners:**
   - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects

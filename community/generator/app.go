@@ -23,6 +23,7 @@ import (
     "net/url"
     "os"
     "path/filepath"
+    "regexp"
     "sort"
     "strings"
     "text/template"
@@ -47,6 +48,9 @@ const (
     endCustomMarkdown   = "<!-- END CUSTOM CONTENT -->"
     beginCustomYaml     = "## BEGIN CUSTOM CONTENT"
     endCustomYaml       = "## END CUSTOM CONTENT"
+
+    regexRawGitHubURL = "https://raw.githubusercontent.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/(?P<branch>[^/]+)/(?P<path>.*)"
+    regexGitHubURL    = "https://github.com/(?P<org>[^/]+)/(?P<repo>[^/]+)/(blob|tree)/(?P<branch>[^/]+)/(?P<path>.*)"
 )
 
 var (
@@ -214,7 +218,7 @@ func (c *Context) Sort() {
                 group.Leadership.TechnicalLeads,
                 group.Leadership.EmeritusLeads} {
                 sort.Slice(people, func(i, j int) bool {
-                    // This ensure OWNERS / OWNERS_ALIAS files are ordered by github
+                    // This ensure OWNERS / OWNERS_ALIASES files are ordered by github
                     return people[i].GitHub < people[j].GitHub
                 })
             }
@@ -246,6 +250,8 @@ func (c *Context) Sort() {
 func (c *Context) Validate() []error {
     errors := []error{}
     people := make(map[string]Person)
+    reRawGitHubURL := regexp.MustCompile(regexRawGitHubURL)
+    reGitHubURL := regexp.MustCompile(regexGitHubURL)
     for prefix, groups := range c.PrefixToGroupMap() {
         for _, group := range groups {
             expectedDir := group.DirName(prefix)
@@ -286,7 +292,7 @@ func (c *Context) Validate() []error {
                 if group.CharterLink == "" {
                     errors = append(errors, fmt.Errorf("%s: has no charter", group.Dir))
                 }
-
+                // TODO(spiffxp): is this required though?
                 if group.MissionStatement == "" {
                     errors = append(errors, fmt.Errorf("%s: has no mission statement", group.Dir))
                 }
@@ -294,57 +300,19 @@ func (c *Context) Validate() []error {
                     errors = append(errors, fmt.Errorf("%s: has no subprojects", group.Dir))
                 }
             }
-        }
-    }
-    return errors
-=======
-    errors := []error{}
-    people := make(map[string]Person)
-    for prefix, groups := range c.PrefixToGroupMap() {
-        for _, group := range groups {
-            expectedDir := group.DirName(prefix)
-            if expectedDir != group.Dir {
-                errors = append(errors, fmt.Errorf("expected dir: %s, got: %s", expectedDir, group.Dir))
+            if prefix != "committee" && prefix != "sig" {
+                if len(group.Subprojects) > 0 {
+                    errors = append(errors, fmt.Errorf("%s: only sigs and committees can own code / have subprojects, found: %v", group.Dir, group.Subprojects))
+                }
             }
-            expectedLabel := group.LabelName(prefix)
-            if expectedLabel != group.Label {
-                errors = append(errors, fmt.Errorf("%s: expected label: %s, got: %s", group.Dir, expectedLabel, group.Label))
-            }
-            for prefix, persons := range group.Leadership.PrefixToPersonMap() {
-                for _, person := range persons {
-                    if val, ok := people[person.GitHub]; ok {
-                        if val.Name != person.Name || (prefix != "emeritus_lead" && val.Company != person.Company) {
-                            errors = append(errors, fmt.Errorf("%s: %ss: expected person: %v, got: %v", group.Dir, prefix, val, person))
-                        }
-                    } else if prefix != "emeritus_lead" {
-                        people[person.GitHub] = person
+            for _, subproject := range group.Subprojects {
+                if len(subproject.Owners) == 0 {
+                    errors = append(errors, fmt.Errorf("%s/%s: subproject has no owners", group.Dir, subproject.Name))
+                }
+                for _, ownerURL := range subproject.Owners {
+                    if !reRawGitHubURL.MatchString(ownerURL) && !reGitHubURL.MatchString(ownerURL) {
+                        errors = append(errors, fmt.Errorf("%s/%s: subproject owners should match regexp %s, found: %s", group.Dir, subproject.Name, regexRawGitHubURL, ownerURL))
                     }
-
-                    if prefix == "emeritus_lead" && person.Company != "" {
-                        errors = append(errors, fmt.Errorf("%s: emeritus leads should not have company specified; company specified for: %s", group.Dir, person.Name))
-                    }
-                }
-            }
-            if len(group.StakeholderSIGs) != 0 {
-                if prefix == "wg" {
-                    for _, name := range group.StakeholderSIGs {
-                        if index(c.Sigs, func(g Group) bool { return g.Name == name }) == -1 {
-                            errors = append(errors, fmt.Errorf("%s: invalid stakeholder sig name %s", group.Dir, name))
-                        }
-                    }
-                } else {
-                    errors = append(errors, fmt.Errorf("%s: only WGs may have stakeholder_sigs", group.Dir))
-                }
-            }
-            if prefix == "sig" {
-                if group.CharterLink == "" {
-                    errors = append(errors, fmt.Errorf("%s: has no charter", group.Dir))
-                }
-                if group.MissionStatement == "" {
-                    errors = append(errors, fmt.Errorf("%s: has no mission statement", group.Dir))
-                }
-                if len(group.Subprojects) == 0 {
-                    errors = append(errors, fmt.Errorf("%s: has no subprojects", group.Dir))
                 }
             }
         }
@@ -406,6 +374,38 @@ func getExistingContent(path string, fileFormat string) (string, error) {
 var funcMap = template.FuncMap{
     "tzUrlEncode": tzURLEncode,
     "trimSpace":   strings.TrimSpace,
+    "trimSuffix":  strings.TrimSuffix,
+    "githubURL":   githubURL,
+    "orgRepoPath": orgRepoPath,
+}
+
+// githubURL converts a raw GitHub url (links directly to file contents) into a
+// regular GitHub url (links to Code view for file), otherwise returns url untouched
+func githubURL(url string) string {
+    re := regexp.MustCompile(regexRawGitHubURL)
+    mat := re.FindStringSubmatchIndex(url)
+    if mat == nil {
+        return url
+    }
+    result := re.ExpandString([]byte{}, "https://github.com/${org}/${repo}/blob/${branch}/${path}", url, mat)
+    return string(result)
+}
+
+// orgRepoPath converts either
+//  - a regular GitHub url of form https://github.com/org/repo/blob/branch/path/to/file
+//  - a raw GitHub url of form https://raw.githubusercontent.com/org/repo/branch/path/to/file
+// to a string of form 'org/repo/path/to/file'
+func orgRepoPath(url string) string {
+    for _, regex := range []string{regexRawGitHubURL, regexGitHubURL} {
+        re := regexp.MustCompile(regex)
+        mat := re.FindStringSubmatchIndex(url)
+        if mat == nil {
+            continue
+        }
+        result := re.ExpandString([]byte{}, "${org}/${repo}/${path}", url, mat)
+        return string(result)
+    }
+    return url
 }
 
 // tzUrlEncode returns a url encoded string without the + shortcut. This is
@@ -562,6 +562,7 @@ func main() {
         log.Fatal(err)
     }
 
+    fmt.Println("Generating group READMEs")
     for prefix, groups := range ctx.PrefixToGroupMap() {
         err = createGroupReadme(groups, prefix)
         if err != nil {

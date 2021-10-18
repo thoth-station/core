@@ -2,6 +2,9 @@ aliases:
   sig-docs-leads:
     - fridex
     - goern
+  sig-messaging-leads:
+    - KPostoffice
+    - pacospace
   sig-observability-leads:
     - pacospace
   sig-pipelines-leads:

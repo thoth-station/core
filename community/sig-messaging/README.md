@@ -10,11 +10,11 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 --->
 
-# Observability Special Interest Group
+# Messaging Special Interest Group
 
-Work on all things that concern Observability! This includes the definition of metrics, monitoring, reporting and alerting.
+Work on all the messages, releated frameworks and dev and devops topics.
 
-The [charter](charter.md) defines the scope and governance of the Observability Special Interest Group.
+The [charter](charter.md) defines the scope and governance of the Messaging Special Interest Group.
 
 ## Meetings
 * Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time)](https://meet.google.com/kxd-axiz-tym) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
@@ -32,29 +32,17 @@ The Chairs of the SIG run operations and processes governing the SIG.
 The Technical Leads of the SIG establish new subprojects, decommission existing
 subprojects, and resolve cross-subproject technical issues and decisions.
 
-* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
+* Kevin Postlethwait (**[@KPostoffice](https://github.com/KPostoffice)**), Red Hat
 
 ## Contact
 * Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects
 
-The following [subprojects][subproject-definition] are owned by sig-observability:
-### advise-reporter
+The following [subprojects][subproject-definition] are owned by sig-messaging:
+### messaging
 * **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
-### investigator-exporter
-* **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
-### metrics-exporter
-* **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
-### monitoring/alerting
-* **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
-### slo-reporter
-* **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/messaging/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->

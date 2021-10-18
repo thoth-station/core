@@ -33,6 +33,37 @@ sigs:
       - name: thoth-station.github.io
         owners:
           - https://raw.githubusercontent.com/thoth-station/thoth-station.github.io/master/OWNERS
+  - dir: sig-messaging
+    name: Messaging
+    mission_statement: >
+      Work on all the messages, releated frameworks and dev and devops topics.
+
+    charter_link: charter.md
+    label: messaging
+    leadership:
+      chairs:
+        - github: pacospace
+          name: Francesco Murdaca
+          company: Red Hat
+      tech_leads:
+        - github: KPostoffice
+          name: Kevin Postlethwait
+          company: Red Hat
+    meetings:
+      - description: Let's talk Thoth Tech
+        day: Thursday
+        time: "15:00"
+        tz: UTC (Coordinated Universal Time)
+        frequency: weekly
+        url: https://meet.google.com/kxd-axiz-tym
+    contact:
+      liaison:
+        github: goern
+        name: Christoph Görn
+    subprojects:
+      - name: messaging
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/messaging/master/OWNERS
   - dir: sig-observability
     name: Observability
     mission_statement: >
