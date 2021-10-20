@@ -6,7 +6,7 @@ community, we use scaled down variants, Kubernetes documents are references.
 
 ## Scope
 
-Work on all messaging related topics, Kafka and it's phytonic frameworks, and design, development and operations
+Work on all messaging related topics, Kafka and it's pythonic frameworks, and design, development and operations
 related topics.
 
 ## Roles and Organization Management
