@@ -935,15 +935,14 @@ orgs:
         has_wiki: false
     teams:
       milestone-maintainers:
-        description:
-          Contributors who can use `/milestone` or `/status` commands on
-          issues/PRs
+        description: Contributors who can use `/milestone`, `/project` or `/status` commands on issues/PRs
         maintainers:
           - harshad16
           - goern
         members:
           - fridex
           - pacospace
+          - codificat
         privacy: closed
       Cyborg-Supervisors:
         description: These are the Humans supervising some Cyborgs
