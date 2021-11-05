@@ -1009,13 +1009,13 @@ orgs:
           tensorflow-release-api: triage
           tensorflow-release-job: triage
           termial-random: triage
-          thoth-pybench: triage
           thoth: triage
+          thoth-pybench: triage
           twitter-together: triage
           workflow-helpers: triage
         teams:
           DevOps:
-            description: ""
+            description: This is our DevOps team
             maintainers:
               - goern
               - harshad16
@@ -1027,45 +1027,62 @@ orgs:
             privacy: closed
             repos:
               Github-Issues-Classifier: triage
-              analyzer: triage
-              common: triage
-              cve-update-job: triage
-              datasets: triage
-              graph-refresh-job: triage
-              graph-sync-job: triage
-              httpd-aicoe-container: triage
-              invectio: triage
-              jupyter-notebook: triage
               kebechet-website-tooling: triage
-              management-api: triage
-              metrics-exporter: triage
-              mi: triage
-              mi-scheduler: triage
-              nepthys: triage
-              notebooks: triage
               openblas: triage
-              package-update-job: triage
-              performance: triage
-              python: triage
               rapidsai-build: triage
-              si-bandit: triage
-              srcops-notify-bot: triage
-              srcops-testing: triage
               statusfy: triage
               statusfy-ops: triage
-              stub-api: triage
-              talks: triage
-              tensorflow-build-s2i: triage
-              tensorflow-release-api: triage
-              tensorflow-release-job: triage
-              termial-random: triage
-              thoth: triage
               thoth-ops-infra: triage
-              thoth-pybench: triage
-              twitter-together: triage
-              workflow-helpers: triage
           SourceOps:
             description: This is our SourceOps team, they keep the source fresh.
+            maintainers:
+              - goern
+              - fridex
+              - harshad16
+            members:
+              - codificat
+              - Gregory-Pereira
+              - KPostOffice
+              - mayaCostantini
+              - pacospace
+              - sesheta
+              - sesheta-srcops
+            privacy: closed
+            repos:
+              analyzer: write
+              common: write
+              cve-update-job: write
+              datasets: write
+              graph-refresh-job: write
+              graph-sync-job: write
+              httpd-aicoe-container: write
+              invectio: write
+              jupyter-notebook: write
+              management-api: write
+              metrics-exporter: write
+              mi-scheduler: write
+              mi: write
+              nepthys: write
+              notebooks: write
+              package-update-job: write
+              performance: write
+              prescriptions-refresh-job: write
+              python: write
+              si-bandit: write
+              srcops-notify-bot: write
+              srcops-testing: write
+              stub-api: write
+              talks: write
+              tensorflow-build-s2i: write
+              tensorflow-release-api: write
+              tensorflow-release-job: write
+              termial-random: write
+              thoth-pybench: write
+              thoth: write
+              twitter-together: write
+              workflow-helpers: write
+          Admin:
+            description: This is our Admin team, they take care of our repositores.
             maintainers:
               - goern
               - fridex
