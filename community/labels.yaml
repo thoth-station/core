@@ -488,6 +488,8 @@ default:
       name: thoth/potential-observation
       target: both
       addedBy: humans
+      previously:
+        - name: thoth/potential-flake
 
 repos:
   thoth-station/thoth-application:
