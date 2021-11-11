@@ -42,8 +42,12 @@ The [charter]({{.CharterLink}}) defines the scope and governance of the {{.Name}
 {{- end }}
 
 ## Contact
+{{- if .Contact.Slack }}
 - Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
+{{- end }}
+{{- if .Contact.MailingList }}
 - [Mailing list]({{.Contact.MailingList}})
+{{- end }}
 {{- if .Label }}
 - [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/wg%2F{{.Label}})
 {{- end }}

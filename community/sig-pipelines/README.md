@@ -35,9 +35,6 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
 
 ## Contact
-
-- Slack: [#](https://kubernetes.slack.com/messages/)
-- [Mailing list]()
 - [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fpipelines)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
