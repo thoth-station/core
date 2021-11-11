@@ -352,16 +352,11 @@ default:
       addedBy: humans
 
     - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Cyborgs and Bots.
-      name: sig/cyborgs
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: fef2c0
       description: Categorizes an issue or PR as relevant to SIG DevSecOps.
       name: sig/devsecops
       previously:
         - name: sig/devops
+        - name: sig/cyborgs
       target: both
       prowPlugin: label
       addedBy: anyone
@@ -387,47 +382,6 @@ default:
       target: both
       prowPlugin: label
       addedBy: anyone
-
-    - addedBy: human
-      color: fef2c0
-      description: Issues or PRs related to Investigator
-      name: sig/investigator
-      prowPlugin: label
-      target: both
-    - addedBy: human
-      color: fef2c0
-      description: Issues or PRs related to {meta\|performance\|security} indicators.
-      name: sig/indicators
-      prowPlugin: label
-      target: both
-    - addedBy: human
-      color: fef2c0
-      description: Issues or PRs related to https://github.com/orgs/thoth-station/projects/8
-      name: sig/knowledge-graph
-      prowPlugin: label
-      target: both
-    - addedBy: human
-      color: fef2c0
-      description: Issues or PRs related to Solvers
-      name: sig/solvers
-      prowPlugin: label
-      target: both
-    - addedBy: human
-      color: fef2c0
-      description:
-        Issues or PRs related to Service Level Indicators and Objectives
-        and their reporting
-      name: sig/slo
-      prowPlugin: label
-      target: both
-    - addedBy: human
-      color: fef2c0
-      description: Issues or PRs related to Adviser
-      name: sig/adviser
-      previously:
-        - name: sig/advisor
-      prowPlugin: label
-      target: both
     - addedBy: human
       color: fef2c0
       description:
