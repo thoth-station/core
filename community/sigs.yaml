@@ -113,6 +113,49 @@ sigs:
       - name: thoth-ops-infra
         owners:
           - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+  - dir: sig-user-experience
+    name: User Experience
+    mission_statement: >
+      The User Experience SIG focuses on the interaction points between end users and Thoth components.
+
+    charter_link: charter.md
+    label: user-experience
+    leadership:
+      chairs:
+        - github: goern
+          name: Christoph Görn
+          company: Red Hat
+      tech_leads:
+        - github: pacospace
+          name: Francesco Murdaca
+          company: Red Hat
+    meetings:
+      - description: Let's talk Thoth Tech
+        day: Thursday
+        time: "15:00"
+        tz: UTC (Coordinated Universal Time)
+        frequency: weekly
+        url: https://meet.google.com/kxd-axiz-tym
+    contact:
+      liaison:
+        github: goern
+        name: Christoph Görn
+    subprojects:
+      - name: jupyterlab-requirements
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/jupyterlab-requirements/master/OWNERS
+      - name: kebechet
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/kebechet/master/OWNERS
+      - name: s2i-thoth
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/s2i-thoth/master/OWNERS
+      - name: thamos
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/thamos/master/OWNERS
+      - name: user-api
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/user-api/master/OWNERS
 workinggroups: []
 usergroups: []
 committees: []
