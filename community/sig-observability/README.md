@@ -35,9 +35,6 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
 
 ## Contact
-
-- Slack: [#](https://kubernetes.slack.com/messages/)
-- [Mailing list]()
 - [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fobservability)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
