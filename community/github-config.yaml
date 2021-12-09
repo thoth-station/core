@@ -880,6 +880,11 @@ orgs:
       thoth-pybench:
         description: Adopted Python benchmark tool "pybench" - https://openbenchmarking.org/test/pts/pybench
         has_projects: false
+      thoth-search:
+        description: Visualize Python package metadata and browse advisory results.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io/search
       thoth-station.github.io:
         description: Project Thoth website
         has_projects: false
@@ -1200,6 +1205,7 @@ orgs:
               thoth-ops: admin
               thoth-ops-infra: admin
               thoth-pybench: admin
+              thoth-search: admin
               thoth-station.github.io: admin
               thoth-toolbox: admin
               twitter-together: admin
