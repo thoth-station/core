@@ -29,6 +29,7 @@ of SIGs, WGs and UGs.
 | [SIG Docs](sig-docs/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Observability](sig-observability/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Pipelines](sig-pipelines/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
+| [SIG User Experience](sig-user-experience/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 <!-- BEGIN CUSTOM CONTENT -->
 
 <!-- END CUSTOM CONTENT -->
