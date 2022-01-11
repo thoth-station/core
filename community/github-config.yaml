@@ -705,6 +705,11 @@ orgs:
           from Thoth's recommendations in your application
         has_projects: false
         has_wiki: false
+      search:
+        description: Visualize Python package metadata and browse advisory results.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja/search
       selinon-api:
         archived: true
         description: API exposing data workloads of Selinon flows to users
@@ -880,11 +885,6 @@ orgs:
       thoth-pybench:
         description: Adopted Python benchmark tool "pybench" - https://openbenchmarking.org/test/pts/pybench
         has_projects: false
-      thoth-search:
-        description: Visualize Python package metadata and browse advisory results.
-        has_projects: false
-        has_wiki: false
-        homepage: https://thoth-station.github.io/search
       thoth-station.github.io:
         description: Project Thoth website
         has_projects: false
@@ -1171,6 +1171,7 @@ orgs:
               s2i-scipy-notebook: admin
               s2i-tensorflow-notebook: admin
               s2i-thoth: admin
+              search: admin
               sentry-openshift: admin
               si-aggregator: admin
               si-bandit: admin
@@ -1205,7 +1206,6 @@ orgs:
               thoth-ops: admin
               thoth-ops-infra: admin
               thoth-pybench: admin
-              thoth-search: admin
               thoth-station.github.io: admin
               thoth-toolbox: admin
               twitter-together: admin
