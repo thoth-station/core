@@ -26,6 +26,7 @@ of SIGs, WGs and UGs.
 
 | Community Group            | Steering Committee Liaison |
 | -------------------------- | -------------------------- |
+| [SIG DevSecOps](sig-devsecops/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Docs](sig-docs/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Observability](sig-observability/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Pipelines](sig-pipelines/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
