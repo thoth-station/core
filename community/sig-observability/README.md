@@ -17,7 +17,7 @@ Work on all things that concern Observability! This includes the definition of m
 The [charter](charter.md) defines the scope and governance of the Observability Special Interest Group.
 
 ## Meetings
-* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time)](https://meet.google.com/kxd-axiz-tym) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+* Thoth Observability Meeting: [Tuesdays at 14:00 UTC (Coordinated Universal Time)](meet.google.com/xaq-nhrm-gaq) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
 
 ## Leadership
 
