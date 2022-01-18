@@ -360,6 +360,8 @@ default:
     - color: fef2c0
       description: Categorizes an issue or PR as relevant to SIG DevSecOps.
       name: sig/devsecops
+      previously:
+        - name: sig/devops
       target: both
       prowPlugin: label
       addedBy: anyone
