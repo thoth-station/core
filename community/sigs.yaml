@@ -1,4 +1,35 @@
 sigs:
+  - dir: sig-devsecops
+    name: DevSecOps
+    mission_statement: >
+      This includes the discussion related to the release process of the Thoth-Station applications, supporting container images, tooling, and architectural decisions.
+
+    charter_link: charter.md
+    label: devsecops
+    leadership:
+      chairs:
+        - github: harshad16
+          name: Harshad Nalla
+          company: Red Hat
+      tech_leads:
+        - github: harshad16
+          name: Harshad Nalla
+          company: Red Hat
+    meetings:
+      - description: Thoth Release Meeting
+        day: Wednesday
+        time: "14:00"
+        tz: UTC (Coordinated Universal Time)
+        frequency: bi-weekly
+        url: https://meet.google.com/kro-zbcc-xpd
+    contact:
+      liaison:
+        github: goern
+        name: Christoph Görn
+    subprojects:
+      - name: thoth-application
+        owners:
+          - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
   - dir: sig-docs
     name: Docs
     mission_statement: >

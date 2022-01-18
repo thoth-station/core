@@ -6,6 +6,8 @@ aliases:
     - pacospace
   sig-pipelines-leads:
     - harshad16
+  sig-devsecops-leads:
+    - harshad16
   sig-user-experience-leads:
     - goern
     - pacospace
