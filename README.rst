@@ -66,5 +66,7 @@ Automated Community Management
 | GitHub config | |GitHub Config Job| |
 +---------------+---------------------+
 
-.. |Label Sync Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=thoth-station-labels
+.. |Label Sync Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=labels&repo=thoth-station/core
 .. |GitHub Config Job| image:: https://prow.operate-first.cloud/badge.svg?jobs=thoth-station-peribolos
+
+See `community/README.md` for information on automated repository maintenance.

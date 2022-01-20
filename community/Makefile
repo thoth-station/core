@@ -1,4 +1,5 @@
-IMAGE_NAME=golang:1.12
+GOLANG_IMAGE=golang:1.12
+LABEL_SYNC_IMAGE=gcr.io/k8s-prow/label_sync:latest
 export GO111MODULE=on
 export GOPROXY?=https://proxy.golang.org
 
@@ -13,18 +14,19 @@ generate:
 	mv OWNERS_ALIASES ..
 
 generate-dockerized:
-	docker run --rm -e WHAT -e GO111MODULE -e GOPROXY -v $(shell pwd):/go/src/app:Z $(IMAGE_NAME) make -C /go/src/app generate
+	podman run --rm -e WHAT -e GO111MODULE -e GOPROXY -v $(shell pwd):/go/src/app:Z $(GOLANG_IMAGE) make -C /go/src/app generate
+	podman run --rm -v $(shell pwd):/community:Z $(LABEL_SYNC_IMAGE) --action docs --config /community/labels.yaml --docs-template /community/labels.md.tmpl --docs-output /community/labels.md
 
 verify:
 	@hack/verify.sh
 
 verify-dockerized:
-	docker run --rm -v $(shell pwd):/go/src/app:Z $(IMAGE_NAME) make -C /go/src/app verify
+	podman run --rm -v $(shell pwd):/go/src/app:Z $(GOLANG_IMAGE) make -C /go/src/app verify
 
 test:
 	go test -v ./generator/...
 
 test-dockerized:
-	docker run --rm -v $(shell pwd):/go/src/app:Z $(IMAGE_NAME) make -C /go/src/app test
+	podman run --rm -v $(shell pwd):/go/src/app:Z $(GOLANG_IMAGE) make -C /go/src/app test
 
 .PHONY: default reset-docs generate generate-dockerized verify test test-dockerized
