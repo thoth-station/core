@@ -802,6 +802,10 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.github.io/
+      stress-tests:
+        description: Stress tests for Thoth's User API
+        has_projects: false
+        has_wiki: false
       stub-api:
         description:
           This is a project demonstrating the basic structure of a API
@@ -1009,6 +1013,7 @@ orgs:
           srcops-notify-bot: triage
           srcops-testing: triage
           stub-api: triage
+          stress-tests: triage
           talks: triage
           tensorflow-build-s2i: triage
           tensorflow-release-api: triage
@@ -1188,6 +1193,7 @@ orgs:
               statusfy: admin
               statusfy-ops: admin
               storages: admin
+              stress-tests: admin
               stub-api: admin
               support: admin
               sync-job: admin
