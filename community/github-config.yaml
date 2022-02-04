@@ -1013,6 +1013,7 @@ orgs:
           srcops-notify-bot: triage
           srcops-testing: triage
           stub-api: triage
+          stress-tests: triage
           talks: triage
           tensorflow-build-s2i: triage
           tensorflow-release-api: triage
