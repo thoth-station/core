@@ -802,6 +802,10 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.github.io/
+      stress-tests:
+        description: Stress tests for Thoth's User API
+        has_projects: false
+        has_wiki: false
       stub-api:
         description:
           This is a project demonstrating the basic structure of a API
@@ -1188,6 +1192,7 @@ orgs:
               statusfy: admin
               statusfy-ops: admin
               storages: admin
+              stress-tests: admin
               stub-api: admin
               support: admin
               sync-job: admin
