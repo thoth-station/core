@@ -12,7 +12,7 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 # Stack Guidance Special Interest Group
 
-Work on recommending the most effective, performant and secure software stack for user applications.
+Work on recommending the most effective, performant and secure software stack for user applications and on actively creating prescriptions and security related information
 
 The [charter](charter.md) defines the scope and governance of the Stack Guidance Special Interest Group.
 

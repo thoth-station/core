@@ -151,8 +151,11 @@ sigs:
     - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
 - dir: sig-stack-guidance
   name: Stack Guidance
-  mission_statement: "Work on recommending the most effective, performant and secure
-    software stack for user applications. \n"
+  mission_statement: >
+    Work on recommending the most effective, performant and secure software stack
+    for user applications and on actively creating prescriptions and security related
+    information
+
   charter_link: charter.md
   label: stack-guidance
   leadership:
