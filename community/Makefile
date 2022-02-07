@@ -10,11 +10,9 @@ reset-docs:
 	git checkout HEAD -- ./sig-list.md ./sig-*/README.md ./wg-*/README.md
 
 generate:
-	go run ./generator/app.go
-	mv OWNERS_ALIASES ..
-
-generate-dockerized:
 	podman run --rm -e WHAT -e GO111MODULE -e GOPROXY -v $(shell pwd):/go/src/app:Z $(GOLANG_IMAGE) make -C /go/src/app generate
+
+label-sync:
 	podman run --rm -v $(shell pwd):/community:Z $(LABEL_SYNC_IMAGE) --action docs --config /community/labels.yaml --docs-template /community/labels.md.tmpl --docs-output /community/labels.md
 
 verify:
