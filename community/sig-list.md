@@ -37,6 +37,7 @@ Each group's material is in its subdirectory in this project.
 |[Docs](sig-docs/README.md)|docs|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 |[Observability](sig-observability/README.md)|observability|* [Francesco Murdaca](https://github.com/pacospace), Red Hat<br>|* Thoth Observability Meeting: [Tuesdays at 14:00 UTC (Coordinated Universal Time) (bi-weekly)](meet.google.com/xaq-nhrm-gaq)<br>
 |[Pipelines](sig-pipelines/README.md)|pipelines|* [Harshad Nalla](https://github.com/harshad16), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
+|[Stack Guidance](sig-stack-guidance/README.md)|stack-guidance|* [Fridolín Pokorný](https://github.com/fridex), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 |[User Experience](sig-user-experience/README.md)|user-experience|* [Christoph Görn](https://github.com/goern), Red Hat<br>|* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/kxd-axiz-tym)<br>
 
 ### Committees
