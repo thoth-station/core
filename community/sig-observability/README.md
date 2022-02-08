@@ -47,6 +47,9 @@ The following [subprojects][subproject-definition] are owned by sig-observabilit
 ### investigator-exporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
+### meta-information indicators
+- **Owners:**
+  - https://github.com/thoth-station/mi/blob/master/OWNERS
 ### metrics-exporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
@@ -56,9 +59,7 @@ The following [subprojects][subproject-definition] are owned by sig-observabilit
 ### slo-reporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
-### meta-information indicators
-- **Owners:**
-  - https://github.com/thoth-station/mi/blob/master/OWNERS
+
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->
