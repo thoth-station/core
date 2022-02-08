@@ -573,6 +573,10 @@ orgs:
         description: This is a repository for a Predictive Stack for Natural Language Processing (NLP)
         has_projects: false
         has_wiki: false
+      pulp-metrics-exporter:
+        description: Metrics exporter exporting information about Pulp
+        has_projects: false
+        has_wiki: false
       pulp-pypi-sync-job:
         has_projects: false
         has_wiki: false
@@ -1148,6 +1152,7 @@ orgs:
               ps-cv: admin
               ps-ip: admin
               ps-nlp: admin
+              pulp-metrics-exporter: admin
               pulp-pypi-sync-job: admin
               python: admin
               python-ssdeep: admin
