@@ -9,8 +9,8 @@ default: \
 reset-docs:
 	git checkout HEAD -- ./sig-list.md ./sig-*/README.md ./wg-*/README.md
 
-generate:
-	podman run --rm -e WHAT -e GO111MODULE -e GOPROXY -v $(shell pwd):/go/src/app:Z $(GOLANG_IMAGE) make -C /go/src/app generate
+generate-sig-files:
+	podman run --rm --volume $(shell pwd):/workdir:Z quay.io/open-services-group/community-tooling:v0.1.0-dev
 
 label-sync:
 	podman run --rm -v $(shell pwd):/community:Z $(LABEL_SYNC_IMAGE) --action docs --config /community/labels.yaml --docs-template /community/labels.md.tmpl --docs-output /community/labels.md
