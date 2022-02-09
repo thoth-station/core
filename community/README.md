@@ -13,7 +13,7 @@ documentation for more details.
 Information about SIGs is sourced from the [sigs.yaml](./sigs.yaml) file.
 
 To generate all the SIG documentation and update the OWNERS files from the
-source file, use the `generate` or `generate-dockerized` targets in the
+source file, use the `generate-sig-files` target (which is the default target) in the
 [Makefile](./Makefile), e.g.:
 
 ```
