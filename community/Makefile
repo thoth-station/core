@@ -4,7 +4,7 @@ export GO111MODULE=on
 export GOPROXY?=https://proxy.golang.org
 
 default: \
-	generate \
+	generate-sig-files \
 
 reset-docs:
 	git checkout HEAD -- ./sig-list.md ./sig-*/README.md ./wg-*/README.md
