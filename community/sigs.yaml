@@ -191,6 +191,9 @@ sigs:
   - name: solver
     owners:
     - https://raw.githubusercontent.com/thoth-station/solver/master/OWNERS
+  - name: storages
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/storages/master/OWNERS
 - dir: sig-user-experience
   name: User Experience
   mission_statement: >

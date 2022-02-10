@@ -51,6 +51,9 @@ The following [subprojects][subproject-definition] are owned by sig-stack-guidan
 ### solver
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/solver/master/OWNERS
+### storages
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/storages/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->
