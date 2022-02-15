@@ -1,192 +1,243 @@
 sigs:
-  - dir: sig-devsecops
-    name: DevSecOps
-    mission_statement: >
-      This includes the discussion related to the release process of the Thoth-Station applications, supporting container images, tooling, and architectural decisions.
+- dir: sig-devsecops
+  name: DevSecOps
+  mission_statement: >
+    This includes the discussion related to the release process of the Thoth-Station
+    applications, supporting container images, tooling, and architectural decisions.
 
-    charter_link: charter.md
-    label: devsecops
-    leadership:
-      chairs:
-        - github: harshad16
-          name: Harshad Nalla
-          company: Red Hat
-      tech_leads:
-        - github: harshad16
-          name: Harshad Nalla
-          company: Red Hat
-    meetings:
-      - description: Thoth Release Meeting
-        day: Wednesday
-        time: "14:00"
-        tz: UTC (Coordinated Universal Time)
-        frequency: bi-weekly
-        url: https://meet.google.com/kro-zbcc-xpd
-    contact:
-      liaison:
-        github: goern
-        name: Christoph Görn
-    subprojects:
-      - name: thoth-application
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
-  - dir: sig-docs
-    name: Docs
-    mission_statement: >
-      Work on all things that need documentation, may it be an API, a new feature or the general vision!
+  charter_link: charter.md
+  label: devsecops
+  leadership:
+    chairs:
+    - github: harshad16
+      name: Harshad Nalla
+      company: Red Hat
+    tech_leads:
+    - github: harshad16
+      name: Harshad Nalla
+      company: Red Hat
+  meetings:
+  - description: Thoth Release Meeting
+    day: Wednesday
+    time: "14:00"
+    tz: UTC (Coordinated Universal Time)
+    frequency: bi-weekly
+    url: https://meet.google.com/kro-zbcc-xpd
+  contact:
+    liaison:
+      github: goern
+      name: Christoph Görn
+  subprojects:
+  - name: thoth-application
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
+- dir: sig-docs
+  name: Docs
+  mission_statement: >
+    Work on all things that need documentation, may it be an API, a new feature or
+    the general vision!
 
-    charter_link: charter.md
-    label: docs
-    leadership:
-      chairs:
-        - github: goern
-          name: Christoph Görn
-          company: Red Hat
-      tech_leads:
-        - github: fridex
-          name: Fridolín Pokorný
-          company: Red Hat
-    meetings:
-      - description: Let's talk Thoth Tech
-        day: Thursday
-        time: "15:00"
-        tz: UTC (Coordinated Universal Time)
-        frequency: weekly
-        url: https://meet.google.com/kxd-axiz-tym
-    contact:
-      liaison:
-        github: goern
-        name: Christoph Görn
-    subprojects:
-      - name: core
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/core/master/OWNERS
-      - name: thoth-station.github.io
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/thoth-station.github.io/master/OWNERS
-  - dir: sig-observability
-    name: Observability
-    mission_statement: >
-      Work on all things that concern Observability! This includes the definition of metrics, monitoring, reporting and alerting.
+  charter_link: charter.md
+  label: docs
+  leadership:
+    chairs:
+    - github: goern
+      name: Christoph Görn
+      company: Red Hat
+    tech_leads:
+    - github: fridex
+      name: Fridolín Pokorný
+      company: Red Hat
+  meetings:
+  - description: Let's talk Thoth Tech
+    day: Thursday
+    time: "15:00"
+    tz: UTC (Coordinated Universal Time)
+    frequency: weekly
+    url: https://meet.google.com/kxd-axiz-tym
+  contact:
+    liaison:
+      github: goern
+      name: Christoph Görn
+  subprojects:
+  - name: core
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/core/master/OWNERS
+  - name: thoth-station.github.io
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thoth-station.github.io/master/OWNERS
+- dir: sig-observability
+  name: Observability
+  mission_statement: >
+    Work on all things that concern Observability! This includes the definition of
+    metrics, monitoring, reporting and alerting.
 
-    charter_link: charter.md
-    label: observability
-    leadership:
-      chairs:
-        - github: pacospace
-          name: Francesco Murdaca
-          company: Red Hat
-      tech_leads:
-        - github: pacospace
-          name: Francesco Murdaca
-          company: Red Hat
-    meetings:
-      - description: Thoth Observability Meeting
-        day: Tuesday
-        time: "14:00"
-        tz: UTC (Coordinated Universal Time)
-        frequency: bi-weekly
-        url: meet.google.com/xaq-nhrm-gaq
-    contact:
-      liaison:
-        github: goern
-        name: Christoph Görn
-    subprojects:
-      - name: advise-reporter
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
-      - name: investigator-exporter
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
-      - name: metrics-exporter
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
-      - name: monitoring/alerting
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
-      - name: slo-reporter
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
-  - dir: sig-pipelines
-    name: Pipelines
-    mission_statement: >
-      Work on all things that are used by Pipelines! This includes the pipelines themselves, supporting container images, tooling, and architectural decisions. This SIG is also responsible for triaging operational issues.
+  charter_link: charter.md
+  label: observability
+  leadership:
+    chairs:
+    - github: pacospace
+      name: Francesco Murdaca
+      company: Red Hat
+    tech_leads:
+    - github: pacospace
+      name: Francesco Murdaca
+      company: Red Hat
+  meetings:
+  - description: Thoth Observability Meeting
+    day: Tuesday
+    time: "14:00"
+    tz: UTC (Coordinated Universal Time)
+    frequency: bi-weekly
+    url: meet.google.com/xaq-nhrm-gaq
+  contact:
+    liaison:
+      github: goern
+      name: Christoph Görn
+  subprojects:
+  - name: advise-reporter
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
+  - name: investigator-exporter
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
+  - name: metrics-exporter
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
+  - name: monitoring/alerting
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
+  - name: slo-reporter
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
+- dir: sig-pipelines
+  name: Pipelines
+  mission_statement: >
+    Work on all things that are used by Pipelines! This includes the pipelines themselves,
+    supporting container images, tooling, and architectural decisions. This SIG is
+    also responsible for triaging operational issues.
 
-    charter_link: charter.md
-    label: pipelines
-    leadership:
-      chairs:
-        - github: harshad16
-          name: Harshad Nalla
-          company: Red Hat
-      tech_leads:
-        - github: harshad16
-          name: Harshad Nalla
-          company: Red Hat
-    meetings:
-      - description: Let's talk Thoth Tech
-        day: Thursday
-        time: "15:00"
-        tz: UTC (Coordinated Universal Time)
-        frequency: weekly
-        url: https://meet.google.com/kxd-axiz-tym
-    contact:
-      liaison:
-        github: goern
-        name: Christoph Görn
-    subprojects:
-      - name: aicoe-ci
-        owners:
-          - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
-      - name: opf-ci-prow
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
-      - name: thoth-ops-infra
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
-  - dir: sig-user-experience
-    name: User Experience
-    mission_statement: >
-      The User Experience SIG focuses on the interaction points between end users and Thoth components.
+  charter_link: charter.md
+  label: pipelines
+  leadership:
+    chairs:
+    - github: harshad16
+      name: Harshad Nalla
+      company: Red Hat
+    tech_leads:
+    - github: harshad16
+      name: Harshad Nalla
+      company: Red Hat
+  meetings:
+  - description: Let's talk Thoth Tech
+    day: Thursday
+    time: "15:00"
+    tz: UTC (Coordinated Universal Time)
+    frequency: weekly
+    url: https://meet.google.com/kxd-axiz-tym
+  contact:
+    liaison:
+      github: goern
+      name: Christoph Görn
+  subprojects:
+  - name: aicoe-ci
+    owners:
+    - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
+  - name: opf-ci-prow
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
+  - name: thoth-ops-infra
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+- dir: sig-stack-guidance
+  name: Stack Guidance
+  mission_statement: >
+    Work on recommending the most effective, performant and secure software stack
+    for user applications and on actively creating prescriptions and security related
+    information
 
-    charter_link: charter.md
-    label: user-experience
-    leadership:
-      chairs:
-        - github: goern
-          name: Christoph Görn
-          company: Red Hat
-      tech_leads:
-        - github: pacospace
-          name: Francesco Murdaca
-          company: Red Hat
-    meetings:
-      - description: Let's talk Thoth Tech
-        day: Thursday
-        time: "15:00"
-        tz: UTC (Coordinated Universal Time)
-        frequency: weekly
-        url: https://meet.google.com/kxd-axiz-tym
-    contact:
-      liaison:
-        github: goern
-        name: Christoph Görn
-    subprojects:
-      - name: jupyterlab-requirements
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/jupyterlab-requirements/master/OWNERS
-      - name: kebechet
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/kebechet/master/OWNERS
-      - name: s2i-thoth
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/s2i-thoth/master/OWNERS
-      - name: thamos
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/thamos/master/OWNERS
-      - name: user-api
-        owners:
-          - https://raw.githubusercontent.com/thoth-station/user-api/master/OWNERS
+  charter_link: charter.md
+  label: stack-guidance
+  leadership:
+    chairs:
+    - github: fridex
+      name: Fridolín Pokorný
+      company: Red Hat
+    tech_leads:
+    - github: fridex
+      name: Fridolín Pokorný
+      company: Red Hat
+    - github: mayaCostantini
+      name: Maya Costantini
+      company: Red Hat
+  meetings:
+  - description: Let's talk Thoth Tech
+    day: Thursday
+    time: "15:00"
+    tz: UTC (Coordinated Universal Time)
+    frequency: weekly
+    url: https://meet.google.com/kxd-axiz-tym
+  contact:
+    liaison:
+      github: goern
+      name: Christoph Görn
+  subprojects:
+  - name: adviser
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/adviser/master/OWNERS
+  - name: prescriptions
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/prescriptions/master/OWNERS
+  - name: solver
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/solver/master/OWNERS
+  - name: storages
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/storages/master/OWNERS
+- dir: sig-user-experience
+  name: User Experience
+  mission_statement: >
+    The User Experience SIG focuses on the interaction points between end users and
+    Thoth components.
+
+  charter_link: charter.md
+  label: user-experience
+  leadership:
+    chairs:
+    - github: goern
+      name: Christoph Görn
+      company: Red Hat
+    tech_leads:
+    - github: pacospace
+      name: Francesco Murdaca
+      company: Red Hat
+  meetings:
+  - description: Let's talk Thoth Tech
+    day: Thursday
+    time: "15:00"
+    tz: UTC (Coordinated Universal Time)
+    frequency: weekly
+    url: https://meet.google.com/kxd-axiz-tym
+  contact:
+    liaison:
+      github: goern
+      name: Christoph Görn
+  subprojects:
+  - name: jupyterlab-requirements
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/jupyterlab-requirements/master/OWNERS
+  - name: kebechet
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/kebechet/master/OWNERS
+  - name: s2i-thoth
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/s2i-thoth/master/OWNERS
+  - name: thamos
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thamos/master/OWNERS
+  - name: user-api
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/user-api/master/OWNERS
 workinggroups: []
 usergroups: []
 committees: []
