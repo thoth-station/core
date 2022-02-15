@@ -29,7 +29,6 @@ of SIGs, WGs and UGs.
 | [SIG DevSecOps](sig-devsecops/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Docs](sig-docs/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Observability](sig-observability/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
-| [SIG Pipelines](sig-pipelines/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG Stack Guidance](sig-stack-guidance/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 | [SIG User Experience](sig-user-experience/README.md) | Christoph Görn (**[@goern](https://github.com/goern)**) |
 <!-- BEGIN CUSTOM CONTENT -->

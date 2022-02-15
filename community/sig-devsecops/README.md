@@ -12,12 +12,12 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 # DevSecOps Special Interest Group
 
-This includes the discussion related to the release process of the Thoth-Station applications, supporting container images, tooling, and architectural decisions.
+This SIG covers all the tools and supporting container images that deliver Thoth-Station applications, as well as the build pipelines and Continuous Integration systems that enable the automated builds.
+This includes the discussion related to the release process of the Thoth-Station applications, the build pipelines themselves, supporting container images, tooling, and architectural decisions.
 
 The [charter](charter.md) defines the scope and governance of the DevSecOps Special Interest Group.
 
-## Meetings
-* Thoth Release Meeting: [Wednesdays at 14:00 UTC (Coordinated Universal Time)](https://meet.google.com/kro-zbcc-xpd) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+
 
 ## Leadership
 
@@ -41,9 +41,27 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 ## Subprojects
 
 The following [subprojects][subproject-definition] are owned by sig-devsecops:
+### build-pipelines
+A set of base images and pipelines to build application container images
+- **Owners:**
+  - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/helm-charts/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+- **Meetings:**
+  - Pipelines Meeting: [Thursdays at 12:00 ET (Eastern Time)](https://meet.google.com/ozb-tbrp-agx) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=12:00&tz=ET%20%28Eastern%20Time%29).
+    - [Meeting notes and Agenda](https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit#).
+### opf-ci-prow
+Continuous Integration infrastructure for the project, using prow
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
 ### thoth-application
+Release management for Thoth components
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
+- **Meetings:**
+  - Thoth Release Meeting: [Wednesdays at 14:00 UTC (Coordinated Universal Time)](https://meet.google.com/kro-zbcc-xpd) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+    - [Meeting notes and Agenda](https://docs.google.com/document/d/1jSDY8tzQ4a1RHiXdIHgS0ywkkpQDJdKpTJWM6u1Z5iM/edit).
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->
