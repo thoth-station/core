@@ -4,9 +4,25 @@ This charter adheres to the conventions described in the [Kubernetes Charter REA
 
 ## Scope
 
-This includes the discussion related to the release process of the Thoth-Station applications Supporting container images, tooling, and architectural decisions all with regards to the release.
+This SIG covers all the tools and supporting container images that deliver Thoth-Station
+applications, as well as the build pipelines and Continuous Integration systems
+that enable the automated builds.
 
-This SIG is also responsible for triaging operational issues.
+This includes the discussion related to the release process of the Thoth-Station
+applications, the build pipelines themselves, supporting container images, tooling,
+and architectural decisions.
+
+### In scope
+
+- Pipelines to build and publish application container images
+- Supporting container images
+- End-user oriented content about Thoth pipelines and supporting images
+- GitOps configurations to deploy the services
+- Release management for Thoth-Station
+
+### Out of scope
+
+- Operation of the clusters that host the services
 
 ## Roles and Organization Management
 

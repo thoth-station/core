@@ -352,16 +352,13 @@ default:
       addedBy: humans
 
     - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Cyborgs and Bots.
-      name: sig/cyborgs
-      target: both
-      prowPlugin: label
-      addedBy: anyone
-    - color: fef2c0
       description: Categorizes an issue or PR as relevant to SIG DevSecOps.
       name: sig/devsecops
       previously:
+        - name: sig/build
+        - name: sig/cyborgs
         - name: sig/devops
+        - name: sig/pipelines
       target: both
       prowPlugin: label
       addedBy: anyone
@@ -372,14 +369,6 @@ default:
       prowPlugin: label
       previously:
         - name: sig/documentation
-      addedBy: anyone
-    - color: fef2c0
-      description: Categorizes an issue or PR as relevant to SIG Pipelines (CI/CD)
-      name: sig/pipelines
-      previously:
-        - name: sig/build
-      target: both
-      prowPlugin: label
       addedBy: anyone
     - color: fef2c0
       description: Categorizes an issue or PR as relevant to SIG Observability

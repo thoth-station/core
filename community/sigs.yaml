@@ -2,8 +2,13 @@ sigs:
 - dir: sig-devsecops
   name: DevSecOps
   mission_statement: >
+    This SIG covers all the tools and supporting container images that deliver Thoth-Station
+    applications, as well as the build pipelines and Continuous Integration systems
+    that enable the automated builds.
+
     This includes the discussion related to the release process of the Thoth-Station
-    applications, supporting container images, tooling, and architectural decisions.
+    applications, the build pipelines themselves, supporting container images, tooling,
+    and architectural decisions.
 
   charter_link: charter.md
   label: devsecops
@@ -16,21 +21,45 @@ sigs:
     - github: harshad16
       name: Harshad Nalla
       company: Red Hat
-  meetings:
-  - description: Thoth Release Meeting
-    day: Wednesday
-    time: "14:00"
-    tz: UTC (Coordinated Universal Time)
-    frequency: bi-weekly
-    url: https://meet.google.com/kro-zbcc-xpd
+  meetings: []
   contact:
     liaison:
       github: goern
       name: Christoph Görn
   subprojects:
+  - name: build-pipelines
+    description: |
+      A set of base images and pipelines to build application container images
+    owners:
+    - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/helm-charts/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+    meetings:
+    - description: Pipelines Meeting
+      day: Thursday
+      time: "12:00"
+      tz: ET (Eastern Time)
+      frequency: bi-weekly
+      url: https://meet.google.com/ozb-tbrp-agx
+      archive_url: https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit#
+  - name: opf-ci-prow
+    description: |
+      Continuous Integration infrastructure for the project, using prow
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
   - name: thoth-application
+    description: Release management for Thoth components
     owners:
     - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
+    meetings:
+    - description: Thoth Release Meeting
+      day: Wednesday
+      time: "14:00"
+      tz: UTC (Coordinated Universal Time)
+      frequency: bi-weekly
+      url: https://meet.google.com/kro-zbcc-xpd
+      archive_url: https://docs.google.com/document/d/1jSDY8tzQ4a1RHiXdIHgS0ywkkpQDJdKpTJWM6u1Z5iM/edit
 - dir: sig-docs
   name: Docs
   mission_statement: >
@@ -110,45 +139,6 @@ sigs:
   - name: slo-reporter
     owners:
     - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
-- dir: sig-pipelines
-  name: Pipelines
-  mission_statement: >
-    Work on all things that are used by Pipelines! This includes the pipelines themselves,
-    supporting container images, tooling, and architectural decisions. This SIG is
-    also responsible for triaging operational issues.
-
-  charter_link: charter.md
-  label: pipelines
-  leadership:
-    chairs:
-    - github: harshad16
-      name: Harshad Nalla
-      company: Red Hat
-    tech_leads:
-    - github: harshad16
-      name: Harshad Nalla
-      company: Red Hat
-  meetings:
-  - description: Let's talk Thoth Tech
-    day: Thursday
-    time: "15:00"
-    tz: UTC (Coordinated Universal Time)
-    frequency: weekly
-    url: https://meet.google.com/kxd-axiz-tym
-  contact:
-    liaison:
-      github: goern
-      name: Christoph Görn
-  subprojects:
-  - name: aicoe-ci
-    owners:
-    - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
-  - name: opf-ci-prow
-    owners:
-    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
-  - name: thoth-ops-infra
-    owners:
-    - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
 - dir: sig-stack-guidance
   name: Stack Guidance
   mission_statement: >
