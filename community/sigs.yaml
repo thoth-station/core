@@ -161,12 +161,12 @@ sigs:
       name: Maya Costantini
       company: Red Hat
   meetings:
-  - description: Let's talk Thoth Tech
-    day: Thursday
-    time: "15:00"
+  - description: SIG Stack Guidance Meeting
+    day: Monday
+    time: "14:00"
     tz: UTC (Coordinated Universal Time)
     frequency: weekly
-    url: https://meet.google.com/kxd-axiz-tym
+    url: meet.google.com/umj-bgfi-ouo
   contact:
     liaison:
       github: goern
