@@ -17,8 +17,6 @@ orgs:
     has_repository_projects: false
     location: Earth (any shape)
     members:
-      - 4n4nd
-      - bjoernh2000
       - codificat
       - EldritchJS
       - erikerlandson
@@ -26,26 +24,16 @@ orgs:
       - Gregory-Pereira
       - HumairAK
       - KPostOffice
-      - LaVLaS
       - mayaCostantini
       - meile18
       - pacospace
       - schwesig
       - sesheta-srcops
-      - sub-mod
-      - tlegen-k
-      - TreeinRandomForest
       - tumido
       - xtuchyna
     members_can_create_repositories: false
     name: Thoth Station
     repos:
-      Github-Issues-Classifier:
-        description:
-          "Multi-label prediction for GitHub issues with state of the art
-          NLP models and state of the art performance. \U0001F60E"
-        has_projects: false
-        has_wiki: false
       adviser:
         description:
           The recommendation engine for Python software stacks and Dependency
@@ -53,6 +41,12 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.github.io
+      aicoe-ci-pulp-upload-example:
+        description:
+          A small example demonstrating Python package releases uploaded
+          using AICoE-CI to Operate First Pulp instance.
+        has_projects: false
+        has_wiki: false
       amun-api:
         description:
           Thoth's execution engine for inspecting quality, performance,
@@ -221,6 +215,10 @@ orgs:
         description: This is an OpenShift deployment for Dgraph
         has_projects: false
         has_wiki: false
+      document-sync-job:
+        description: Sync Thoth documents to an S3 API compatible remote
+        has_projects: false
+        has_wiki: false
       elyra-resnet:
         has_projects: false
         has_wiki: false
@@ -235,6 +233,12 @@ orgs:
         description:
           Fast CPython extensions to Python standard library with focus
           on performance.
+        has_projects: false
+        has_wiki: false
+      Github-Issues-Classifier:
+        description:
+          "Multi-label prediction for GitHub issues with state of the art
+          NLP models and state of the art performance. \U0001F60E"
         has_projects: false
         has_wiki: false
       glyph:
@@ -381,6 +385,12 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.github.io/
+      license-solver:
+        description:
+          Detect license information from Python package metadata
+          as provided by thoth-solver
+        has_projects: false
+        has_wiki: false
       management-api:
         description: An API service used for administration of deployed Thoth
         has_projects: false
@@ -465,9 +475,6 @@ orgs:
         description: OpenBLAS s2i
         has_projects: false
         has_wiki: false
-      optimized-pipeline:
-        default_branch: main
-        has_projects: false
       osiris:
         archived: true
         description:
@@ -516,6 +523,7 @@ orgs:
         description: All code required to help pipelines (e.g Tekton).
         has_projects: false
       pipelines-catalog:
+        archived: true
         description: A repository for OpenShift Pipelines tasks
         has_issues: false
         has_projects: false
@@ -544,12 +552,12 @@ orgs:
         has_wiki: false
         homepage: https://thoth-station.ninja/docs/developers/adviser/prescription.html
       prescriptions-gh-release-notes-job:
+        archived: true
         description:
           Automatically construct prescriptions for linking GitHub release
           notes based on thoth-solver results
         has_projects: false
         has_wiki: false
-        archived: true
       prescriptions-refresh-job:
         description: A periodic job to refresh Thoth's prescriptions
         has_projects: false
@@ -577,6 +585,9 @@ orgs:
         description: Metrics exporter exporting information about Pulp
         has_projects: false
         has_wiki: false
+      pulp-operate-first-web:
+        has_projects: false
+        has_wiki: false
       pulp-pypi-sync-job:
         has_projects: false
         has_wiki: false
@@ -598,6 +609,12 @@ orgs:
           fresh and up-to-date
         has_projects: false
         has_wiki: false
+      rapidsai-build:
+        archived: true
+        default_branch: branch-0.7
+        description: RAPIDS from-source and Docker build files
+        has_projects: false
+        has_wiki: false
       ray-ml-notebook:
         has_projects: false
         has_wiki: false
@@ -605,11 +622,6 @@ orgs:
         has_projects: false
         has_wiki: false
       ray-operator:
-        has_projects: false
-        has_wiki: false
-      rapidsai-build:
-        default_branch: branch-0.7
-        description: RAPIDS from-source and Docker build files
         has_projects: false
         has_wiki: false
       report-processing:
@@ -714,6 +726,11 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.ninja/search
+      search-stage:
+        description: Stage version of Thoth's search.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja/search
       selinon-api:
         archived: true
         description: API exposing data workloads of Selinon flows to users
@@ -742,6 +759,10 @@ orgs:
         has_wiki: false
       si-cloc:
         description: Thoth's Security Indicator using cloc
+        has_projects: false
+        has_wiki: false
+      sigstore-friends:
+        description: Sigstore user stories
         has_projects: false
         has_wiki: false
       slo-reporter:
@@ -974,8 +995,6 @@ orgs:
           - harshad16
           - sesheta
         members:
-          - 4n4nd
-          - bjoernh2000
           - codificat
           - EldritchJS
           - erikerlandson
@@ -987,9 +1006,6 @@ orgs:
           - meile18
           - pacospace
           - sesheta-srcops
-          - sub-mod
-          - tlegen-k
-          - TreeinRandomForest
           - tumido
           - xtuchyna
         privacy: closed
@@ -1235,7 +1251,6 @@ orgs:
           - goern
         members:
           - erikerlandson
-          - sub-mod
           - pacospace
         privacy: closed
         repos:
