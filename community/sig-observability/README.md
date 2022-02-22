@@ -47,9 +47,6 @@ The following [subprojects][subproject-definition] are owned by sig-observabilit
 ### investigator-exporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
-### meta-information indicators
-- **Owners:**
-  - https://github.com/thoth-station/mi/blob/master/OWNERS
 ### metrics-exporter
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS

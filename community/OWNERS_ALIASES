@@ -6,8 +6,9 @@ aliases:
     - goern
   sig-observability-leads:
     - pacospace
-  sig-pipelines-leads:
-    - harshad16
+  sig-stack-guidance-leads:
+    - fridex
+    - mayaCostantini
   sig-user-experience-leads:
     - goern
     - pacospace

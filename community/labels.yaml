@@ -14,11 +14,6 @@ default:
       target: both
       addedBy: label
     - color: 0052cc
-      description: Issues or PRs related to Stack Guidance
-      name: area/stack-guidance
-      target: both
-      addedBy: label
-    - color: 0052cc
       description: Issues or PRs related to the Predictable Stack Pattern
       name: area/predictable-stack
       target: both
@@ -359,6 +354,14 @@ default:
         - name: sig/cyborgs
         - name: sig/devops
         - name: sig/pipelines
+      target: both
+      prowPlugin: label
+      addedBy: anyone
+    - color: fef2c0
+      description: Categorizes an issue or PR as relevant to SIG Stack Guidance.
+      name: sig/stack-guidance
+      previously:
+        - name: area/stack-guidance
       target: both
       prowPlugin: label
       addedBy: anyone

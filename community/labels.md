@@ -48,7 +48,6 @@ larger set of contributors to apply/remove them.
 | <a id="area/predictable-stack" href="#area/predictable-stack">`area/predictable-stack`</a> | Issues or PRs related to the Predictable Stack Pattern| label | |
 | <a id="area/prescriptions" href="#area/prescriptions">`area/prescriptions`</a> | Issues or PRs related to Prescriptions| label | |
 | <a id="area/solver" href="#area/solver">`area/solver`</a> | Issues or PRs related to Solver| label | |
-| <a id="area/stack-guidance" href="#area/stack-guidance">`area/stack-guidance`</a> | Issues or PRs related to Stack Guidance| label | |
 | <a id="area/user-api" href="#area/user-api">`area/user-api`</a> | Issues or PRs related to the User API| label | |
 | <a id="bot" href="#bot">`bot`</a> | This Issue or PR is being worked on by a bot| human or bot |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-stage" href="#deployment_name/ocp4-stage">`deployment_name/ocp4-stage`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-stage`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
@@ -80,6 +79,7 @@ larger set of contributors to apply/remove them.
 | <a id="sig/observability" href="#sig/observability">`sig/observability`</a> | Categorizes an issue or PR as relevant to SIG Observability| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/slo" href="#sig/slo">`sig/slo`</a> | Issues or PRs related to Service Level Indicators and Objectives and their reporting| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/solvers" href="#sig/solvers">`sig/solvers`</a> | Issues or PRs related to Solvers| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="sig/stack-guidance" href="#sig/stack-guidance">`sig/stack-guidance`</a> | Categorizes an issue or PR as relevant to SIG Stack Guidance. <br><br> This was previously `area/stack-guidance`, | anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="sig/user-experience" href="#sig/user-experience">`sig/user-experience`</a> | Issues or PRs related to the User Experience of our Services, Tools, and Libraries.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="thoth/human-intervention-required" href="#thoth/human-intervention-required">`thoth/human-intervention-required`</a> | This isse/PR requires human intervention!| both | |
 | <a id="thoth/potential-observation" href="#thoth/potential-observation">`thoth/potential-observation`</a> | This is a potential observation we need to learn from! <br><br> This was previously `thoth/potential-flake`, | humans | |
