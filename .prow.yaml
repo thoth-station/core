@@ -57,7 +57,7 @@ presubmits:
             - -c
             - |
               set -ex
-              /app/label_sync/app.binary \
+              /ko-app/label_sync \
               --config=community/labels.yaml \
               --orgs=thoth-station \
               --token=/etc/github/oauth
@@ -121,7 +121,7 @@ postsubmits:
             - -c
             - |
               set -ex
-              /app/label_sync/app.binary \
+              /ko-app/label_sync \
               --config=community/labels.yaml \
               --orgs=thoth-station  \
               --token=/etc/github/oauth \
