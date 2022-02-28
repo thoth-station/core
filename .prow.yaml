@@ -25,7 +25,7 @@ presubmits:
             - -c
             - |
               set -ex
-              /peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+              /ko-app/peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
                 --min-admins=2 \
                 --maximum-removal-delta=0.15 \
                 --require-self=true \
@@ -86,7 +86,7 @@ postsubmits:
             - -c
             - |
               set -ex
-              /peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+              /ko-app/peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
                 --min-admins=2 \
                 --maximum-removal-delta=0.15 \
                 --require-self=true \
