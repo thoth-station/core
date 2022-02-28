@@ -17,7 +17,7 @@ Work on recommending the most effective, performant and secure software stack fo
 The [charter](charter.md) defines the scope and governance of the Stack Guidance Special Interest Group.
 
 ## Meetings
-* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time)](https://meet.google.com/kxd-axiz-tym) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+* SIG Stack Guidance Meeting: [Mondays at 14:00 UTC (Coordinated Universal Time)](meet.google.com/umj-bgfi-ouo) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
 
 ## Leadership
 
