@@ -429,12 +429,6 @@ default:
       prowPlugin: label
       target: both
 
-    - color: ededed
-      description: Indicates an issue or PR lacks a `triage/...` label and requires one.
-      name: needs-triage
-      target: both
-      prowPlugin: require-matching-label
-      addedBy: prow
     - color: 8fc951
       description: Indicates an issue or PR is ready to be actively worked on.
       name: triage/accepted
@@ -513,6 +507,12 @@ repos:
         target: issue
         prowPlugin: label
         addedBy: anyone
+      - color: ededed
+        description: Indicates an issue or PR lacks a `triage/...` label and requires one.
+        name: needs-triage
+        target: issue
+        prowPlugin: require-matching-label
+        addedBy: prow
   thoth-station/support:
     labels:
       - addedBy: anyone
@@ -527,6 +527,12 @@ repos:
         target: issue
         prowPlugin: label
         addedBy: anyone
+      - color: ededed
+        description: Indicates an issue or PR lacks a `triage/...` label and requires one.
+        name: needs-triage
+        target: issue
+        prowPlugin: require-matching-label
+        addedBy: prow
   thoth-station/core:
     labels:
       - color: c7def8
@@ -535,3 +541,17 @@ repos:
         target: issue
         prowPlugin: label
         addedBy: human
+      - color: ededed
+        description: Indicates an issue or PR lacks a `triage/...` label and requires one.
+        name: needs-triage
+        target: issue
+        prowPlugin: require-matching-label
+        addedBy: prow
+  thoth-station/prescriptions:
+    labels:
+      - color: ededed
+        description: Indicates an issue or PR lacks a `triage/...` label and requires one.
+        name: needs-triage
+        target: issue
+        prowPlugin: require-matching-label
+        addedBy: prow
