@@ -40,7 +40,7 @@ sigs:
       day: Thursday
       time: "12:00"
       tz: ET (Eastern Time)
-      frequency: bi-weekly
+      frequency: weekly
       url: https://meet.google.com/ozb-tbrp-agx
       archive_url: https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit#
   - name: opf-ci-prow

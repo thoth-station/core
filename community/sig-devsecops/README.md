@@ -49,7 +49,7 @@ A set of base images and pipelines to build application container images
   - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
   - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
 - **Meetings:**
-  - Pipelines Meeting: [Thursdays at 12:00 ET (Eastern Time)](https://meet.google.com/ozb-tbrp-agx) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=12:00&tz=ET%20%28Eastern%20Time%29).
+  - Pipelines Meeting: [Thursdays at 12:00 ET (Eastern Time)](https://meet.google.com/ozb-tbrp-agx) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=12:00&tz=ET%20%28Eastern%20Time%29).
     - [Meeting notes and Agenda](https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit#).
 ### opf-ci-prow
 Continuous Integration infrastructure for the project, using prow
