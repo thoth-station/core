@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-labels: "kind/feature, needs-triage"
+labels: kind/feature
 ---
 ## Problem statement
 <!-- Is your feature request related to a problem? Please provide a clear and concise description of what the problem is.
