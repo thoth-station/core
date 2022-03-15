@@ -12,54 +12,22 @@ When new base image versions used to genereate container images for Thoth compon
 ## Considered Options
 
 * Implement a simple Python script to bump the base image versions used to deliver container images in `.aicoe-ci.yaml`, `.thoth.yaml` or similar files for eventual uses outside of the project.
-    * Integrate this script in the AICoE-CI pipeline logic
-    * Integrate this script in Kebechet
-    
+    * 1) Integrate this script in the AICoE-CI pipeline logic
+    * 2) Integrate this script in Kebechet
+
 ## Decision Outcome
 
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+Chosen option: 1). For the moment, this script has been integrated in the AICoE-CI pipeline logic, but it could eventually be reused in Kebechet if needed.
 
 ### Positive Consequences <!-- optional -->
 
-* [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-* …
-
-### Negative Consequences <!-- optional -->
-
-* [e.g., compromising quality attribute, follow-up decisions required, …]
-* …
-
-## Pros and Cons of the Options <!-- optional -->
-
-### [option 1]
-
-[example | description | pointer to more information | …] <!-- optional -->
-
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* … <!-- numbers of pros and cons can vary -->
-
-### [option 2]
-
-[example | description | pointer to more information | …] <!-- optional -->
-
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* … <!-- numbers of pros and cons can vary -->
-
-### [option 3]
-
-[example | description | pointer to more information | …] <!-- optional -->
-
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* … <!-- numbers of pros and cons can vary -->
+* Keeping the base image versions we use up-to-date for active repositories.
+* Base image version updates are made automatically, which is less error-prone and time-consuming for developers compared to making the update manually.
 
 ## Links <!-- optional -->
 
 * Current action items and building blocks proposal: https://github.com/thoth-station/kebechet/issues/991#issuecomment-1039220686
-
+* Script implementation in `pipeline-helpers`: https://github.com/thoth-station/pipeline-helpers/pull/45
+* Script integration in the `aicoe-ci` pipeline logic: https://github.com/AICoE/aicoe-ci/pull/170
+* Demo: https://www.youtube.com/watch?v=Uwc7WS4SnL4&t=2s&ab_channel=ThothStation
 <!-- markdownlint-disable-file MD013 -->
