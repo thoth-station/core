@@ -85,6 +85,8 @@ larger set of contributors to apply/remove them.
 
 | Name | Description | Added By | Prow Plugin |
 | ---- | ----------- | -------- | --- |
+| <a id="good first issue" href="#good first issue">`good first issue`</a> | Denotes an issue ready for a new contributor, according to the "help wanted" guidelines. <br><br> This was previously `good-first-issue`, | anyone |  [help](https://git.k8s.io/test-infra/prow/plugins/help) |
+| <a id="help wanted" href="#help wanted">`help wanted`</a> | Denotes an issue that needs help from a contributor. Must meet "help wanted" guidelines. <br><br> This was previously `help-wanted`, | anyone |  [help](https://git.k8s.io/test-infra/prow/plugins/help) |
 | <a id="thoth/group-programming" href="#thoth/group-programming">`thoth/group-programming`</a> | This issue could be used for group programming, offer or request.| humans | |
 | <a id="tide/merge-blocker" href="#tide/merge-blocker">`tide/merge-blocker`</a> | Denotes an issue that blocks the tide merge queue for a branch while it is open. <br><br> This was previously `merge-blocker`, | humans | |
 ## Labels that apply to all repos, only for PRs

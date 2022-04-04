@@ -8,6 +8,23 @@
 ---
 default:
   labels:
+    - color: 7057ff
+      description: Denotes an issue ready for a new contributor, according to the "help wanted" guidelines.
+      name: "good first issue"
+      previously:
+        - name: good-first-issue
+      target: issues
+      prowPlugin: help
+      addedBy: anyone
+    - color: 006b75
+      description: Denotes an issue that needs help from a contributor. Must meet "help wanted" guidelines.
+      name: "help wanted"
+      previously:
+        - name: help-wanted
+      target: issues
+      prowPlugin: help
+      addedBy: anyone
+
     - color: 0052cc
       description: Issues or PRs related to bring-your-own-notebook
       name: area/byon
