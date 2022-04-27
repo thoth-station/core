@@ -293,6 +293,11 @@ orgs:
         has_projects: false
         has_wiki: false
         homepage: https://thoth-station.github.io/helm-charts/
+      help:
+        description: Get help on how to interact with the Thoth community.
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.ninja/help
       httpd-aicoe-container:
         description:
           Apache HTTP container images based on Red Hat Software Collections
@@ -1128,6 +1133,7 @@ orgs:
               graph-refresh-job: admin
               graph-sync-job: admin
               helm-charts: admin
+              help: admin
               httpd-aicoe-container: admin
               init-job: admin
               integration-tests: admin
