@@ -17,6 +17,7 @@ orgs:
     has_repository_projects: false
     location: Earth (any shape)
     members:
+      - 4n4nd
       - codificat
       - EldritchJS
       - erikerlandson
@@ -30,6 +31,7 @@ orgs:
       - pacospace
       - schwesig
       - sesheta-srcops
+      - Shreyanand
       - tumido
       - xtuchyna
     members_can_create_repositories: false
