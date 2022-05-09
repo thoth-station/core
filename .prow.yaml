@@ -26,6 +26,8 @@ presubmits:
             - |
               set -ex
               /ko-app/peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+                --github-endpoint=http://ghproxy \
+                --github-endpoint=https://api.github.com \
                 --min-admins=2 \
                 --maximum-removal-delta=0.15 \
                 --require-self=true \
@@ -58,9 +60,11 @@ presubmits:
             - |
               set -ex
               /ko-app/label_sync \
-              --config=community/labels.yaml \
-              --orgs=thoth-station \
-              --token=/etc/github/oauth
+                --github-endpoint=http://ghproxy \
+                --github-endpoint=https://api.github.com \
+                --config=community/labels.yaml \
+                --orgs=thoth-station \
+                --token=/etc/github/oauth
           volumeMounts:
             - name: github-oauth
               mountPath: /etc/github
@@ -87,6 +91,8 @@ postsubmits:
             - |
               set -ex
               /ko-app/peribolos --config-path community/github-config.yaml --github-token-path /etc/github/oauth \
+                --github-endpoint=http://ghproxy \
+                --github-endpoint=https://api.github.com \
                 --min-admins=2 \
                 --maximum-removal-delta=0.15 \
                 --require-self=true \
@@ -122,10 +128,12 @@ postsubmits:
             - |
               set -ex
               /ko-app/label_sync \
-              --config=community/labels.yaml \
-              --orgs=thoth-station  \
-              --token=/etc/github/oauth \
-              --confirm
+                --github-endpoint=http://ghproxy \
+                --github-endpoint=https://api.github.com \
+                --config=community/labels.yaml \
+                --orgs=thoth-station  \
+                --token=/etc/github/oauth \
+                --confirm
           volumeMounts:
             - name: github-oauth
               mountPath: /etc/github
