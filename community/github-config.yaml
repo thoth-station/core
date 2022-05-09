@@ -4,6 +4,7 @@ orgs:
       - fridex
       - goern
       - harshad16
+      - mayaCostantini
       - sesheta
     email: aicoe-thoth@redhat.com
     billing_email: goern@redhat.com
@@ -25,7 +26,6 @@ orgs:
       - Gregory-Pereira
       - HumairAK
       - KPostOffice
-      - mayaCostantini
       - meile18
       - oindrillac
       - pacospace
@@ -1001,6 +1001,7 @@ orgs:
           - goern
           - fridex
           - harshad16
+          - mayaCostantini
           - sesheta
         members:
           - codificat
@@ -1009,7 +1010,6 @@ orgs:
           - Gkrumbach07
           - Gregory-Pereira
           - KPostOffice
-          - mayaCostantini
           - meile18
           - pacospace
           - sesheta-srcops
