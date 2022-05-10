@@ -6,20 +6,16 @@ current focus areas and the major items we are working on.
 For a more detailed overview of our current activities, have a look at our GitHub projects. We use them to plan our
 sprints.
 
-* [Thoth Knowledge Graph](https://github.com/orgs/thoth-station/projects/8)
-* [Amun](https://github.com/orgs/thoth-station/projects/12)
-* [Investigator](https://github.com/orgs/thoth-station/projects/14)
-* [Performance Indicators](https://github.com/orgs/thoth-station/projects/10)
-* [Security Indicators](https://github.com/orgs/thoth-station/projects/2)
-* [Adviser](https://github.com/orgs/thoth-station/projects/4)
-* [Solver](https://github.com/orgs/thoth-station/projects/6)
-* [Kebechet](https://github.com/orgs/thoth-station/projects/3)
-* [User API](https://github.com/orgs/thoth-station/projects/7)
+* [Planning Board](https://github.com/orgs/thoth-station/projects/31)
+* [SIG DevSecOps](https://github.com/orgs/thoth-station/projects/16)
+* [SIG Observability](https://github.com/orgs/thoth-station/projects/18)
+* [SIG Stack Guidance](https://github.com/orgs/thoth-station/projects/35)
+* [SIG User Experience](https://github.com/orgs/thoth-station/projects/40)
 
 ## Informative Advice
 
-Based on a [command line tool](https://github.com/orgs/thoth-station/projects/3) and our
-[GitHub App](https://github.com/marketplace/qeb-hwt) we will extend the advice we give to human developers. This
+Based on a [command line tool](https://github.com/thoth-station/thamos/) and our
+[GitHub App](https://github.com/marketplace/khebhut) we will extend the advice we give to human developers. This
 extension will not only broaden the coverage of Python packages known by Thoth, but also include tips how to deploy
 Python-based machine learning and data science applications.
 
@@ -44,7 +40,7 @@ The following section describes the services we provide to open source projects.
 
 ### Kebechet GitHub Application
 
-[Qeb-Hwt (or Kebechet)](https://github.com/marketplace/qeb-hwt) is a GitHub Application we provide on GitHub's
+[Khebhut (or Kebechet)](https://github.com/marketplace/khebhut) is a GitHub Application we provide on GitHub's
 marketplace. It is gathering information, advice and justification based on Thoth's Knowledge Graph per Pull Request
 opened for each repository the application is enabled for. With this information presented as a Check Status, we
 hope to educate human developers on their software, the changes they do in that specific pull request and what our
