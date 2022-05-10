@@ -394,8 +394,7 @@ orgs:
         has_wiki: false
         homepage: https://thoth-station.github.io/
       license-solver:
-        description:
-          Detect license information from Python package metadata
+        description: Detect license information from Python package metadata
           as provided by thoth-solver
         has_projects: false
         has_wiki: false
@@ -983,7 +982,6 @@ orgs:
           - goern
         members:
           - fridex
-          - pacospace
           - codificat
         privacy: closed
       Cyborg-Supervisors:
@@ -1060,7 +1058,6 @@ orgs:
             members:
               - tumido
               - Gregory-Pereira
-              - pacospace
             privacy: closed
             repos:
               Github-Issues-Classifier: triage
@@ -1108,7 +1105,6 @@ orgs:
               - fridex
               - harshad16
             members:
-              - pacospace
               - sesheta
               - sesheta-srcops
             privacy: closed
@@ -1259,7 +1255,6 @@ orgs:
           - goern
         members:
           - erikerlandson
-          - pacospace
         privacy: closed
         repos:
           nvidia-usage-dashboard: write
