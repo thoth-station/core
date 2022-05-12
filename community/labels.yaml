@@ -98,8 +98,9 @@ default:
 
     - color: d5f48d
       description: This Issue or PR is related to a specific deployment.
-      name: deployment_name/zero-prod
+      name: deployment_name/prod
       previously:
+        - name: deployment_name/zero-prod
         - name: deployment_name/moc
       target: both
       prowPlugin: label
