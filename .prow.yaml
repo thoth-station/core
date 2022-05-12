@@ -64,7 +64,7 @@ presubmits:
                 --github-endpoint=https://api.github.com \
                 --config=community/labels.yaml \
                 --orgs=thoth-station \
-                --token=/etc/github/oauth
+                --github-token-path=/etc/github/oauth
           volumeMounts:
             - name: github-oauth
               mountPath: /etc/github
@@ -132,7 +132,7 @@ postsubmits:
                 --github-endpoint=https://api.github.com \
                 --config=community/labels.yaml \
                 --orgs=thoth-station  \
-                --token=/etc/github/oauth \
+                --github-token-path=/etc/github/oauth \
                 --confirm
           volumeMounts:
             - name: github-oauth
