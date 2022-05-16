@@ -73,9 +73,14 @@ on:
 
 ### Thoth GitHub Action architecture
 
-![Thoth GitHub Action diagram](./images/Thoth-GitHub-Action-ADR.drawio.png, "Thoth GitHub Action architecture diagram using Thamos as a library to generate advise")
+![Thoth GitHub Action diagram](./images/Thoth-GitHub-Action-ADR.drawio.png, "Thoth GitHub Action architecture diagram using Thamos CLI to generate advise")
 
-A possible alternative would be to make a call directly to the User API via a bash script to avoid issues linked to the creation of a `.thoth.yaml` configuration file and to use a Python script to process the advise result only.
+Possible alternatives would be to:
+
+* Make a call directly to the User API via a bash script to avoid issues linked to the creation of a `.thoth.yaml` configuration file and to use a Python script to process the advise result only
+* Use Thamos as a library to get the advise result
+
+However, those options would not be as easily maintainable.
 
 ## Decision Outcome
 
