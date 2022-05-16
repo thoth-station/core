@@ -7,7 +7,7 @@ Technical Story: we would like to create a new Thoth integration via a GitHub Ac
 
 ## Context and Problem Statement
 
-The Thoth GitHub Action is originally supposed to be implemented to advise on the dependencies present in the [Packit repository](https://github.com/packit/packit), but should be extendable to other repositories as well with different requirement formats (`pip`, `pipenv`...).
+The Thoth GitHub Action was originally supposed to be implemented to advise on the dependencies present in the [Packit repository](https://github.com/packit/packit), but should be extendable to other repositories as well with different requirement formats (`pip`, `pipenv`...).
 
 The primary goal of this Action would be to advise on the **security** aspects of dependencies of a project by providing a mean to:
 
