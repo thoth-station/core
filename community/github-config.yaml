@@ -34,6 +34,7 @@ orgs:
       - Shreyanand
       - tumido
       - xtuchyna
+      - shreekarSS
     members_can_create_repositories: false
     name: Thoth Station
     repos:
