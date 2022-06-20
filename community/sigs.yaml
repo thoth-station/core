@@ -118,10 +118,10 @@ sigs:
     - github: fridex
       name: Fridolín Pokorný
       company: Red Hat
-    tech_leads:
-    - github: fridex
-      name: Fridolín Pokorný
+    - github: mayaCostantini
+      name: Maya Costantini
       company: Red Hat
+    tech_leads:
     - github: mayaCostantini
       name: Maya Costantini
       company: Red Hat

@@ -1,7 +1,6 @@
 orgs:
   thoth-station:
     admins:
-      - fridex
       - goern
       - harshad16
       - mayaCostantini
@@ -982,14 +981,12 @@ orgs:
           - harshad16
           - goern
         members:
-          - fridex
           - codificat
         privacy: closed
       Cyborg-Supervisors:
         description: These are the Humans supervising some Cyborgs
         maintainers:
           - goern
-          - fridex
           - harshad16
         privacy: closed
         repos:
@@ -998,7 +995,6 @@ orgs:
         description: We are the Devs!
         maintainers:
           - goern
-          - fridex
           - harshad16
           - mayaCostantini
           - sesheta
@@ -1103,8 +1099,8 @@ orgs:
             description: This is our SourceOps team, they keep the source fresh.
             maintainers:
               - goern
-              - fridex
               - harshad16
+              - mayaCostantini
             members:
               - sesheta
               - sesheta-srcops

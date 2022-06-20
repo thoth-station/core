@@ -26,13 +26,13 @@ The [charter](charter.md) defines the scope and governance of the Stack Guidance
 The Chairs of the SIG run operations and processes governing the SIG.
 
 * Fridolín Pokorný (**[@fridex](https://github.com/fridex)**), Red Hat
+* Maya Costantini (**[@mayaCostantini](https://github.com/mayaCostantini)**), Red Hat
 
 ### Technical Leads
 
 The Technical Leads of the SIG establish new subprojects, decommission existing
 subprojects, and resolve cross-subproject technical issues and decisions.
 
-* Fridolín Pokorný (**[@fridex](https://github.com/fridex)**), Red Hat
 * Maya Costantini (**[@mayaCostantini](https://github.com/mayaCostantini)**), Red Hat
 
 ## Contact
