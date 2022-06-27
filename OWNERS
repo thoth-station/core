@@ -2,15 +2,18 @@
 
 approvers:
   - codificat
-  - fridex
   - goern
   - harshad16
   - kpostoffice
   - mayaCostantini
+
 reviewers:
   - codificat
-  - fridex
   - goern
   - harshad16
   - kpostoffice
   - mayaCostantini
+
+emeritus_approvers:
+  - fridex  # 2022 Jun
+  - pacospace  # 2022 Mar

@@ -21,6 +21,7 @@ orgs:
       - codificat
       - EldritchJS
       - erikerlandson
+      - fridex
       - Gkrumbach07
       - Gregory-Pereira
       - HumairAK
@@ -29,14 +30,19 @@ orgs:
       - oindrillac
       - pacospace
       - schwesig
+      - shreekarSS
       - sesheta-srcops
       - Shreyanand
       - tumido
       - xtuchyna
-      - shreekarSS
     members_can_create_repositories: false
     name: Thoth Station
     repos:
+      .github:
+        description: keeps track of org README
+        has_projects: false
+        has_wiki: false
+        homepage: https://thoth-station.github.io
       adviser:
         description:
           The recommendation engine for Python software stacks and Dependency
@@ -223,6 +229,7 @@ orgs:
         has_projects: false
         has_wiki: false
       elyra-resnet:
+        archived: true
         has_projects: false
         has_wiki: false
       external-janusgraph-service:
@@ -384,6 +391,7 @@ orgs:
         has_projects: false
         has_wiki: false
       kebechet-website-tooling:
+        archived: true
         description: This is for the Kebechet website
         has_projects: false
         has_wiki: false
@@ -438,6 +446,7 @@ orgs:
         has_projects: false
         has_wiki: false
       moldavite-api:
+        archived: true
         description: Moldavite - a Project Meteor Proof-of-Concept
         has_projects: false
         has_wiki: false
@@ -463,6 +472,7 @@ orgs:
         has_wiki: false
         homepage: https://thoth-station.github.io/
       nvidia-usage-dashboard:
+        archived: true
         description: A grokket based NVIDIA usage analysis
         has_issues: false
         has_projects: false
@@ -611,6 +621,7 @@ orgs:
         has_projects: false
         has_wiki: false
       qeb-hwt:
+        archived: true
         description:
           I'm Kebechet bot, goddess of freshness - I will keep your dependencies
           fresh and up-to-date
@@ -794,12 +805,14 @@ orgs:
         has_projects: false
         has_wiki: false
       solver-errors-reporter:
+        archived: true
         description:
           Cluster solver errors collected by Thoth Dependency Solver and
           report back to take actions.
         has_projects: false
         has_wiki: false
       solver-project-url-job:
+        archived: true
         description: A job responsible for extracting project URL information out of solver documents
         has_projects: false
         has_wiki: false
@@ -839,6 +852,7 @@ orgs:
         has_projects: false
         has_wiki: false
       stub-api:
+        archived: true
         description:
           This is a project demonstrating the basic structure of a API
           Service as used by the Thoth-Station.
@@ -864,21 +878,25 @@ orgs:
         has_wiki: false
         homepage: https://tensorflow.org
       tensorflow-build-s2i:
+        archived: true
         description:
           Source-to-Image Builder Image for building Tensorflow binaries
           artifacts on OpenShift
         has_projects: false
         has_wiki: false
       tensorflow-release-api:
+        archived: true
         description: "A application to release tensorflow builds "
         has_projects: false
         has_wiki: false
       tensorflow-release-job:
+        archived: true
         description:
           A job for triggering new builds and jobs for tensorflow-build
           releases
         has_projects: false
       tensorflow-serving-build:
+        archived: true
         description: Tensorflow serving binary build
         has_projects: false
       tensorflow-symbols:
@@ -909,6 +927,10 @@ orgs:
         description: Thoth-Station ArgoCD Applications
         has_projects: false
         has_wiki: false
+      thoth-github-action:
+        description: GitHub action for communicating with thoth services
+        has_projects: false
+        has_wiki: false
       thoth-ops:
         description: This is a Red Hat internal ops repo...
         has_projects: false
@@ -916,6 +938,10 @@ orgs:
         private: true
       thoth-ops-infra:
         description: Infrastructure project to have collections of container images.
+        has_projects: false
+        has_wiki: false
+      thoth-pre-commit-hook:
+        description: Thoth adviser pre-commit hooks.
         has_projects: false
         has_wiki: false
       thoth-pybench:
@@ -942,6 +968,7 @@ orgs:
         has_wiki: false
         homepage: https://thoth-station.github.io/
       website:
+        archived: true
         description: Thoth Station public website.
         has_projects: false
         has_wiki: false
@@ -958,6 +985,7 @@ orgs:
         has_projects: false
         has_wiki: false
       workflows:
+        archived: true
         description: Argo workflows used to get certain Thoth jobs done.
         has_projects: false
         has_wiki: false
@@ -975,22 +1003,6 @@ orgs:
         has_projects: false
         has_wiki: false
     teams:
-      milestone-maintainers:
-        description: Contributors who can use `/milestone`, `/project` or `/status` commands on issues/PRs
-        maintainers:
-          - harshad16
-          - goern
-        members:
-          - codificat
-        privacy: closed
-      Cyborg-Supervisors:
-        description: These are the Humans supervising some Cyborgs
-        maintainers:
-          - goern
-          - harshad16
-        privacy: closed
-        repos:
-          termial-random: read
       Devs:
         description: We are the Devs!
         maintainers:
@@ -1006,244 +1018,124 @@ orgs:
           - Gregory-Pereira
           - KPostOffice
           - meile18
-          - pacospace
           - sesheta-srcops
           - tumido
           - xtuchyna
         privacy: closed
         repos:
+          .github: triage
+          Github-Issues-Classifier: triage
+          adviser: triage
+          aicoe-ci-pulp-upload-example: triage
+          amun-api: triage
+          amun-client: triage
+          amun-hwinfo: triage
           analyzer: triage
+          build-watcher: triage
+          buildlog-parser: triage
+          cli-examples: triage
           common: triage
+          contra-env-infra: triage
+          core: triage
+          cuda: triage
           cve-update-job: triage
           datasets: triage
+          dependency-monkey-zoo: triage
+          document-sync-job: triage
+          fext: triage
+          glyph: triage
+          graph-backup-job: triage
+          graph-metrics-exporter: triage
           graph-refresh-job: triage
           graph-sync-job: triage
+          helm-charts: triage
+          help: triage
           httpd-aicoe-container: triage
+          init-job: triage
+          integration-tests: triage
           invectio: triage
+          investigator: triage
+          isis-api: triage
+          jupyter-nbrequirements: triage
           jupyter-notebook: triage
+          jupyter-notebook-s2i: triage
+          jupyterlab-requirements: triage
+          kebechet: triage
+          lab: triage
+          license-solver: triage
           management-api: triage
+          messaging: triage
           metrics-exporter: triage
-          mi-scheduler: triage
           mi: triage
+          mi-scheduler: triage
+          micropipenv: triage
+          misc: triage
           nepthys: triage
           notebooks: triage
+          odo-devfiles-registry: triage
+          openblas: triage
+          package-extract: triage
+          package-releases-job: triage
           package-update-job: triage
           performance: triage
+          pipeline-helpers: triage
+          prescriptions: triage
           prescriptions-refresh-job: triage
+          ps-cv: triage
+          ps-ip: triage
+          ps-nlp: triage
+          pulp-metrics-exporter: triage
+          pulp-operate-first-web: triage
+          pulp-pypi-sync-job: triage
+          purge-job: triage
           python: triage
+          python-ssdeep: triage
+          ray-ml-notebook: triage
+          ray-ml-worker: triage
+          ray-operator: triage
+          report-processing: triage
+          reporter: triage
+          revsolver: triage
+          s2i: triage
+          s2i-example: triage
+          s2i-example-migration: triage
+          s2i-thoth: triage
+          search: triage
+          search-stage: triage
+          si-aggregator: triage
           si-bandit: triage
+          si-cloc: triage
+          sigstore-friends: triage
+          slo-reporter: triage
+          socrates: triage
+          solver: triage
+          solver-error-classfier: triage
+          source-management: triage
           srcops-notify-bot: triage
           srcops-testing: triage
-          stub-api: triage
+          statusfy: triage
+          statusfy-ops: triage
+          storages: triage
           stress-tests: triage
+          support: triage
+          sync-job: triage
           talks: triage
-          tensorflow-build-s2i: triage
-          tensorflow-release-api: triage
-          tensorflow-release-job: triage
+          template-project: triage
+          tensorflow: triage
+          tensorflow-symbols: triage
           termial-random: triage
-          thoth-pybench: triage
+          thamos: triage
           thoth: triage
+          thoth-application: triage
+          thoth-github-action: triage
+          thoth-ops-infra: triage
+          thoth-pre-commit-hook: triage
+          thoth-pybench: triage
+          thoth-station.github.io: triage
           twitter-together: triage
+          user-api: triage
+          website-tooling: triage
           workflow-helpers: triage
-        teams:
-          DevOps:
-            description: ""
-            maintainers:
-              - goern
-              - harshad16
-              - sesheta
-            members:
-              - tumido
-              - Gregory-Pereira
-            privacy: closed
-            repos:
-              Github-Issues-Classifier: triage
-              analyzer: triage
-              common: triage
-              cve-update-job: triage
-              datasets: triage
-              graph-refresh-job: triage
-              graph-sync-job: triage
-              httpd-aicoe-container: triage
-              invectio: triage
-              jupyter-notebook: triage
-              kebechet-website-tooling: triage
-              management-api: triage
-              metrics-exporter: triage
-              mi: triage
-              mi-scheduler: triage
-              nepthys: triage
-              notebooks: triage
-              openblas: triage
-              package-update-job: triage
-              performance: triage
-              python: triage
-              rapidsai-build: triage
-              si-bandit: triage
-              srcops-notify-bot: triage
-              srcops-testing: triage
-              statusfy: triage
-              statusfy-ops: triage
-              stub-api: triage
-              talks: triage
-              tensorflow-build-s2i: triage
-              tensorflow-release-api: triage
-              tensorflow-release-job: triage
-              termial-random: triage
-              thoth: triage
-              thoth-ops-infra: triage
-              thoth-pybench: triage
-              twitter-together: triage
-              workflow-helpers: triage
-          SourceOps:
-            description: This is our SourceOps team, they keep the source fresh.
-            maintainers:
-              - goern
-              - harshad16
-              - mayaCostantini
-            members:
-              - sesheta
-              - sesheta-srcops
-            privacy: closed
-            repos:
-              Github-Issues-Classifier: admin
-              adviser: admin
-              amun-api: admin
-              amun-client: admin
-              amun-hwinfo: admin
-              analyzer: admin
-              ash-api: admin
-              build-watcher: admin
-              buildlog-parser: admin
-              cli-examples: admin
-              common: admin
-              contra-env-infra: admin
-              core: admin
-              cve-update-job: admin
-              datasets: admin
-              fext: admin
-              glyph: admin
-              graph-backup-job: admin
-              graph-metrics-exporter: admin
-              graph-refresh-job: admin
-              graph-sync-job: admin
-              helm-charts: admin
-              help: admin
-              httpd-aicoe-container: admin
-              init-job: admin
-              integration-tests: admin
-              invectio: admin
-              investigator: admin
-              isis-api: admin
-              janusgraph-thoth-config: admin
-              jupyter-nbrequirements: admin
-              jupyter-notebook: admin
-              jupyter-notebook-s2i: admin
-              jupyter-notebooks: admin
-              jupyternb-build-pipeline: admin
-              kebechet: admin
-              kebechet-website-tooling: admin
-              lab: admin
-              management-api: admin
-              messaging: admin
-              metrics-exporter: admin
-              mi: admin
-              mi-scheduler: admin
-              microbenchmarks: admin
-              micropipenv: admin
-              misc: admin
-              moldavite-api: admin
-              naming-service: admin
-              nefertem: admin
-              nepthys: admin
-              notebooks: admin
-              nvidia-usage-dashboard: admin
-              observations: admin
-              odo-devfiles-registry: admin
-              openblas: admin
-              package-analyzer: admin
-              package-extract: admin
-              package-releases-job: admin
-              package-update-job: admin
-              performance: admin
-              prescription-sync-job: admin
-              prescriptions-gh-release-notes-job: admin
-              prescriptions-refresh-job: admin
-              prescriptions: admin
-              prometheus-pushgateway: admin
-              ps-cv: admin
-              ps-ip: admin
-              ps-nlp: admin
-              pulp-metrics-exporter: admin
-              pulp-pypi-sync-job: admin
-              python: admin
-              python-ssdeep: admin
-              qeb-hwt: admin
-              ray-ml-notebook: admin
-              ray-ml-worker: admin
-              ray-operator: admin
-              rapidsai-build: admin
-              report-processing: admin
-              report-visualization: admin
-              reporter: admin
-              result-api: admin
-              revsolver: admin
-              s2i: admin
-              s2i-example: admin
-              s2i-example-flask: admin
-              s2i-example-migration: admin
-              s2i-generic-data-science-notebook: admin
-              s2i-minimal-notebook: admin
-              s2i-python-container: admin
-              s2i-scipy-notebook: admin
-              s2i-tensorflow-notebook: admin
-              s2i-thoth: admin
-              search: admin
-              sentry-openshift: admin
-              si-aggregator: admin
-              si-bandit: admin
-              si-cloc: admin
-              slo-reporter: admin
-              socrates: admin
-              solver: admin
-              solver-error-classfier: admin
-              solver-errors-reporter: admin
-              solver-project-url-job: admin
-              source-management: admin
-              srcops-notify-bot: admin
-              srcops-testing: admin
-              statusfy: admin
-              statusfy-ops: admin
-              storages: admin
-              stress-tests: admin
-              stub-api: admin
-              support: admin
-              sync-job: admin
-              talks: admin
-              template-project: admin
-              tensorflow: admin
-              tensorflow-build-s2i: admin
-              tensorflow-release-api: admin
-              tensorflow-release-job: admin
-              tensorflow-serving-build: admin
-              termial-random: admin
-              test-infra: admin
-              thamos: admin
-              thoth: admin
-              thoth-application: admin
-              thoth-ops: admin
-              thoth-ops-infra: admin
-              thoth-pybench: admin
-              thoth-station.github.io: admin
-              thoth-toolbox: admin
-              twitter-together: admin
-              user-api: admin
-              website: admin
-              workflow-helpers: admin
-              workflows: admin
-              workload-operator: admin
-              zuul-config: admin
-              zuul-jobs: admin
       frameworks:
         description:
           this is about AICoE - AI/ML Frameworks (TensorFlow, PyTorch,
@@ -1257,4 +1149,20 @@ orgs:
           nvidia-usage-dashboard: write
           rapidsai-build: read
           tensorflow-build-s2i: write
+          termial-random: read
+      milestone-maintainers:
+        description: Contributors who can use `/milestone`, `/project` or `/status` commands on issues/PRs
+        maintainers:
+          - harshad16
+          - goern
+        members:
+          - codificat
+        privacy: closed
+      Cyborg-Supervisors:
+        description: These are the Humans supervising some Cyborgs
+        maintainers:
+          - goern
+          - harshad16
+        privacy: closed
+        repos:
           termial-random: read
