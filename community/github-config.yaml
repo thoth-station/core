@@ -860,7 +860,7 @@ orgs:
         has_wiki: false
       support:
         description: "ℹ Any Thoth related support questions"
-        has_projects: false
+        has_projects: true
         has_wiki: false
       sync-job:
         description: A one time job to sync all Thoth data
