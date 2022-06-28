@@ -826,7 +826,7 @@ orgs:
         has_wiki: false
       srcops-testing:
         description: This is a SrcOps test repository
-        has_projects: false
+        has_projects: true
         has_wiki: false
       statusfy:
         description: I show the status of services of the Thoth Station
