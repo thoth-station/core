@@ -41,21 +41,13 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 ## Subprojects
 
 The following [subprojects][subproject-definition] are owned by sig-observability:
-### advise-reporter
+### Monitoring
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
-### investigator-exporter
-- **Owners:**
   - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
-### metrics-exporter
-- **Owners:**
   - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
-### monitoring/alerting
-- **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
-### slo-reporter
-- **Owners:**
   - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->

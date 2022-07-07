@@ -34,23 +34,39 @@ sigs:
       github: goern
       name: Christoph Görn
   subprojects:
-  - name: build-pipelines
+  - name: Notebooks
+    description: A set of base images that are useful for Data Science work
+    owners:
+    - https://raw.githubusercontent.com/thoth-station/ps-cv/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/ps-ip/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/ps-nlp/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/ray-ml-notebook/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/ray-ml-worker/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/ray-operator/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-data-science-notebook/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-minimal-notebook/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-pytorch-notebook/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-scipy-notebook/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-tensorflow-gpu-notebook/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-tensorflow-notebook/master/OWNERS
+  - name: Pipelines
     description: |
       A set of base images and pipelines to build application container images
     owners:
     - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
     - https://raw.githubusercontent.com/thoth-station/helm-charts/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/jupyternb-build-pipeline/master/OWNERS
     - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
-    - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
-  - name: opf-ci-prow
-    description: |
-      Continuous Integration infrastructure for the project, using prow
+  - name: Services
+    description: Tooling and configuration to manage the releases of various Thoth
+      services and components
     owners:
-    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
-  - name: thoth-application
-    description: Release management for Thoth components
-    owners:
+    - https://raw.githubusercontent.com/AICoE/sefkhet-abwy/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/s2i-thoth/master/OWNERS
     - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/thoth-ops/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/thoth-toolbox/master/OWNERS
 - dir: sig-observability
   name: Observability
   mission_statement: >
@@ -80,21 +96,13 @@ sigs:
       github: goern
       name: Christoph Görn
   subprojects:
-  - name: advise-reporter
+  - name: Monitoring
     owners:
     - https://raw.githubusercontent.com/thoth-station/advise-reporter/master/OWNERS
-  - name: investigator-exporter
-    owners:
     - https://raw.githubusercontent.com/thoth-station/investigator/master/OWNERS
-  - name: metrics-exporter
-    owners:
     - https://raw.githubusercontent.com/thoth-station/metrics-exporter/master/OWNERS
-  - name: monitoring/alerting
-    owners:
-    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
-  - name: slo-reporter
-    owners:
     - https://raw.githubusercontent.com/thoth-station/slo-reporter/master/OWNERS
+    - https://raw.githubusercontent.com/thoth-station/thoth-application/master/monitoring/OWNERS
 - dir: sig-stack-guidance
   name: Stack Guidance
   mission_statement: >

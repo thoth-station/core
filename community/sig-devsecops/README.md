@@ -43,21 +43,37 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 ## Subprojects
 
 The following [subprojects][subproject-definition] are owned by sig-devsecops:
-### build-pipelines
+### Notebooks
+A set of base images that are useful for Data Science work
+- **Owners:**
+  - https://raw.githubusercontent.com/thoth-station/ps-cv/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/ps-ip/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/ps-nlp/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/ray-ml-notebook/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/ray-ml-worker/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/ray-operator/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-data-science-notebook/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-minimal-notebook/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-pytorch-notebook/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-scipy-notebook/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-tensorflow-gpu-notebook/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-tensorflow-notebook/master/OWNERS
+### Pipelines
 A set of base images and pipelines to build application container images
 - **Owners:**
   - https://raw.githubusercontent.com/AICoE/aicoe-ci/master/OWNERS
   - https://raw.githubusercontent.com/thoth-station/helm-charts/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/jupyternb-build-pipeline/master/OWNERS
   - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
-  - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
-### opf-ci-prow
-Continuous Integration infrastructure for the project, using prow
+### Services
+Tooling and configuration to manage the releases of various Thoth services and components
 - **Owners:**
-  - https://raw.githubusercontent.com/thoth-station/thoth-application/master/prow/OWNERS
-### thoth-application
-Release management for Thoth components
-- **Owners:**
+  - https://raw.githubusercontent.com/AICoE/sefkhet-abwy/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/s2i-thoth/master/OWNERS
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/thoth-ops/master/OWNERS
+  - https://raw.githubusercontent.com/thoth-station/thoth-toolbox/master/OWNERS
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->
