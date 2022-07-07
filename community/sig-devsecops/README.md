@@ -17,7 +17,9 @@ This includes the discussion related to the release process of the Thoth-Station
 
 The [charter](charter.md) defines the scope and governance of the DevSecOps Special Interest Group.
 
-
+## Meetings
+* Thoth DevSecOps Meeting: [Thursdays at 15:30 UTC (Coordinated Universal Time)](https://meet.google.com/ozb-tbrp-agx) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:30&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+  * [Meeting notes and Agenda](https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit).
 
 ## Leadership
 
@@ -48,9 +50,6 @@ A set of base images and pipelines to build application container images
   - https://raw.githubusercontent.com/thoth-station/helm-charts/master/OWNERS
   - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
   - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
-- **Meetings:**
-  - Pipelines Meeting: [Thursdays at 12:00 ET (Eastern Time)](https://meet.google.com/ozb-tbrp-agx) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=12:00&tz=ET%20%28Eastern%20Time%29).
-    - [Meeting notes and Agenda](https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit#).
 ### opf-ci-prow
 Continuous Integration infrastructure for the project, using prow
 - **Owners:**
@@ -59,9 +58,6 @@ Continuous Integration infrastructure for the project, using prow
 Release management for Thoth components
 - **Owners:**
   - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
-- **Meetings:**
-  - Thoth Release Meeting: [Wednesdays at 14:00 UTC (Coordinated Universal Time)](https://meet.google.com/kro-zbcc-xpd) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
-    - [Meeting notes and Agenda](https://docs.google.com/document/d/1jSDY8tzQ4a1RHiXdIHgS0ywkkpQDJdKpTJWM6u1Z5iM/edit).
 
 [subproject-definition]: https://github.com/kubernetes/community/blob/master/governance.md#subprojects
 <!-- BEGIN CUSTOM CONTENT -->

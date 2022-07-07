@@ -17,7 +17,7 @@ Work on all things that concern Observability! This includes the definition of m
 The [charter](charter.md) defines the scope and governance of the Observability Special Interest Group.
 
 ## Meetings
-* Thoth Observability Meeting: [Tuesdays at 14:00 UTC (Coordinated Universal Time)](meet.google.com/xaq-nhrm-gaq) (bi-weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+* Thoth Observability Meeting (joint with DevSecOps): [Thursdays at 15:30 UTC (Coordinated Universal Time)](https://meet.google.com/ozb-tbrp-agx) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:30&tz=UTC%20%28Coordinated%20Universal%20Time%29).
 
 ## Leadership
 
@@ -25,14 +25,14 @@ The [charter](charter.md) defines the scope and governance of the Observability 
 
 The Chairs of the SIG run operations and processes governing the SIG.
 
-* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
+* Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
 
 ### Technical Leads
 
 The Technical Leads of the SIG establish new subprojects, decommission existing
 subprojects, and resolve cross-subproject technical issues and decisions.
 
-* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
+* Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
 
 ## Contact
 - [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fobservability)

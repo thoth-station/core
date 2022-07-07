@@ -21,7 +21,14 @@ sigs:
     - github: harshad16
       name: Harshad Nalla
       company: Red Hat
-  meetings: []
+  meetings:
+  - description: Thoth DevSecOps Meeting
+    day: Thursday
+    time: "15:30"
+    tz: UTC (Coordinated Universal Time)
+    frequency: weekly
+    url: https://meet.google.com/ozb-tbrp-agx
+    archive_url: https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit
   contact:
     liaison:
       github: goern
@@ -35,14 +42,6 @@ sigs:
     - https://raw.githubusercontent.com/thoth-station/helm-charts/master/OWNERS
     - https://raw.githubusercontent.com/thoth-station/pipeline-helpers/master/OWNERS
     - https://raw.githubusercontent.com/thoth-station/thoth-ops-infra/master/OWNERS
-    meetings:
-    - description: Pipelines Meeting
-      day: Thursday
-      time: "12:00"
-      tz: ET (Eastern Time)
-      frequency: weekly
-      url: https://meet.google.com/ozb-tbrp-agx
-      archive_url: https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit#
   - name: opf-ci-prow
     description: |
       Continuous Integration infrastructure for the project, using prow
@@ -52,14 +51,6 @@ sigs:
     description: Release management for Thoth components
     owners:
     - https://raw.githubusercontent.com/thoth-station/thoth-application/master/OWNERS
-    meetings:
-    - description: Thoth Release Meeting
-      day: Wednesday
-      time: "14:00"
-      tz: UTC (Coordinated Universal Time)
-      frequency: bi-weekly
-      url: https://meet.google.com/kro-zbcc-xpd
-      archive_url: https://docs.google.com/document/d/1jSDY8tzQ4a1RHiXdIHgS0ywkkpQDJdKpTJWM6u1Z5iM/edit
 - dir: sig-observability
   name: Observability
   mission_statement: >
@@ -70,20 +61,20 @@ sigs:
   label: observability
   leadership:
     chairs:
-    - github: pacospace
-      name: Francesco Murdaca
+    - github: harshad16
+      name: Harshad Nalla
       company: Red Hat
     tech_leads:
-    - github: pacospace
-      name: Francesco Murdaca
+    - github: harshad16
+      name: Harshad Nalla
       company: Red Hat
   meetings:
-  - description: Thoth Observability Meeting
-    day: Tuesday
-    time: "14:00"
+  - description: Thoth Observability Meeting (joint with DevSecOps)
+    day: Thursday
+    time: "15:30"
     tz: UTC (Coordinated Universal Time)
-    frequency: bi-weekly
-    url: meet.google.com/xaq-nhrm-gaq
+    frequency: weekly
+    url: https://meet.google.com/ozb-tbrp-agx
   contact:
     liaison:
       github: goern

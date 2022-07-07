@@ -33,8 +33,8 @@ Each group's material is in its subdirectory in this project.
 
 | Name | Label | Chairs | Contact | Meetings |
 |------|-------|--------|---------|----------|
-|[DevSecOps](sig-devsecops/README.md)|devsecops|* [Harshad Nalla](https://github.com/harshad16), Red Hat<br>|* (build-pipelines) Pipelines Meeting: [Thursdays at 12:00 ET (Eastern Time) (weekly)](https://meet.google.com/ozb-tbrp-agx)<br>* (thoth-application) Thoth Release Meeting: [Wednesdays at 14:00 UTC (Coordinated Universal Time) (bi-weekly)](https://meet.google.com/kro-zbcc-xpd)<br>
-|[Observability](sig-observability/README.md)|observability|* [Francesco Murdaca](https://github.com/pacospace), Red Hat<br>|* Thoth Observability Meeting: [Tuesdays at 14:00 UTC (Coordinated Universal Time) (bi-weekly)](meet.google.com/xaq-nhrm-gaq)<br>
+|[DevSecOps](sig-devsecops/README.md)|devsecops|* [Harshad Nalla](https://github.com/harshad16), Red Hat<br>|* Thoth DevSecOps Meeting: [Thursdays at 15:30 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/ozb-tbrp-agx)<br>
+|[Observability](sig-observability/README.md)|observability|* [Harshad Nalla](https://github.com/harshad16), Red Hat<br>|* Thoth Observability Meeting (joint with DevSecOps): [Thursdays at 15:30 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/ozb-tbrp-agx)<br>
 |[Stack Guidance](sig-stack-guidance/README.md)|stack-guidance|* [Fridolín Pokorný](https://github.com/fridex), Red Hat<br>* [Maya Costantini](https://github.com/mayaCostantini), Red Hat<br>|* SIG Stack Guidance Meeting: [Mondays at 14:00 UTC (Coordinated Universal Time) (weekly)](meet.google.com/umj-bgfi-ouo)<br>
 |[User Experience](sig-user-experience/README.md)|user-experience|* [Gage Krumbach](https://github.com/Gkrumbach07), Red Hat<br>|* SIG User Experience Office Hours: [Tuesdays at 13:00 UTC (Coordinated Universal Time) (weekly)](https://meet.google.com/cde-iczf-zso)<br>
 
