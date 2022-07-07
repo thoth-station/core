@@ -34,6 +34,7 @@ orgs:
       - sesheta-srcops
       - Shreyanand
       - tumido
+      - VannTen
       - xtuchyna
     members_can_create_repositories: false
     name: Thoth Station
@@ -1020,6 +1021,7 @@ orgs:
           - meile18
           - sesheta-srcops
           - tumido
+          - VannTen
           - xtuchyna
         privacy: closed
         repos:
