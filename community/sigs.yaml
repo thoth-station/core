@@ -159,20 +159,21 @@ sigs:
   label: user-experience
   leadership:
     chairs:
-    - github: goern
-      name: Christoph Görn
+    - github: Gkrumbach07
+      name: Gage Krumbach
       company: Red Hat
     tech_leads:
-    - github: pacospace
-      name: Francesco Murdaca
+    - github: Gkrumbach07
+      name: Gage Krumbach
       company: Red Hat
   meetings:
-  - description: Let's talk Thoth Tech
-    day: Thursday
-    time: "15:00"
+  - description: SIG User Experience Office Hours
+    day: Tuesday
+    time: "13:00"
     tz: UTC (Coordinated Universal Time)
     frequency: weekly
-    url: https://meet.google.com/kxd-axiz-tym
+    url: https://meet.google.com/cde-iczf-zso
+    archive_url: https://docs.google.com/document/d/1shJ5C_1Z3RT-mFdnrDmntIxGj5BmdlACfrwxoKd0CSY/edit
   contact:
     liaison:
       github: goern

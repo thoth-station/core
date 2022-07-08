@@ -17,7 +17,8 @@ The User Experience SIG focuses on the interaction points between end users and 
 The [charter](charter.md) defines the scope and governance of the User Experience Special Interest Group.
 
 ## Meetings
-* Let's talk Thoth Tech: [Thursdays at 15:00 UTC (Coordinated Universal Time)](https://meet.google.com/kxd-axiz-tym) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+* SIG User Experience Office Hours: [Tuesdays at 13:00 UTC (Coordinated Universal Time)](https://meet.google.com/cde-iczf-zso) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=13:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+  * [Meeting notes and Agenda](https://docs.google.com/document/d/1shJ5C_1Z3RT-mFdnrDmntIxGj5BmdlACfrwxoKd0CSY/edit).
 
 ## Leadership
 
@@ -25,14 +26,14 @@ The [charter](charter.md) defines the scope and governance of the User Experienc
 
 The Chairs of the SIG run operations and processes governing the SIG.
 
-* Christoph Görn (**[@goern](https://github.com/goern)**), Red Hat
+* Gage Krumbach (**[@Gkrumbach07](https://github.com/Gkrumbach07)**), Red Hat
 
 ### Technical Leads
 
 The Technical Leads of the SIG establish new subprojects, decommission existing
 subprojects, and resolve cross-subproject technical issues and decisions.
 
-* Francesco Murdaca (**[@pacospace](https://github.com/pacospace)**), Red Hat
+* Gage Krumbach (**[@Gkrumbach07](https://github.com/Gkrumbach07)**), Red Hat
 
 ## Contact
 - [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fuser-experience)
