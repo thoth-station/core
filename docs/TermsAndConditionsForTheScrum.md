@@ -14,7 +14,7 @@ progress’ list).
 
 An Issue must meet minimum [quality standards](#quality) before it can be worked.
 
-We have a list of [Github Projects](https://github.com/orgs/thoth-station/projects) to cluster issues into contexts, there is no hard requirement that all issues must not be on a project, some of them can just stay
+We have a list of [Github Projects](https://github.com/orgs/thoth-station/projects) to cluster issues into contexts, there is no hard requirement that all issues must be on a project, some of them can just stay
 within a repository.
 
 Issues are managed on GitHub, we use [labels](../community/labels.md).
