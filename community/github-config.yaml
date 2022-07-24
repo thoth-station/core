@@ -1138,6 +1138,110 @@ orgs:
           user-api: triage
           website-tooling: triage
           workflow-helpers: triage
+      SigChairs:
+        description: Team of SIG Chairs!
+        maintainers:
+          - goern
+          - codificat
+          - sesheta
+        members:
+          - mayaCostantini
+          - harshad16
+          - Gkrumbach07
+          - KPostOffice
+        privacy: closed
+        repos:
+          Github-Issues-Classifier: write
+          adviser: write
+          aicoe-ci-pulp-upload-example: write
+          amun-api: write
+          amun-client: write
+          amun-hwinfo: write
+          analyzer: write
+          build-watcher: write
+          buildlog-parser: write
+          cli-examples: write
+          common: write
+          contra-env-infra: write
+          core: write
+          cuda: write
+          cve-update-job: write
+          datasets: write
+          dependency-monkey-zoo: write
+          document-sync-job: write
+          fext: write
+          glyph: write
+          graph-backup-job: write
+          graph-metrics-exporter: write
+          graph-refresh-job: write
+          graph-sync-job: write
+          helm-charts: write
+          help: write
+          httpd-aicoe-container: write
+          init-job: write
+          integration-tests: write
+          invectio: write
+          investigator: write
+          isis-api: write
+          jupyter-nbrequirements: write
+          jupyter-notebook: write
+          jupyter-notebook-s2i: write
+          jupyterlab-requirements: write
+          kebechet: write
+          lab: write
+          license-solver: write
+          management-api: write
+          messaging: write
+          metrics-exporter: write
+          mi: write
+          mi-scheduler: write
+          micropipenv: write
+          misc: write
+          nepthys: write
+          notebooks: write
+          package-extract: write
+          package-releases-job: write
+          package-update-job: write
+          performance: write
+          pipeline-helpers: write
+          prescriptions: write
+          prescriptions-refresh-job: write
+          ps-cv: write
+          ps-ip: write
+          ps-nlp: write
+          pulp-metrics-exporter: write
+          pulp-operate-first-web: write
+          pulp-pypi-sync-job: write
+          purge-job: write
+          python: write
+          report-processing: write
+          reporter: write
+          revsolver: write
+          s2i-thoth: write
+          search: write
+          search-stage: write
+          si-aggregator: write
+          si-bandit: write
+          si-cloc: write
+          slo-reporter: write
+          socrates: write
+          solver: write
+          solver-error-classfier: write
+          source-management: write
+          srcops-notify-bot: write
+          srcops-testing: write
+          storages: write
+          stress-tests: write
+          support: write
+          sync-job: write
+          template-project: write
+          tensorflow-symbols: write
+          thamos: write
+          thoth-application: write
+          thoth-github-action: write
+          thoth-station.github.io: write
+          user-api: write
+          workflow-helpers: write
       frameworks:
         description:
           this is about AICoE - AI/ML Frameworks (TensorFlow, PyTorch,
@@ -1160,11 +1264,3 @@ orgs:
         members:
           - codificat
         privacy: closed
-      Cyborg-Supervisors:
-        description: These are the Humans supervising some Cyborgs
-        maintainers:
-          - goern
-          - harshad16
-        privacy: closed
-        repos:
-          termial-random: read
