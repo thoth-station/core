@@ -14,7 +14,7 @@ orgs:
       Using Artificial Intelligence to analyse and recommend Software Stacks
       for the Python Ecosystem.
     has_organization_projects: true
-    has_repository_projects: false
+    has_repository_projects: true
     location: Earth (any shape)
     members:
       - 4n4nd
