@@ -21,11 +21,15 @@ Issues are managed on GitHub, we use [labels](../community/labels.md).
 
 Issues can belong to one of Thoth's [Special Interest Groups (SIGs)](../community/sig-list.md). These should have the corresponding `sig/` label and be tracked in the corresponding SIG's project.
 
+<a name="triage"></a>
 # Issue triage
 
 Everyone is encouraged to assist in making sure every issue meets good quality standards, starting with the person who creates the issue.
 
 The process of issue triaging involves making sure that the issues have enough quality.
+
+Issues relevant to a particular SIG should be placed in that SIG project board,
+in the New column.
 
 Ultimately, SIGs are responsible for ensuring that the issues relevant to their SIGs have an adequate quality.
 
