@@ -957,6 +957,10 @@ orgs:
         description: This is a Thoth tool box! A toolbox of Thoth tools...
         has_projects: false
         has_wiki: false
+      ttm-as-a-service:
+        description: This is a service that implements the time to merge model (ttm)
+        has_projects: false
+        has_wiki: false
       twitter-together:
         default_branch: main
         description: This is our place to tweet together...
@@ -1134,6 +1138,7 @@ orgs:
           thoth-pre-commit-hook: triage
           thoth-pybench: triage
           thoth-station.github.io: triage
+          ttm-as-a-service: triage
           twitter-together: triage
           user-api: triage
           website-tooling: triage
