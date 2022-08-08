@@ -3,6 +3,9 @@
 approvers:
   - goern
   - harshad16
-  - pacospace
+  - codificat
 reviewers:
   - kpostoffice
+
+emeritus_approvers:
+  - pacospace  # 2022 Mar
