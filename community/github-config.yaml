@@ -1173,3 +1173,23 @@ orgs:
         privacy: closed
         repos:
           termial-random: read
+      sig-devsecops-leads:
+        description: SIG/DevSecOps leads
+        maintainers:
+          - harshad16
+        privacy: closed
+      sig-observability-leads:
+        description: SIG/Observability leads
+        maintainers:
+          - harshad16
+        privacy: closed
+      sig-stack-guidance-leads:
+        description: SIG/Stack-Guidance leads
+        maintainers:
+          - mayaCostantini
+        privacy: closed
+      sig-user-experience-leads:
+        description: SIG/User-Experience leads
+        maintainers:
+          - Gkrumbach07
+        privacy: closed
