@@ -3,6 +3,11 @@
 approvers:
   - goern
   - harshad16
+
+emeritus_approvers:
   - pacospace
+
 reviewers:
   - kpostoffice
+  - vannten
+  - mayaCostantini
