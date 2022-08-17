@@ -17,7 +17,6 @@ orgs:
     has_repository_projects: true
     location: Earth (any shape)
     members:
-      - 4n4nd
       - codificat
       - EldritchJS
       - erikerlandson
@@ -27,7 +26,6 @@ orgs:
       - KPostOffice
       - meile18
       - oindrillac
-      - pacospace
       - schwesig
       - shreekarSS
       - sesheta-srcops
