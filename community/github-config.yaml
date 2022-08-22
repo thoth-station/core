@@ -490,6 +490,10 @@ orgs:
         description: OpenBLAS s2i
         has_projects: false
         has_wiki: false
+      opendatahub-cnbi:
+        description: A repository for the OpenDataHub CNBi feature.
+        has_projects: false
+        has_wiki: false
       osiris:
         archived: true
         description:
@@ -1077,6 +1081,7 @@ orgs:
           notebooks: triage
           odo-devfiles-registry: triage
           openblas: triage
+          opendatahub-cnbi: triage
           package-extract: triage
           package-releases-job: triage
           package-update-job: triage
