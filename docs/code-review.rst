@@ -1,19 +1,18 @@
 Code Review
 -----------
 
-For all our projects of the `Thoth
-Station <http://thoth-station.ninja/>`__ we require code reviews before
-merging the code. We use `Zuul <https://zuul-ci.org/>`__ to implement
-`project gating <https://zuul-ci.org/docs/zuul/user/gating.html>`__.
+For all our projects of the `Thoth Station <http://thoth-station.ninja/>`__ we
+require code reviews before merging the code. We use `Prow <
+https://github.com/kubernetes/test-infra/tree/master/prow >`__ to implement
+project gating with `Tide
+<https://github.com/kubernetes/test-infra/blob/master/prow/cmd/tide/README.md>`__.
 
-Code is merged by zuul, but before a pull request is merged, zuul runs
+
+Code is merged by prow, but before a pull request is merged, Prow runs
 all project specific jobs of the so called ‘gate pipeline’. If all jobs
 are successful, code is merged. If a job fails, the pull request will
 get a comment added and the pipeline finishs without merging.
 
-The requirements and triggers for the gate pipeline are defined by
-`zuul-config’s gate
-pipeline <https://github.com/thoth-station/zuul-test-config/blob/master/zuul.d/_pipelines.yaml#L45-L55>`__:
 
 Requirements
 ~~~~~~~~~~~~
@@ -26,11 +25,15 @@ The following requirements must be met to start merging a Pull Request:
 -  the ‘approved’
    `label <https://help.github.com/articles/about-labels/>`__ must be
    set
--  `thoth-zuul <https://github.com/apps/thoth-zuul>`__\ ’s local/check
-   must be successful
+-  Prow's local/check must be successful
 
 Triggers
 ~~~~~~~~
 
-Whenever the Pull Request changes state, Zuul reevaluates if the
+Whenever the Pull Request changes state, Prow reevaluates if the
 Requirements to run the jobs ob the gate pipeline are met.
+
+
+Prow configuration
+~~~~~~~~~~~~~~~~~~
+See https://github.com/operate-first/apps/blob/master/prow/overlays/smaug/config.yaml
