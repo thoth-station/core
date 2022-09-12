@@ -114,9 +114,6 @@ sigs:
   label: stack-guidance
   leadership:
     chairs:
-    - github: fridex
-      name: Fridolín Pokorný
-      company: Red Hat
     - github: mayaCostantini
       name: Maya Costantini
       company: Red Hat
