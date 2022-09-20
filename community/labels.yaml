@@ -514,7 +514,7 @@ repos:
   thoth-station/core:
     labels:
       - color: c7def8
-        description: This is a Key Result we want to archieve.
+        description: This is a Key Result we want to achieve.
         name: kind/key-result
         target: issue
         prowPlugin: label
