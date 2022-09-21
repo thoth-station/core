@@ -415,7 +415,7 @@ orgs:
         has_projects: false
         has_wiki: false
       meteor-operator:
-        description: Project meteor - operator
+        description: Project Meteor Operator for OpenShift
         has_projects: false
         has_wiki: false
       metrics-exporter:
@@ -485,6 +485,12 @@ orgs:
       observations:
         archived: true
         description: Observations from Build Logs
+        has_projects: false
+        has_wiki: false
+      odh-dashboard:
+        description:
+          A dashboard for Open Data Hub, a data science platform on top of
+          OpenShift
         has_projects: false
         has_wiki: false
       odo-devfiles-registry:
@@ -1024,8 +1030,6 @@ orgs:
           - sesheta
         members:
           - codificat
-          - EldritchJS
-          - erikerlandson
           - Gkrumbach07
           - Gregory-Pereira
           - KPostOffice
