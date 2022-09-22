@@ -52,7 +52,7 @@ larger set of contributors to apply/remove them.
 | <a id="bot" href="#bot">`bot`</a> | This Issue or PR is being worked on by a bot| human or bot |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-stage" href="#deployment_name/ocp4-stage">`deployment_name/ocp4-stage`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-stage`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="deployment_name/ocp4-test" href="#deployment_name/ocp4-test">`deployment_name/ocp4-test`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/ocp-test`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
-| <a id="deployment_name/zero-prod" href="#deployment_name/zero-prod">`deployment_name/zero-prod`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/moc`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="deployment_name/prod" href="#deployment_name/prod">`deployment_name/prod`</a> | This Issue or PR is related to a specific deployment. <br><br> This was previously `deployment_name/zero-prod`, `deployment_name/moc`, | human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="kind/bug" href="#kind/bug">`kind/bug`</a> | Categorizes issue or PR as related to a bug. <br><br> This was previously `bug`, | anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="kind/cleanup" href="#kind/cleanup">`kind/cleanup`</a> | Categorizes issue or PR as related to cleaning up code, process, or technical debt.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="kind/demo" href="#kind/demo">`kind/demo`</a> | This is an Issue or PR someone want to give a demo or request a demo.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
@@ -80,6 +80,7 @@ larger set of contributors to apply/remove them.
 | <a id="triage/needs-information" href="#triage/needs-information">`triage/needs-information`</a> | Indicates an issue needs more information in order to work on it. <br><br> This was previously `close/needs-information`, | humans | |
 | <a id="triage/not-reproducible" href="#triage/not-reproducible">`triage/not-reproducible`</a> | Indicates an issue can not be reproduced as described. <br><br> This was previously `close/not-reproducible`, | humans | |
 | <a id="triage/unresolved" href="#triage/unresolved">`triage/unresolved`</a> | Indicates an issue that can not or will not be resolved. <br><br> This was previously `close/unresolved`, `invalid`, `wontfix`, | humans | |
+| <a id="wg/cnbi" href="#wg/cnbi">`wg/cnbi`</a> | Issues or PRs related to the Custom Notebook Image ODH feature.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="¯\_(ツ)_/¯" href="#¯\_(ツ)_/¯">`¯\_(ツ)_/¯`</a> | ¯\\\_(ツ)_/¯| humans |  [shrug](https://git.k8s.io/test-infra/prow/plugins/shrug) |
 ## Labels that apply to all repos, only for issues
 
