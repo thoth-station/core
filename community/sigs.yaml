@@ -190,6 +190,36 @@ sigs:
   - name: user-api
     owners:
     - https://raw.githubusercontent.com/thoth-station/user-api/master/OWNERS
-workinggroups: []
+workinggroups:
+- dir: wg-cnbi
+  name: CNBi
+  mission_statement: >
+    The goal of this working group is to create a service that implements the backend
+    side of the Custom Notebook Image (CNBi) MVP in the context of Open Data Hub (ODH).
+
+  charter_link: charter.md
+  stakeholder_sigs:
+  - DevSecOps
+  - Stack Guidance
+  - User Experience
+  label: cnbi
+  leadership:
+    chairs:
+    - github: goern
+      name: Christoph Görn
+      company: Red Hat
+  meetings:
+  - description: Regular CNBi Meeting
+    day: Wednesday
+    time: "14:00"
+    tz: UTC
+    frequency: weekly
+    url: https://meet.google.com/cyo-imtt-twa
+    archive_url: https://docs.google.com/document/d/1NQJ2gv6lYTcgxFh2nTlVZpGVh1nb2C43yqPh7igvRRM/edit
+  contact:
+    slack: wg-custom-notebook-images
+    liaison:
+      github: codificat
+      name: Pep Turró Mauri
 usergroups: []
 committees: []
