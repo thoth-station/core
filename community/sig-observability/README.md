@@ -35,7 +35,7 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Harshad Nalla (**[@harshad16](https://github.com/harshad16)**), Red Hat
 
 ## Contact
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fobservability)
+- [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/sig%2Fobservability)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects

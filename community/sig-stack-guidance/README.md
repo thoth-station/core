@@ -35,7 +35,7 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Maya Costantini (**[@mayaCostantini](https://github.com/mayaCostantini)**), Red Hat
 
 ## Contact
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fstack-guidance)
+- [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/sig%2Fstack-guidance)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects

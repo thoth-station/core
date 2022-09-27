@@ -29,8 +29,8 @@ The [charter](charter.md) defines the scope and governance of the CNBi Working G
 * Christoph Görn (**[@goern](https://github.com/goern)**), Red Hat
 
 ## Contact
-- Slack: [#wg-custom-notebook-images](https://kubernetes.slack.com/messages/wg-custom-notebook-images)
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/wg%2Fcnbi)
+- Slack: [#wg-custom-notebook-images](https://odh-io.slack.com/messages/wg-custom-notebook-images)
+- [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/wg%2Fcnbi)
 - Steering Committee Liaison: Pep Turró Mauri (**[@codificat](https://github.com/codificat)**)
 <!-- BEGIN CUSTOM CONTENT -->
 

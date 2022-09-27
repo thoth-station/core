@@ -36,7 +36,7 @@ subprojects, and resolve cross-subproject technical issues and decisions.
 * Gage Krumbach (**[@Gkrumbach07](https://github.com/Gkrumbach07)**), Red Hat
 
 ## Contact
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/sig%2Fuser-experience)
+- [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/sig%2Fuser-experience)
 - Steering Committee Liaison: Christoph Görn (**[@goern](https://github.com/goern)**)
 
 ## Subprojects
