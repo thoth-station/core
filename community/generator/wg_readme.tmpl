@@ -43,18 +43,18 @@ The [charter]({{.CharterLink}}) defines the scope and governance of the {{.Name}
 
 ## Contact
 {{- if .Contact.Slack }}
-- Slack: [#{{.Contact.Slack}}](https://kubernetes.slack.com/messages/{{.Contact.Slack}})
+- Slack: [#{{.Contact.Slack}}](https://odh-io.slack.com/messages/{{.Contact.Slack}})
 {{- end }}
 {{- if .Contact.MailingList }}
 - [Mailing list]({{.Contact.MailingList}})
 {{- end }}
 {{- if .Label }}
-- [Open Community Issues/PRs](https://github.com/kubernetes/community/labels/wg%2F{{.Label}})
+- [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/wg%2F{{.Label}})
 {{- end }}
 {{- if .Contact.GithubTeams }}
 - GitHub Teams:
 {{- range .Contact.GithubTeams }}
-    - [@kubernetes/{{.Name}}](https://github.com/orgs/kubernetes/teams/{{.Name}}) {{- if .Description }} - {{.Description}} {{- end}}
+    - [@kubernetes/{{.Name}}](https://github.com/orgs/thoth-station/teams/{{.Name}}) {{- if .Description }} - {{.Description}} {{- end}}
 {{- end }}
 {{- end }}
 {{- if .Contact.Liaison.Name }}

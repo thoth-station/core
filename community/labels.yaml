@@ -406,6 +406,13 @@ default:
         - name: sig/docs
       prowPlugin: label
       target: both
+    - addedBy: human
+      color: 0052cc
+      description:
+        Issues or PRs related to the Custom Notebook Image ODH feature.
+      name: wg/cnbi
+      prowPlugin: label
+      target: both
 
     - color: 8fc951
       description: Indicates an issue or PR is ready to be actively worked on.
