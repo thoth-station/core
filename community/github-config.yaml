@@ -315,6 +315,7 @@ orgs:
         has_wiki: false
         homepage: http://softwarecollections.org
       image-pusher:
+        archived: true
         description: Push images to an external registry from internal OpenShift registry
         has_projects: false
         has_wiki: false
@@ -411,6 +412,10 @@ orgs:
         has_wiki: false
       messaging:
         description: This is Thoth messaging, I will send my knowledge to the Universe!
+        has_projects: false
+        has_wiki: false
+      meteor-operator:
+        description: Project meteor - operator
         has_projects: false
         has_wiki: false
       metrics-exporter:
@@ -1074,6 +1079,7 @@ orgs:
           license-solver: triage
           management-api: triage
           messaging: triage
+          meteor-operator: triage
           metrics-exporter: triage
           mi: triage
           mi-scheduler: triage
@@ -1201,6 +1207,7 @@ orgs:
           license-solver: write
           management-api: write
           messaging: write
+          meteor-operator: write
           metrics-exporter: write
           mi: write
           mi-scheduler: write
