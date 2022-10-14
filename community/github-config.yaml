@@ -1166,6 +1166,7 @@ orgs:
           - KPostOffice
         privacy: closed
         repos:
+          .github: write
           Github-Issues-Classifier: write
           adviser: write
           aicoe-ci-pulp-upload-example: write
@@ -1215,6 +1216,9 @@ orgs:
           misc: write
           nepthys: write
           notebooks: write
+          odo-devfiles-registry: write
+          openblas: write
+          opendatahub-cnbi: write
           package-extract: write
           package-releases-job: write
           package-update-job: write
@@ -1230,15 +1234,23 @@ orgs:
           pulp-pypi-sync-job: write
           purge-job: write
           python: write
+          python-ssdeep: write
+          ray-ml-notebook: write
+          ray-ml-worker: write
+          ray-operator: write
           report-processing: write
           reporter: write
           revsolver: write
+          s2i: write
+          s2i-example: write
+          s2i-example-migration: write
           s2i-thoth: write
           search: write
           search-stage: write
           si-aggregator: write
           si-bandit: write
           si-cloc: write
+          sigstore-friends: write
           slo-reporter: write
           socrates: write
           solver: write
@@ -1246,17 +1258,29 @@ orgs:
           source-management: write
           srcops-notify-bot: write
           srcops-testing: write
+          statusfy: write
+          statusfy-ops: write
           storages: write
           stress-tests: write
           support: write
           sync-job: write
+          talks: write
           template-project: write
+          tensorflow: write
           tensorflow-symbols: write
+          termial-random: write
           thamos: write
+          thoth: write
           thoth-application: write
           thoth-github-action: write
+          thoth-ops-infra: write
+          thoth-pre-commit-hook: write
+          thoth-pybench: write
           thoth-station.github.io: write
+          ttm-as-a-service: write
+          twitter-together: write
           user-api: write
+          website-tooling: write
           workflow-helpers: write
       frameworks:
         description:
