@@ -8,7 +8,7 @@ New source code is integrated via GitHub Pull Requests:
 
 1. each new feature should come from a feature branch
 2. each fix should come from a issue branch
-3. general editions should come from the master branch
+3. general editions should come from the main branch
 
 Each Pull Request is build and tested by a CI system. CI will write back
 status updates to the Pull Request.

@@ -32,8 +32,3 @@ Triggers
 
 Whenever the Pull Request changes state, Prow reevaluates if the
 Requirements to run the jobs ob the gate pipeline are met.
-
-
-Prow configuration
-~~~~~~~~~~~~~~~~~~
-See https://github.com/operate-first/apps/blob/master/prow/overlays/smaug/config.yaml

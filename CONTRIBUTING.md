@@ -5,7 +5,7 @@ Thanks for your interest in contributing to `Thoth Station`.
 ## Reporting Bugs
 
 Before creating bug reports, please check a [list of known issues](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Athoth-station+sort%3Acreated-asc) to see
-if the problem has already been reported (or fixed in a master branch).
+if the problem has already been reported (or fixed in a main branch).
 
 **Note:** If you find a **Closed** issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
 You can also comment on the closed issue to indicate that upstream should provide a new release with a fix.
@@ -43,12 +43,12 @@ If you want to update documentation, [README.md](README.md) is the file you're l
 
 ### Requirements for Pull Requests (PR)
 
-- Use `pre-commit` (see [below](#checkerslintersformatters--pre-commit)), a [positive status in context `aicoe-ci/prow/pre-commit` is required for merging](https://github.com/thoth-station/thoth-application/blob/master/prow/overlays/cnv-prod/config.yaml#L79-L84)
-- All tests have to pass, a [positive status in context `aicoe-ci/prow/pytest` might be required for merging](https://github.com/thoth-station/thoth-application/blob/master/prow/overlays/cnv-prod/config.yaml#L258-L302)
+- Use `pre-commit` (see [below](#checkerslintersformatters--pre-commit)), a positive status in context `aicoe-ci/prow/pre-commit` is required for merging
+- All tests have to pass, a positive status in context `aicoe-ci/prow/pytest` might be required for merging
 - Cover new code with a test case (new or existing one).
 - Use common sense when creating commits, not too big, not too small. You can also squash them at the end of review. See [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
-- Rebase against updated `master` branch before creating a PR to have linear git history.
-- Create a PR against the `master` branch.
+- Rebase against updated `main` branch before creating a PR to have linear git history.
+- Create a PR against the `main` branch.
 
 ### Checkers/linters/formatters & pre-commit
 
