@@ -162,7 +162,7 @@ The outcome of the backlog refinement session is a set of issues that are proper
 
 ## Sprint Planning Session
 
-SIGs pulls the `kind/bug` issues into the `next` list.
+Due to the <a href="#zero-bug-policy">Zero-bug policy</a>, first SIGs pulls the (already qualified) `kind/bug` issues into the `next` list.
 
 SIGs pull the issues which support the high-level team objectives/theme and key results into the ‘next’ list, so that the
 team is clear of what is to be worked on in the next sprint.
