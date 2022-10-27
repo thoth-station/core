@@ -87,7 +87,7 @@ During triage, SIGs should label sufficiently problematic issues (how they
 determine that is up to the SIGs) with `kind/bug`. These issues are prioritized
 for the next sprint.
 
-Other "bugs" (somethings does not work as it should) should be requalified. #TODO: as what
+SIGs can re-qualify `kind/bug` labelled issues to `kind/feature` if they deem them not "sufficiently problematic".
 
 If an issue seems to be both a bug and something else, it might indicate that it
 needs to be split.
