@@ -1091,6 +1091,7 @@ orgs:
           misc: triage
           nepthys: triage
           notebooks: triage
+          odh-dashboard: triage
           odo-devfiles-registry: triage
           openblas: triage
           opendatahub-cnbi: triage
@@ -1220,6 +1221,7 @@ orgs:
           misc: write
           nepthys: write
           notebooks: write
+          odh-dashboard: write
           odo-devfiles-registry: write
           openblas: write
           opendatahub-cnbi: write
