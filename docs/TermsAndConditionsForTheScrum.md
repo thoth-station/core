@@ -79,6 +79,19 @@ Applying any "priority/" label is only ok before the backlog refinement session,
 important to the team, or important to support an upcoming key result. During the refinement session, the issue should
 be planned accordingly.
 
+### Zero-bug policy
+
+In order to simplify planning, we implement a zero-bug policy. This means that
+we prioritize bugs above all other issues, **for a certain definition of bug**.
+During triage, SIGs should label sufficiently problematic issues (how they
+determine that is up to the SIGs) with `kind/bug`. These issues are prioritized
+for the next sprint.
+
+SIGs can re-qualify `kind/bug` labelled issues to `kind/feature` if they deem them not "sufficiently problematic".
+
+If an issue seems to be both a bug and something else, it might indicate that it
+needs to be split.
+
 <a name="estimates"></a>
 ## Effort Estimates
 
@@ -148,6 +161,8 @@ The goal of the backlog refinement session is to offer the space for the team to
 The outcome of the backlog refinement session is a set of issues that are properly triaged, i.e. that are understood by the team by meeting the [issue quality](#quality) standards.
 
 ## Sprint Planning Session
+
+Due to the <a href="#zero-bug-policy">Zero-bug policy</a>, first SIGs pulls the (already qualified) `kind/bug` issues into the `next` list.
 
 SIGs pull the issues which support the high-level team objectives/theme and key results into the ‘next’ list, so that the
 team is clear of what is to be worked on in the next sprint.
