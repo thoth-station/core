@@ -20,7 +20,7 @@ Please check you have all the following:
 ## Project outline
 
 0. Welcome to the Thoth Station!
-1. Get familiar with [how we work](https://github.com/thoth-station/core/blob/master/README.rst)
+1. Get familiar with [how we work](https://github.com/thoth-station/core/blob/main/README.rst)
     1. Get familiar with team members
 2. Get familiar with [thoth-solver](https://github.com/thoth-station/solver/), study its output
 3. Get familiar with [invectio](https://github.com/thoth-station/invectio), study its output

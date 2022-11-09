@@ -80,7 +80,7 @@ postsubmits:
     skip_report: false
     context: community-management/prow/peribolos
     branches:
-      - ^master$
+      - ^main$
     spec:
       containers:
         - image: gcr.io/k8s-prow/peribolos:latest
@@ -117,7 +117,7 @@ postsubmits:
     skip_report: false
     context: community-management/prow/labels
     branches:
-      - ^master$
+      - ^main$
     spec:
       containers:
         - image: gcr.io/k8s-prow/label_sync:latest
