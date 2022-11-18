@@ -38,7 +38,6 @@ larger set of contributors to apply/remove them.
 | ---- | ----------- | -------- | --- |
 | <a id="area/adviser" href="#area/adviser">`area/adviser`</a> | Issues or PRs related to Adviser| label | |
 | <a id="area/amun" href="#area/amun">`area/amun`</a> | Issues or PRs related to Amun| label | |
-| <a id="area/byon" href="#area/byon">`area/byon`</a> | Issues or PRs related to bring-your-own-notebook| label | |
 | <a id="area/cyborgs" href="#area/cyborgs">`area/cyborgs`</a> | Issues or PRs related to Bots, Apps, Cyborgs, and Kebechet| label | |
 | <a id="area/indicators" href="#area/indicators">`area/indicators`</a> | Issues or PRs related to {meta\|performance\|security} indicators.| label | |
 | <a id="area/investigator" href="#area/investigator">`area/investigator`</a> | Issues or PRs related to Investigator| label | |
@@ -80,7 +79,8 @@ larger set of contributors to apply/remove them.
 | <a id="triage/needs-information" href="#triage/needs-information">`triage/needs-information`</a> | Indicates an issue needs more information in order to work on it. <br><br> This was previously `close/needs-information`, | humans | |
 | <a id="triage/not-reproducible" href="#triage/not-reproducible">`triage/not-reproducible`</a> | Indicates an issue can not be reproduced as described. <br><br> This was previously `close/not-reproducible`, | humans | |
 | <a id="triage/unresolved" href="#triage/unresolved">`triage/unresolved`</a> | Indicates an issue that can not or will not be resolved. <br><br> This was previously `close/unresolved`, `invalid`, `wontfix`, | humans | |
-| <a id="wg/cnbi" href="#wg/cnbi">`wg/cnbi`</a> | Issues or PRs related to the Custom Notebook Image ODH feature.| human |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="wg/cre" href="#wg/cre">`wg/cre`</a> | Issues or PRs related to the Custom Runtime Environment (fka Custom Notebook Image) ODH feature. <br><br> This was previously `wg/cnbi`, `area/byon`, | anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
+| <a id="wg/traas" href="#wg/traas">`wg/traas`</a> | Issues or PRs related to the java-prescriptions feature.| anyone |  [label](https://git.k8s.io/test-infra/prow/plugins/label) |
 | <a id="¯\_(ツ)_/¯" href="#¯\_(ツ)_/¯">`¯\_(ツ)_/¯`</a> | ¯\\\_(ツ)_/¯| humans |  [shrug](https://git.k8s.io/test-infra/prow/plugins/shrug) |
 ## Labels that apply to all repos, only for issues
 
