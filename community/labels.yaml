@@ -404,7 +404,9 @@ default:
 
     - addedBy: anyone
       color: 0052cc
-      description: Issues or PRs related to the Custom Runtime Environment (fka Custom Notebook Image) Open Data Hub feature.
+      description:
+        Issues or PRs related to the Custom Runtime Environment (fka Custom Notebook Image)
+        Open Data Hub feature.
       name: wg/cre
       previously:
         - name: wg/cnbi
