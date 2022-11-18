@@ -26,11 +26,6 @@ default:
       addedBy: anyone
 
     - color: 0052cc
-      description: Issues or PRs related to bring-your-own-notebook
-      name: area/byon
-      target: both
-      addedBy: label
-    - color: 0052cc
       description: Issues or PRs related to the Predictable Stack Pattern
       name: area/predictable-stack
       target: both
@@ -406,11 +401,20 @@ default:
         - name: sig/docs
       prowPlugin: label
       target: both
-    - addedBy: human
+
+    - addedBy: anyone
       color: 0052cc
-      description:
-        Issues or PRs related to the Custom Notebook Image ODH feature.
-      name: wg/cnbi
+      description: Issues or PRs related to the Custom Runtime Environment (fka Custom Notebook Image) ODH feature.
+      name: wg/cre
+      previously:
+        - name: wg/cnbi
+        - name: area/byon
+      prowPlugin: label
+      target: both
+    - addedBy: anyone
+      color: 0052cc
+      description: Issues or PRs related to the java-prescriptions feature.
+      name: wg/traas
       prowPlugin: label
       target: both
 
