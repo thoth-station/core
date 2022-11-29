@@ -18,19 +18,12 @@ orgs:
     location: Earth (any shape)
     members:
       - codificat
-      - EldritchJS
-      - erikerlandson
       - Gkrumbach07
       - Gregory-Pereira
-      - HumairAK
       - KPostOffice
-      - meile18
-      - MichaelClifford
-      - oindrillac
       - schwesig
       - shreekarSS
       - sesheta-srcops
-      - Shreyanand
       - tumido
       - VannTen
       - xtuchyna
@@ -1033,8 +1026,6 @@ orgs:
           - Gkrumbach07
           - Gregory-Pereira
           - KPostOffice
-          - MichaelClifford
-          - meile18
           - sesheta-srcops
           - tumido
           - VannTen
@@ -1294,8 +1285,6 @@ orgs:
           Keras, MXNet, ...) and supporting Libraries (OpenBLAS, NumPy, ...)
         maintainers:
           - goern
-        members:
-          - erikerlandson
         privacy: closed
         repos:
           nvidia-usage-dashboard: write
