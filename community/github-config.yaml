@@ -1,6 +1,7 @@
 orgs:
   thoth-station:
     admins:
+      - codificat
       - goern
       - harshad16
       - mayaCostantini
@@ -17,7 +18,6 @@ orgs:
     has_repository_projects: true
     location: Earth (any shape)
     members:
-      - codificat
       - Gkrumbach07
       - Gregory-Pereira
       - KPostOffice
@@ -1017,12 +1017,12 @@ orgs:
       Devs:
         description: We are the Devs!
         maintainers:
+          - codificat
           - goern
           - harshad16
           - mayaCostantini
           - sesheta
         members:
-          - codificat
           - Gkrumbach07
           - Gregory-Pereira
           - KPostOffice
