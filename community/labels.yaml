@@ -525,7 +525,9 @@ repos:
 
       - color: ededed
         description: used by robozome
-        name: script:scripts/add_package.sh
+        name: script:robozome_scripts/add_package.sh
+        previously:
+          - name: script:scripts/add_package.sh
         target: issue
         prowPlugin: label
         addedBy: anyone
