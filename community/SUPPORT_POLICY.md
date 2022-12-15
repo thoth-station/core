@@ -15,4 +15,4 @@ When adding new content to Thoth's Knoweldge Graph, we follow (roughly) the foll
 
 We will disable solvers and the corresponding Python versions when they reach end of life. The data aggregated by
 Project Thoth will be kept in the Knowledge Graph for as long as possible. We will not delete data from the
-Ceph storage, but might disable it's use for advises.
+Ceph storage, but might disable its use for advises.
