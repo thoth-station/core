@@ -522,6 +522,26 @@ repos:
         target: issue
         prowPlugin: require-matching-label
         addedBy: prow
+
+      - color: ededed
+        description: used by robozome
+        name: script:scripts/add_package.sh
+        target: issue
+        prowPlugin: label
+        addedBy: anyone
+      - color: ededed
+        description: used by robozome
+        name: task-type:bash
+        target: issue
+        prowPlugin: label
+        addedBy: anyone
+      - color: ededed
+        description: used by robozome
+        name: repo:workflow-helpers
+        target: issue
+        prowPlugin: label
+        addedBy: anyone
+
   thoth-station/core:
     labels:
       - color: c7def8
