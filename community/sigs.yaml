@@ -2,6 +2,10 @@ sigs:
 - dir: sig-devsecops
   name: DevSecOps
   mission_statement: >
+    HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested
+    in reviving this SIG, please reach out to the Thoth team via an issue in the the
+    core or support repository.
+
     This SIG covers all the tools and supporting container images that deliver Thoth-Station
     applications, as well as the build pipelines and Continuous Integration systems
     that enable the automated builds.
@@ -21,14 +25,7 @@ sigs:
     - github: harshad16
       name: Harshad Nalla
       company: Red Hat
-  meetings:
-  - description: Thoth DevSecOps Meeting
-    day: Thursday
-    time: "15:30"
-    tz: UTC (Coordinated Universal Time)
-    frequency: weekly
-    url: https://meet.google.com/ozb-tbrp-agx
-    archive_url: https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit
+  meetings: []
   contact:
     liaison:
       github: goern
@@ -70,6 +67,10 @@ sigs:
 - dir: sig-observability
   name: Observability
   mission_statement: >
+    HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested
+    in reviving this SIG, please reach out to the Thoth team via an issue in the the
+    core or support repository.
+
     Work on all things that concern Observability! This includes the definition of
     metrics, monitoring, reporting and alerting.
 
@@ -84,13 +85,7 @@ sigs:
     - github: harshad16
       name: Harshad Nalla
       company: Red Hat
-  meetings:
-  - description: Thoth Observability Meeting (joint with DevSecOps)
-    day: Thursday
-    time: "15:30"
-    tz: UTC (Coordinated Universal Time)
-    frequency: weekly
-    url: https://meet.google.com/ozb-tbrp-agx
+  meetings: []
   contact:
     liaison:
       github: goern
@@ -106,6 +101,10 @@ sigs:
 - dir: sig-stack-guidance
   name: Stack Guidance
   mission_statement: >
+    HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested
+    in reviving this SIG, please reach out to the Thoth team via an issue in the the
+    core or support repository.
+
     Work on recommending the most effective, performant and secure software stack
     for user applications and on actively creating prescriptions and security related
     information
@@ -113,21 +112,8 @@ sigs:
   charter_link: charter.md
   label: stack-guidance
   leadership:
-    chairs:
-    - github: mayaCostantini
-      name: Maya Costantini
-      company: Red Hat
-    tech_leads:
-    - github: mayaCostantini
-      name: Maya Costantini
-      company: Red Hat
-  meetings:
-  - description: SIG Stack Guidance Meeting
-    day: Monday
-    time: "14:00"
-    tz: UTC (Coordinated Universal Time)
-    frequency: weekly
-    url: meet.google.com/umj-bgfi-ouo
+    chairs: []
+  meetings: []
   contact:
     liaison:
       github: goern
@@ -148,6 +134,10 @@ sigs:
 - dir: sig-user-experience
   name: User Experience
   mission_statement: >
+    HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested
+    in reviving this SIG, please reach out to the Thoth team via an issue in the the
+    core or support repository.
+
     The User Experience SIG focuses on the interaction points between end users and
     Thoth components.
 
@@ -162,14 +152,7 @@ sigs:
     - github: Gkrumbach07
       name: Gage Krumbach
       company: Red Hat
-  meetings:
-  - description: SIG User Experience Office Hours
-    day: Tuesday
-    time: "13:00"
-    tz: UTC (Coordinated Universal Time)
-    frequency: weekly
-    url: https://meet.google.com/cde-iczf-zso
-    archive_url: https://docs.google.com/document/d/1shJ5C_1Z3RT-mFdnrDmntIxGj5BmdlACfrwxoKd0CSY/edit
+  meetings: []
   contact:
     liaison:
       github: goern
@@ -194,6 +177,10 @@ workinggroups:
 - dir: wg-cnbi
   name: CNBi
   mission_statement: >
+    HIBERNATION NOTICE: This WG is currently hibernating.  If you are interested in
+    reviving this WG, please reach out to the Thoth team via an issue in the the core
+    or support repository.
+
     The goal of this working group is to create a service that implements the backend
     side of the Custom Notebook Image (CNBi) MVP in the context of Open Data Hub (ODH).
 
@@ -208,16 +195,8 @@ workinggroups:
     - github: goern
       name: Christoph Görn
       company: Red Hat
-  meetings:
-  - description: Regular CNBi Meeting
-    day: Wednesday
-    time: "14:00"
-    tz: UTC
-    frequency: weekly
-    url: https://meet.google.com/cyo-imtt-twa
-    archive_url: https://docs.google.com/document/d/1NQJ2gv6lYTcgxFh2nTlVZpGVh1nb2C43yqPh7igvRRM/edit
+  meetings: []
   contact:
-    slack: wg-custom-notebook-images
     liaison:
       github: codificat
       name: Pep Turró Mauri

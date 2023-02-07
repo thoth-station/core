@@ -12,12 +12,12 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 # Observability Special Interest Group
 
+HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested in reviving this SIG, please reach out to the Thoth team via an issue in the the core or support repository.
 Work on all things that concern Observability! This includes the definition of metrics, monitoring, reporting and alerting.
 
 The [charter](charter.md) defines the scope and governance of the Observability Special Interest Group.
 
-## Meetings
-* Thoth Observability Meeting (joint with DevSecOps): [Thursdays at 15:30 UTC (Coordinated Universal Time)](https://meet.google.com/ozb-tbrp-agx) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:30&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+
 
 ## Leadership
 

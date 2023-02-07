@@ -12,13 +12,12 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 # User Experience Special Interest Group
 
+HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested in reviving this SIG, please reach out to the Thoth team via an issue in the the core or support repository.
 The User Experience SIG focuses on the interaction points between end users and Thoth components.
 
 The [charter](charter.md) defines the scope and governance of the User Experience Special Interest Group.
 
-## Meetings
-* SIG User Experience Office Hours: [Tuesdays at 13:00 UTC (Coordinated Universal Time)](https://meet.google.com/cde-iczf-zso) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=13:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
-  * [Meeting notes and Agenda](https://docs.google.com/document/d/1shJ5C_1Z3RT-mFdnrDmntIxGj5BmdlACfrwxoKd0CSY/edit).
+
 
 ## Leadership
 

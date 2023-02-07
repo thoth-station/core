@@ -11,6 +11,7 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 --->
 # CNBi Working Group
 
+HIBERNATION NOTICE: This WG is currently hibernating.  If you are interested in reviving this WG, please reach out to the Thoth team via an issue in the the core or support repository.
 The goal of this working group is to create a service that implements the backend side of the Custom Notebook Image (CNBi) MVP in the context of Open Data Hub (ODH).
 
 The [charter](charter.md) defines the scope and governance of the CNBi Working Group.
@@ -20,16 +21,13 @@ The [charter](charter.md) defines the scope and governance of the CNBi Working G
 * SIG Stack Guidance
 * SIG User Experience
 
-## Meetings
-* Regular CNBi Meeting: [Wednesdays at 14:00 UTC](https://meet.google.com/cyo-imtt-twa) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC).
-  * [Meeting notes and Agenda](https://docs.google.com/document/d/1NQJ2gv6lYTcgxFh2nTlVZpGVh1nb2C43yqPh7igvRRM/edit).
+
 
 ## Organizers
 
 * Christoph Görn (**[@goern](https://github.com/goern)**), Red Hat
 
 ## Contact
-- Slack: [#wg-custom-notebook-images](https://odh-io.slack.com/messages/wg-custom-notebook-images)
 - [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/wg%2Fcnbi)
 - Steering Committee Liaison: Pep Turró Mauri (**[@codificat](https://github.com/codificat)**)
 <!-- BEGIN CUSTOM CONTENT -->

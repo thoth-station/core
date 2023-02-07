@@ -1,12 +1,12 @@
 ---
 repos:
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.3.1
+    rev: v1.4.2
     hooks:
       - id: remove-tabs
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.4.0
     hooks:
       - id: check-added-large-files
       - id: check-byte-order-marker
