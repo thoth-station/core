@@ -5,15 +5,14 @@ approvers:
   - goern
   - harshad16
   - kpostoffice
-  - mayaCostantini
 
 reviewers:
   - codificat
   - goern
   - harshad16
   - kpostoffice
-  - mayaCostantini
 
 emeritus_approvers:
+  - mayaCostantini  # 2022 Dec
   - fridex  # 2022 Jun
   - pacospace  # 2022 Mar

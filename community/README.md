@@ -16,7 +16,7 @@ To generate all the SIG documentation and update the OWNERS files from the
 source file, use the `generate-sig-files` target (which is the default target) in the
 [Makefile](./Makefile), e.g.:
 
-```
+```shell
 make
 ```
 
@@ -34,6 +34,6 @@ maintain the labels on the repos.
 To update the document after a change in the source, use the [label_sync](https://github.com/kubernetes/test-infra/tree/master/label_sync) application
 with the `docs` action. An containerized version invocation is included in the [Makefile](./Makefile):
 
-```
+```shell
 make generate-dockerized
 ```

@@ -4,7 +4,6 @@ orgs:
       - codificat
       - goern
       - harshad16
-      - mayaCostantini
       - sesheta
     email: aicoe-thoth@redhat.com
     billing_email: goern@redhat.com
@@ -1020,16 +1019,13 @@ orgs:
           - codificat
           - goern
           - harshad16
-          - mayaCostantini
           - sesheta
         members:
           - Gkrumbach07
           - Gregory-Pereira
           - KPostOffice
           - sesheta-srcops
-          - tumido
           - VannTen
-          - xtuchyna
         privacy: closed
         repos:
           .github: triage
@@ -1156,7 +1152,6 @@ orgs:
           - codificat
           - sesheta
         members:
-          - mayaCostantini
           - harshad16
           - Gkrumbach07
           - KPostOffice

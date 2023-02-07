@@ -3,16 +3,9 @@
 approvers:
   - goern
   - harshad16
-
-emeritus_approvers:
-  - pacospace
+  - codificat
+  - vannten
 
 reviewers:
-  - codificat
   - gkrumbach07
-  - gregory-pereira
   - kpostoffice
-  - mayacostantini
-  - shreekarss
-  - vannten
-  - xtuchyna

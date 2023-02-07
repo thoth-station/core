@@ -12,27 +12,14 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 # Stack Guidance Special Interest Group
 
+HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested in reviving this SIG, please reach out to the Thoth team via an issue in the the core or support repository.
 Work on recommending the most effective, performant and secure software stack for user applications and on actively creating prescriptions and security related information
 
 The [charter](charter.md) defines the scope and governance of the Stack Guidance Special Interest Group.
 
-## Meetings
-* SIG Stack Guidance Meeting: [Mondays at 14:00 UTC (Coordinated Universal Time)](meet.google.com/umj-bgfi-ouo) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=14:00&tz=UTC%20%28Coordinated%20Universal%20Time%29).
+
 
 ## Leadership
-
-### Chairs
-
-The Chairs of the SIG run operations and processes governing the SIG.
-
-* Maya Costantini (**[@mayaCostantini](https://github.com/mayaCostantini)**), Red Hat
-
-### Technical Leads
-
-The Technical Leads of the SIG establish new subprojects, decommission existing
-subprojects, and resolve cross-subproject technical issues and decisions.
-
-* Maya Costantini (**[@mayaCostantini](https://github.com/mayaCostantini)**), Red Hat
 
 ## Contact
 - [Open Community Issues/PRs](https://github.com/thoth-station/core/labels/sig%2Fstack-guidance)

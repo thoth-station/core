@@ -12,14 +12,13 @@ for Thoth we use `podman run --rm -e WHAT -e GO111MODULE=on -e GOPROXY -v $(pwd)
 
 # DevSecOps Special Interest Group
 
+HIBERNATION NOTICE: This SIG is currently hibernating.  If you are interested in reviving this SIG, please reach out to the Thoth team via an issue in the the core or support repository.
 This SIG covers all the tools and supporting container images that deliver Thoth-Station applications, as well as the build pipelines and Continuous Integration systems that enable the automated builds.
 This includes the discussion related to the release process of the Thoth-Station applications, the build pipelines themselves, supporting container images, tooling, and architectural decisions.
 
 The [charter](charter.md) defines the scope and governance of the DevSecOps Special Interest Group.
 
-## Meetings
-* Thoth DevSecOps Meeting: [Thursdays at 15:30 UTC (Coordinated Universal Time)](https://meet.google.com/ozb-tbrp-agx) (weekly). [Convert to your timezone](http://www.thetimezoneconverter.com/?t=15:30&tz=UTC%20%28Coordinated%20Universal%20Time%29).
-  * [Meeting notes and Agenda](https://docs.google.com/document/d/16EIdTs12apkjuNlgBCMa0gQ2Gd0CFu9wn-N9GQmwTdw/edit).
+
 
 ## Leadership
 
