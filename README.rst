@@ -3,6 +3,10 @@ Thoth-core
 
 Welcome to the Thoth-core project README file!
 
+  **HIBERNATION NOTICE**: The Project is currently hibernating. If you are interested
+  in contributing to is, or if you have urgent issues that need to be fixed, please
+  reach out to the Thoth team via `an support issue <https://github.com/thoth-station/support/issues/new/choose>`_.
+
 The main aim for this project is to provide a deployment for Thoth core
 components. For more information about Thoth project and its goals see `the
 Thoth repository <https://github.com/thoth-station/>`_.
@@ -27,14 +31,6 @@ Architectural decisions
 
 Demo Session
 ------------
-
-We have demo session every two weeks where we discuss what we have been working on and get feedback from one another.
-
-Anyone is welcome to attend, if they would like to see what Thoth team is working on and discuss any topic or just to listen in.
-
-When: every other Monday 10:30 AM EST (14:30 UTC).
-
-Where: `BJN link <https://bluejeans.com/5618223545>`_.
 
 Past sessions if you missed one: `Thoth Youtube Channel <https://www.youtube.com/channel/UClUIDuq_hQ6vlzmqM59B2Lw/featured>`_.
 
